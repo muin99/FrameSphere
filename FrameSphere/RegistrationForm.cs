@@ -21,5 +21,10 @@ namespace FrameSphere
         {
 
         }
+
+        private void RegistrationForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
