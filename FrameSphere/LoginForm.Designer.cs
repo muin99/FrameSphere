@@ -30,9 +30,9 @@
         {
             this.WelcomeLabel = new System.Windows.Forms.Label();
             this.UserIdLabel = new System.Windows.Forms.Label();
-            this.UserIdTextField = new System.Windows.Forms.TextBox();
+            this.UserId = new System.Windows.Forms.TextBox();
             this.PasswordLabel = new System.Windows.Forms.Label();
-            this.PasswordTextField = new System.Windows.Forms.TextBox();
+            this.Password = new System.Windows.Forms.TextBox();
             this.LoginButton = new System.Windows.Forms.Button();
             this.RegisterButton = new System.Windows.Forms.Button();
             this.AccountLabel = new System.Windows.Forms.Label();
@@ -64,13 +64,13 @@
             this.UserIdLabel.Text = "User ID : ";
             this.UserIdLabel.Click += new System.EventHandler(this.label1_Click_1);
             // 
-            // UserIdTextField
+            // UserId
             // 
-            this.UserIdTextField.Location = new System.Drawing.Point(290, 158);
-            this.UserIdTextField.Name = "UserIdTextField";
-            this.UserIdTextField.Size = new System.Drawing.Size(278, 20);
-            this.UserIdTextField.TabIndex = 2;
-            this.UserIdTextField.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.UserId.Location = new System.Drawing.Point(290, 158);
+            this.UserId.Name = "UserId";
+            this.UserId.Size = new System.Drawing.Size(278, 20);
+            this.UserId.TabIndex = 2;
+            this.UserId.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // PasswordLabel
             // 
@@ -82,13 +82,13 @@
             this.PasswordLabel.TabIndex = 3;
             this.PasswordLabel.Text = "Password : ";
             // 
-            // PasswordTextField
+            // Password
             // 
-            this.PasswordTextField.Location = new System.Drawing.Point(290, 192);
-            this.PasswordTextField.Name = "PasswordTextField";
-            this.PasswordTextField.PasswordChar = '*';
-            this.PasswordTextField.Size = new System.Drawing.Size(278, 20);
-            this.PasswordTextField.TabIndex = 4;
+            this.Password.Location = new System.Drawing.Point(290, 192);
+            this.Password.Name = "Password";
+            this.Password.PasswordChar = '*';
+            this.Password.Size = new System.Drawing.Size(278, 20);
+            this.Password.TabIndex = 4;
             // 
             // LoginButton
             // 
@@ -101,17 +101,18 @@
             // 
             // RegisterButton
             // 
-            this.RegisterButton.Location = new System.Drawing.Point(453, 320);
+            this.RegisterButton.Location = new System.Drawing.Point(453, 282);
             this.RegisterButton.Name = "RegisterButton";
             this.RegisterButton.Size = new System.Drawing.Size(115, 23);
             this.RegisterButton.TabIndex = 6;
             this.RegisterButton.Text = "Register Now";
             this.RegisterButton.UseVisualStyleBackColor = true;
+            this.RegisterButton.Click += new System.EventHandler(this.RegisterButton_Click);
             // 
             // AccountLabel
             // 
             this.AccountLabel.AutoSize = true;
-            this.AccountLabel.Location = new System.Drawing.Point(287, 325);
+            this.AccountLabel.Location = new System.Drawing.Point(287, 287);
             this.AccountLabel.Name = "AccountLabel";
             this.AccountLabel.Size = new System.Drawing.Size(124, 13);
             this.AccountLabel.TabIndex = 7;
@@ -125,9 +126,9 @@
             this.Controls.Add(this.AccountLabel);
             this.Controls.Add(this.RegisterButton);
             this.Controls.Add(this.LoginButton);
-            this.Controls.Add(this.PasswordTextField);
+            this.Controls.Add(this.Password);
             this.Controls.Add(this.PasswordLabel);
-            this.Controls.Add(this.UserIdTextField);
+            this.Controls.Add(this.UserId);
             this.Controls.Add(this.UserIdLabel);
             this.Controls.Add(this.WelcomeLabel);
             this.Name = "LoginForm";
@@ -141,9 +142,9 @@
 
         private System.Windows.Forms.Label WelcomeLabel;
         private System.Windows.Forms.Label UserIdLabel;
-        private System.Windows.Forms.TextBox UserIdTextField;
+        private System.Windows.Forms.TextBox UserId;
         private System.Windows.Forms.Label PasswordLabel;
-        private System.Windows.Forms.TextBox PasswordTextField;
+        private System.Windows.Forms.TextBox Password;
         private System.Windows.Forms.Button LoginButton;
         private System.Windows.Forms.Button RegisterButton;
         private System.Windows.Forms.Label AccountLabel;

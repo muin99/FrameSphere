@@ -31,5 +31,13 @@ namespace FrameSphere
         {
 
         }
+
+        private void RegisterButton_Click(object sender, EventArgs e)
+        {
+            this.Hide(); 
+            RegistrationForm rr = new RegistrationForm();
+            rr.ShowDialog();
+            this.Show();
+        }
     }
 }
