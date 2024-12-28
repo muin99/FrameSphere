@@ -125,7 +125,7 @@
             this.RegisterLabel.BackColor = System.Drawing.Color.Transparent;
             this.RegisterLabel.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterLabel.ForeColor = System.Drawing.Color.DarkBlue;
-            this.RegisterLabel.Location = new System.Drawing.Point(398, 172);
+            this.RegisterLabel.Location = new System.Drawing.Point(398, 164);
             this.RegisterLabel.Name = "RegisterLabel";
             this.RegisterLabel.Size = new System.Drawing.Size(119, 31);
             this.RegisterLabel.TabIndex = 11;
@@ -136,7 +136,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(899, 594);
+            this.ClientSize = new System.Drawing.Size(899, 579);
             this.Controls.Add(this.RegisterLabel);
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.Password);
@@ -149,6 +149,7 @@
             this.Controls.Add(this.FirstNameLabel);
             this.Name = "RegistrationForm";
             this.Text = "RegistrationForm";
+            this.Load += new System.EventHandler(this.RegistrationForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

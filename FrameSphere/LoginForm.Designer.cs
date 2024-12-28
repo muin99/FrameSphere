@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.WelcomeLabel = new System.Windows.Forms.Label();
             this.UserIdLabel = new System.Windows.Forms.Label();
             this.UserId = new System.Windows.Forms.TextBox();
@@ -36,16 +37,18 @@
             this.LoginButton = new System.Windows.Forms.Button();
             this.RegisterButton = new System.Windows.Forms.Button();
             this.AccountLabel = new System.Windows.Forms.Label();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // WelcomeLabel
             // 
-            this.WelcomeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.WelcomeLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WelcomeLabel.AutoSize = true;
             this.WelcomeLabel.BackColor = System.Drawing.Color.Transparent;
             this.WelcomeLabel.Font = new System.Drawing.Font("Agency FB", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WelcomeLabel.ForeColor = System.Drawing.Color.DarkBlue;
-            this.WelcomeLabel.Location = new System.Drawing.Point(301, 9);
+            this.WelcomeLabel.Location = new System.Drawing.Point(380, 39);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(213, 31);
             this.WelcomeLabel.TabIndex = 0;
@@ -57,7 +60,7 @@
             // 
             this.UserIdLabel.AutoSize = true;
             this.UserIdLabel.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UserIdLabel.Location = new System.Drawing.Point(181, 158);
+            this.UserIdLabel.Location = new System.Drawing.Point(248, 158);
             this.UserIdLabel.Name = "UserIdLabel";
             this.UserIdLabel.Size = new System.Drawing.Size(56, 20);
             this.UserIdLabel.TabIndex = 1;
@@ -66,7 +69,7 @@
             // 
             // UserId
             // 
-            this.UserId.Location = new System.Drawing.Point(290, 158);
+            this.UserId.Location = new System.Drawing.Point(357, 158);
             this.UserId.Name = "UserId";
             this.UserId.Size = new System.Drawing.Size(278, 20);
             this.UserId.TabIndex = 2;
@@ -76,7 +79,7 @@
             // 
             this.PasswordLabel.AutoSize = true;
             this.PasswordLabel.Font = new System.Drawing.Font("Agency FB", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordLabel.Location = new System.Drawing.Point(181, 192);
+            this.PasswordLabel.Location = new System.Drawing.Point(248, 192);
             this.PasswordLabel.Name = "PasswordLabel";
             this.PasswordLabel.Size = new System.Drawing.Size(72, 20);
             this.PasswordLabel.TabIndex = 3;
@@ -84,7 +87,7 @@
             // 
             // Password
             // 
-            this.Password.Location = new System.Drawing.Point(290, 192);
+            this.Password.Location = new System.Drawing.Point(357, 192);
             this.Password.Name = "Password";
             this.Password.PasswordChar = '*';
             this.Password.Size = new System.Drawing.Size(278, 20);
@@ -92,7 +95,7 @@
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(493, 230);
+            this.LoginButton.Location = new System.Drawing.Point(560, 230);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(75, 23);
             this.LoginButton.TabIndex = 5;
@@ -101,7 +104,7 @@
             // 
             // RegisterButton
             // 
-            this.RegisterButton.Location = new System.Drawing.Point(453, 282);
+            this.RegisterButton.Location = new System.Drawing.Point(520, 282);
             this.RegisterButton.Name = "RegisterButton";
             this.RegisterButton.Size = new System.Drawing.Size(115, 23);
             this.RegisterButton.TabIndex = 6;
@@ -112,7 +115,7 @@
             // AccountLabel
             // 
             this.AccountLabel.AutoSize = true;
-            this.AccountLabel.Location = new System.Drawing.Point(287, 287);
+            this.AccountLabel.Location = new System.Drawing.Point(354, 287);
             this.AccountLabel.Name = "AccountLabel";
             this.AccountLabel.Size = new System.Drawing.Size(124, 13);
             this.AccountLabel.TabIndex = 7;
@@ -122,7 +125,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(959, 492);
             this.Controls.Add(this.AccountLabel);
             this.Controls.Add(this.RegisterButton);
             this.Controls.Add(this.LoginButton);
@@ -133,6 +136,8 @@
             this.Controls.Add(this.WelcomeLabel);
             this.Name = "LoginForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,6 +153,7 @@
         private System.Windows.Forms.Button LoginButton;
         private System.Windows.Forms.Button RegisterButton;
         private System.Windows.Forms.Label AccountLabel;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
 
