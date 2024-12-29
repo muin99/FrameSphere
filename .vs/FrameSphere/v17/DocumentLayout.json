@@ -1,22 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\56mui\\Downloads\\FrameSphere\\",
+  "WorkspaceRootPath": "C:\\Users\\User\\Documents\\FrameSphere\\FrameSphere\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CBEAEAC3-1974-4EEB-929B-AFFAB22FB84E}|FrameSphere\\FrameSphere.csproj|c:\\users\\56mui\\downloads\\framesphere\\framesphere\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBEAEAC3-1974-4EEB-929B-AFFAB22FB84E}|FrameSphere\\FrameSphere.csproj|solutionrelative:framesphere\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CBEAEAC3-1974-4EEB-929B-AFFAB22FB84E}|FrameSphere\\FrameSphere.csproj|c:\\users\\user\\documents\\framesphere\\framesphere\\framesphere\\artcollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CBEAEAC3-1974-4EEB-929B-AFFAB22FB84E}|FrameSphere\\FrameSphere.csproj|solutionrelative:framesphere\\artcollection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CBEAEAC3-1974-4EEB-929B-AFFAB22FB84E}|FrameSphere\\FrameSphere.csproj|c:\\users\\56mui\\downloads\\framesphere\\framesphere\\registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CBEAEAC3-1974-4EEB-929B-AFFAB22FB84E}|FrameSphere\\FrameSphere.csproj|solutionrelative:framesphere\\registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CBEAEAC3-1974-4EEB-929B-AFFAB22FB84E}|FrameSphere\\FrameSphere.csproj|C:\\Users\\56mui\\Downloads\\FrameSphere\\framesphere\\registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{CBEAEAC3-1974-4EEB-929B-AFFAB22FB84E}|FrameSphere\\FrameSphere.csproj|solutionrelative:framesphere\\registrationform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CBEAEAC3-1974-4EEB-929B-AFFAB22FB84E}|FrameSphere\\FrameSphere.csproj|C:\\Users\\56mui\\Downloads\\FrameSphere\\framesphere\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{CBEAEAC3-1974-4EEB-929B-AFFAB22FB84E}|FrameSphere\\FrameSphere.csproj|solutionrelative:framesphere\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{CBEAEAC3-1974-4EEB-929B-AFFAB22FB84E}|FrameSphere\\FrameSphere.csproj|c:\\users\\user\\documents\\framesphere\\framesphere\\framesphere\\registeredevents.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{CBEAEAC3-1974-4EEB-929B-AFFAB22FB84E}|FrameSphere\\FrameSphere.csproj|solutionrelative:framesphere\\registeredevents.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,57 +21,31 @@
           "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegisteredEvents.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\FrameSphere\\FrameSphere\\FrameSphere\\RegisteredEvents.cs",
+              "RelativeDocumentMoniker": "FrameSphere\\RegisteredEvents.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\FrameSphere\\FrameSphere\\FrameSphere\\RegisteredEvents.cs [Design]",
+              "RelativeToolTip": "FrameSphere\\RegisteredEvents.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T19:05:00.548Z",
+              "EditorCaption": " [Design]"
+            },
+            {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RegistrationForm.cs",
-              "DocumentMoniker": "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\RegistrationForm.cs",
-              "RelativeDocumentMoniker": "FrameSphere\\RegistrationForm.cs",
-              "ToolTip": "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\RegistrationForm.cs",
-              "RelativeToolTip": "FrameSphere\\RegistrationForm.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAjwBoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T16:23:59.543Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LoginForm.cs",
-              "DocumentMoniker": "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\LoginForm.cs",
-              "RelativeDocumentMoniker": "FrameSphere\\LoginForm.cs",
-              "ToolTip": "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\LoginForm.cs",
-              "RelativeToolTip": "FrameSphere\\LoginForm.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAD4vywAAAAAAAAAAAAAAA==",
+              "Title": "ArtCollection.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\FrameSphere\\FrameSphere\\FrameSphere\\ArtCollection.cs",
+              "RelativeDocumentMoniker": "FrameSphere\\ArtCollection.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\FrameSphere\\FrameSphere\\FrameSphere\\ArtCollection.cs [Design]",
+              "RelativeToolTip": "FrameSphere\\ArtCollection.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T10:31:08.774Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RegistrationForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\RegistrationForm.cs",
-              "RelativeDocumentMoniker": "FrameSphere\\RegistrationForm.cs",
-              "ToolTip": "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\RegistrationForm.cs [Design]",
-              "RelativeToolTip": "FrameSphere\\RegistrationForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T10:16:37.976Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LoginForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\LoginForm.cs",
-              "RelativeDocumentMoniker": "FrameSphere\\LoginForm.cs",
-              "ToolTip": "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\LoginForm.cs [Design]",
-              "RelativeToolTip": "FrameSphere\\LoginForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-28T09:50:05.605Z",
+              "WhenOpened": "2024-12-29T18:59:32.011Z",
               "EditorCaption": " [Design]"
             }
           ]

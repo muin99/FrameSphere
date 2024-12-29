@@ -26,5 +26,15 @@ namespace FrameSphere
         {
 
         }
+
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
