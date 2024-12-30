@@ -44,5 +44,10 @@ namespace FrameSphere
         {
 
         }
+
+        private void AccountLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

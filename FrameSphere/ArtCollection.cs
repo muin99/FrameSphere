@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace FrameSphere
 {
-    public partial class UserDashboard : Form
+    public partial class ArtCollection : Form
     {
-        public UserDashboard()
+        public ArtCollection()
         {
             InitializeComponent();
-        }
-
-        private void OngoingEventsLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UserDashboard_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
