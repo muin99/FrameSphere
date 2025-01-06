@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace FrameSphere
 {
-    public partial class ArtCollection : Form
+    public partial class Edir_Profile : Form
     {
-        public ArtCollection()
+        public Edir_Profile()
         {
             InitializeComponent();
-        }
-
-        private void ArtCollection_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

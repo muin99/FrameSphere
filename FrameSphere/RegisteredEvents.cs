@@ -16,5 +16,17 @@ namespace FrameSphere
         {
             InitializeComponent();
         }
+
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+            RegistrationForm f1 = new RegistrationForm();
+            this.Close();
+            f1.Show();
+        }
+
+        private void RegisteredEvents_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
