@@ -39,16 +39,24 @@
             this.SubmitButton = new System.Windows.Forms.Button();
             this.RegisterLabel = new System.Windows.Forms.Label();
             this.ClearButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // FirstNameLabel
             // 
             this.FirstNameLabel.AutoSize = true;
             this.FirstNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FirstNameLabel.Location = new System.Drawing.Point(255, 180);
-            this.FirstNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.FirstNameLabel.Location = new System.Drawing.Point(101, 80);
             this.FirstNameLabel.Name = "FirstNameLabel";
-            this.FirstNameLabel.Size = new System.Drawing.Size(135, 25);
+            this.FirstNameLabel.Size = new System.Drawing.Size(111, 20);
             this.FirstNameLabel.TabIndex = 2;
             this.FirstNameLabel.Text = "First Name : ";
             // 
@@ -56,21 +64,20 @@
             // 
             this.EmailLabel.AutoSize = true;
             this.EmailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmailLabel.Location = new System.Drawing.Point(255, 265);
-            this.EmailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.EmailLabel.Location = new System.Drawing.Point(101, 125);
             this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(84, 25);
+            this.EmailLabel.Size = new System.Drawing.Size(68, 20);
             this.EmailLabel.TabIndex = 3;
             this.EmailLabel.Text = "Email : ";
+            this.EmailLabel.Click += new System.EventHandler(this.EmailLabel_Click);
             // 
             // LastNameLabel
             // 
             this.LastNameLabel.AutoSize = true;
             this.LastNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LastNameLabel.Location = new System.Drawing.Point(256, 224);
-            this.LastNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LastNameLabel.Location = new System.Drawing.Point(539, 80);
             this.LastNameLabel.Name = "LastNameLabel";
-            this.LastNameLabel.Size = new System.Drawing.Size(134, 25);
+            this.LastNameLabel.Size = new System.Drawing.Size(110, 20);
             this.LastNameLabel.TabIndex = 4;
             this.LastNameLabel.Text = "Last Name : ";
             // 
@@ -78,54 +85,49 @@
             // 
             this.PasswordLabel.AutoSize = true;
             this.PasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordLabel.Location = new System.Drawing.Point(256, 308);
-            this.PasswordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.PasswordLabel.Location = new System.Drawing.Point(101, 220);
             this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(125, 25);
+            this.PasswordLabel.Size = new System.Drawing.Size(101, 20);
             this.PasswordLabel.TabIndex = 5;
             this.PasswordLabel.Text = "Password : ";
             // 
             // FirstName
             // 
-            this.FirstName.Location = new System.Drawing.Point(398, 184);
-            this.FirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FirstName.Location = new System.Drawing.Point(235, 171);
             this.FirstName.Name = "FirstName";
-            this.FirstName.Size = new System.Drawing.Size(550, 22);
+            this.FirstName.Size = new System.Drawing.Size(696, 20);
             this.FirstName.TabIndex = 6;
             // 
             // LastName
             // 
-            this.LastName.Location = new System.Drawing.Point(398, 224);
-            this.LastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LastName.Location = new System.Drawing.Point(235, 220);
             this.LastName.Name = "LastName";
-            this.LastName.Size = new System.Drawing.Size(550, 22);
+            this.LastName.Size = new System.Drawing.Size(237, 20);
             this.LastName.TabIndex = 7;
             // 
             // Email
             // 
-            this.Email.Location = new System.Drawing.Point(398, 265);
-            this.Email.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Email.Location = new System.Drawing.Point(235, 125);
             this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(550, 22);
+            this.Email.Size = new System.Drawing.Size(696, 20);
             this.Email.TabIndex = 8;
             // 
             // Password
             // 
-            this.Password.Location = new System.Drawing.Point(398, 308);
-            this.Password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Password.Location = new System.Drawing.Point(235, 82);
             this.Password.Name = "Password";
             this.Password.PasswordChar = '*';
-            this.Password.Size = new System.Drawing.Size(550, 22);
+            this.Password.Size = new System.Drawing.Size(276, 20);
             this.Password.TabIndex = 9;
             // 
             // SubmitButton
             // 
-            this.SubmitButton.Location = new System.Drawing.Point(824, 378);
-            this.SubmitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SubmitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubmitButton.Location = new System.Drawing.Point(838, 274);
             this.SubmitButton.Name = "SubmitButton";
-            this.SubmitButton.Size = new System.Drawing.Size(124, 35);
+            this.SubmitButton.Size = new System.Drawing.Size(93, 28);
             this.SubmitButton.TabIndex = 10;
-            this.SubmitButton.Text = "Submit";
+            this.SubmitButton.Text = "Register";
             this.SubmitButton.UseVisualStyleBackColor = true;
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
@@ -136,47 +138,121 @@
             this.RegisterLabel.BackColor = System.Drawing.Color.Transparent;
             this.RegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterLabel.ForeColor = System.Drawing.Color.DarkBlue;
-            this.RegisterLabel.Location = new System.Drawing.Point(506, 60);
-            this.RegisterLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.RegisterLabel.Location = new System.Drawing.Point(514, 34);
             this.RegisterLabel.Name = "RegisterLabel";
-            this.RegisterLabel.Size = new System.Drawing.Size(207, 36);
+            this.RegisterLabel.Size = new System.Drawing.Size(172, 29);
             this.RegisterLabel.TabIndex = 11;
             this.RegisterLabel.Text = "Register Now";
             this.RegisterLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(658, 378);
-            this.ClearButton.Margin = new System.Windows.Forms.Padding(4);
+            this.ClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClearButton.Location = new System.Drawing.Point(655, 382);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(124, 35);
+            this.ClearButton.Size = new System.Drawing.Size(93, 28);
             this.ClearButton.TabIndex = 12;
-            this.ClearButton.Text = "Clear";
+            this.ClearButton.Text = "Login";
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightGreen;
+            this.panel1.Controls.Add(this.RegisterLabel);
+            this.panel1.Location = new System.Drawing.Point(-1, -1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1266, 86);
+            this.panel1.TabIndex = 13;
+            // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.BackColor = System.Drawing.Color.LightGreen;
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.Password);
+            this.panel2.Controls.Add(this.Email);
+            this.panel2.Controls.Add(this.LastNameLabel);
+            this.panel2.Controls.Add(this.PasswordLabel);
+            this.panel2.Controls.Add(this.EmailLabel);
+            this.panel2.Controls.Add(this.SubmitButton);
+            this.panel2.Controls.Add(this.ClearButton);
+            this.panel2.Controls.Add(this.FirstName);
+            this.panel2.Controls.Add(this.LastName);
+            this.panel2.Controls.Add(this.FirstNameLabel);
+            this.panel2.Location = new System.Drawing.Point(75, 132);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1112, 501);
+            this.panel2.TabIndex = 14;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(655, 82);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.PasswordChar = '*';
+            this.textBox1.Size = new System.Drawing.Size(276, 20);
+            this.textBox1.TabIndex = 13;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(101, 171);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 20);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "User Name : ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(518, 222);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(168, 20);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Confirm Password : ";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(707, 222);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(224, 20);
+            this.textBox2.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(394, 385);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(236, 20);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Already have an account?  : ";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
             // RegistrationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 713);
-            this.Controls.Add(this.ClearButton);
-            this.Controls.Add(this.RegisterLabel);
-            this.Controls.Add(this.SubmitButton);
-            this.Controls.Add(this.Password);
-            this.Controls.Add(this.Email);
-            this.Controls.Add(this.LastName);
-            this.Controls.Add(this.FirstName);
-            this.Controls.Add(this.PasswordLabel);
-            this.Controls.Add(this.LastNameLabel);
-            this.Controls.Add(this.EmailLabel);
-            this.Controls.Add(this.FirstNameLabel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RegistrationForm";
             this.Text = "RegistrationForm";
             this.Load += new System.EventHandler(this.RegistrationForm_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -193,5 +269,12 @@
         private System.Windows.Forms.Button SubmitButton;
         private System.Windows.Forms.Label RegisterLabel;
         private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
