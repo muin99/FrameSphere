@@ -53,6 +53,12 @@
     <Compile Include="ArtCollection.Designer.cs">
       <DependentUpon>ArtCollection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Edir_Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Edir_Profile.Designer.cs">
+      <DependentUpon>Edir_Profile.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     </Compile>
     <EmbeddedResource Include="ArtCollection.resx">
       <DependentUpon>ArtCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Edir_Profile.resx">
+      <DependentUpon>Edir_Profile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
