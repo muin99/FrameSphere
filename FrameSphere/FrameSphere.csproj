@@ -53,6 +53,7 @@
     <Compile Include="ArtCollection.Designer.cs">
       <DependentUpon>ArtCollection.cs</DependentUpon>
     </Compile>
+    <Compile Include="DBConnect.cs" />
     <Compile Include="Edir_Profile.cs">
       <SubType>Form</SubType>
     </Compile>

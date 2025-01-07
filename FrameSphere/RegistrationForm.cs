@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace FrameSphere
 {
     public partial class RegistrationForm : Form
     {
+        private bool allowRegister = false;
         public RegistrationForm()
         {
             InitializeComponent();
@@ -26,15 +30,45 @@ namespace FrameSphere
         {
 
         }
+        public static void Register(string firstName, string lastName, string userName, string email, string password)
+        {
+            using (SqlConnection c = DBConnect.Connect())
+            {
+                c.Open();
+                string q = $"insert into All_Users(FirstName, LastName, UserName, Email, Password, Status) " +
+                    $"values ('{firstName}', '{lastName}', '{userName}', '{email}', '{password}', 'pending')";
+                using (SqlCommand cmd = new SqlCommand(q, c))
+                {
+                    try
+                    {
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
 
+            }
+        }
         private void SubmitButton_Click(object sender, EventArgs e)
         {
+            if (!CheckMail.Visible && !usernameWarning.Visible && !confirmLabel.Visible)
+            {
+                Register(FirstName.Text.ToString(), LastName.Text.ToString(), UserName.Text.ToString(), Email.Text.ToString(), Password.Text.ToString());
+                this.Hide();
 
+                LoginForm loginForm = new LoginForm();
+                loginForm.ShowDialog();
+            }
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
+            this.Hide();
 
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -76,6 +110,53 @@ namespace FrameSphere
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Email_TextChanged(object sender, EventArgs e)
+        {
+            if (Email.Text.Length == 0 || !Email.Text.Contains('@')) {
+                CheckMail.Visible = true;
+            }
+            else
+            {
+                CheckMail.Visible = false;
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ConfirmPass_TextChanged(object sender, EventArgs e)
+        {
+            if (ConfirmPass.Text != Password.Text) {
+                confirmLabel.Visible = true;
+            }
+            else
+            {
+                confirmLabel.Visible = false;
+            }
+        }
+
+        private void UserName_TextChanged(object sender, EventArgs e)
+        {
+            using (SqlConnection c = DBConnect.Connect()) {
+                c.Open();
+                string q = $"select count(*) from all_users where username = '{UserName.Text.ToString()}'";
+                using (SqlCommand cmd = new SqlCommand(q, c))
+                {
+                    int n = (int) cmd.ExecuteScalar();
+                    if (n > 0)
+                    {
+                        usernameWarning.Visible = true;
+                    }
+                    else { 
+                        usernameWarning.Visible=false;
+                    }
+                }
+
+            }
         }
     }
 }
