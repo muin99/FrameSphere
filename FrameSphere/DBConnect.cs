@@ -9,11 +9,14 @@ namespace FrameSphere
 {
     public static class DBConnect
     {
-        private static readonly string cstr = "Data Source=ONUKROM\\SQLEXPRESS; Initial Catalog = FrameSphere; Integrated Security = true";
+        //Write the server name here
+        private static string ServerName = "DESKTOP-5903S8A";
+
+        private static readonly string cString = $"Data Source={ServerName}\\SQLEXPRESS; Initial Catalog = FrameSphere; Integrated Security = true";
 
         public static SqlConnection Connect()
         {
-            return new SqlConnection(cstr);
+            return new SqlConnection(cString);
         }
     }
 }
