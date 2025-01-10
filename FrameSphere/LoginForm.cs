@@ -53,7 +53,7 @@ namespace FrameSphere
 
         private static bool Login(string userId,  string password)
         {
-            using(SqlConnection c = DBConnect.Connect())
+            using(SqlConnection c = DB.Connect())
             {
                 c.Open();
                 string q = $"select count(*) from all_users where (username = '{userId}' or email = '{userId}') and password='{password}'";
