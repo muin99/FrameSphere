@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace FrameSphere
 {
-    public static class DBConnect
+    public static class DB
     {
-        private static readonly string cstr = "Data Source=ONUKROM\\SQLEXPRESS; Initial Catalog = FrameSphere; Integrated Security = true";
+        private static readonly string ServerName = "ONUKROM\\SQLEXPRESS";
+        private static readonly string ConnectionString = $"Data Source={ServerName}; Initial Catalog = FrameSphere; Integrated Security = true";
 
         public static SqlConnection Connect()
         {
-            return new SqlConnection(cstr);
+            return new SqlConnection(ConnectionString);
         }
     }
 }
