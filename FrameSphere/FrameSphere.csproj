@@ -53,6 +53,12 @@
     <Compile Include="ArtCollection.Designer.cs">
       <DependentUpon>ArtCollection.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateEvent.Designer.cs">
+      <DependentUpon>CreateEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="DBConnect.cs" />
     <Compile Include="Edir_Profile.cs">
       <SubType>Form</SubType>
@@ -94,6 +100,9 @@
     </Compile>
     <EmbeddedResource Include="ArtCollection.resx">
       <DependentUpon>ArtCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateEvent.resx">
+      <DependentUpon>CreateEvent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Edir_Profile.resx">
       <DependentUpon>Edir_Profile.cs</DependentUpon>
