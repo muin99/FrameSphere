@@ -32,7 +32,7 @@ namespace FrameSphere
         }
         public static void Register(string firstName, string lastName, string userName, string email, string password)
         {
-            using (SqlConnection c = DBConnect.Connect())
+            using (SqlConnection c = DB.Connect())
             {
                 c.Open();
                 string q = $"insert into All_Users(FirstName, LastName, UserName, Email, Password, Status) " +
@@ -141,7 +141,7 @@ namespace FrameSphere
 
         private void UserName_TextChanged(object sender, EventArgs e)
         {
-            using (SqlConnection c = DBConnect.Connect()) {
+            using (SqlConnection c = DB.Connect()) {
                 c.Open();
                 string q = $"select count(*) from all_users where username = '{UserName.Text.ToString()}'";
                 using (SqlCommand cmd = new SqlCommand(q, c))
