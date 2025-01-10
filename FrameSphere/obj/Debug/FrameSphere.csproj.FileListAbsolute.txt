@@ -68,7 +68,6 @@ C:\Users\user\source\repos\framesphere\FrameSphere\FrameSphere\obj\Debug\FrameSp
 C:\Users\user\source\repos\framesphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.exe
 C:\Users\user\source\repos\framesphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.pdb
 C:\Users\56mui\Downloads\framesphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.CreateEvent.resources
-C:\Users\56mui\Downloads\framesphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.EventBox.resources
 C:\Users\56mui\Downloads\framesphere\FrameSphere\FrameSphere\bin\Debug\aa\FrameSphere.resources.dll
 C:\Users\56mui\Downloads\framesphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.LoginForm.aa.resources
 C:\Users\56mui\Downloads\framesphere\FrameSphere\FrameSphere\obj\Debug\aa\FrameSphere.resources.dll

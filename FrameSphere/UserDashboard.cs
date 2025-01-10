@@ -18,14 +18,6 @@ namespace FrameSphere
             InitializeComponent();
             textBox1.Width = flowLayoutPanel1.Width-30;
 
-            EventBox eventBoxControl = new EventBox();
-            eventBoxControl.Location = new Point(50, 50); // Adjust position as needed
-            this.Controls.Add(eventBoxControl);
-
-            // Ensure the form has a title bar with buttons
-            this.FormBorderStyle = FormBorderStyle.Sizable;
-            this.ControlBox = true;
-            this.WindowState = FormWindowState.Normal;
 
 
         }

@@ -60,6 +60,11 @@
     <Compile Include="Edir_Profile.Designer.cs">
       <DependentUpon>Edir_Profile.cs</DependentUpon>
     </Compile>
+    <Compile Include="EntityClasses\Art.cs" />
+    <Compile Include="EntityClasses\Artist.cs" />
+    <Compile Include="EntityClasses\Event.cs" />
+    <Compile Include="EntityClasses\User.cs" />
+    <Compile Include="FSystem.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,12 +79,6 @@
     <Compile Include="RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="EventBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="EventBox.Designer.cs">
-      <DependentUpon>EventBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserDashBoard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,9 +90,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Edir_Profile.resx">
       <DependentUpon>Edir_Profile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EventBox.resx">
-      <DependentUpon>EventBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.aa.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
