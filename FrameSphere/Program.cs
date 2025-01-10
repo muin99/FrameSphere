@@ -17,6 +17,8 @@ namespace FrameSphere
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new UserDashBoard());
+            Application.Run(new CreateEvent());
             Application.Run(new RegistrationForm());
         }
     }

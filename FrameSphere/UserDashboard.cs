@@ -10,28 +10,159 @@ using System.Windows.Forms;
 
 namespace FrameSphere
 {
-    public partial class UserDashboard : Form
+    public partial class UserDashBoard : Form
     {
-        public UserDashboard()
+
+        public UserDashBoard()
         {
             InitializeComponent();
+            textBox1.Width = flowLayoutPanel1.Width-30;
+
+            EventBox eventBoxControl = new EventBox();
+            eventBoxControl.Location = new Point(50, 50); // Adjust position as needed
+            this.Controls.Add(eventBoxControl);
+
+            // Ensure the form has a title bar with buttons
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.ControlBox = true;
+            this.WindowState = FormWindowState.Normal;
+
+
         }
 
-        private void OngoingEventsLabel_Click(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void UserDashboard_Load(object sender, EventArgs e)
+        private void button10_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void LogoutButton_Click(object sender, EventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            this.Hide();
-            LoginForm loginForm = new LoginForm();
-            loginForm.ShowDialog();
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
