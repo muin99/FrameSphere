@@ -63,6 +63,7 @@
     <Compile Include="EntityClasses\Art.cs" />
     <Compile Include="EntityClasses\Artist.cs" />
     <Compile Include="EntityClasses\Event.cs" />
+    <Compile Include="EntityClasses\Organizer.cs" />
     <Compile Include="EntityClasses\User.cs" />
     <Compile Include="FSystem.cs" />
     <Compile Include="LoginForm.cs">
