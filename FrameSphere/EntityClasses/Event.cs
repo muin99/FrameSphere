@@ -8,60 +8,35 @@ namespace FrameSphere.EntityClasses
 {
     public class Event
     {
-        private string _EventID;
-        private string _EventTitle;
-        private string _EventDescription;
-        private string _Organization;
-        private string _TicketPrice;
-        private string _Poster;
-        private string _StartsAt;
-        private string _EndsAt;
+        public string EventID { get; set; }
+        public string EventTitle { get; set; }
+        public string EventDescription { get; set; }
+        public string Organization { get; set; }
+        public double TicketPrice { get; set; }
+        public string Poster { get; set; }
+        public DateTime StartsAt { get; set; }
+        public DateTime EndsAt { get; set; }
 
-        public User[] visitors = new User[1000];
-        public Artist[] artists = new Artist[1000];
-        public User[] Organizers = new User[1000];
+        public List<User> Visitors = new List<User>();
+        public List<Artist> Artists = new List<Artist>();
+        public List<User> Organizers = new List<User>();
 
-        public string EventID {
-            get { return _EventID; }
-            set { _EventID = value; }
+        public void AddVisitor(User visitor)
+        {
+            Visitors.Add(visitor);
         }
 
-        public string EventTitle {
-            get { return _EventTitle; }
-            set { _EventTitle = value; }
+        public void AddArtist(Artist artist)
+        {
+            Artists.Add(artist);
         }
 
-        public string EventDescription {
-            get { return _EventDescription; }
-            set { _EventDescription = value; }
+        public void AddOrganizer(User organizer)
+        {
+            Organizers.Add(organizer);
         }
 
-        public string Organization {
-            get { return _Organization; }
-            set { _Organization = value; }
-        }
-
-        public string TicketPrice {
-            get { return _TicketPrice; }
-            set { _TicketPrice = value; }
-        }
-
-        public string Poster {
-            get { return _Poster; }
-            set { _Poster = value; }
-        }
-
-        public string StartsAt {
-            get { return _StartsAt; }
-            set { _StartsAt = value; }
-        }
-
-        public string EndsAt {
-            get { return _EndsAt; }
-            set { _EndsAt = value; }
-        }
-
-
-
+        
     }
 }
+

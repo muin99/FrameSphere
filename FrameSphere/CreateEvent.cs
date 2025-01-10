@@ -33,7 +33,7 @@ namespace FrameSphere
             openFileDialog.Filter = "All Files (*.*)|*.*|Text Files (*.txt)|*.txt|Image Files (*.png;*.jpg)|*.png;*.jpg";
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                textBox5.Text = openFileDialog1.FileName;
+                poster.Text = openFileDialog1.FileName;
             }
         }
 

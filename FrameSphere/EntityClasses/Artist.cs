@@ -4,12 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace FrameSphere.EntityClasses
 {
     public class Artist : User
     {
-        public int NumberOfArts { get; set; }
+        public int NumberOfArts { get; private set; } = 0;
+        public List<Art> HisArts = new List<Art>();
 
-        public Art[] HisArts = new Art[1000];
+        public void AddArt(Art art)
+        {
+            HisArts.Add(art);
+            NumberOfArts++;
+        }
+
+        
     }
 }
