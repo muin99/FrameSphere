@@ -66,6 +66,13 @@
     <Compile Include="Edir_Profile.Designer.cs">
       <DependentUpon>Edir_Profile.cs</DependentUpon>
     </Compile>
+    <Compile Include="FSystem.cs" />
+    <!-- Adding EntityClasses files -->
+    <Compile Include="EntityClasses\Art.cs" />
+    <Compile Include="EntityClasses\Artist.cs" />
+    <Compile Include="EntityClasses\Event.cs" />
+    <Compile Include="EntityClasses\Organizer.cs" />
+    <Compile Include="EntityClasses\User.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="images\*.*" /> <!-- Placeholder for image files -->
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
