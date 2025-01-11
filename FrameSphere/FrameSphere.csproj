@@ -60,11 +60,9 @@
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnect.cs" />
-    <Compile Include="Edir_Profile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Edir_Profile.Designer.cs">
-      <DependentUpon>Edir_Profile.cs</DependentUpon>
+    <Compile Include="Edit_Profile.cs" />
+    <Compile Include="Edit_Profile.Designer.cs">
+      <DependentUpon>Edit_Profile.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -105,8 +103,8 @@
     <EmbeddedResource Include="CreateEvent.resx">
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Edir_Profile.resx">
-      <DependentUpon>Edir_Profile.cs</DependentUpon>
+    <EmbeddedResource Include="Edit_Profile.resx">
+      <DependentUpon>Edit_Profile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
