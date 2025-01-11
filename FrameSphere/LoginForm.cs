@@ -56,7 +56,7 @@ namespace FrameSphere
             using(SqlConnection c = DB.Connect())
             {
                 c.Open();
-                string q = $"select count(*) from all_users where (username = '{userId}' or email = '{userId}') and password='{password}'";
+                string q = $"select count(*) from AllUser where (username = '{userId}' or email = '{userId}') and password='{password}'";
                 using (SqlCommand cmd = new SqlCommand(q, c))
                 {
                     try
