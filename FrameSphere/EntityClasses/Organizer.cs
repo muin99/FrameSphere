@@ -44,13 +44,6 @@ namespace FrameSphere.EntityClasses
             Console.WriteLine("Event not found in the managed list.");
         }
 
-        public void DisplayManagedEvents()
-        {
-            Console.WriteLine($"Organizer {UserName} is managing the following events:");
-            for (int i = 0; i < NumberOfManagedEvents; i++)
-            {
-                Console.WriteLine($"- {ManagedEvents[i].EventTitle} (ID: {ManagedEvents[i].EventID})");
-            }
-        }
+        
     }
 }
