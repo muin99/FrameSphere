@@ -82,7 +82,7 @@ namespace FrameSphere
                 {
                     this.Hide();
 
-                    UserDashboard userDashboard = new UserDashboard();
+                    UserDashBoard userDashboard = new UserDashBoard();
                     userDashboard.ShowDialog();
                 }
                 else

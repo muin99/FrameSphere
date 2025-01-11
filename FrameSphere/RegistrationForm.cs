@@ -53,7 +53,7 @@ namespace FrameSphere
         }
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            if (!CheckMail.Visible && !usernameWarning.Visible && !confirmLabel.Visible)
+            if (!CheckMail.Visible && !usernameWarning.Visible && !confirmLabel.Visible && !charWarning.Visible)
             {
                 Register(FirstName.Text.ToString(), LastName.Text.ToString(), UserName.Text.ToString(), Email.Text.ToString(), Password.Text.ToString());
                 this.Hide();
@@ -156,6 +156,19 @@ namespace FrameSphere
                     }
                 }
 
+            }
+            string username = UserName.Text;
+            for (int i = 0; i < username.Length; i++) { 
+                if(
+                    (username[i] >= 'A' && username[i] <= 'Z') || 
+                    (username[i] >= 'a' && username[i] <= 'z') ||
+                    (username[i] >= '0' && username[i] <= '9') ||
+                    (username[i] == '_')
+                    )
+                {
+                    charWarning.Visible = false;
+                }
+                else charWarning.Visible = true;
             }
         }
     }

@@ -41,6 +41,7 @@
             this.ClearButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.usernameWarning = new System.Windows.Forms.Label();
             this.confirmLabel = new System.Windows.Forms.Label();
             this.CheckMail = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,7 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.LastName = new System.Windows.Forms.TextBox();
-            this.usernameWarning = new System.Windows.Forms.Label();
+            this.charWarning = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -174,6 +175,7 @@
             // 
             this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.LightGreen;
+            this.panel2.Controls.Add(this.charWarning);
             this.panel2.Controls.Add(this.usernameWarning);
             this.panel2.Controls.Add(this.confirmLabel);
             this.panel2.Controls.Add(this.CheckMail);
@@ -197,6 +199,17 @@
             this.panel2.Size = new System.Drawing.Size(1112, 501);
             this.panel2.TabIndex = 14;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // usernameWarning
+            // 
+            this.usernameWarning.AutoSize = true;
+            this.usernameWarning.ForeColor = System.Drawing.Color.Red;
+            this.usernameWarning.Location = new System.Drawing.Point(232, 194);
+            this.usernameWarning.Name = "usernameWarning";
+            this.usernameWarning.Size = new System.Drawing.Size(73, 13);
+            this.usernameWarning.TabIndex = 20;
+            this.usernameWarning.Text = "Already in use";
+            this.usernameWarning.Visible = false;
             // 
             // confirmLabel
             // 
@@ -269,16 +282,17 @@
             this.LastName.Size = new System.Drawing.Size(276, 20);
             this.LastName.TabIndex = 13;
             // 
-            // usernameWarning
+            // charWarning
             // 
-            this.usernameWarning.AutoSize = true;
-            this.usernameWarning.ForeColor = System.Drawing.Color.Red;
-            this.usernameWarning.Location = new System.Drawing.Point(232, 194);
-            this.usernameWarning.Name = "usernameWarning";
-            this.usernameWarning.Size = new System.Drawing.Size(73, 13);
-            this.usernameWarning.TabIndex = 20;
-            this.usernameWarning.Text = "Already in use";
-            this.usernameWarning.Visible = false;
+            this.charWarning.AutoSize = true;
+            this.charWarning.ForeColor = System.Drawing.Color.Red;
+            this.charWarning.Location = new System.Drawing.Point(232, 194);
+            this.charWarning.Name = "charWarning";
+            this.charWarning.Size = new System.Drawing.Size(568, 13);
+            this.charWarning.TabIndex = 21;
+            this.charWarning.Text = "Username must contain only alphabets (a-z, A-Z), numbers (0-9), or underscores (_" +
+    "). Special characters are not allowed.";
+            this.charWarning.Visible = false;
             // 
             // RegistrationForm
             // 
@@ -321,5 +335,6 @@
         private System.Windows.Forms.Label CheckMail;
         private System.Windows.Forms.Label confirmLabel;
         private System.Windows.Forms.Label usernameWarning;
+        private System.Windows.Forms.Label charWarning;
     }
 }
