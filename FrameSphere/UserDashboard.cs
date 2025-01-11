@@ -24,6 +24,9 @@ namespace FrameSphere
 
         private void button10_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            CreateEvent createEvent = new CreateEvent();
+            createEvent.ShowDialog(this);
 
         }
 

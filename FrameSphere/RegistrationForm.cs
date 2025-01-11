@@ -35,7 +35,7 @@ namespace FrameSphere
             using (SqlConnection c = DB.Connect())
             {
                 c.Open();
-                string q = $"insert into All_Users(FirstName, LastName, UserName, Email, Password, Status) " +
+                string q = $"insert into AllUser(FirstName, LastName, UserName, Email, Password, Status) " +
                     $"values ('{firstName}', '{lastName}', '{userName}', '{email}', '{password}', 'pending')";
                 using (SqlCommand cmd = new SqlCommand(q, c))
                 {
@@ -53,7 +53,7 @@ namespace FrameSphere
         }
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            if (!CheckMail.Visible && !usernameWarning.Visible && !confirmLabel.Visible && !charWarning.Visible)
+            if (!CheckMail.Visible && !usernameWarning.Visible && !confirmLabel.Visible && !charWarning.Visible && UserName.Text != "" && Password.Text !="")
             {
                 Register(FirstName.Text.ToString(), LastName.Text.ToString(), UserName.Text.ToString(), Email.Text.ToString(), Password.Text.ToString());
                 this.Hide();
