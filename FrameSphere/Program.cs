@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace FrameSphere
 {
     internal static class Program
@@ -17,7 +16,7 @@ namespace FrameSphere
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UserDashBoard());
+            Application.Run(new CreateEvent());
         }
     }
 }

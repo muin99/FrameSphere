@@ -119,6 +119,15 @@ namespace FrameSphere
                         command.Parameters.AddWithValue("@Creator", UserID);
                         command.ExecuteNonQuery();
                         MessageBox.Show("Event created successfully!");
+
+                        Event_page eventPage = new Event_page();
+                        eventPage.LoadEventData(title, description, organizerDetails, startDate, endDate, registrationType, ticketPrice, imageBytes);
+                        this.Close();
+                        eventPage.StartPosition = FormStartPosition.CenterParent;
+                        eventPage.ShowDialog();
+                        
+
+
                     }
                 }
             }
