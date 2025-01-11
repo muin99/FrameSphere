@@ -53,7 +53,7 @@ namespace FrameSphere
         }
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            if (!CheckMail.Visible && !usernameWarning.Visible && !confirmLabel.Visible && !charWarning.Visible)
+            if (!CheckMail.Visible && !usernameWarning.Visible && !confirmLabel.Visible && !charWarning.Visible && UserName.Text != "" && Password.Text !="")
             {
                 Register(FirstName.Text.ToString(), LastName.Text.ToString(), UserName.Text.ToString(), Email.Text.ToString(), Password.Text.ToString());
                 this.Hide();

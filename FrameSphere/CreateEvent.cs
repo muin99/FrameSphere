@@ -27,7 +27,11 @@ namespace FrameSphere
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            this.Dispose();
+            UserDashBoard userDashBoard = new UserDashBoard();
+            userDashBoard.ShowDialog();
+            
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
