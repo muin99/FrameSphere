@@ -35,7 +35,7 @@ namespace FrameSphere
             using (SqlConnection c = DB.Connect())
             {
                 c.Open();
-                string q = $"insert into All_Users(FirstName, LastName, UserName, Email, Password, Status) " +
+                string q = $"insert into AllUser(FirstName, LastName, UserName, Email, Password, Status) " +
                     $"values ('{firstName}', '{lastName}', '{userName}', '{email}', '{password}', 'pending')";
                 using (SqlCommand cmd = new SqlCommand(q, c))
                 {
@@ -143,7 +143,7 @@ namespace FrameSphere
         {
             using (SqlConnection c = DB.Connect()) {
                 c.Open();
-                string q = $"select count(*) from all_users where username = '{UserName.Text.ToString()}'";
+                string q = $"select count(*) from AllUser where username = '{UserName.Text.ToString()}'";
                 using (SqlCommand cmd = new SqlCommand(q, c))
                 {
                     int n = (int) cmd.ExecuteScalar();
