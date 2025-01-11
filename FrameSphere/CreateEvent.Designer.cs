@@ -41,24 +41,22 @@ namespace FrameSphere
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.Create = new System.Windows.Forms.Button();
             this.paid = new System.Windows.Forms.RadioButton();
             this.free = new System.Windows.Forms.RadioButton();
             this.posterbtn = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.starts = new System.Windows.Forms.DateTimePicker();
+            this.enddate = new System.Windows.Forms.DateTimePicker();
+            this.startdate = new System.Windows.Forms.DateTimePicker();
             this.poster = new System.Windows.Forms.TextBox();
             this.ticketprice = new System.Windows.Forms.TextBox();
             this.OrgDetails = new System.Windows.Forms.TextBox();
             this.Description = new System.Windows.Forms.TextBox();
             this.Title = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -98,6 +96,7 @@ namespace FrameSphere
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGreen;
+            this.panel2.Controls.Add(this.pictureBox);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label6);
@@ -106,16 +105,12 @@ namespace FrameSphere
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.button5);
+            this.panel2.Controls.Add(this.Create);
             this.panel2.Controls.Add(this.paid);
             this.panel2.Controls.Add(this.free);
             this.panel2.Controls.Add(this.posterbtn);
-            this.panel2.Controls.Add(this.comboBox2);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.dateTimePicker2);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.starts);
+            this.panel2.Controls.Add(this.enddate);
+            this.panel2.Controls.Add(this.startdate);
             this.panel2.Controls.Add(this.poster);
             this.panel2.Controls.Add(this.ticketprice);
             this.panel2.Controls.Add(this.OrgDetails);
@@ -207,18 +202,19 @@ namespace FrameSphere
             this.label1.TabIndex = 13;
             this.label1.Text = "Event Title:";
             // 
-            // button5
+            // Create
             // 
-            this.button5.BackColor = System.Drawing.Color.DarkGreen;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Location = new System.Drawing.Point(1009, 404);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(168, 29);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "Create Event";
-            this.button5.UseVisualStyleBackColor = false;
+            this.Create.BackColor = System.Drawing.Color.DarkGreen;
+            this.Create.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Create.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Create.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.Create.Location = new System.Drawing.Point(1009, 404);
+            this.Create.Name = "Create";
+            this.Create.Size = new System.Drawing.Size(168, 29);
+            this.Create.TabIndex = 1;
+            this.Create.Text = "Create Event";
+            this.Create.UseVisualStyleBackColor = false;
+            this.Create.Click += new System.EventHandler(this.button5_Click);
             // 
             // paid
             // 
@@ -259,75 +255,22 @@ namespace FrameSphere
             this.posterbtn.UseVisualStyleBackColor = false;
             this.posterbtn.Click += new System.EventHandler(this.button4_Click);
             // 
-            // comboBox2
+            // enddate
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "10:00",
-            "11:00",
-            "12:00",
-            "01:00",
-            "02:00",
-            "03:00",
-            "04:00",
-            "05:00",
-            "06:00"});
-            this.comboBox2.Location = new System.Drawing.Point(1056, 213);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 10;
+            this.enddate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.enddate.Location = new System.Drawing.Point(815, 213);
+            this.enddate.Name = "enddate";
+            this.enddate.Size = new System.Drawing.Size(362, 20);
+            this.enddate.TabIndex = 9;
             // 
-            // button3
+            // startdate
             // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(1009, 212);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(49, 23);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Time";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(815, 213);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(197, 20);
-            this.dateTimePicker2.TabIndex = 9;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "10:00",
-            "11:00",
-            "12:00",
-            "01:00",
-            "02:00",
-            "03:00",
-            "04:00",
-            "05:00",
-            "06:00"});
-            this.comboBox1.Location = new System.Drawing.Point(495, 211);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 7;
-            // 
-            // button2
-            // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(448, 210);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(49, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Time";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // starts
-            // 
-            this.starts.Location = new System.Drawing.Point(254, 211);
-            this.starts.Name = "starts";
-            this.starts.Size = new System.Drawing.Size(197, 20);
-            this.starts.TabIndex = 6;
+            this.startdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.startdate.Location = new System.Drawing.Point(254, 211);
+            this.startdate.Name = "startdate";
+            this.startdate.Size = new System.Drawing.Size(362, 20);
+            this.startdate.TabIndex = 6;
+            this.startdate.ValueChanged += new System.EventHandler(this.startdate_ValueChanged);
             // 
             // poster
             // 
@@ -374,6 +317,16 @@ namespace FrameSphere
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
+            // pictureBox
+            // 
+            this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox.Location = new System.Drawing.Point(645, 251);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox.TabIndex = 21;
+            this.pictureBox.TabStop = false;
+            // 
             // CreateEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -390,6 +343,7 @@ namespace FrameSphere
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -402,15 +356,11 @@ namespace FrameSphere
         private System.Windows.Forms.TextBox OrgDetails;
         private System.Windows.Forms.TextBox Description;
         private System.Windows.Forms.TextBox Title;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DateTimePicker starts;
+        private System.Windows.Forms.DateTimePicker startdate;
         private System.Windows.Forms.TextBox poster;
         private System.Windows.Forms.TextBox ticketprice;
         private System.Windows.Forms.Button posterbtn;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker enddate;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.RadioButton free;
         private System.Windows.Forms.Label label9;
@@ -422,7 +372,8 @@ namespace FrameSphere
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button Create;
         private System.Windows.Forms.RadioButton paid;
+        private System.Windows.Forms.PictureBox pictureBox;
     }
 }
