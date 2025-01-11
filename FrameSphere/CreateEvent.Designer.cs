@@ -33,6 +33,7 @@ namespace FrameSphere
             this.label9 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@ namespace FrameSphere
             this.Description = new System.Windows.Forms.TextBox();
             this.Title = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -122,6 +122,16 @@ namespace FrameSphere
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // pictureBox
+            // 
+            this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox.Location = new System.Drawing.Point(645, 251);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox.TabIndex = 21;
+            this.pictureBox.TabStop = false;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -131,6 +141,7 @@ namespace FrameSphere
             this.label8.Size = new System.Drawing.Size(91, 21);
             this.label8.TabIndex = 20;
             this.label8.Text = "Ticket Price:";
+            this.label8.Visible = false;
             // 
             // label7
             // 
@@ -227,6 +238,7 @@ namespace FrameSphere
             this.paid.TabStop = true;
             this.paid.Text = "              Paid                    ";
             this.paid.UseVisualStyleBackColor = false;
+            this.paid.CheckedChanged += new System.EventHandler(this.paid_CheckedChanged);
             // 
             // free
             // 
@@ -287,6 +299,7 @@ namespace FrameSphere
             this.ticketprice.Name = "ticketprice";
             this.ticketprice.Size = new System.Drawing.Size(362, 20);
             this.ticketprice.TabIndex = 4;
+            this.ticketprice.Visible = false;
             // 
             // OrgDetails
             // 
@@ -316,16 +329,6 @@ namespace FrameSphere
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox.Location = new System.Drawing.Point(645, 251);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox.TabIndex = 21;
-            this.pictureBox.TabStop = false;
             // 
             // CreateEvent
             // 
