@@ -7,7 +7,7 @@ using FrameSphere.EntityClasses;
 
 namespace FrameSphere
 {
-    internal static class FSystem
+    internal static class Fs
     {
         public static int TotalUsers { get; private set; } = 0;
         public static int TotalArtists { get; private set; } = 0;
@@ -18,6 +18,7 @@ namespace FrameSphere
         public static List<Artist> AllArtists = new List<Artist>();
         public static List<User> Admins = new List<User>();
         public static List<Event> AllEvents = new List<Event>();
+        public static User loggedInUser;
 
         // Methods to add and manage entities
         public static void AddUser(User user)

@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrameSphere.EntityClasses;
 
 namespace FrameSphere
 {
@@ -63,6 +64,7 @@ namespace FrameSphere
                     {
                         if ((int)cmd.ExecuteScalar() > 0)
                         {
+                            Fs.loggedInUser = new User(userId, password);
                             return true;
                         }
                     }
@@ -81,7 +83,6 @@ namespace FrameSphere
                 if(Login(UserId.Text, Password.Text))
                 {
                     this.Hide();
-
                     UserDashBoard userDashboard = new UserDashBoard();
                     userDashboard.ShowDialog();
                 }

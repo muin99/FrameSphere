@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace FrameSphere
 {
-    public partial class Edir_Profile : Form
+    public partial class Edit_Profile : Form
     {
-        public Edir_Profile()
+        public Edit_Profile()
         {
             InitializeComponent();
         }

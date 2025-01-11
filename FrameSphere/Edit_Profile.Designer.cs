@@ -1,7 +1,7 @@
 ﻿
 namespace FrameSphere
 {
-    partial class Edir_Profile
+    partial class Edit_Profile
     {
         /// <summary>
         /// Required designer variable.

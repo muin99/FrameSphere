@@ -141,10 +141,10 @@ namespace FrameSphere
 
         private void UserName_TextChanged(object sender, EventArgs e)
         {
-            using (SqlConnection c = DB.Connect()) {
-                c.Open();
+            //using (SqlConnection c = DB.Connect()) {
+                DB.Connection.Open();
                 string q = $"select count(*) from AllUser where username = '{UserName.Text.ToString()}'";
-                using (SqlCommand cmd = new SqlCommand(q, c))
+                using (SqlCommand cmd = new SqlCommand(q, DB.Connection))
                 {
                     int n = (int) cmd.ExecuteScalar();
                     if (n > 0)
@@ -155,21 +155,25 @@ namespace FrameSphere
                         usernameWarning.Visible=false;
                     }
                 }
+                DB.Connection.Close();
 
-            }
+            //}
             string username = UserName.Text;
             for (int i = 0; i < username.Length; i++) { 
                 if(
-                    (username[i] >= 'A' && username[i] <= 'Z') || 
+                    !((username[i] >= 'A' && username[i] <= 'Z') || 
                     (username[i] >= 'a' && username[i] <= 'z') ||
                     (username[i] >= '0' && username[i] <= '9') ||
                     (username[i] == '_')
-                    )
+                    ))
                 {
-                    charWarning.Visible = false;
+                    charWarning.Visible = true;
+                    return;
                 }
-                else charWarning.Visible = true;
+                
             }
+            charWarning.Visible = false;
+
         }
     }
 }

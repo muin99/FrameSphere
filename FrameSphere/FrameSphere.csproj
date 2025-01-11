@@ -60,11 +60,11 @@
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnect.cs" />
-    <Compile Include="Edir_Profile.cs">
+    <Compile Include="Edit_Profile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Edir_Profile.Designer.cs">
-      <DependentUpon>Edir_Profile.cs</DependentUpon>
+    <Compile Include="Edit_Profile.Designer.cs">
+      <DependentUpon>Edit_Profile.cs</DependentUpon>
     </Compile>
     <Compile Include="Event_page.cs">
       <SubType>Form</SubType>
@@ -72,7 +72,7 @@
     <Compile Include="Event_page.Designer.cs">
       <DependentUpon>Event_page.cs</DependentUpon>
     </Compile>
-    <Compile Include="FSystem.cs" />
+    <Compile Include="Fs.cs" />
     <!-- Adding EntityClasses files -->
     <Compile Include="EntityClasses\Art.cs" />
     <Compile Include="EntityClasses\Artist.cs" />
@@ -105,8 +105,8 @@
     <EmbeddedResource Include="CreateEvent.resx">
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Edir_Profile.resx">
-      <DependentUpon>Edir_Profile.cs</DependentUpon>
+    <EmbeddedResource Include="Edit_Profile.resx">
+      <DependentUpon>Edit_Profile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Event_page.resx">
       <DependentUpon>Event_page.cs</DependentUpon>
