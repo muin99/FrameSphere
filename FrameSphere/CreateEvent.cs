@@ -76,7 +76,11 @@ namespace FrameSphere
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (free.Checked)
+            {
+                label8.Visible = false;
+                ticketprice.Visible = false;
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -141,6 +145,14 @@ namespace FrameSphere
         private void startdate_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void paid_CheckedChanged(object sender, EventArgs e)
+        {
+            if (paid.Checked) {
+                label8.Visible = true;
+                ticketprice.Visible = true;
+            }
         }
     }
 }
