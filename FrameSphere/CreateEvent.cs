@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +14,15 @@ namespace FrameSphere
 {
     public partial class CreateEvent : Form
     {
+        private string imagePath;
         public CreateEvent()
         {
             InitializeComponent();
+
+            startdate.Format = DateTimePickerFormat.Custom; 
+            startdate.CustomFormat = "MM/dd/yyyy hh:mm tt";
+            enddate.Format = DateTimePickerFormat.Custom;
+            enddate.CustomFormat = "MM/dd/yyyy hh:mm tt";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,13 +37,22 @@ namespace FrameSphere
 
         private void button4_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "All Files (*.*)|*.*|Text Files (*.txt)|*.txt|Image Files (*.png;*.jpg)|*.png;*.jpg";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            OpenFileDialog openFileDialog = new OpenFileDialog {
+                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp",
+                Title = "Select Event Poster"
+            };
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                poster.Text = openFileDialog1.FileName;
+                imagePath = openFileDialog.FileName;
+                poster.Text = imagePath;
+                byte[] imageBytes = File.ReadAllBytes(imagePath);
+                using (MemoryStream ms = new MemoryStream(imageBytes))
+                {
+                    pictureBox.Image = System.Drawing.Image.FromStream(ms);
+                }
             }
         }
+
 
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
@@ -58,6 +75,61 @@ namespace FrameSphere
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection connection = DB.Connect())
+                {
+
+                    connection.Open();
+                    string UserID="";
+                    string title = Title.Text;
+                    string description = Description.Text;
+                    string organizerDetails = OrgDetails.Text;
+                    DateTime startDate = startdate.Value;
+                    DateTime endDate = enddate.Value;
+                    string registrationType = free.Checked ? "Free" : "Paid";
+                    decimal? ticketPrice = paid.Checked && decimal.TryParse(ticketprice.Text, out decimal price) ? price : (decimal?)null;
+                    if (string.IsNullOrEmpty(imagePath))
+                    {
+                        MessageBox.Show("Please select an event poster image.");
+                        return;
+                    }
+
+                    byte[] imageBytes = File.ReadAllBytes(imagePath);
+
+                    string query = @"INSERT INTO Events (Title, Description, OrganizerDetails, StartDate, EndDate, EventPoster, RegistrationType, TicketPrice, Creator)
+                             VALUES (@Title, @Description, @OrganizerDetails, @StartDate, @EndDate, @EventPoster, @RegistrationType, @TicketPrice, @Creator)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Title", title);
+                        command.Parameters.AddWithValue("@Description", description);
+                        command.Parameters.AddWithValue("@OrganizerDetails", organizerDetails);
+                        command.Parameters.AddWithValue("@StartDate", startDate);
+                        command.Parameters.AddWithValue("@EndDate", endDate);
+                        command.Parameters.AddWithValue("@EventPoster", imageBytes);
+                        command.Parameters.AddWithValue("@RegistrationType", registrationType);
+                        command.Parameters.AddWithValue("@TicketPrice", (object)ticketPrice ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Creator", UserID);
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("Event created successfully!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+
+        private void startdate_ValueChanged(object sender, EventArgs e)
         {
 
         }

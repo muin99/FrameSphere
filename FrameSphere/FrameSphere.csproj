@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin_dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin_dashboard.Designer.cs">
+      <DependentUpon>Admin_dashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateEvent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,12 +66,6 @@
     <Compile Include="Edir_Profile.Designer.cs">
       <DependentUpon>Edir_Profile.cs</DependentUpon>
     </Compile>
-    <Compile Include="EntityClasses\Art.cs" />
-    <Compile Include="EntityClasses\Artist.cs" />
-    <Compile Include="EntityClasses\Event.cs" />
-    <Compile Include="EntityClasses\Organizer.cs" />
-    <Compile Include="EntityClasses\User.cs" />
-    <Compile Include="FSystem.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,20 +80,20 @@
     <Compile Include="RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserDashBoard.cs">
+    <Compile Include="UserDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserDashBoard.Designer.cs">
-      <DependentUpon>UserDashBoard.cs</DependentUpon>
+    <Compile Include="UserDashboard.Designer.cs">
+      <DependentUpon>UserDashboard.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Admin_dashboard.resx">
+      <DependentUpon>Admin_dashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateEvent.resx">
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Edir_Profile.resx">
       <DependentUpon>Edir_Profile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.aa.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -110,8 +110,8 @@
     <EmbeddedResource Include="RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserDashBoard.resx">
-      <DependentUpon>UserDashBoard.cs</DependentUpon>
+    <EmbeddedResource Include="UserDashboard.resx">
+      <DependentUpon>UserDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
