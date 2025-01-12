@@ -41,6 +41,7 @@
             this.ClearButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.charWarning = new System.Windows.Forms.Label();
             this.usernameWarning = new System.Windows.Forms.Label();
             this.confirmLabel = new System.Windows.Forms.Label();
             this.CheckMail = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.LastName = new System.Windows.Forms.TextBox();
-            this.charWarning = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -200,6 +200,18 @@
             this.panel2.TabIndex = 14;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // charWarning
+            // 
+            this.charWarning.AutoSize = true;
+            this.charWarning.ForeColor = System.Drawing.Color.Red;
+            this.charWarning.Location = new System.Drawing.Point(232, 194);
+            this.charWarning.Name = "charWarning";
+            this.charWarning.Size = new System.Drawing.Size(568, 13);
+            this.charWarning.TabIndex = 21;
+            this.charWarning.Text = "Username must contain only alphabets (a-z, A-Z), numbers (0-9), or underscores (_" +
+    "). Special characters are not allowed.";
+            this.charWarning.Visible = false;
+            // 
             // usernameWarning
             // 
             this.usernameWarning.AutoSize = true;
@@ -281,18 +293,6 @@
             this.LastName.Name = "LastName";
             this.LastName.Size = new System.Drawing.Size(276, 20);
             this.LastName.TabIndex = 13;
-            // 
-            // charWarning
-            // 
-            this.charWarning.AutoSize = true;
-            this.charWarning.ForeColor = System.Drawing.Color.Red;
-            this.charWarning.Location = new System.Drawing.Point(232, 194);
-            this.charWarning.Name = "charWarning";
-            this.charWarning.Size = new System.Drawing.Size(568, 13);
-            this.charWarning.TabIndex = 21;
-            this.charWarning.Text = "Username must contain only alphabets (a-z, A-Z), numbers (0-9), or underscores (_" +
-    "). Special characters are not allowed.";
-            this.charWarning.Visible = false;
             // 
             // RegistrationForm
             // 

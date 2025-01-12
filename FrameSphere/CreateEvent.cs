@@ -80,7 +80,11 @@ namespace FrameSphere
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (free.Checked)
+            {
+                label8.Visible = false;
+                ticketprice.Visible = false;
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -123,6 +127,15 @@ namespace FrameSphere
                         command.Parameters.AddWithValue("@Creator", UserID);
                         command.ExecuteNonQuery();
                         MessageBox.Show("Event created successfully!");
+
+                        Event_page eventPage = new Event_page();
+                        eventPage.LoadEventData(title, description, organizerDetails, startDate, endDate, registrationType, ticketPrice, imageBytes);
+                        this.Close();
+                        eventPage.StartPosition = FormStartPosition.CenterParent;
+                        eventPage.ShowDialog();
+                        
+
+
                     }
                 }
             }
@@ -136,6 +149,14 @@ namespace FrameSphere
         private void startdate_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void paid_CheckedChanged(object sender, EventArgs e)
+        {
+            if (paid.Checked) {
+                label8.Visible = true;
+                ticketprice.Visible = true;
+            }
         }
     }
 }

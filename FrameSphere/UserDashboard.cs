@@ -22,11 +22,6 @@ namespace FrameSphere
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button10_Click(object sender, EventArgs e)
         {
             this.Hide();
