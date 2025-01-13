@@ -56,7 +56,7 @@ namespace FrameSphere.EntityClasses
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand(query, connection))
-                    {
+                    { 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
