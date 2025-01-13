@@ -59,6 +59,7 @@ namespace FrameSphere
                 this.Hide();
 
                 LoginForm loginForm = new LoginForm();
+                loginForm.StartPosition = FormStartPosition.CenterParent;
                 loginForm.ShowDialog();
             }
         }
@@ -68,6 +69,7 @@ namespace FrameSphere
             this.Hide();
 
             LoginForm loginForm = new LoginForm();
+            loginForm.StartPosition = FormStartPosition.CenterParent;
             loginForm.ShowDialog();
         }
 

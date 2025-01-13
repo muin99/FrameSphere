@@ -105,5 +105,14 @@ namespace FrameSphere
         {
 
         }
+
+        
+
+        private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            ForgetPass fp = new ForgetPass();
+            fp.Show();
+        }
     }
 }

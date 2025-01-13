@@ -72,6 +72,12 @@
     <Compile Include="Event_page.Designer.cs">
       <DependentUpon>Event_page.cs</DependentUpon>
     </Compile>
+    <Compile Include="ForgetPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForgetPass.Designer.cs">
+      <DependentUpon>ForgetPass.cs</DependentUpon>
+    </Compile>
     <Compile Include="FSystem.cs" />
     <!-- Adding EntityClasses files -->
     <Compile Include="EntityClasses\Art.cs" />
@@ -110,6 +116,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Event_page.resx">
       <DependentUpon>Event_page.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForgetPass.resx">
+      <DependentUpon>ForgetPass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.aa.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
