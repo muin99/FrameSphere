@@ -31,6 +31,108 @@ namespace FrameSphere.EntityClasses
         public bool isAdmin { get; set; }
         public bool isLoggedIn { get; set; } = false;
 
+<<<<<<< Updated upstream
+=======
+        public User() { }
+        public User(string userName, string password)
+        {
+            this.UserName = userName;
+
+            string query = $@"SELECT 
+                            au.UserName,
+                            au.FirstName, 
+                            au.LastName, 
+                            au.Email, 
+                            au.Username, 
+                            au.Status,
+                            uc.Phone, 
+                            uc.Address, 
+                            uc.ProfilePic,
+                            us.Facebook, 
+                            us.Instagram, 
+                            us.Pinterest, 
+                            us.Website
+                            FROM 
+                            AllUser au, 
+                            UserContact uc, 
+                            UserSocials us
+                            WHERE 
+                            uc.UserName = au.UserName 
+                            AND uc.UserName = us.UserName
+                            AND (au.UserName = '{userName}' or au.email = '{userName}')
+                            AND au.password = '{password}'";
+
+
+            using (SqlConnection connection = DB.Connect())
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    { 
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                FirstName = reader["FirstName"].ToString();
+                                LastName = reader["LastName"].ToString();
+                                Email = reader["Email"].ToString();
+                                this.UserName = reader["Username"].ToString();
+                                Status = reader["Status"].ToString();
+                                Phone = reader["Phone"].ToString();
+                                Address = reader["Address"].ToString();
+                                ProfilePic = reader["ProfilePic"].ToString();
+                                Facebook = reader["Facebook"].ToString();
+                                Instagram = reader["Instagram"].ToString();
+                                Pinterest = reader["Pinterest"].ToString();
+                                Website = reader["Website"].ToString();
+                            }
+                            else
+                            {
+                                throw new Exception("User not found.");
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"An error occurred while fetching user data: {ex.Message}");
+                }
+            }
+        }
+
+        public User(string firstName, string lastName, string email, string password, string userName, string address, string phone, string status, string profilePic, string facebook, string instagram, string website, string pinterest, int totalVisitedEvents, List<Event> visitingEvents, bool isArtist, bool isAdmin, bool isLoggedIn)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Password = password;
+            UserName = userName;
+            Address = address;
+            Phone = phone;
+            Status = status;
+            ProfilePic = profilePic;
+            Facebook = facebook;
+            Instagram = instagram;
+            Website = website;
+            Pinterest = pinterest;
+            TotalVisitedEvents = totalVisitedEvents;
+            VisitingEvents = visitingEvents;
+            this.isArtist = isArtist;
+            this.isAdmin = isAdmin;
+            this.isLoggedIn = isLoggedIn;
+        }
+
+        public void Logout(Form a)
+        {
+            FSystem.loggedInUser = null;
+            a.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+        }
+
+>>>>>>> Stashed changes
         public void VisitEvent(Event eventItem)
         {
             VisitingEvents.Add(eventItem);
