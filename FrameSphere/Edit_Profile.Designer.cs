@@ -221,13 +221,13 @@ namespace FrameSphere
             this.label11.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(553, 16);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(157, 32);
+            this.label11.Size = new System.Drawing.Size(156, 32);
             this.label11.TabIndex = 0;
             this.label11.Text = "Edit Profile";
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.LightBlue;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.panel2.Location = new System.Drawing.Point(916, 76);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(364, 644);
@@ -235,7 +235,7 @@ namespace FrameSphere
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.label9);
@@ -319,7 +319,7 @@ namespace FrameSphere
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.LightBlue;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Location = new System.Drawing.Point(0, -2);
@@ -340,7 +340,7 @@ namespace FrameSphere
             this.button1.Text = "Return to Dashboard";
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // Form1
+            // Edit_Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -349,7 +349,7 @@ namespace FrameSphere
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "Edit_Profile";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
