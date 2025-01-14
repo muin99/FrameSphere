@@ -39,7 +39,7 @@ namespace FrameSphere
         {
             this.Hide(); 
             RegistrationForm rr = new RegistrationForm();
-            rr.ShowDialog();
+            rr.Show();
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace FrameSphere
                 {
                     this.Hide();
                     UserDashBoard userDashboard = new UserDashBoard();
-                    userDashboard.ShowDialog();
+                    userDashboard.Show();
                 }
                 else
                 {

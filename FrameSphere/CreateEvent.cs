@@ -30,7 +30,7 @@ namespace FrameSphere
             this.Hide();
             this.Dispose();
             UserDashBoard userDashBoard = new UserDashBoard();
-            userDashBoard.ShowDialog();
+            userDashBoard.Show();
             
         }
 
@@ -130,7 +130,7 @@ namespace FrameSphere
 
                         Event_page eventPage = new Event_page();
                         eventPage.LoadEventData(title, description, organizerDetails, startDate, endDate, registrationType, ticketPrice, imageBytes);
-                        this.Close();
+                        this.Hide();
                         eventPage.StartPosition = FormStartPosition.CenterParent;
                         eventPage.ShowDialog();
                         

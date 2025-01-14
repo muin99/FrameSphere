@@ -46,29 +46,28 @@ namespace FrameSphere.EntityClasses
 
             // Query to fetch data from the three tables
             string query = $@"SELECT 
-                            au.UserName,
-                            au.FirstName, 
-                            au.LastName, 
-                            au.Email, 
-                            au.Username, 
-                            au.Status,
-                            uc.Phone, 
-                            uc.Address, 
-                            uc.ProfilePic,
-                            us.Facebook, 
-                            us.Instagram, 
-                            us.Pinterest, 
-                            us.Website
-                            FROM 
-                            AllUser au, 
-                            UserContact uc, 
-                            UserSocials us
-                            WHERE 
-                            uc.UserName = au.UserName 
-                            AND uc.UserName = us.UserName
-                            AND (au.UserName = '{userName}' or au.email = '{userName}')
-                            AND au.password = '{password}'";
-
+                    au.UserName,
+                    au.FirstName, 
+                    au.LastName, 
+                    au.Email, 
+                    au.Username, 
+                    au.Status,
+                    uc.Phone, 
+                    uc.Address, 
+                    uc.ProfilePic,
+                    us.Facebook, 
+                    us.Instagram, 
+                    us.Pinterest, 
+                    us.Website
+                    FROM 
+                    AllUser au, 
+                    UserContact uc, 
+                    UserSocials us
+                    WHERE 
+                    uc.UserName = au.UserName 
+                    AND uc.UserName = us.UserName
+                    AND (au.UserName = '{userName}' or au.email = '{userName}')
+                    AND au.password = '{password}'";
 
             using (SqlConnection connection = DB.Connect())
             {
@@ -77,7 +76,7 @@ namespace FrameSphere.EntityClasses
                     connection.Open();
 
                     using (SqlCommand command = new SqlCommand(query, connection))
-                    { 
+                    {
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
@@ -101,6 +100,15 @@ namespace FrameSphere.EntityClasses
                             }
                         }
                     }
+
+                    string adminQuery = "SELECT COUNT(*) FROM adminlist WHERE UserName = @UserName";
+                    using (SqlCommand adminCommand = new SqlCommand(adminQuery, connection))
+                    {
+                        adminCommand.Parameters.AddWithValue("@UserName", this.UserName);
+                        int adminCount = (int)adminCommand.ExecuteScalar();
+
+                        isAdmin = adminCount > 0;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -108,6 +116,7 @@ namespace FrameSphere.EntityClasses
                 }
             }
         }
+
 
         public User(string firstName, string lastName, string email, string password, string userName, string address, string phone, string status, string profilePic, string facebook, string instagram, string website, string pinterest, int totalVisitedEvents, List<Event> visitingEvents, bool isArtist, bool isAdmin, bool isLoggedIn)
         {
@@ -136,7 +145,7 @@ namespace FrameSphere.EntityClasses
             FSystem.loggedInUser = null;
             a.Hide();
             LoginForm loginForm = new LoginForm();
-            loginForm.ShowDialog();
+            loginForm.Show();
         }
 
         public void VisitEvent(Event eventItem)

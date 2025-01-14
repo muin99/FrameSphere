@@ -68,6 +68,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.eventspanel = new System.Windows.Forms.Panel();
             this.noitem = new System.Windows.Forms.Label();
+            this.adminDashboard = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.profilepanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
@@ -287,6 +288,7 @@
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.LightGreen;
+            this.panel1.Controls.Add(this.adminDashboard);
             this.panel1.Controls.Add(this.button13);
             this.panel1.Controls.Add(this.button12);
             this.panel1.Controls.Add(this.button11);
@@ -577,6 +579,17 @@
             this.noitem.Text = "No events Found";
             this.noitem.Visible = false;
             // 
+            // adminDashboard
+            // 
+            this.adminDashboard.Location = new System.Drawing.Point(55, 500);
+            this.adminDashboard.Name = "adminDashboard";
+            this.adminDashboard.Size = new System.Drawing.Size(124, 23);
+            this.adminDashboard.TabIndex = 15;
+            this.adminDashboard.Text = "Admin Dashboard";
+            this.adminDashboard.UseVisualStyleBackColor = true;
+            this.adminDashboard.Visible = false;
+            this.adminDashboard.Click += new System.EventHandler(this.adminDashboard_Click);
+            // 
             // UserDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -643,5 +656,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel eventspanel;
         private System.Windows.Forms.Label noitem;
+        private System.Windows.Forms.Button adminDashboard;
     }
 }

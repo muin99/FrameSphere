@@ -27,6 +27,11 @@ namespace FrameSphere
             email.Text = FSystem.loggedInUser.Email;
             address.Text = FSystem.loggedInUser.Address;
 
+            if (FSystem.loggedInUser.isAdmin)
+            {
+                adminDashboard.Visible = true;
+            }
+
             CreateEventBox("Party at the square photography competition.", "Lorem ipsum is simply dummy text...", "Ends in 22h:12m:15s", null);
 
 
@@ -318,6 +323,13 @@ namespace FrameSphere
         private void textBox1_TextChanged_2(object sender, EventArgs e)
         {
             LoadEventBoxes(textBox1.Text);
+        }
+
+        private void adminDashboard_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Admin_dashboard admin_Dashboard = new Admin_dashboard();
+            admin_Dashboard.Show();
         }
     }
 }
