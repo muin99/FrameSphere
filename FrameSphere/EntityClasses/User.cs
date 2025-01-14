@@ -31,8 +31,7 @@ namespace FrameSphere.EntityClasses
         public bool isAdmin { get; set; }
         public bool isLoggedIn { get; set; } = false;
 
-<<<<<<< Updated upstream
-=======
+
         public User() { }
         public User(string userName, string password)
         {
@@ -131,8 +130,6 @@ namespace FrameSphere.EntityClasses
             LoginForm loginForm = new LoginForm();
             loginForm.ShowDialog();
         }
-
->>>>>>> Stashed changes
         public void VisitEvent(Event eventItem)
         {
             VisitingEvents.Add(eventItem);
