@@ -72,13 +72,13 @@
     <Compile Include="Event_page.Designer.cs">
       <DependentUpon>Event_page.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="ArtDisplayForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ArtDisplayForm.Designer.cs">
+      <DependentUpon>ArtDisplayForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fs.cs" />
+    <Compile Include="FSystem.cs" />
     <!-- Adding EntityClasses files -->
     <Compile Include="EntityClasses\Art.cs" />
     <Compile Include="EntityClasses\Artist.cs" />
@@ -117,8 +117,8 @@
     <EmbeddedResource Include="Event_page.resx">
       <DependentUpon>Event_page.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="ArtDisplayForm.resx">
+      <DependentUpon>ArtDisplayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
