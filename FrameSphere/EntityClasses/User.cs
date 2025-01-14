@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.
 
 
 namespace FrameSphere.EntityClasses
@@ -123,13 +124,7 @@ namespace FrameSphere.EntityClasses
             this.isLoggedIn = isLoggedIn;
         }
 
-        public void Logout(Form a)
-        {
-            FSystem.loggedInUser = null;
-            a.Hide();
-            LoginForm loginForm = new LoginForm();
-            loginForm.ShowDialog();
-        }
+
         public void VisitEvent(Event eventItem)
         {
             VisitingEvents.Add(eventItem);
