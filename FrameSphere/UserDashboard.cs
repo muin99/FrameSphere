@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrameSphere.EntityClasses;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace FrameSphere
@@ -36,6 +37,9 @@ namespace FrameSphere
         private void LoadEventBoxes(string searchQuery = "")
         {
             eventspanel.Controls.Clear();
+            eventspanel.Controls.Add(noitem);
+            noitem.Visible = false;
+
 
             string query = string.IsNullOrEmpty(searchQuery)
                 ? "SELECT Title, Description, EndDate, EventPoster FROM Events"
@@ -55,6 +59,12 @@ namespace FrameSphere
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
+                        if (!reader.HasRows)
+                        {
+                            noitem.Visible = true;
+                            return;
+                        }
+                        else { noitem.Visible = false; }
                         while (reader.Read())
                         {
                             string title = reader["Title"].ToString();
@@ -300,7 +310,12 @@ namespace FrameSphere
 
         }
 
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        private void eventspanel_Paint_2(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_2(object sender, EventArgs e)
         {
             LoadEventBoxes(textBox1.Text);
         }
