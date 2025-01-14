@@ -179,10 +179,7 @@ namespace FrameSphere
 
         private void Logout_Click(object sender, EventArgs e)
         {
-            FSystem.loggedInUser = null;
-            this.Hide();
-            LoginForm loginForm = new LoginForm();
-            loginForm.ShowDialog();
+            FSystem.loggedInUser.Logout(this);
         }
     }
 }

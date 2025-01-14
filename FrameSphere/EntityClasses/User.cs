@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace FrameSphere.EntityClasses
@@ -49,6 +50,7 @@ namespace FrameSphere.EntityClasses
                             au.FirstName, 
                             au.LastName, 
                             au.Email, 
+                            au.Username, 
                             au.Status,
                             uc.Phone, 
                             uc.Address, 
@@ -64,7 +66,7 @@ namespace FrameSphere.EntityClasses
                             WHERE 
                             uc.UserName = au.UserName 
                             AND uc.UserName = us.UserName
-                            AND au.UserName = '{userName}' 
+                            AND (au.UserName = '{userName}' or au.email = '{userName}')
                             AND au.password = '{password}'";
 
 
@@ -83,6 +85,7 @@ namespace FrameSphere.EntityClasses
                                 FirstName = reader["FirstName"].ToString();
                                 LastName = reader["LastName"].ToString();
                                 Email = reader["Email"].ToString();
+                                this.UserName = reader["Username"].ToString();
                                 Status = reader["Status"].ToString();
                                 Phone = reader["Phone"].ToString();
                                 Address = reader["Address"].ToString();
@@ -126,6 +129,14 @@ namespace FrameSphere.EntityClasses
             this.isArtist = isArtist;
             this.isAdmin = isAdmin;
             this.isLoggedIn = isLoggedIn;
+        }
+
+        public void Logout(Form a)
+        {
+            FSystem.loggedInUser = null;
+            a.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
         }
 
         public void VisitEvent(Event eventItem)

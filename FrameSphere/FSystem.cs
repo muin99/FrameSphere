@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,31 @@ namespace FrameSphere
         public static List<User> Admins = new List<User>();
         public static List<Event> AllEvents = new List<Event>();
         public static User loggedInUser;
+        public static bool Login(string userId, string password)
+        {
+            using (SqlConnection c = DB.Connect())
+            {
+                c.Open();
+                string q = $"select count(*) from AllUser where (username = '{userId}' or email = '{userId}') and password='{password}'";
+                using (SqlCommand cmd = new SqlCommand(q, c))
+                {
+                    try
+                    {
+                        if ((int)cmd.ExecuteScalar() > 0)
+                        {
+                            FSystem.loggedInUser = new User(userId, password);
+                            return true;
+                        }
+                    }
+                    catch (SqlException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
 
+                }
+            }
+            return false;
+        }
         // Methods to add and manage entities
         public static void AddUser(User user)
         {
@@ -34,6 +59,7 @@ namespace FrameSphere
             AllEvents.Add(eventItem);
             TotalEvents++;
         }
+
 
     }
 }
