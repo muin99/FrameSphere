@@ -114,6 +114,9 @@
     <EmbeddedResource Include="Admin_dashboard.resx">
       <DependentUpon>Admin_dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ArtDisplayForm.resx">
+      <DependentUpon>ArtDisplayForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateEvent.resx">
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +162,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SmallerNetworkConnectionBackgroundtest-ezgif.com-video-to-gif-converter.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
