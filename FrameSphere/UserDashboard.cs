@@ -17,7 +17,14 @@ namespace FrameSphere
         {
             InitializeComponent();
             textBox1.Width = flowLayoutPanel1.Width-30;
+            name.Text = FSystem.loggedInUser.FullName();
+            userName.Text = "@"+FSystem.loggedInUser.UserName;
 
+            phone.Text = FSystem.loggedInUser.Phone;
+            email.Text = FSystem.loggedInUser.Email;
+
+            address.Text = FSystem.loggedInUser.Address;
+            
 
 
         }
@@ -153,6 +160,26 @@ namespace FrameSphere
         private void button14_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void name_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void button14_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void profilepic_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            FSystem.loggedInUser.Logout(this);
         }
     }
 }

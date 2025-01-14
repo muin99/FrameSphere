@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\user\source\repos\muin99\FrameSphere\FrameSphere\bin\Debug\FrameSphere.exe.config
 C:\Users\user\source\repos\muin99\FrameSphere\FrameSphere\bin\Debug\FrameSphere.exe
 C:\Users\user\source\repos\muin99\FrameSphere\FrameSphere\bin\Debug\FrameSphere.pdb
@@ -23,11 +24,25 @@ C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.CreateEve
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.Edir_Profile.resources
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.Event_page.resources
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.ForgetPass.resources
+=======
+C:\Users\56mui\Downloads\FrameSphere\FrameSphere\bin\Debug\FrameSphere.exe.config
+C:\Users\56mui\Downloads\FrameSphere\FrameSphere\bin\Debug\FrameSphere.exe
+C:\Users\56mui\Downloads\FrameSphere\FrameSphere\bin\Debug\FrameSphere.pdb
+C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.csproj.AssemblyReference.cache
+C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.Admin_dashboard.resources
+C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.CreateEvent.resources
+C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.Edit_Profile.resources
+C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.Event_page.resources
+C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.ArtDisplayForm.resources
+>>>>>>> muin
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.LoginForm.resources
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.Properties.Resources.resources
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.RegistrationForm.resources
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.UserDashBoard.resources
+<<<<<<< HEAD
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.LoginForm.aa.resources
+=======
+>>>>>>> muin
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.csproj.GenerateResource.cache
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.csproj.CoreCompileInputs.cache
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.exe

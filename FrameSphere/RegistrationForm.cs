@@ -35,22 +35,35 @@ namespace FrameSphere
             using (SqlConnection c = DB.Connect())
             {
                 c.Open();
-                string q = $"insert into AllUser(FirstName, LastName, UserName, Email, Password, Status) " +
-                    $"values ('{firstName}', '{lastName}', '{userName}', '{email}', '{password}', 'pending')";
+
+                string q = $@"
+                            BEGIN TRANSACTION;
+                            INSERT INTO AllUser (FirstName, LastName, UserName, Email, Password, Status)
+                            VALUES ('{firstName}', '{lastName}', '{userName}', '{email}', '{password}', 'pending');
+
+                            INSERT INTO UserSocials (UserName)
+                            VALUES ('{userName}');
+
+                            INSERT INTO UserContact (UserName)
+                            VALUES ('{userName}');
+
+                            COMMIT TRANSACTION;";
+
                 using (SqlCommand cmd = new SqlCommand(q, c))
                 {
                     try
                     {
                         cmd.ExecuteNonQuery();
+                        Console.WriteLine("Registration successful.");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        Console.WriteLine($"Error: {ex.Message}");
                     }
                 }
-
             }
         }
+
         private void SubmitButton_Click(object sender, EventArgs e)
         {
             if (!CheckMail.Visible && !usernameWarning.Visible && !confirmLabel.Visible && !charWarning.Visible && UserName.Text != "" && Password.Text !="")
@@ -143,10 +156,10 @@ namespace FrameSphere
 
         private void UserName_TextChanged(object sender, EventArgs e)
         {
-            using (SqlConnection c = DB.Connect()) {
-                c.Open();
+            //using (SqlConnection c = DB.Connect()) {
+                DB.Connection.Open();
                 string q = $"select count(*) from AllUser where username = '{UserName.Text.ToString()}'";
-                using (SqlCommand cmd = new SqlCommand(q, c))
+                using (SqlCommand cmd = new SqlCommand(q, DB.Connection))
                 {
                     int n = (int) cmd.ExecuteScalar();
                     if (n > 0)
@@ -157,21 +170,25 @@ namespace FrameSphere
                         usernameWarning.Visible=false;
                     }
                 }
+                DB.Connection.Close();
 
-            }
+            //}
             string username = UserName.Text;
             for (int i = 0; i < username.Length; i++) { 
                 if(
-                    (username[i] >= 'A' && username[i] <= 'Z') || 
+                    !((username[i] >= 'A' && username[i] <= 'Z') || 
                     (username[i] >= 'a' && username[i] <= 'z') ||
                     (username[i] >= '0' && username[i] <= '9') ||
                     (username[i] == '_')
-                    )
+                    ))
                 {
-                    charWarning.Visible = false;
+                    charWarning.Visible = true;
+                    return;
                 }
-                else charWarning.Visible = true;
+                
             }
+            charWarning.Visible = false;
+
         }
     }
 }

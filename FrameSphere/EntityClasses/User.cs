@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.
+using System.Windows.Forms;
 
 
 namespace FrameSphere.EntityClasses
@@ -12,6 +13,12 @@ namespace FrameSphere.EntityClasses
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        public string FullName()
+        {
+            return FirstName+" "+LastName;
+        }
+
         public string Email { get; set; }
         public string Password { get; set; }
         public string UserName { get; set; }
@@ -32,12 +39,12 @@ namespace FrameSphere.EntityClasses
         public bool isAdmin { get; set; }
         public bool isLoggedIn { get; set; } = false;
 
-
         public User() { }
         public User(string userName, string password)
         {
             this.UserName = userName;
 
+            // Query to fetch data from the three tables
             string query = $@"SELECT 
                             au.UserName,
                             au.FirstName, 
@@ -124,6 +131,13 @@ namespace FrameSphere.EntityClasses
             this.isLoggedIn = isLoggedIn;
         }
 
+        public void Logout(Form a)
+        {
+            FSystem.loggedInUser = null;
+            a.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+        }
 
         public void VisitEvent(Event eventItem)
         {

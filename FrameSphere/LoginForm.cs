@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrameSphere.EntityClasses;
 
 namespace FrameSphere
 {
@@ -51,37 +52,14 @@ namespace FrameSphere
 
         }
 
-        private static bool Login(string userId,  string password)
-        {
-            using(SqlConnection c = DB.Connect())
-            {
-                c.Open();
-                string q = $"select count(*) from AllUser where (username = '{userId}' or email = '{userId}') and password='{password}'";
-                using (SqlCommand cmd = new SqlCommand(q, c))
-                {
-                    try
-                    {
-                        if ((int)cmd.ExecuteScalar() > 0)
-                        {
-                            return true;
-                        }
-                    }
-                    catch(SqlException e) {
-                        Console.WriteLine(e.Message);
-                    }
-                   
-                }
-            }
-            return false;
-        }
+
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
             if (UserId.Text != "" && Password.Text != "") { 
-                if(Login(UserId.Text, Password.Text))
+                if(FSystem.Login(UserId.Text, Password.Text))
                 {
                     this.Hide();
-
                     UserDashBoard userDashboard = new UserDashBoard();
                     userDashboard.ShowDialog();
                 }
