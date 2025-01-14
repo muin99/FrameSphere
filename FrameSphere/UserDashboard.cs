@@ -103,7 +103,7 @@ namespace FrameSphere
                 Size = new Size(panelWidth, panelHeight),
                 BackColor = Color.LightGreen,
                 BorderStyle = BorderStyle.FixedSingle,
-                Margin = new Padding(10, 5, 10, 5)
+                Margin = new Padding(10)
             };
 
             PictureBox pictureBox = new PictureBox {
