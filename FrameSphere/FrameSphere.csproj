@@ -72,6 +72,12 @@
     <Compile Include="Event_page.Designer.cs">
       <DependentUpon>Event_page.cs</DependentUpon>
     </Compile>
+    <Compile Include="ForgetPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForgetPass.Designer.cs">
+      <DependentUpon>ForgetPass.cs</DependentUpon>
+    </Compile>
     <Compile Include="ArtDisplayForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,9 +122,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Event_page.resx">
       <DependentUpon>Event_page.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ArtDisplayForm.resx">
-      <DependentUpon>ArtDisplayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

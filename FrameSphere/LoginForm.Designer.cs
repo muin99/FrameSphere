@@ -38,9 +38,10 @@
             this.LoginButton = new System.Windows.Forms.Button();
             this.RegisterButton = new System.Windows.Forms.Button();
             this.AccountLabel = new System.Windows.Forms.Label();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.useridwar = new System.Windows.Forms.Label();
             this.passwordWarning = new System.Windows.Forms.Label();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,11 +108,20 @@
             this.passwordWarning.ForeColor = System.Drawing.Color.Red;
             this.passwordWarning.Name = "passwordWarning";
             // 
+            // linkLabel1
+            // 
+            resources.ApplyResources(this.linkLabel1, "linkLabel1");
+            this.linkLabel1.LinkColor = System.Drawing.Color.Indigo;
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked_1);
+            // 
             // LoginForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGreen;
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.passwordWarning);
             this.Controls.Add(this.useridwar);
             this.Controls.Add(this.AccountLabel);
@@ -143,6 +153,7 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Label useridwar;
         private System.Windows.Forms.Label passwordWarning;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

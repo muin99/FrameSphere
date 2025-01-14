@@ -25,10 +25,8 @@ namespace FrameSphere
             textBox2.Text = organizerDetails;
             label6.Text = startDate.ToString("MM/dd/yyyy hh:mm tt");
             label7.Text = endDate.ToString("MM/dd/yyyy hh:mm tt");
-            //lblRegistrationType.Text = registrationType;
             label8.Text = ticketPrice.HasValue ? ticketPrice.Value.ToString("C") : "Free";
 
-            // Set the event poster
             if (eventPoster != null && eventPoster.Length > 0)
             {
                 using (MemoryStream ms = new MemoryStream(eventPoster))
