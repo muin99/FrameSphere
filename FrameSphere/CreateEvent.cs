@@ -95,7 +95,7 @@ namespace FrameSphere
                 {
 
                     connection.Open();
-                    string UserID="";
+                    string UserID=FSystem.loggedInUser.UserName;
                     string title = Title.Text;
                     string description = Description.Text;
                     string organizerDetails = OrgDetails.Text;
