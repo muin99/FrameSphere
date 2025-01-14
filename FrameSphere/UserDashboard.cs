@@ -75,9 +75,17 @@ namespace FrameSphere
                             string title = reader["Title"].ToString();
                             string description = reader["Description"].ToString();
                             DateTime endDate = Convert.ToDateTime(reader["EndDate"]);
-                            byte[] eventPosterBytes = (byte[])reader["EventPoster"];
+                            byte[] eventPosterBytes = reader["EventPoster"] != DBNull.Value? (byte[])reader["EventPoster"] : null;
 
-                            Image eventPosterImage = Image.FromStream(new MemoryStream(eventPosterBytes));
+                            Image eventPosterImage = null;
+                            if (eventPosterBytes != null)
+                            {
+                                eventPosterImage = Image.FromStream(new MemoryStream(eventPosterBytes));
+                            }
+                            else
+                            {
+                                eventPosterImage = FrameSphere.Properties.Resources._10_3__thumb;
+                            }
 
                             CreateEventBox(title, description, endDate.ToString("dd-MM-yyyy HH:mm:ss"), eventPosterImage);
                         }
@@ -95,7 +103,7 @@ namespace FrameSphere
                 Size = new Size(panelWidth, panelHeight),
                 BackColor = Color.LightGreen,
                 BorderStyle = BorderStyle.FixedSingle,
-                Margin = new Padding(10)
+                Margin = new Padding(10, 5, 10, 5)
             };
 
             PictureBox pictureBox = new PictureBox {

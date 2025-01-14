@@ -88,14 +88,14 @@ namespace FrameSphere
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-            Panel panel = (Panel)sender; // The panel triggering the event
-            int borderRadius = 25; // Adjust the radius of the corners as needed
+            Panel panel = (Panel)sender; 
+            int borderRadius = 25;
 
             Graphics g = e.Graphics;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             Rectangle rect = new Rectangle(0, 0, panel.Width, panel.Height);
 
-            // Create the rounded rectangle path
+
             using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
             {
                 path.AddArc(rect.X, rect.Y, borderRadius, borderRadius, 180, 90);
@@ -104,10 +104,9 @@ namespace FrameSphere
                 path.AddArc(rect.X, rect.Y + rect.Height - borderRadius, borderRadius, borderRadius, 90, 90);
                 path.CloseAllFigures();
 
-                // Set the panel's region to the rounded path
+
                 panel.Region = new Region(path);
 
-                // Optional: Draw the border
                 
             }
         }
@@ -156,7 +155,7 @@ namespace FrameSphere
 
         private void UserName_TextChanged(object sender, EventArgs e)
         {
-            //using (SqlConnection c = DB.Connect()) {
+
                 DB.Connection.Open();
                 string q = $"select count(*) from AllUser where username = '{UserName.Text.ToString()}'";
                 using (SqlCommand cmd = new SqlCommand(q, DB.Connection))
@@ -172,7 +171,6 @@ namespace FrameSphere
                 }
                 DB.Connection.Close();
 
-            //}
             string username = UserName.Text;
             for (int i = 0; i < username.Length; i++) { 
                 if(

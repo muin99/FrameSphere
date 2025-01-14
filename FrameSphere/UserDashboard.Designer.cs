@@ -32,7 +32,6 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel4 = new System.Windows.Forms.Panel();
             this.profilepanel = new System.Windows.Forms.Panel();
-            this.profilepic = new System.Windows.Forms.PictureBox();
             this.name = new System.Windows.Forms.Label();
             this.userName = new System.Windows.Forms.Label();
             this.contact = new System.Windows.Forms.Label();
@@ -69,14 +68,15 @@
             this.eventspanel = new System.Windows.Forms.Panel();
             this.noitem = new System.Windows.Forms.Label();
             this.adminDashboard = new System.Windows.Forms.Button();
+            this.profilepic = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
             this.profilepanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.midpanel.SuspendLayout();
             this.eventspanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -119,18 +119,6 @@
             this.profilepanel.Name = "profilepanel";
             this.profilepanel.Size = new System.Drawing.Size(290, 413);
             this.profilepanel.TabIndex = 0;
-            // 
-            // profilepic
-            // 
-            this.profilepic.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.profilepic.Image = global::FrameSphere.Properties.Resources.SmallerNetworkConnectionBackgroundtest_ezgif_com_video_to_gif_converter;
-            this.profilepic.Location = new System.Drawing.Point(97, 24);
-            this.profilepic.Margin = new System.Windows.Forms.Padding(20);
-            this.profilepic.Name = "profilepic";
-            this.profilepic.Size = new System.Drawing.Size(100, 104);
-            this.profilepic.TabIndex = 0;
-            this.profilepic.TabStop = false;
-            this.profilepic.Click += new System.EventHandler(this.profilepic_Click);
             // 
             // name
             // 
@@ -562,6 +550,7 @@
             // 
             // eventspanel
             // 
+            this.eventspanel.AutoScroll = true;
             this.eventspanel.Controls.Add(this.noitem);
             this.eventspanel.Location = new System.Drawing.Point(36, 72);
             this.eventspanel.Name = "eventspanel";
@@ -590,6 +579,18 @@
             this.adminDashboard.Visible = false;
             this.adminDashboard.Click += new System.EventHandler(this.adminDashboard_Click);
             // 
+            // profilepic
+            // 
+            this.profilepic.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.profilepic.Image = global::FrameSphere.Properties.Resources.SmallerNetworkConnectionBackgroundtest_ezgif_com_video_to_gif_converter;
+            this.profilepic.Location = new System.Drawing.Point(97, 24);
+            this.profilepic.Margin = new System.Windows.Forms.Padding(20);
+            this.profilepic.Name = "profilepic";
+            this.profilepic.Size = new System.Drawing.Size(100, 104);
+            this.profilepic.TabIndex = 0;
+            this.profilepic.TabStop = false;
+            this.profilepic.Click += new System.EventHandler(this.profilepic_Click);
+            // 
             // UserDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -603,7 +604,6 @@
             this.panel4.ResumeLayout(false);
             this.profilepanel.ResumeLayout(false);
             this.profilepanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.profilepic)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -612,6 +612,7 @@
             this.midpanel.PerformLayout();
             this.eventspanel.ResumeLayout(false);
             this.eventspanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profilepic)).EndInit();
             this.ResumeLayout(false);
 
         }
