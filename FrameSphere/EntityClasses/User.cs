@@ -44,18 +44,31 @@ namespace FrameSphere.EntityClasses
             this.UserName = userName;
 
             // Query to fetch data from the three tables
-            string query = $@"
-            SELECT 
-            au.UserName,
-            au.FirstName, au.LastName, au.Email, au.Status,
-            uc.Phone, uc.Address, uc.ProfilePic,
-            us.Facebook, us.Instagram, us.Pinterest, us.Website
-            FROM UserContact uc
-            INNER JOIN AllUser au ON uc.UserName = au.UserName
-            INNER JOIN UserSocials us ON uc.UserName = us.UserName
-            WHERE au.UserName = '{userName}' and au.password = '{password}'";
+            string query = $@"SELECT 
+                            au.UserName,
+                            au.FirstName, 
+                            au.LastName, 
+                            au.Email, 
+                            au.Status,
+                            uc.Phone, 
+                            uc.Address, 
+                            uc.ProfilePic,
+                            us.Facebook, 
+                            us.Instagram, 
+                            us.Pinterest, 
+                            us.Website
+                            FROM 
+                            AllUser au, 
+                            UserContact uc, 
+                            UserSocials us
+                            WHERE 
+                            uc.UserName = au.UserName 
+                            AND uc.UserName = us.UserName
+                            AND au.UserName = '{userName}' 
+                            AND au.password = '{password}'";
 
-            using (SqlConnection connection = DB.Connection)
+
+            using (SqlConnection connection = DB.Connect())
             {
                 try
                 {

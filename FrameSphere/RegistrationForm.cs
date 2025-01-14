@@ -35,22 +35,35 @@ namespace FrameSphere
             using (SqlConnection c = DB.Connect())
             {
                 c.Open();
-                string q = $"insert into AllUser(FirstName, LastName, UserName, Email, Password, Status) " +
-                    $"values ('{firstName}', '{lastName}', '{userName}', '{email}', '{password}', 'pending')";
+
+                string q = $@"
+                            BEGIN TRANSACTION;
+                            INSERT INTO AllUser (FirstName, LastName, UserName, Email, Password, Status)
+                            VALUES ('{firstName}', '{lastName}', '{userName}', '{email}', '{password}', 'pending');
+
+                            INSERT INTO UserSocials (UserName)
+                            VALUES ('{userName}');
+
+                            INSERT INTO UserContact (UserName)
+                            VALUES ('{userName}');
+
+                            COMMIT TRANSACTION;";
+
                 using (SqlCommand cmd = new SqlCommand(q, c))
                 {
                     try
                     {
                         cmd.ExecuteNonQuery();
+                        Console.WriteLine("Registration successful.");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        Console.WriteLine($"Error: {ex.Message}");
                     }
                 }
-
             }
         }
+
         private void SubmitButton_Click(object sender, EventArgs e)
         {
             if (!CheckMail.Visible && !usernameWarning.Visible && !confirmLabel.Visible && !charWarning.Visible && UserName.Text != "" && Password.Text !="")
