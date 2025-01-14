@@ -31,6 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.profilepanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button14 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.address = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.contact = new System.Windows.Forms.Label();
             this.userName = new System.Windows.Forms.Label();
             this.name = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.profilepic = new System.Windows.Forms.PictureBox();
             this.ArtImage = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
@@ -62,7 +62,7 @@
             this.tableLayoutPanel1.Controls.Add(this.ArtImage, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -97,10 +97,22 @@
             this.profilepanel.Controls.Add(this.profilepic);
             this.profilepanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.profilepanel.Location = new System.Drawing.Point(0, 0);
-            this.profilepanel.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.profilepanel.Margin = new System.Windows.Forms.Padding(10);
             this.profilepanel.Name = "profilepanel";
             this.profilepanel.Size = new System.Drawing.Size(334, 482);
             this.profilepanel.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FrameSphere.Properties.Resources.cross;
+            this.pictureBox1.Location = new System.Drawing.Point(302, 6);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(27, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // button14
             // 
@@ -213,18 +225,6 @@
             this.name.Text = "Md. Muinul Islam";
             this.name.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::FrameSphere.Properties.Resources.cross;
-            this.pictureBox1.Location = new System.Drawing.Point(302, 6);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(27, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 12;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // profilepic
             // 
             this.profilepic.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -254,7 +254,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(850, 488);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ArtDisplayForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
