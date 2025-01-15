@@ -9,7 +9,7 @@ namespace FrameSphere
 {
     public static class DB
     {
-        private static readonly string ServerName = @"ONUKROM";
+        private static readonly string ServerName = @"DESKTOP-5903S8A";
         private static readonly string ConnectionString = $@"Data Source={ServerName}; Initial Catalog = FrameSphere; Integrated Security = true";
 
         public static SqlConnection Connection = new SqlConnection(ConnectionString);
