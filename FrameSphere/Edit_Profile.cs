@@ -27,9 +27,49 @@ namespace FrameSphere
 
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = DB.Connect();
-            string q = "UPDATE AllUser\r\nSET FirstName = 'r',\r\n    LastName = 'a',\r\n\tEmail = 'ra@'\r\nWHERE Password = 'a' and Username = 'a';\r\n\r\nUPDATE UserContact\r\nSET Address = 'thiscity',\r\n    Email = 'ra@',\r\n\tPhone = '73823',\r\n\t\r\n"
-            
+            //Validation
+            if (string.IsNullOrWhiteSpace(FirstNameField.Text) ||
+                string.IsNullOrWhiteSpace(LastNameField.Text) ||
+                string.IsNullOrWhiteSpace(EmailField.Text) ||
+                string.IsNullOrWhiteSpace(CurrentPWField.Text))
+        
+            {
+                MessageBox.Show("All fields are required. Please fill in all the details.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            using (SqlConnection conn = DB.Connect())
+            {
+
+                string query = $@"
+                        UPDATE AllUser
+                        SET FirstName = '{FirstNameField.Text}',
+                        LastName = '{LastNameField.Text}',
+                        Email = '{EmailField.Text}'
+                        WHERE Password = 'a' and Username = '';
+                        ";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    try
+                    {
+                        conn.Open();
+                        int rowsChanged = cmd.ExecuteNonQuery();
+                        if (rowsChanged > 0)
+                        {
+                            MessageBox.Show("Information updated successfully");
+
+                        }
+                        else { MessageBox.Show("Password may be incorrect", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                        }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error: {ex.Message}");
+                    }
+                }
+
+
+
+            }
         }
     }
 }
+//UPDATE UserContact\r\nSET Address = 'thiscity',\r\n    Email = 'ra@',\r\n\tPhone = '73823',\r\n\t\r\n"
