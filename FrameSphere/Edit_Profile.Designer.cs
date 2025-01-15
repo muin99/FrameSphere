@@ -30,30 +30,28 @@ namespace FrameSphere
         private void InitializeComponent()
         {
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.LastNameField = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.UpdateBtn = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ChangePWBtn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.EmailField = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.AddressField = new System.Windows.Forms.TextBox();
+            this.FaceBookField = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.InstagramField = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.FirstNameField = new System.Windows.Forms.TextBox();
+            this.PinterestField = new System.Windows.Forms.TextBox();
+            this.WebsiteField = new System.Windows.Forms.TextBox();
+            this.CurrentPWField = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -79,138 +77,121 @@ namespace FrameSphere
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(116, 465);
+            this.label10.Location = new System.Drawing.Point(116, 417);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(126, 19);
             this.label10.TabIndex = 24;
             this.label10.Text = "Current Password :";
             // 
-            // textBox2
+            // LastNameField
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(551, 51);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(299, 20);
-            this.textBox2.TabIndex = 4;
+            this.LastNameField.BackColor = System.Drawing.Color.White;
+            this.LastNameField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LastNameField.Location = new System.Drawing.Point(551, 51);
+            this.LastNameField.Name = "LastNameField";
+            this.LastNameField.Size = new System.Drawing.Size(299, 20);
+            this.LastNameField.TabIndex = 4;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(43, 405);
+            this.label9.Location = new System.Drawing.Point(43, 357);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 19);
             this.label9.TabIndex = 23;
             this.label9.Text = "Website :";
             // 
-            // button2
+            // UpdateBtn
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(619, 465);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(231, 31);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "UPDATE";
-            this.button2.UseVisualStyleBackColor = false;
+            this.UpdateBtn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.UpdateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.UpdateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.UpdateBtn.Location = new System.Drawing.Point(619, 417);
+            this.UpdateBtn.Name = "UpdateBtn";
+            this.UpdateBtn.Size = new System.Drawing.Size(231, 31);
+            this.UpdateBtn.TabIndex = 1;
+            this.UpdateBtn.Text = "UPDATE";
+            this.UpdateBtn.UseVisualStyleBackColor = false;
+            this.UpdateBtn.Click += new System.EventHandler(this.UpdateBtn_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(43, 352);
+            this.label8.Location = new System.Drawing.Point(43, 304);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(61, 19);
             this.label8.TabIndex = 22;
             this.label8.Text = "Pinterest";
             // 
-            // button3
+            // ChangePWBtn
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(619, 552);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(231, 31);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Change Password ?";
-            this.button3.UseVisualStyleBackColor = false;
+            this.ChangePWBtn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ChangePWBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ChangePWBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangePWBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ChangePWBtn.Location = new System.Drawing.Point(619, 504);
+            this.ChangePWBtn.Name = "ChangePWBtn";
+            this.ChangePWBtn.Size = new System.Drawing.Size(231, 31);
+            this.ChangePWBtn.TabIndex = 2;
+            this.ChangePWBtn.Text = "Change Password ?";
+            this.ChangePWBtn.UseVisualStyleBackColor = false;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(43, 292);
+            this.label7.Location = new System.Drawing.Point(43, 244);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(75, 19);
             this.label7.TabIndex = 21;
             this.label7.Text = "Instagram :";
             // 
-            // textBox4
+            // EmailField
             // 
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Location = new System.Drawing.Point(139, 89);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(711, 20);
-            this.textBox4.TabIndex = 6;
+            this.EmailField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.EmailField.Location = new System.Drawing.Point(139, 89);
+            this.EmailField.Name = "EmailField";
+            this.EmailField.Size = new System.Drawing.Size(711, 20);
+            this.EmailField.TabIndex = 6;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(43, 239);
+            this.label6.Location = new System.Drawing.Point(43, 191);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 19);
             this.label6.TabIndex = 20;
             this.label6.Text = "Facebook :";
             // 
-            // textBox3
-            // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Location = new System.Drawing.Point(140, 142);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(710, 20);
-            this.textBox3.TabIndex = 5;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(43, 190);
+            this.label5.Location = new System.Drawing.Point(43, 142);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(67, 19);
             this.label5.TabIndex = 19;
             this.label5.Text = "Address :";
             // 
-            // textBox5
+            // AddressField
             // 
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Location = new System.Drawing.Point(140, 191);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(710, 20);
-            this.textBox5.TabIndex = 7;
+            this.AddressField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.AddressField.Location = new System.Drawing.Point(140, 143);
+            this.AddressField.Name = "AddressField";
+            this.AddressField.Size = new System.Drawing.Size(710, 20);
+            this.AddressField.TabIndex = 7;
             // 
-            // label4
+            // FaceBookField
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(43, 141);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 19);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "User Name :";
-            // 
-            // textBox6
-            // 
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox6.Location = new System.Drawing.Point(140, 240);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(710, 20);
-            this.textBox6.TabIndex = 8;
+            this.FaceBookField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FaceBookField.Location = new System.Drawing.Point(140, 192);
+            this.FaceBookField.Name = "FaceBookField";
+            this.FaceBookField.Size = new System.Drawing.Size(710, 20);
+            this.FaceBookField.TabIndex = 8;
             // 
             // label3
             // 
@@ -222,13 +203,13 @@ namespace FrameSphere
             this.label3.TabIndex = 17;
             this.label3.Text = "Email :";
             // 
-            // textBox7
+            // InstagramField
             // 
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox7.Location = new System.Drawing.Point(140, 293);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(710, 20);
-            this.textBox7.TabIndex = 9;
+            this.InstagramField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.InstagramField.Location = new System.Drawing.Point(140, 245);
+            this.InstagramField.Name = "InstagramField";
+            this.InstagramField.Size = new System.Drawing.Size(710, 20);
+            this.InstagramField.TabIndex = 9;
             // 
             // label11
             // 
@@ -253,27 +234,25 @@ namespace FrameSphere
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.LastNameField);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.UpdateBtn);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.ChangePWBtn);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.EmailField);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox6);
+            this.panel1.Controls.Add(this.AddressField);
+            this.panel1.Controls.Add(this.FaceBookField);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox7);
+            this.panel1.Controls.Add(this.InstagramField);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.textBox9);
-            this.panel1.Controls.Add(this.textBox8);
-            this.panel1.Controls.Add(this.textBox11);
+            this.panel1.Controls.Add(this.FirstNameField);
+            this.panel1.Controls.Add(this.PinterestField);
+            this.panel1.Controls.Add(this.WebsiteField);
+            this.panel1.Controls.Add(this.CurrentPWField);
             this.panel1.Location = new System.Drawing.Point(8, 76);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(897, 644);
@@ -300,38 +279,38 @@ namespace FrameSphere
             this.label2.TabIndex = 16;
             this.label2.Text = "Last Name :";
             // 
-            // textBox1
+            // FirstNameField
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(139, 50);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(302, 20);
-            this.textBox1.TabIndex = 3;
+            this.FirstNameField.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.FirstNameField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FirstNameField.Location = new System.Drawing.Point(139, 50);
+            this.FirstNameField.Name = "FirstNameField";
+            this.FirstNameField.Size = new System.Drawing.Size(302, 20);
+            this.FirstNameField.TabIndex = 3;
             // 
-            // textBox9
+            // PinterestField
             // 
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox9.Location = new System.Drawing.Point(140, 353);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(710, 20);
-            this.textBox9.TabIndex = 11;
+            this.PinterestField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PinterestField.Location = new System.Drawing.Point(140, 305);
+            this.PinterestField.Name = "PinterestField";
+            this.PinterestField.Size = new System.Drawing.Size(710, 20);
+            this.PinterestField.TabIndex = 11;
             // 
-            // textBox8
+            // WebsiteField
             // 
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox8.Location = new System.Drawing.Point(139, 406);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(711, 20);
-            this.textBox8.TabIndex = 12;
+            this.WebsiteField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.WebsiteField.Location = new System.Drawing.Point(139, 358);
+            this.WebsiteField.Name = "WebsiteField";
+            this.WebsiteField.Size = new System.Drawing.Size(711, 20);
+            this.WebsiteField.TabIndex = 12;
             // 
-            // textBox11
+            // CurrentPWField
             // 
-            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox11.Location = new System.Drawing.Point(268, 466);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(308, 20);
-            this.textBox11.TabIndex = 14;
+            this.CurrentPWField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CurrentPWField.Location = new System.Drawing.Point(268, 418);
+            this.CurrentPWField.Name = "CurrentPWField";
+            this.CurrentPWField.Size = new System.Drawing.Size(308, 20);
+            this.CurrentPWField.TabIndex = 14;
             // 
             // panel3
             // 
@@ -516,30 +495,28 @@ namespace FrameSphere
         #endregion
 
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox LastNameField;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button UpdateBtn;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button ChangePWBtn;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox EmailField;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox AddressField;
+        private System.Windows.Forms.TextBox FaceBookField;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox InstagramField;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox FirstNameField;
+        private System.Windows.Forms.TextBox PinterestField;
+        private System.Windows.Forms.TextBox WebsiteField;
+        private System.Windows.Forms.TextBox CurrentPWField;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel profilepanel;
