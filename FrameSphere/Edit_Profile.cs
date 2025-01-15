@@ -32,22 +32,23 @@ namespace FrameSphere
                 string.IsNullOrWhiteSpace(LastNameField.Text) ||
                 string.IsNullOrWhiteSpace(EmailField.Text) ||
                 string.IsNullOrWhiteSpace(CurrentPWField.Text))
-        
             {
                 MessageBox.Show("All fields are required. Please fill in all the details.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            string currentPW = CurrentPWField.Text;
             using (SqlConnection conn = DB.Connect())
             {
 
-                string query = $@"
+                string updateQ1 = $@"
                         UPDATE AllUser
                         SET FirstName = '{FirstNameField.Text}',
                         LastName = '{LastNameField.Text}',
                         Email = '{EmailField.Text}'
                         WHERE Password = 'a' and Username = '';
                         ";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand(updateQ1, conn))
                 {
                     try
                     {
