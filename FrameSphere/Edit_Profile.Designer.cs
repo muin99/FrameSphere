@@ -348,7 +348,7 @@ namespace FrameSphere
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Edit_Profile";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
