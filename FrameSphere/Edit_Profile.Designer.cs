@@ -56,8 +56,23 @@ namespace FrameSphere
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.address = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.email = new System.Windows.Forms.Label();
+            this.phone = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.contact = new System.Windows.Forms.Label();
+            this.userName = new System.Windows.Forms.Label();
+            this.name = new System.Windows.Forms.Label();
+            this.profilepic = new System.Windows.Forms.PictureBox();
+            this.profilepanel = new System.Windows.Forms.Panel();
+            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
+            this.profilepanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label10
@@ -228,6 +243,7 @@ namespace FrameSphere
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel2.Controls.Add(this.profilepanel);
             this.panel2.Location = new System.Drawing.Point(916, 76);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(364, 644);
@@ -339,6 +355,140 @@ namespace FrameSphere
             this.button1.TabIndex = 0;
             this.button1.Text = "Return to Dashboard";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(20, 344);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(52, 13);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Socials:";
+            // 
+            // address
+            // 
+            this.address.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.address.Location = new System.Drawing.Point(28, 261);
+            this.address.Name = "address";
+            this.address.Size = new System.Drawing.Size(119, 48);
+            this.address.TabIndex = 9;
+            this.address.Text = "Bashundhara RA\r\nPO-1209, Dhaka\r\n";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(19, 244);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(55, 13);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "Contact:";
+            // 
+            // email
+            // 
+            this.email.AutoSize = true;
+            this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.email.Location = new System.Drawing.Point(63, 218);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(99, 13);
+            this.email.TabIndex = 7;
+            this.email.Text = "56muin@gmail.com";
+            // 
+            // phone
+            // 
+            this.phone.AutoSize = true;
+            this.phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.phone.Location = new System.Drawing.Point(71, 201);
+            this.phone.Name = "phone";
+            this.phone.Size = new System.Drawing.Size(91, 13);
+            this.phone.TabIndex = 6;
+            this.phone.Text = "+8801400059919";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(28, 218);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Email:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(28, 201);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(47, 13);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Phone:";
+            // 
+            // contact
+            // 
+            this.contact.AutoSize = true;
+            this.contact.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contact.Location = new System.Drawing.Point(19, 184);
+            this.contact.Name = "contact";
+            this.contact.Size = new System.Drawing.Size(55, 13);
+            this.contact.TabIndex = 3;
+            this.contact.Text = "Contact:";
+            // 
+            // userName
+            // 
+            this.userName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.userName.Location = new System.Drawing.Point(97, 149);
+            this.userName.Name = "userName";
+            this.userName.Size = new System.Drawing.Size(100, 13);
+            this.userName.TabIndex = 2;
+            this.userName.Text = "@onukrom";
+            this.userName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // name
+            // 
+            this.name.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.name.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.name.Location = new System.Drawing.Point(64, 134);
+            this.name.Name = "name";
+            this.name.Size = new System.Drawing.Size(166, 15);
+            this.name.TabIndex = 1;
+            this.name.Text = "Md. Muinul Islam";
+            this.name.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // profilepic
+            // 
+            this.profilepic.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.profilepic.Image = global::FrameSphere.Properties.Resources.SmallerNetworkConnectionBackgroundtest_ezgif_com_video_to_gif_converter;
+            this.profilepic.Location = new System.Drawing.Point(97, 24);
+            this.profilepic.Margin = new System.Windows.Forms.Padding(20);
+            this.profilepic.Name = "profilepic";
+            this.profilepic.Size = new System.Drawing.Size(100, 104);
+            this.profilepic.TabIndex = 0;
+            this.profilepic.TabStop = false;
+            // 
+            // profilepanel
+            // 
+            this.profilepanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.profilepanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.profilepanel.Controls.Add(this.label12);
+            this.profilepanel.Controls.Add(this.address);
+            this.profilepanel.Controls.Add(this.label13);
+            this.profilepanel.Controls.Add(this.email);
+            this.profilepanel.Controls.Add(this.phone);
+            this.profilepanel.Controls.Add(this.label14);
+            this.profilepanel.Controls.Add(this.label15);
+            this.profilepanel.Controls.Add(this.contact);
+            this.profilepanel.Controls.Add(this.userName);
+            this.profilepanel.Controls.Add(this.name);
+            this.profilepanel.Controls.Add(this.profilepic);
+            this.profilepanel.Location = new System.Drawing.Point(37, 42);
+            this.profilepanel.Margin = new System.Windows.Forms.Padding(10);
+            this.profilepanel.Name = "profilepanel";
+            this.profilepanel.Size = new System.Drawing.Size(290, 413);
+            this.profilepanel.TabIndex = 1;
             // 
             // Edit_Profile
             // 
@@ -351,10 +501,14 @@ namespace FrameSphere
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Edit_Profile";
             this.Text = "Form1";
+            this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profilepic)).EndInit();
+            this.profilepanel.ResumeLayout(false);
+            this.profilepanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -388,5 +542,17 @@ namespace FrameSphere
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel profilepanel;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label address;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label email;
+        private System.Windows.Forms.Label phone;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label contact;
+        private System.Windows.Forms.Label userName;
+        private System.Windows.Forms.Label name;
+        private System.Windows.Forms.PictureBox profilepic;
     }
 }
