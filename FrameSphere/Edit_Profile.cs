@@ -16,6 +16,12 @@ namespace FrameSphere
         public Edit_Profile()
         {
             InitializeComponent();
+            name.Text = FSystem.loggedInUser.FullName();
+            userName.Text = "@" + FSystem.loggedInUser.UserName;
+
+            phone.Text = FSystem.loggedInUser.Phone;
+            email.Text = FSystem.loggedInUser.Email;
+            address.Text = FSystem.loggedInUser.Address;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,19 +34,36 @@ namespace FrameSphere
         private void UpdateBtn_Click(object sender, EventArgs e)
         {
             //Validation
-            if (string.IsNullOrWhiteSpace(FirstNameField.Text) ||
-                string.IsNullOrWhiteSpace(LastNameField.Text) ||
-                string.IsNullOrWhiteSpace(EmailField.Text) ||
-                string.IsNullOrWhiteSpace(CurrentPWField.Text))
-            {
-                MessageBox.Show("All fields are required. Please fill in all the details.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (string.IsNullOrWhiteSpace(FirstNameField.Text) &&
+                string.IsNullOrWhiteSpace(LastNameField.Text) &&
+                string.IsNullOrWhiteSpace(EmailField.Text) &&
+                string.IsNullOrWhiteSpace(AddressField.Text) &&
+                string.IsNullOrWhiteSpace(FaceBookField.Text) &&
+                string.IsNullOrWhiteSpace(InstagramField.Text) &&
+                string.IsNullOrWhiteSpace(WebsiteField.Text) 
+                )
+            { 
+                MessageBox.Show("There is nothing to update. Please enter new information where needed.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            if (string.IsNullOrWhiteSpace(CurrentPWField.Text))
+            {
+                PWVerifyLabel.Visible = true;
+                CurrentPWField.Focus();
+                return;
+            }
             string currentPW = CurrentPWField.Text;
+            string storedPW = FSystem.loggedInUser.Password;
+            if(currentPW!=storedPW)
+            {
+                WrongPWLabel.Visible = true;
+                CurrentPWField.Clear();
+                CurrentPWField.Focus();
+                return;
+            }
             using (SqlConnection conn = DB.Connect())
             {
-
+                conn.Open();
                 string updateQ1 = $@"
                         UPDATE AllUser
                         SET FirstName = '{FirstNameField.Text}',
@@ -52,8 +75,8 @@ namespace FrameSphere
                 {
                     try
                     {
-                        conn.Open();
-                        int rowsChanged = cmd.ExecuteNonQuery();
+                        
+                        int rowsChanged = cmd.ExecuteNonQuery(); 
                         if (rowsChanged > 0)
                         {
                             MessageBox.Show("Information updated successfully");
