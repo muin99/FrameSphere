@@ -38,8 +38,30 @@ namespace FrameSphere.EntityClasses
         public bool isArtist { get; set; }
         public bool isAdmin { get; set; }
         public bool isLoggedIn { get; set; } = false;
+        public bool checkPassword(string password)
+        {
+            string query = $"SELECT COUNT(*) FROM AllUser WHERE UserName = '{this.UserName}' AND Password = '{password}'";
 
-        public User() { }
+            using (SqlConnection connection = DB.Connect())
+            {
+                try
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        int count = (int)command.ExecuteScalar();
+                        return count > 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"An error occurred while checking the password: {ex.Message}");
+                }
+            }
+        }
+
+        public User() { } 
         public User(string userName, string password)
         {
             this.UserName = userName;

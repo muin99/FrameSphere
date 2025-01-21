@@ -19,7 +19,7 @@ namespace FrameSphere
         {
             InitializeComponent();
 
-            startdate.Format = DateTimePickerFormat.Custom; 
+            startdate.Format = DateTimePickerFormat.Custom;
             startdate.CustomFormat = "MM/dd/yyyy hh:mm tt";
             enddate.Format = DateTimePickerFormat.Custom;
             enddate.CustomFormat = "MM/dd/yyyy hh:mm tt";
@@ -31,8 +31,8 @@ namespace FrameSphere
             this.Dispose();
             UserDashBoard userDashBoard = new UserDashBoard();
             userDashBoard.Show();
-            
         }
+
 
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
@@ -56,6 +56,7 @@ namespace FrameSphere
                 }
             }
         }
+
 
 
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -93,9 +94,8 @@ namespace FrameSphere
             {
                 using (SqlConnection connection = DB.Connect())
                 {
-
                     connection.Open();
-                    string UserID=FSystem.loggedInUser.UserName;
+                    string UserID = FSystem.loggedInUser.UserName;
                     string title = Title.Text;
                     string description = Description.Text;
                     string organizerDetails = OrgDetails.Text;
@@ -103,6 +103,7 @@ namespace FrameSphere
                     DateTime endDate = enddate.Value;
                     string registrationType = free.Checked ? "Free" : "Paid";
                     decimal? ticketPrice = paid.Checked && decimal.TryParse(ticketprice.Text, out decimal price) ? price : (decimal?)null;
+
                     if (string.IsNullOrEmpty(imagePath))
                     {
                         MessageBox.Show("Please select an event poster image.");
@@ -112,7 +113,7 @@ namespace FrameSphere
                     byte[] imageBytes = File.ReadAllBytes(imagePath);
 
                     string query = @"INSERT INTO Events (Title, Description, OrganizerDetails, StartDate, EndDate, EventPoster, RegistrationType, TicketPrice, Creator)
-                             VALUES (@Title, @Description, @OrganizerDetails, @StartDate, @EndDate, @EventPoster, @RegistrationType, @TicketPrice, @Creator)";
+                                     VALUES (@Title, @Description, @OrganizerDetails, @StartDate, @EndDate, @EventPoster, @RegistrationType, @TicketPrice, @Creator)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -128,14 +129,11 @@ namespace FrameSphere
                         command.ExecuteNonQuery();
                         MessageBox.Show("Event created successfully!");
 
-                        Event_page eventPage = new Event_page();
+                        Event_page eventPage = new Event_page(title);
                         eventPage.LoadEventData(title, description, organizerDetails, startDate, endDate, registrationType, ticketPrice, imageBytes);
                         this.Hide();
                         eventPage.StartPosition = FormStartPosition.CenterParent;
                         eventPage.ShowDialog();
-                        
-
-
                     }
                 }
             }
@@ -146,6 +144,7 @@ namespace FrameSphere
         }
 
 
+
         private void startdate_ValueChanged(object sender, EventArgs e)
         {
 
@@ -153,10 +152,21 @@ namespace FrameSphere
 
         private void paid_CheckedChanged(object sender, EventArgs e)
         {
-            if (paid.Checked) {
+            if (paid.Checked)
+            {
                 label8.Visible = true;
                 ticketprice.Visible = true;
             }
         }
+
+        private void free_CheckedChanged(object sender, EventArgs e)
+        {
+            if (free.Checked)
+            {
+                label8.Visible = false;
+                ticketprice.Visible = false;
+            }
+        }
     }
+
 }

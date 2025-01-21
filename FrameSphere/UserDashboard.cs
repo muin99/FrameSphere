@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -32,8 +33,6 @@ namespace FrameSphere
                 adminDashboard.Visible = true;
             }
 
-            CreateEventBox("Party at the square photography competition.", "Lorem ipsum is simply dummy text...", "Ends in 22h:12m:15s", null);
-
 
             LoadEventBoxes();
 
@@ -47,8 +46,8 @@ namespace FrameSphere
 
 
             string query = string.IsNullOrEmpty(searchQuery)
-                ? "SELECT Title, Description, EndDate, EventPoster FROM Events"
-                : "SELECT Title, Description, EndDate, EventPoster FROM Events WHERE Title LIKE @SearchQuery";
+                ? "SELECT Eventid, Title, Description, EndDate, EventPoster FROM Events"
+                : "SELECT Eventid, Title, Description, EndDate, EventPoster FROM Events WHERE Title LIKE @SearchQuery";
 
             using (SqlConnection connection = DB.Connect())
             {
@@ -72,6 +71,7 @@ namespace FrameSphere
                         else { noitem.Visible = false; }
                         while (reader.Read())
                         {
+                            string eventId = reader["eventId"].ToString();
                             string title = reader["Title"].ToString();
                             string description = reader["Description"].ToString();
                             DateTime endDate = Convert.ToDateTime(reader["EndDate"]);
@@ -87,16 +87,16 @@ namespace FrameSphere
                                 eventPosterImage = FrameSphere.Properties.Resources._10_3__thumb;
                             }
 
-                            CreateEventBox(title, description, endDate.ToString("dd-MM-yyyy HH:mm:ss"), eventPosterImage);
+                            CreateEventBox(title, description, endDate.ToString("dd-MM-yyyy HH:mm:ss"), eventPosterImage, eventId);
                         }
                     }
                 }
             }
         }
 
-        private void CreateEventBox(string title, string description, string time, Image eventImage)
+        private void CreateEventBox(string title, string description, string time, Image eventImage, string eventId)
         {
-            int panelWidth = eventspanel.Width -20; 
+            int panelWidth = eventspanel.Width - 20;
             int panelHeight = 120;
 
             Panel boxPanel = new Panel {
@@ -127,7 +127,7 @@ namespace FrameSphere
                 Font = new Font("Arial", 10),
                 Location = new Point(120, 40),
                 AutoSize = false,
-                Size = new Size(panelWidth - 230, 40), 
+                Size = new Size(panelWidth - 230, 40),
                 ForeColor = Color.Gray
             };
 
@@ -144,9 +144,11 @@ namespace FrameSphere
                 BackColor = Color.Green,
                 ForeColor = Color.White,
                 Size = new Size(80, 30),
-                Location = new Point(panelWidth - 90, 40), 
-                FlatStyle = FlatStyle.Flat
+                Location = new Point(panelWidth - 90, 40),
+                FlatStyle = FlatStyle.Flat,
+                Tag = eventId // Store the event ID in the button's Tag property
             };
+            enterButton.Click += EnterButton_Click; // Attach the click event handler
 
             boxPanel.Controls.Add(pictureBox);
             boxPanel.Controls.Add(titleLabel);
@@ -158,6 +160,19 @@ namespace FrameSphere
 
             eventspanel.Controls.Add(boxPanel);
         }
+
+        private void EnterButton_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            if (button != null && button.Tag != null)
+            {
+                string eventId = button.Tag.ToString();
+                Event_page eventPage = new Event_page(eventId); // Pass the event ID to the EventPage
+                this.Hide();
+                eventPage.Show(); // Show the EventPage
+            }
+        }
+
 
 
         private void button10_Click(object sender, EventArgs e)
