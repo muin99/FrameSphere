@@ -40,8 +40,8 @@ namespace FrameSphere
             this.button3 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.usersearch = new System.Windows.Forms.TextBox();
-            this.usersPanel = new System.Windows.Forms.Panel();
-            this.eventsPanel = new System.Windows.Forms.Panel();
+            this.usersPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.eventsPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -89,9 +89,9 @@ namespace FrameSphere
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGreen;
             this.panel2.Controls.Add(this.usersPanel);
+            this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.eventsearch);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.usersearch);
             this.panel2.Location = new System.Drawing.Point(12, 100);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(615, 582);
@@ -111,10 +111,10 @@ namespace FrameSphere
             // 
             // eventsearch
             // 
-            this.eventsearch.Location = new System.Drawing.Point(38, 59);
+            this.eventsearch.Location = new System.Drawing.Point(42, 59);
             this.eventsearch.Multiline = true;
             this.eventsearch.Name = "eventsearch";
-            this.eventsearch.Size = new System.Drawing.Size(530, 24);
+            this.eventsearch.Size = new System.Drawing.Size(543, 24);
             this.eventsearch.TabIndex = 17;
             this.eventsearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -123,7 +123,7 @@ namespace FrameSphere
             this.button2.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(63, 12);
+            this.button2.Location = new System.Drawing.Point(83, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(480, 23);
             this.button2.TabIndex = 17;
@@ -134,9 +134,9 @@ namespace FrameSphere
             // 
             this.panel3.BackColor = System.Drawing.Color.LightGreen;
             this.panel3.Controls.Add(this.eventsPanel);
-            this.panel3.Controls.Add(this.button3);
+            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.eventsearch);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.usersearch);
             this.panel3.Location = new System.Drawing.Point(641, 100);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(611, 582);
@@ -147,7 +147,7 @@ namespace FrameSphere
             this.button3.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(67, 12);
+            this.button3.Location = new System.Drawing.Point(79, 12);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(480, 23);
             this.button3.TabIndex = 18;
@@ -169,26 +169,32 @@ namespace FrameSphere
             // 
             // usersearch
             // 
-            this.usersearch.Location = new System.Drawing.Point(42, 59);
+            this.usersearch.Location = new System.Drawing.Point(38, 59);
             this.usersearch.Multiline = true;
             this.usersearch.Name = "usersearch";
-            this.usersearch.Size = new System.Drawing.Size(530, 24);
+            this.usersearch.Size = new System.Drawing.Size(543, 24);
             this.usersearch.TabIndex = 22;
             this.usersearch.TextChanged += new System.EventHandler(this.eventsearch_TextChanged);
             // 
             // usersPanel
             // 
+            this.usersPanel.AutoScroll = true;
+            this.usersPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.usersPanel.Location = new System.Drawing.Point(38, 106);
             this.usersPanel.Name = "usersPanel";
             this.usersPanel.Size = new System.Drawing.Size(543, 437);
-            this.usersPanel.TabIndex = 21;
+            this.usersPanel.TabIndex = 23;
+            this.usersPanel.WrapContents = false;
             // 
             // eventsPanel
             // 
+            this.eventsPanel.AutoScroll = true;
+            this.eventsPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.eventsPanel.Location = new System.Drawing.Point(42, 106);
             this.eventsPanel.Name = "eventsPanel";
             this.eventsPanel.Size = new System.Drawing.Size(543, 437);
-            this.eventsPanel.TabIndex = 22;
+            this.eventsPanel.TabIndex = 26;
+            this.eventsPanel.WrapContents = false;
             // 
             // Admin_dashboard
             // 
@@ -225,7 +231,7 @@ namespace FrameSphere
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox usersearch;
-        private System.Windows.Forms.Panel usersPanel;
-        private System.Windows.Forms.Panel eventsPanel;
+        private System.Windows.Forms.FlowLayoutPanel usersPanel;
+        private System.Windows.Forms.FlowLayoutPanel eventsPanel;
     }
 }
