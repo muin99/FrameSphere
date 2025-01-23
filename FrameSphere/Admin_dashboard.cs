@@ -19,7 +19,7 @@ namespace FrameSphere
         {
             InitializeComponent();
             LoadUsers();
-            LoadEvents("");
+            LoadEvents();
         }
         private void LoadUsers(string searchQuery = "")
         {
