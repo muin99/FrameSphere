@@ -103,6 +103,13 @@ namespace FrameSphere
         {
 
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Admin_dashboard u1 = new Admin_dashboard();
+            this.Hide();
+            u1.Show();
+        }
     }
 }
 //UPDATE UserContact\r\nSET Address = 'thiscity',\r\n    Email = 'ra@',\r\n\tPhone = '73823',\r\n\t\r\n"

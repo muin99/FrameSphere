@@ -81,7 +81,7 @@ namespace FrameSphere
             };
 
             manageLabel.Click += (sender, e) => {
-                manageUser m1 = new manageUser(userName);
+                Edit_Profile m1 = new Edit_Profile(userName);
                 this.Hide();
                 m1.StartPosition = FormStartPosition.CenterParent;
                 m1.ShowDialog();

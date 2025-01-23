@@ -96,7 +96,7 @@ namespace FrameSphere
 
         private void CreateEventBox(string title, string description, string time, Image eventImage, string eventId)
         {
-            int panelWidth = eventspanel.Width - 20;
+            int panelWidth = eventspanel.Width - 40;
             int panelHeight = 120;
 
             Panel boxPanel = new Panel {

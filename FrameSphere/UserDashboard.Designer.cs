@@ -66,7 +66,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.midpanel = new System.Windows.Forms.Panel();
-            this.eventspanel = new System.Windows.Forms.Panel();
+            this.eventspanel = new System.Windows.Forms.FlowLayoutPanel();
             this.noitem = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel4.SuspendLayout();
