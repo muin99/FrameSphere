@@ -34,11 +34,6 @@ namespace FrameSphere
             this.RegisterLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.eventpanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.noevent = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -48,19 +43,12 @@ namespace FrameSphere
             this.label5 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.userpanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.eventpanel.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.userpanel.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -116,71 +104,16 @@ namespace FrameSphere
             // eventpanel
             // 
             this.eventpanel.AutoScroll = true;
-            this.eventpanel.Controls.Add(this.panel4);
             this.eventpanel.Controls.Add(this.noevent);
             this.eventpanel.Location = new System.Drawing.Point(38, 100);
             this.eventpanel.Name = "eventpanel";
             this.eventpanel.Size = new System.Drawing.Size(551, 454);
             this.eventpanel.TabIndex = 27;
             // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.panel5);
-            this.panel4.Controls.Add(this.label1);
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.Location = new System.Drawing.Point(3, 3);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(530, 23);
-            this.panel4.TabIndex = 27;
-            // 
-            // panel5
-            // 
-            this.panel5.Location = new System.Drawing.Point(0, 23);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(528, 10);
-            this.panel5.TabIndex = 27;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(3, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(400, 14);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "event evevent event eventevent event event event event event event event ";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label6.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(415, 5);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 14);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Manage";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label4.Location = new System.Drawing.Point(468, 5);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 14);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "Approved";
-            // 
             // noevent
             // 
             this.noevent.AutoSize = true;
-            this.noevent.Location = new System.Drawing.Point(3, 29);
+            this.noevent.Location = new System.Drawing.Point(3, 0);
             this.noevent.Name = "noevent";
             this.noevent.Size = new System.Drawing.Size(80, 13);
             this.noevent.TabIndex = 28;
@@ -268,71 +201,16 @@ namespace FrameSphere
             // userpanel
             // 
             this.userpanel.AutoScroll = true;
-            this.userpanel.Controls.Add(this.panel6);
             this.userpanel.Controls.Add(this.label9);
             this.userpanel.Location = new System.Drawing.Point(42, 98);
             this.userpanel.Name = "userpanel";
             this.userpanel.Size = new System.Drawing.Size(551, 454);
             this.userpanel.TabIndex = 26;
             // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.panel7);
-            this.panel6.Controls.Add(this.label3);
-            this.panel6.Controls.Add(this.label7);
-            this.panel6.Controls.Add(this.label8);
-            this.panel6.Location = new System.Drawing.Point(3, 3);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(530, 23);
-            this.panel6.TabIndex = 29;
-            // 
-            // panel7
-            // 
-            this.panel7.Location = new System.Drawing.Point(0, 23);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(528, 10);
-            this.panel7.TabIndex = 27;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(3, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(400, 14);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "event evevent event eventevent event event event event event event event ";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label7.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(408, 5);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 14);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "Manage";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label8.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label8.Location = new System.Drawing.Point(463, 5);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(59, 14);
-            this.label8.TabIndex = 26;
-            this.label8.Text = "Approved";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 29);
+            this.label9.Location = new System.Drawing.Point(3, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(80, 13);
             this.label9.TabIndex = 30;
@@ -356,14 +234,10 @@ namespace FrameSphere
             this.panel2.PerformLayout();
             this.eventpanel.ResumeLayout(false);
             this.eventpanel.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.userpanel.ResumeLayout(false);
             this.userpanel.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -382,18 +256,8 @@ namespace FrameSphere
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.FlowLayoutPanel eventpanel;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label noevent;
         private System.Windows.Forms.FlowLayoutPanel userpanel;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
     }
 }
