@@ -97,11 +97,25 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
+    <Compile Include="manageevent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="manageevent.Designer.cs">
+      <DependentUpon>manageevent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="manageUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="manageUser.Designer.cs">
+      <DependentUpon>manageUser.cs</DependentUpon>
+=======
     <Compile Include="ManageEvents.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ManageEvents.Designer.cs">
       <DependentUpon>ManageEvents.cs</DependentUpon>
+>>>>>>> muin
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,8 +149,16 @@
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
+    <EmbeddedResource Include="manageevent.resx">
+      <DependentUpon>manageevent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="manageUser.resx">
+      <DependentUpon>manageUser.cs</DependentUpon>
+=======
     <EmbeddedResource Include="ManageEvents.resx">
       <DependentUpon>ManageEvents.cs</DependentUpon>
+>>>>>>> muin
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

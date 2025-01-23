@@ -1,29 +1,24 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace FrameSphere
 {
+    
     public partial class Admin_dashboard : Form
     {
         public Admin_dashboard()
         {
             InitializeComponent();
-            LoadUsers();
-            LoadEvents();
+            LoadEventBoxes();
+            Loaduserboxes();
+
         }
-        private void LoadUsers(string searchQuery = "")
+
+        private void Loaduserboxes(string searchQuery = "")
         {
-            usersPanel.Controls.Clear();
+            userpanel.Controls.Clear();
 
             string query = (searchQuery == "")
                 ? "SELECT UserName, FirstName, LastName, Email, Status FROM AllUser"
@@ -36,7 +31,6 @@ namespace FrameSphere
                 {
                     if (!string.IsNullOrEmpty(searchQuery))
                     {
-                        // Add wildcards for the LIKE clause
                         command.Parameters.AddWithValue("@searchQuery", "%" + searchQuery + "%");
                     }
 
@@ -56,61 +50,68 @@ namespace FrameSphere
             }
         }
 
-
         private void CreateUserBox(string userName, string fullName, string email, string status)
         {
-            Panel userPanel = new Panel {
-                Width = 543,
-                Height = 50,
+            int panelWidth = userpanel.Width - 21;
+            int panelHeight = 23;
+
+            Panel everyuser = new Panel {
+                Size = new Size(panelWidth, panelHeight),
                 BackColor = Color.WhiteSmoke,
                 BorderStyle = BorderStyle.FixedSingle,
-                Padding = new Padding(10),
-                Margin = new Padding(0, 10, 0, 10)
+                Margin = new Padding(0,0,0,5)
             };
 
             Label nameLabel = new Label {
                 Text = fullName,
-                Width = 200,
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
+                AutoSize = false,
+                Size = new Size(400, 14),
+                Font = new Font("Arial", 8, FontStyle.Bold),
                 ForeColor = Color.Black,
-                Location = new Point(10, 15)
+                Location = new Point(3, 5)
             };
 
-            ComboBox statusDropdown = new ComboBox {
-                Width = 150,
-                Location = new Point(220, 10),
-                Font = new Font("Segoe UI", 9F),
-                DropDownStyle = ComboBoxStyle.DropDownList,
-                BackColor = Color.White
-            };
-            statusDropdown.Items.AddRange(new string[] { "Pending", "Approved", "Rejected" });
-            statusDropdown.SelectedItem = status; // Ensure current status is displayed
-            statusDropdown.SelectedIndexChanged += (s, e) =>
-            {
-                UpdateUserStatus(userName, statusDropdown.Text);
-                LoadUsers(); // Reload to reflect changes
-            };
-
-            Button manageButton = new Button {
+            Label manageLabel = new Label {
                 Text = "Manage",
-                Location = new Point(400, 10),
-                Width = 80,
-                Height = 30,
-                BackColor = Color.LightBlue,
-                FlatStyle = FlatStyle.Flat
+                Font = new Font("Arial", 8, FontStyle.Bold),
+                Location = new Point(408, 5),
+                AutoSize = false,
+                Size = new Size(50, 14),
+                ForeColor = Color.Red
             };
-            manageButton.Click += (s, e) => OpenEditProfile(userName);
 
-            userPanel.Controls.Add(nameLabel);
-            userPanel.Controls.Add(statusDropdown);
-            userPanel.Controls.Add(manageButton);
+            manageLabel.Click += (sender, e) => {
+                manageUser m1 = new manageUser(userName);
+                this.Hide();
+                m1.StartPosition = FormStartPosition.CenterParent;
+                m1.ShowDialog();
 
-            usersPanel.Controls.Add(userPanel);
+            };
+
+            Label statusLabel = new Label {
+                Text = status,
+                Font = new Font("Arial", 8, FontStyle.Bold),
+                Location = new Point(463, 5),
+                AutoSize = false,
+                Size = new Size(62, 14),
+                ForeColor = status == "Approved" ? Color.Green :
+                            status == "Rejected" ? Color.Red : Color.Peru
+            };
+
+            everyuser.Controls.Add(nameLabel);
+            everyuser.Controls.Add(manageLabel);
+            everyuser.Controls.Add(statusLabel);
+
+
+            userpanel.Controls.Add(everyuser);
         }
 
-        private void LoadEvents(string searchQuery = "")
+        private void LoadEventBoxes(string searchQuery = "")
         {
-            eventsPanel.Controls.Clear();
+            eventpanel.Controls.Clear();
+            eventpanel.Controls.Add(noevent);
+            noevent.Visible = false;
+
 
             string query = string.IsNullOrEmpty(searchQuery)
                 ? "SELECT EventID, Title, Status FROM Events"
@@ -123,21 +124,28 @@ namespace FrameSphere
                 {
                     if (!string.IsNullOrEmpty(searchQuery))
                     {
-                        // Proper parameterized query with wildcards for LIKE clause
                         string formattedQuery = string.Join("%", searchQuery.ToCharArray()) + "%";
                         command.Parameters.AddWithValue("@SearchQuery", "%" + formattedQuery);
+
                     }
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-
+                        
+                        if (!reader.HasRows)
+                        {
+                            noevent.Visible = true;
+                            return;
+                        }
+                        else { noevent.Visible = false; }
                         while (reader.Read())
                         {
-                            string eventId = reader["EventID"].ToString();
                             string title = reader["Title"].ToString();
+                            int eventid = Convert.ToInt32(reader["EventID"]);
                             string status = reader["Status"].ToString();
+                            CreateEventsBox(title, status, eventid);
 
-                            CreateEventBox(eventId, title, status);
+
                         }
                     }
                 }
@@ -145,112 +153,79 @@ namespace FrameSphere
         }
 
 
-
-        private void CreateEventBox(string eventId, string title, string status)
+        private void CreateEventsBox(string title, string status, int eventid)
         {
-            Panel eventPanel = new Panel {
-                Width = 543,
-                Height = 50,
-                BackColor = Color.WhiteSmoke,
+            int panelWidth = eventpanel.Width - 21;
+            int panelHeight = 23;
+
+            
+
+            Panel everyevent = new Panel {
+                Size = new Size(panelWidth, panelHeight),
+                Location = new Point(34, 7),
+                BackColor = Color.White,
                 BorderStyle = BorderStyle.FixedSingle,
-                Padding = new Padding(10),
-                Margin = new Padding(0, 10, 0, 10)
+                Margin = new Padding(0,0,0,5)
+            };
+
+            Label manageLabel = new Label {
+                Text = "Manage",
+                Font = new Font("Arial", 8, FontStyle.Bold),
+                Location = new Point(408,5),
+                AutoSize = false,
+                Size = new Size(50, 14),
+                ForeColor = Color.Red
+            };
+
+            manageLabel.Click += (sender, e) =>
+            {
+                manageevent manageEventForm = new manageevent(eventid);
+                this.Hide();
+                manageEventForm.StartPosition = FormStartPosition.CenterParent;
+                manageEventForm.ShowDialog();
+                
             };
 
             Label titleLabel = new Label {
                 Text = title,
-                Width = 200,
-                Font = new Font("Segoe UI", 10F, FontStyle.Bold),
-                ForeColor = Color.Black,
-                Location = new Point(10, 15)
+                Font = new Font("Arial", 8, FontStyle.Bold),
+                Location = new Point(3, 5),
+                AutoSize = false,
+                Size = new Size(400,14),
+                ForeColor = Color.Black
             };
+            Label statusLabel = new Label {
+                Text = status,
+                Font = new Font("Arial", 8, FontStyle.Bold),
+                Location = new Point(463, 5),
+                AutoSize = false,
+                Size = new Size(62, 14),
 
-            ComboBox statusDropdown = new ComboBox {
-                Width = 150,
-                Location = new Point(220, 10),
-                Font = new Font("Segoe UI", 9F),
-                DropDownStyle = ComboBoxStyle.DropDownList,
-                BackColor = Color.White
+                ForeColor = status == "Approved" ? Color.Green :
+                            status == "Rejected" ? Color.Red : Color.Peru
             };
-            statusDropdown.Items.AddRange(new string[] { "Pending", "Approved", "Rejected" });
-            statusDropdown.SelectedItem = status; // Ensure current status is displayed
-            statusDropdown.SelectedIndexChanged += (s, e) =>
-            {
-                UpdateEventStatus(eventId, statusDropdown.Text);
-                LoadEvents(""); // Reload to reflect changes
-            };
+            
+            everyevent.Controls.Add(manageLabel);
+            everyevent.Controls.Add(titleLabel);
+            everyevent.Controls.Add(statusLabel);
+            
 
-            Button manageButton = new Button {
-                Text = "Manage",
-                Location = new Point(400, 10),
-                Width = 80,
-                Height = 30,
-                BackColor = Color.LightBlue,
-                FlatStyle = FlatStyle.Flat
-            };
-            manageButton.Click += (s, e) => OpenManageEvents(eventId);
+        
 
-            eventPanel.Controls.Add(titleLabel);
-            eventPanel.Controls.Add(statusDropdown);
-            eventPanel.Controls.Add(manageButton);
-
-            eventsPanel.Controls.Add(eventPanel);
+            eventpanel.Controls.Add(everyevent);
+            
         }
 
 
-
-
-
-
-        private void OpenEditProfile(string userName)
-        {
-            // Open the Edit Profile Form and pass the userName
-            Edit_Profile editForm = new Edit_Profile(userName);
-            editForm.Show();
-        }
-
-        private void OpenManageEvents(string eventId)
-        {
-            // Open the Manage Events Form and pass the eventId
-            ManageEvents manageForm = new ManageEvents(eventId);
-            manageForm.Show();
-        }
-
-        private void UpdateUserStatus(string userName, string newStatus)
-        {
-            using (SqlConnection connection = DB.Connect())
-            {
-                connection.Open();
-                string query = "UPDATE AllUser SET Status = @Status WHERE UserName = @UserName";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@Status", newStatus);
-                    command.Parameters.AddWithValue("@UserName", userName);
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-
-        private void UpdateEventStatus(string eventId, string newStatus)
-        {
-            using (SqlConnection connection = DB.Connect())
-            {
-                connection.Open();
-                string query = "UPDATE Events SET Status = @Status WHERE EventID = @EventID";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@Status", newStatus);
-                    command.Parameters.AddWithValue("@EventID", eventId);
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
 
         private void Admin_dashboard_Load(object sender, EventArgs e)
         {
 
         }
-
+        private void managelabel_Click(object sender, EventArgs e)
+        {
+            
+        }
         private void button3_Click(object sender, EventArgs e)
         {
 
@@ -258,8 +233,7 @@ namespace FrameSphere
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
-            LoadEvents(eventsearch.Text.ToString());
+            LoadEventBoxes(textBox1.Text);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -274,9 +248,24 @@ namespace FrameSphere
             userDashBoard.Show();
         }
 
-        private void eventsearch_TextChanged(object sender, EventArgs e)
+        private void label1_Click_1(object sender, EventArgs e)
         {
-            LoadUsers(usersearch.Text.ToString());
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            Loaduserboxes(textBox2.Text);
         }
     }
 }

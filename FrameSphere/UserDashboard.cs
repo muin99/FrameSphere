@@ -314,7 +314,9 @@ namespace FrameSphere
         }
         private void button14_Click_1(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Edit_Profile edit_Profile = new Edit_Profile();
+            edit_Profile.Show();
         }
 
 
@@ -353,6 +355,11 @@ namespace FrameSphere
             this.Hide();
             Admin_dashboard admin_Dashboard = new Admin_dashboard();
             admin_Dashboard.Show();
+        }
+
+        private void UserDashBoard_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
