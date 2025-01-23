@@ -341,5 +341,10 @@ namespace FrameSphere
             Admin_dashboard admin_Dashboard = new Admin_dashboard();
             admin_Dashboard.Show();
         }
+
+        private void UserDashBoard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
