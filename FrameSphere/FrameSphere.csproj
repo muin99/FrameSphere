@@ -97,12 +97,6 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="manageevent.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="manageevent.Designer.cs">
-      <DependentUpon>manageevent.cs</DependentUpon>
-    </Compile>
     <Compile Include="ManageEvents.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,9 +134,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="manageevent.resx">
-      <DependentUpon>manageevent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageEvents.resx">
       <DependentUpon>ManageEvents.cs</DependentUpon>

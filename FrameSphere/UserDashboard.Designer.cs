@@ -242,6 +242,7 @@
             this.profilepic.Margin = new System.Windows.Forms.Padding(20);
             this.profilepic.Name = "profilepic";
             this.profilepic.Size = new System.Drawing.Size(100, 104);
+            this.profilepic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.profilepic.TabIndex = 0;
             this.profilepic.TabStop = false;
             this.profilepic.Click += new System.EventHandler(this.profilepic_Click);
@@ -574,7 +575,7 @@
             // noitem
             // 
             this.noitem.AutoSize = true;
-            this.noitem.Location = new System.Drawing.Point(263, 41);
+            this.noitem.Location = new System.Drawing.Point(3, 0);
             this.noitem.Name = "noitem";
             this.noitem.Size = new System.Drawing.Size(89, 13);
             this.noitem.TabIndex = 4;
@@ -656,8 +657,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel midpanel;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel eventspanel;
         private System.Windows.Forms.Label noitem;
         private System.Windows.Forms.Button adminDashboard;
+        private System.Windows.Forms.FlowLayoutPanel eventspanel;
     }
 }

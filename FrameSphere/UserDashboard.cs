@@ -21,12 +21,20 @@ namespace FrameSphere
         public UserDashBoard()
         {
             InitializeComponent();
+            FSystem.loggedInUser.loadUser();
             name.Text = FSystem.loggedInUser.FullName();
             userName.Text = "@"+FSystem.loggedInUser.UserName;
 
             phone.Text = FSystem.loggedInUser.Phone;
             email.Text = FSystem.loggedInUser.Email;
             address.Text = FSystem.loggedInUser.Address;
+            if (FSystem.loggedInUser.ProfilePic != null)
+            {
+                using (MemoryStream ms = new MemoryStream(FSystem.loggedInUser.ProfilePic))
+                {
+                    profilepic.Image = Image.FromStream(ms);
+                }
+            }
 
             if (FSystem.loggedInUser.isAdmin)
             {
