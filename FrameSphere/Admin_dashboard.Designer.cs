@@ -311,7 +311,7 @@ namespace FrameSphere
             this.label7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label7.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(415, 5);
+            this.label7.Location = new System.Drawing.Point(408, 5);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 14);
             this.label7.TabIndex = 24;
@@ -323,7 +323,7 @@ namespace FrameSphere
             this.label8.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label8.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label8.Location = new System.Drawing.Point(468, 5);
+            this.label8.Location = new System.Drawing.Point(463, 5);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(59, 14);
             this.label8.TabIndex = 26;

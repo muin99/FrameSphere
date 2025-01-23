@@ -5,15 +5,12 @@ using System.Windows.Forms;
 
 namespace FrameSphere
 {
+    
     public partial class Admin_dashboard : Form
     {
         public Admin_dashboard()
         {
             InitializeComponent();
-
-            CreateEventsBox("Party at the square photography competition.", "Pending");
-
-
             LoadEventBoxes();
             Loaduserboxes();
 
@@ -77,18 +74,28 @@ namespace FrameSphere
             Label manageLabel = new Label {
                 Text = "Manage",
                 Font = new Font("Arial", 8, FontStyle.Bold),
-                Location = new Point(415, 5),
+                Location = new Point(408, 5),
                 AutoSize = false,
                 Size = new Size(50, 14),
                 ForeColor = Color.Red
             };
+
+            manageLabel.Click += (sender, e) => {
+                manageUser m1 = new manageUser(userName);
+                this.Hide();
+                m1.StartPosition = FormStartPosition.CenterParent;
+                m1.ShowDialog();
+
+            };
+
             Label statusLabel = new Label {
-                Text = "pending",
+                Text = status,
                 Font = new Font("Arial", 8, FontStyle.Bold),
-                Location = new Point(468, 5),
+                Location = new Point(463, 5),
                 AutoSize = false,
-                Size = new Size(59, 14),
-                ForeColor = Color.Peru
+                Size = new Size(62, 14),
+                ForeColor = status == "Approved" ? Color.Green :
+                            status == "Rejected" ? Color.Red : Color.Peru
             };
 
             everyuser.Controls.Add(nameLabel);
@@ -107,8 +114,8 @@ namespace FrameSphere
 
 
             string query = string.IsNullOrEmpty(searchQuery)
-                ? "SELECT Title FROM Events"
-                : "SELECT Title FROM Events WHERE Title LIKE @SearchQuery";
+                ? "SELECT EventID, Title, Status FROM Events"
+                : "SELECT EventID, Title, Status FROM Events WHERE Title LIKE @SearchQuery";
 
             using (SqlConnection connection = DB.Connect())
             {
@@ -124,6 +131,7 @@ namespace FrameSphere
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
+                        
                         if (!reader.HasRows)
                         {
                             noevent.Visible = true;
@@ -133,8 +141,10 @@ namespace FrameSphere
                         while (reader.Read())
                         {
                             string title = reader["Title"].ToString();
-                            CreateEventsBox(title, "Pending");
-                            
+                            int eventid = Convert.ToInt32(reader["EventID"]);
+                            string status = reader["Status"].ToString();
+                            CreateEventsBox(title, status, eventid);
+
 
                         }
                     }
@@ -143,10 +153,12 @@ namespace FrameSphere
         }
 
 
-        private void CreateEventsBox(string title, string status)
+        private void CreateEventsBox(string title, string status, int eventid)
         {
             int panelWidth = eventpanel.Width - 21;
             int panelHeight = 23;
+
+            
 
             Panel everyevent = new Panel {
                 Size = new Size(panelWidth, panelHeight),
@@ -159,11 +171,21 @@ namespace FrameSphere
             Label manageLabel = new Label {
                 Text = "Manage",
                 Font = new Font("Arial", 8, FontStyle.Bold),
-                Location = new Point(415,5),
+                Location = new Point(408,5),
                 AutoSize = false,
                 Size = new Size(50, 14),
                 ForeColor = Color.Red
             };
+
+            manageLabel.Click += (sender, e) =>
+            {
+                manageevent manageEventForm = new manageevent(eventid);
+                this.Hide();
+                manageEventForm.StartPosition = FormStartPosition.CenterParent;
+                manageEventForm.ShowDialog();
+                
+            };
+
             Label titleLabel = new Label {
                 Text = title,
                 Font = new Font("Arial", 8, FontStyle.Bold),
@@ -173,12 +195,14 @@ namespace FrameSphere
                 ForeColor = Color.Black
             };
             Label statusLabel = new Label {
-                Text = "pending",
+                Text = status,
                 Font = new Font("Arial", 8, FontStyle.Bold),
-                Location = new Point(468, 5),
+                Location = new Point(463, 5),
                 AutoSize = false,
-                Size = new Size(59, 14),
-                ForeColor = Color.Peru
+                Size = new Size(62, 14),
+
+                ForeColor = status == "Approved" ? Color.Green :
+                            status == "Rejected" ? Color.Red : Color.Peru
             };
             
             everyevent.Controls.Add(manageLabel);
@@ -193,11 +217,15 @@ namespace FrameSphere
         }
 
 
+
         private void Admin_dashboard_Load(object sender, EventArgs e)
         {
 
         }
-
+        private void managelabel_Click(object sender, EventArgs e)
+        {
+            
+        }
         private void button3_Click(object sender, EventArgs e)
         {
 

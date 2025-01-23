@@ -97,6 +97,18 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="manageevent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="manageevent.Designer.cs">
+      <DependentUpon>manageevent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="manageUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="manageUser.Designer.cs">
+      <DependentUpon>manageUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationForm.cs">
@@ -128,6 +140,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="manageevent.resx">
+      <DependentUpon>manageevent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="manageUser.resx">
+      <DependentUpon>manageUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
