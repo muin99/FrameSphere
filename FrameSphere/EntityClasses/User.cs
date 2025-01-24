@@ -34,7 +34,7 @@ namespace FrameSphere.EntityClasses
         private bool _isArtist;
         public bool isArtist {
             get {
-                string query = "SELECT COUNT(*) FROM artists WHERE username = @UserName";
+                string query = "SELECT COUNT(*) FROM artists WHERE username = @UserName and status ='Approved'";
 
                 using (SqlConnection connection = DB.Connect())
                 {
@@ -93,21 +93,21 @@ namespace FrameSphere.EntityClasses
 
         public void applyforBecomingArtist()
         {
+            if (isArtist)
+            {
+                MessageBox.Show("You are already an artist");
+                return;
+            }
             DB.Connection.Open();
-            string qr = $"select count(*) from artistrequests where username = '{this.UserName}'";
+            string qr = $"select count(*) from artists where username = '{this.UserName}'";
             SqlCommand c = new SqlCommand(qr, DB.Connection);
             if ((int)c.ExecuteScalar() > 0)
             {
                 MessageBox.Show("You have already applied wait");
                 return;
             }
-                if (isArtist) {
-                MessageBox.Show("You are already an artist");
-
-                return;
-
-            }
-            string q = $"insert into artistrequests (username) values('{this.UserName}')";
+            
+            string q = $"insert into artists (username, status) values('{this.UserName}', 'Pending')";
 
             if (DB.Connection.State != System.Data.ConnectionState.Open)
             {

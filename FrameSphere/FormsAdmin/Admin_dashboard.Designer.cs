@@ -30,6 +30,7 @@ namespace FrameSphere
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.eventsboard = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.RegisterLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -38,7 +39,7 @@ namespace FrameSphere
             this.button3 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.eventsboard = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.userpanel.SuspendLayout();
@@ -54,6 +55,20 @@ namespace FrameSphere
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1266, 86);
             this.panel1.TabIndex = 14;
+            // 
+            // eventsboard
+            // 
+            this.eventsboard.BackColor = System.Drawing.Color.DarkGreen;
+            this.eventsboard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.eventsboard.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eventsboard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.eventsboard.Location = new System.Drawing.Point(1040, 30);
+            this.eventsboard.Name = "eventsboard";
+            this.eventsboard.Size = new System.Drawing.Size(195, 29);
+            this.eventsboard.TabIndex = 13;
+            this.eventsboard.Text = "EventBoard";
+            this.eventsboard.UseVisualStyleBackColor = false;
+            this.eventsboard.Click += new System.EventHandler(this.eventsboard_Click);
             // 
             // button1
             // 
@@ -148,25 +163,26 @@ namespace FrameSphere
             this.textBox2.TabIndex = 22;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // eventsboard
+            // button2
             // 
-            this.eventsboard.BackColor = System.Drawing.Color.DarkGreen;
-            this.eventsboard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.eventsboard.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eventsboard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.eventsboard.Location = new System.Drawing.Point(1040, 30);
-            this.eventsboard.Name = "eventsboard";
-            this.eventsboard.Size = new System.Drawing.Size(195, 29);
-            this.eventsboard.TabIndex = 13;
-            this.eventsboard.Text = "EventBoard";
-            this.eventsboard.UseVisualStyleBackColor = false;
-            this.eventsboard.Click += new System.EventHandler(this.eventsboard_Click);
+            this.button2.BackColor = System.Drawing.Color.DarkGreen;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Location = new System.Drawing.Point(32, 145);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(195, 29);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Artist applications";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Admin_dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 697);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -195,5 +211,6 @@ namespace FrameSphere
         private System.Windows.Forms.FlowLayoutPanel userpanel;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button eventsboard;
+        private System.Windows.Forms.Button button2;
     }
 }

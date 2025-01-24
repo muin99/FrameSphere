@@ -159,5 +159,12 @@ namespace FrameSphere
             EventsAdminView eventsAdminView = new EventsAdminView();
             eventsAdminView.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ArtistApplications artistApplications = new ArtistApplications();
+            artistApplications.Show();
+        }
     }
 }
