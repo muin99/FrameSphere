@@ -7,7 +7,39 @@ namespace FrameSphere.EntityClasses
 {
     public class User
     {
-        public string FirstName { get; set; }
+        public string FirstName {
+            get{
+                string firtname
+                string query = $"SELECT FirstName FROM AllUser WHERE Username = '{this.Username}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+
+                            using (SqlDataReader reader = command.ExecuteScalar)
+                            {
+                                if (reader.Read())
+                                {
+                                    FirstName = reader["FirstName"].ToString();
+
+                                }
+                                else
+                                {
+                                    throw new Exception("User not found.");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+
+                };
+        }
         public string LastName { get; set; }
         public string FullName()
         {
@@ -135,7 +167,7 @@ namespace FrameSphere.EntityClasses
                 }
             }
         }
-
+        
         public void loadUser()
         {
             string query = $@"
