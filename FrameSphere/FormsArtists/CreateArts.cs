@@ -31,13 +31,7 @@ namespace FrameSphere
             phone.Text = FSystem.loggedInUser.Phone;
             email.Text = FSystem.loggedInUser.Email;
             address.Text = FSystem.loggedInUser.Address;
-            if (FSystem.loggedInUser.ProfilePic != null)
-            {
-                using (MemoryStream ms = new MemoryStream(FSystem.loggedInUser.ProfilePic))
-                {
-                    profilepic.Image = Image.FromStream(ms);
-                }
-            }
+            profilepic.Image = FSystem.GetImageFromPath(FSystem.loggedInUser.ProfilePic);
 
             if (FSystem.loggedInUser.isAdmin)
             {

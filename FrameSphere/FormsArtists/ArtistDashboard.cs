@@ -18,6 +18,7 @@ namespace FrameSphere
         public ArtistDashboard()
         {
             InitializeComponent();
+            profilepic.Image = FSystem.GetImageFromPath(FSystem.loggedInUser.ProfilePic);
         }
 
         private void CreateArt_Click(object sender, EventArgs e)
