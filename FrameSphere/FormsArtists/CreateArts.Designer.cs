@@ -67,6 +67,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.midpanel = new System.Windows.Forms.Panel();
+            this.Submit = new System.Windows.Forms.Button();
             this.remove = new System.Windows.Forms.Button();
             this.add = new System.Windows.Forms.Button();
             this.paid = new System.Windows.Forms.RadioButton();
@@ -81,7 +82,6 @@
             this.Description = new System.Windows.Forms.TextBox();
             this.arttitle = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.Submit = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.profilepanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
@@ -578,6 +578,16 @@
             this.midpanel.Size = new System.Drawing.Size(689, 573);
             this.midpanel.TabIndex = 4;
             // 
+            // Submit
+            // 
+            this.Submit.Location = new System.Drawing.Point(488, 522);
+            this.Submit.Name = "Submit";
+            this.Submit.Size = new System.Drawing.Size(75, 23);
+            this.Submit.TabIndex = 37;
+            this.Submit.Text = "Submit";
+            this.Submit.UseVisualStyleBackColor = true;
+            this.Submit.Click += new System.EventHandler(this.Submit_Click);
+            // 
             // remove
             // 
             this.remove.Location = new System.Drawing.Point(570, 223);
@@ -672,6 +682,7 @@
             this.photobtn.TabIndex = 22;
             this.photobtn.Text = "Browse";
             this.photobtn.UseVisualStyleBackColor = false;
+            this.photobtn.Click += new System.EventHandler(this.photobtn_Click);
             // 
             // photobox
             // 
@@ -713,15 +724,6 @@
             this.label5.Size = new System.Drawing.Size(119, 24);
             this.label5.TabIndex = 0;
             this.label5.Text = "Create an Art";
-            // 
-            // Submit
-            // 
-            this.Submit.Location = new System.Drawing.Point(488, 522);
-            this.Submit.Name = "Submit";
-            this.Submit.Size = new System.Drawing.Size(75, 23);
-            this.Submit.TabIndex = 37;
-            this.Submit.Text = "Submit";
-            this.Submit.UseVisualStyleBackColor = true;
             // 
             // CreateArts
             // 
