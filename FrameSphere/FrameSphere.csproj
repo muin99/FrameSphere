@@ -71,10 +71,10 @@
     <Compile Include="FormsArtists\ArtistDashboard.Designer.cs">
       <DependentUpon>ArtistDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsArtists\CreateArts.cs">
+    <Compile Include="FormsArts\CreateArts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsArtists\CreateArts.Designer.cs">
+    <Compile Include="FormsArts\CreateArts.Designer.cs">
       <DependentUpon>CreateArts.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsEvents\CreateEvent.cs">
@@ -108,10 +108,10 @@
     <Compile Include="FormsUser\ForgetPass.Designer.cs">
       <DependentUpon>ForgetPass.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsEvents\ArtDisplayForm.cs">
+    <Compile Include="FormsArts\ArtDisplayForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsEvents\ArtDisplayForm.Designer.cs">
+    <Compile Include="FormsArts\ArtDisplayForm.Designer.cs">
       <DependentUpon>ArtDisplayForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FSystem.cs" />
@@ -159,10 +159,10 @@
     <EmbeddedResource Include="FormsArtists\ApplyForArtist.resx">
       <DependentUpon>ApplyForArtist.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsArtists\CreateArts.resx">
+    <EmbeddedResource Include="FormsArts\CreateArts.resx">
       <DependentUpon>CreateArts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsEvents\ArtDisplayForm.resx">
+    <EmbeddedResource Include="FormsArts\ArtDisplayForm.resx">
       <DependentUpon>ArtDisplayForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsAdmin\ArtistApplications.resx">
