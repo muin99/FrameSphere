@@ -63,7 +63,12 @@ namespace FrameSphere
 
         private void adminDash_button_Click(object sender, EventArgs e)
         {
-
+            if (FSystem.loggedInUser.isAdmin)
+            {
+                this.Hide();
+                Admin_dashboard ad = new Admin_dashboard();
+                ad.Show();
+            }
         }
 
         private void editProfile_button_Click(object sender, EventArgs e)
