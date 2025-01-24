@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FrameSphere.EntityClasses;
+using System.Drawing;
 
 namespace FrameSphere
 {
@@ -20,6 +22,29 @@ namespace FrameSphere
         public static List<User> Admins = new List<User>();
         public static List<Event> AllEvents = new List<Event>();
         public static User loggedInUser;
+
+        public static Image GetImageFromPath(string relativePath)
+        {
+            try
+            {
+                // Combine the application's base directory with the relative path
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string fullPath = Path.Combine(baseDirectory, relativePath);
+
+                // Check if the file exists
+                if (File.Exists(fullPath))
+                {
+                    return Image.FromFile(fullPath); // Return the image
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading image from path: {ex.Message}");
+            }
+
+            // If the file doesn't exist or an error occurs, return a default image
+            return Properties.Resources.defaultProfilePic; // Ensure this default image is added to resources
+        }
 
         public static void reloadLoggedInUser()
         {

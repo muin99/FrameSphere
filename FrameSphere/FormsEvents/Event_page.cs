@@ -61,7 +61,7 @@ namespace FrameSphere
         }
 
 
-        public void LoadEventData(string title, string description, string organizerDetails, DateTime startDate, DateTime endDate, string registrationType, decimal? ticketPrice, byte[] eventPoster)
+        public void LoadEventData(string title, string description, string organizerDetails, DateTime startDate, DateTime endDate, string registrationType, decimal? ticketPrice, string eventPoster)
         {
             this.title.Text = title;
             this.description.Text = description;
@@ -70,13 +70,7 @@ namespace FrameSphere
             ends.Text = endDate.ToString("MM/dd/yyyy hh:mm tt");
             label8.Text = ticketPrice.HasValue ? ticketPrice.Value.ToString("C") : "Free";
 
-            if (eventPoster != null && eventPoster.Length > 0)
-            {
-                using (MemoryStream ms = new MemoryStream(eventPoster))
-                {
-                    cover.Image = Image.FromStream(ms);
-                }
-            }
+            cover.Image = FSystem.GetImageFromPath(eventPoster);
         }
 
         
