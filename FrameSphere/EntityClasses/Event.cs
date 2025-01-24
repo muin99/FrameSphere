@@ -18,19 +18,249 @@ namespace FrameSphere.EntityClasses
 
         // Properties
         public string EventID {
-            get {return _EventID }
+            get { return _EventID; }
         }
         public string EventTitle {
             get {
+                string query = $"SELECT Title FROM Events WHERE EventId = '{EventID}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            _EventTitle = (string)command.ExecuteScalar();
+                            return _EventTitle;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+                }
+            }
+            set {
+                string query = $"UPDATE Event SET Title = '{value}' WHERE EventId = '{EventID}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
 
+                }
             }
         }
-        public string EventDescription { get; set; }
-        public string Organization { get; set; }
-        public double TicketPrice { get; set; }
+        public string EventDescription {
+            get {
+                string query = $"SELECT Description FROM Events WHERE EventId = '{EventID}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            _EventDescription = (string)command.ExecuteScalar();
+                            return _EventDescription;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+                }
+            }
+            set {
+                string query = $"UPDATE Description SET Title = '{value}' WHERE EventId = '{EventID}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+
+                }
+            }
+        }
+        public string Organization {
+            get {
+                string query = $"SELECT OrganizerDetails FROM Events WHERE EventId = '{EventID}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            _Organization = (string)command.ExecuteScalar();
+                            return _Organization;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+                }
+            }
+            set {
+                string query = $"UPDATE Event SET OrganizerDetails = '{value}' WHERE EventId = '{EventID}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+
+                }
+            }
+        }
+        public double TicketPrice {
+            get {
+                string query = $"SELECT TicketPrice FROM Events WHERE EventId = '{EventID}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            _TicketPrice = (double)command.ExecuteScalar();
+                            return _TicketPrice;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+                }
+            }
+            set {
+                string query = $"UPDATE Event SET TicketPrice = '{value}' WHERE EventId = '{EventID}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+
+                }
+            }
+        }
         public Image PosterImage { get; set; } // Use Image type for the event poster
-        public DateTime StartsAt { get; set; }
-        public DateTime EndsAt { get; set; }
+        public DateTime StartsAt {
+            get {
+                string query = $"SELECT StartDate FROM Events WHERE EventId = '{EventID}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            _StartsAt = (DateTime)command.ExecuteScalar();
+                            return _StartsAt;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+                }
+            }
+            set {
+                string query = $"UPDATE Event SET StartDate = '{value}' WHERE EventId = '{EventID}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+
+                }
+            }
+        }
+        public DateTime EndsAt {
+            get {
+                string query = $"SELECT EndDate FROM Events WHERE EventId = '{EventID}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            _EndsAt = (DateTime)command.ExecuteScalar();
+                            return _EndsAt;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+                }
+            }
+            set {
+                string query = $"UPDATE Event SET EndDate = '{value}' WHERE EventId = '{EventID}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+
+                }
+            }
+        }
 
         public List<User> Visitors { get; set; } = new List<User>();
         public List<Artist> Artists { get; set; } = new List<Artist>();
