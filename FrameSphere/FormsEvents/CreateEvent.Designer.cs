@@ -65,23 +65,19 @@ namespace FrameSphere
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1688, 110);
+            this.panel1.Size = new System.Drawing.Size(1266, 89);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft New Tai Lue", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(667, 30);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(500, 24);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(267, 45);
+            this.label9.Size = new System.Drawing.Size(215, 35);
             this.label9.TabIndex = 21;
             this.label9.Text = "Create an Event";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // button1
             // 
@@ -89,10 +85,9 @@ namespace FrameSphere
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(16, 37);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(12, 30);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(260, 36);
+            this.button1.Size = new System.Drawing.Size(195, 29);
             this.button1.TabIndex = 0;
             this.button1.Text = "Return to Dashboard";
             this.button1.UseVisualStyleBackColor = false;
@@ -121,19 +116,17 @@ namespace FrameSphere
             this.panel2.Controls.Add(this.OrgDetails);
             this.panel2.Controls.Add(this.Description);
             this.panel2.Controls.Add(this.Title);
-            this.panel2.Location = new System.Drawing.Point(15, 133);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(11, 108);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1653, 706);
+            this.panel2.Size = new System.Drawing.Size(1240, 574);
             this.panel2.TabIndex = 1;
             // 
             // pictureBox
             // 
             this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox.Location = new System.Drawing.Point(860, 309);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox.Location = new System.Drawing.Point(645, 251);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(133, 62);
+            this.pictureBox.Size = new System.Drawing.Size(100, 50);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 21;
             this.pictureBox.TabStop = false;
@@ -142,10 +135,9 @@ namespace FrameSphere
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(855, 390);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(641, 317);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(114, 26);
+            this.label8.Size = new System.Drawing.Size(91, 21);
             this.label8.TabIndex = 20;
             this.label8.Text = "Ticket Price:";
             this.label8.Visible = false;
@@ -154,10 +146,9 @@ namespace FrameSphere
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(855, 262);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(641, 213);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 26);
+            this.label7.Size = new System.Drawing.Size(63, 21);
             this.label7.TabIndex = 19;
             this.label7.Text = "Ends at:";
             // 
@@ -165,10 +156,9 @@ namespace FrameSphere
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(855, 133);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(641, 108);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(174, 26);
+            this.label6.Size = new System.Drawing.Size(140, 21);
             this.label6.TabIndex = 18;
             this.label6.Text = "Organizers Details:";
             // 
@@ -176,10 +166,9 @@ namespace FrameSphere
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(120, 395);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(90, 321);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 26);
+            this.label5.Size = new System.Drawing.Size(97, 21);
             this.label5.TabIndex = 17;
             this.label5.Text = "Registration:";
             // 
@@ -187,10 +176,9 @@ namespace FrameSphere
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(120, 327);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(90, 266);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 26);
+            this.label4.Size = new System.Drawing.Size(99, 21);
             this.label4.TabIndex = 16;
             this.label4.Text = "Event Poster:";
             // 
@@ -198,10 +186,9 @@ namespace FrameSphere
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(120, 258);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(90, 210);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 26);
+            this.label3.Size = new System.Drawing.Size(70, 21);
             this.label3.TabIndex = 15;
             this.label3.Text = "Starts at:";
             // 
@@ -209,10 +196,9 @@ namespace FrameSphere
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(120, 133);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(90, 108);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(169, 26);
+            this.label2.Size = new System.Drawing.Size(134, 21);
             this.label2.TabIndex = 14;
             this.label2.Text = "Event Description:";
             // 
@@ -220,10 +206,9 @@ namespace FrameSphere
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(120, 78);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(90, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 26);
+            this.label1.Size = new System.Drawing.Size(84, 21);
             this.label1.TabIndex = 13;
             this.label1.Text = "Event Title:";
             // 
@@ -233,10 +218,9 @@ namespace FrameSphere
             this.Create.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Create.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Create.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Create.Location = new System.Drawing.Point(1345, 497);
-            this.Create.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Create.Location = new System.Drawing.Point(1009, 404);
             this.Create.Name = "Create";
-            this.Create.Size = new System.Drawing.Size(224, 36);
+            this.Create.Size = new System.Drawing.Size(168, 29);
             this.Create.TabIndex = 1;
             this.Create.Text = "Create Event";
             this.Create.UseVisualStyleBackColor = false;
@@ -246,10 +230,9 @@ namespace FrameSphere
             // 
             this.paid.AutoSize = true;
             this.paid.BackColor = System.Drawing.Color.White;
-            this.paid.Location = new System.Drawing.Point(624, 395);
-            this.paid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.paid.Location = new System.Drawing.Point(468, 321);
             this.paid.Name = "paid";
-            this.paid.Size = new System.Drawing.Size(158, 20);
+            this.paid.Size = new System.Drawing.Size(148, 17);
             this.paid.TabIndex = 12;
             this.paid.TabStop = true;
             this.paid.Text = "              Paid                    ";
@@ -260,14 +243,14 @@ namespace FrameSphere
             // 
             this.free.AutoSize = true;
             this.free.BackColor = System.Drawing.Color.White;
-            this.free.Location = new System.Drawing.Point(339, 395);
-            this.free.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.free.Location = new System.Drawing.Point(254, 321);
             this.free.Name = "free";
-            this.free.Size = new System.Drawing.Size(158, 20);
+            this.free.Size = new System.Drawing.Size(148, 17);
             this.free.TabIndex = 11;
             this.free.TabStop = true;
             this.free.Text = "              Free                    ";
             this.free.UseVisualStyleBackColor = false;
+            this.free.CheckedChanged += new System.EventHandler(this.free_CheckedChanged_1);
             // 
             // posterbtn
             // 
@@ -275,10 +258,9 @@ namespace FrameSphere
             this.posterbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.posterbtn.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.posterbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.posterbtn.Location = new System.Drawing.Point(732, 329);
-            this.posterbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.posterbtn.Location = new System.Drawing.Point(549, 267);
             this.posterbtn.Name = "posterbtn";
-            this.posterbtn.Size = new System.Drawing.Size(89, 25);
+            this.posterbtn.Size = new System.Drawing.Size(67, 20);
             this.posterbtn.TabIndex = 1;
             this.posterbtn.Text = "Browse";
             this.posterbtn.UseVisualStyleBackColor = false;
@@ -287,63 +269,56 @@ namespace FrameSphere
             // enddate
             // 
             this.enddate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.enddate.Location = new System.Drawing.Point(1087, 262);
-            this.enddate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.enddate.Location = new System.Drawing.Point(815, 213);
             this.enddate.Name = "enddate";
-            this.enddate.Size = new System.Drawing.Size(481, 22);
+            this.enddate.Size = new System.Drawing.Size(362, 20);
             this.enddate.TabIndex = 9;
             // 
             // startdate
             // 
             this.startdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.startdate.Location = new System.Drawing.Point(339, 260);
-            this.startdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.startdate.Location = new System.Drawing.Point(254, 211);
             this.startdate.Name = "startdate";
-            this.startdate.Size = new System.Drawing.Size(481, 22);
+            this.startdate.Size = new System.Drawing.Size(362, 20);
             this.startdate.TabIndex = 6;
             // 
             // poster
             // 
-            this.poster.Location = new System.Drawing.Point(339, 329);
-            this.poster.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.poster.Location = new System.Drawing.Point(254, 267);
             this.poster.Name = "poster";
             this.poster.ReadOnly = true;
-            this.poster.Size = new System.Drawing.Size(481, 22);
+            this.poster.Size = new System.Drawing.Size(362, 20);
             this.poster.TabIndex = 5;
             // 
             // ticketprice
             // 
-            this.ticketprice.Location = new System.Drawing.Point(1087, 391);
-            this.ticketprice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ticketprice.Location = new System.Drawing.Point(815, 318);
             this.ticketprice.Name = "ticketprice";
-            this.ticketprice.Size = new System.Drawing.Size(481, 22);
+            this.ticketprice.Size = new System.Drawing.Size(362, 20);
             this.ticketprice.TabIndex = 4;
             this.ticketprice.Visible = false;
             // 
             // OrgDetails
             // 
-            this.OrgDetails.Location = new System.Drawing.Point(1087, 133);
-            this.OrgDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OrgDetails.Location = new System.Drawing.Point(815, 108);
             this.OrgDetails.Multiline = true;
             this.OrgDetails.Name = "OrgDetails";
-            this.OrgDetails.Size = new System.Drawing.Size(481, 94);
+            this.OrgDetails.Size = new System.Drawing.Size(362, 77);
             this.OrgDetails.TabIndex = 3;
             // 
             // Description
             // 
-            this.Description.Location = new System.Drawing.Point(339, 133);
-            this.Description.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Description.Location = new System.Drawing.Point(254, 108);
             this.Description.Multiline = true;
             this.Description.Name = "Description";
-            this.Description.Size = new System.Drawing.Size(481, 94);
+            this.Description.Size = new System.Drawing.Size(362, 77);
             this.Description.TabIndex = 2;
             // 
             // Title
             // 
-            this.Title.Location = new System.Drawing.Point(339, 78);
-            this.Title.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Title.Location = new System.Drawing.Point(254, 63);
             this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(1229, 22);
+            this.Title.Size = new System.Drawing.Size(923, 20);
             this.Title.TabIndex = 1;
             // 
             // openFileDialog1
@@ -352,12 +327,11 @@ namespace FrameSphere
             // 
             // CreateEvent
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1685, 838);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CreateEvent";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

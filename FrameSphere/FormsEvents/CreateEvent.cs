@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using FrameSphere;
 
 namespace FrameSphere
 {
@@ -134,23 +135,13 @@ namespace FrameSphere
             }
         }
 
-        private void free_CheckedChanged(object sender, EventArgs e)
+        private void free_CheckedChanged_1(object sender, EventArgs e)
         {
             if (free.Checked)
             {
                 label8.Visible = false;
                 ticketprice.Visible = false;
             }
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
