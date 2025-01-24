@@ -893,6 +893,7 @@
             this.TotalArts_label.Size = new System.Drawing.Size(20, 25);
             this.TotalArts_label.TabIndex = 4;
             this.TotalArts_label.Text = "-";
+            this.TotalArts_label.Click += new System.EventHandler(this.TotalArts_label_Click);
             // 
             // eventsParticipated_label
             // 

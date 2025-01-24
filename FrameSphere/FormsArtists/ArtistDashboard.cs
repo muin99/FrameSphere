@@ -190,5 +190,10 @@ namespace FrameSphere
                 MessageBox.Show($"An error occurred:{ex.Message}");
             }
         }
+
+        private void TotalArts_label_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

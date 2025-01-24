@@ -29,9 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateArts));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel4 = new System.Windows.Forms.Panel();
             this.profilepanel = new System.Windows.Forms.Panel();
+            this.website_link = new System.Windows.Forms.PictureBox();
+            this.pinterest_link = new System.Windows.Forms.PictureBox();
+            this.instagram_link = new System.Windows.Forms.PictureBox();
+            this.facebook_pic = new System.Windows.Forms.PictureBox();
             this.button14 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.address = new System.Windows.Forms.Label();
@@ -84,6 +89,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.profilepanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.website_link)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pinterest_link)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instagram_link)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facebook_pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -103,7 +112,7 @@
             this.panel4.Controls.Add(this.profilepanel);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(1268, 130);
-            this.panel4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel4.Margin = new System.Windows.Forms.Padding(5);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(412, 703);
             this.panel4.TabIndex = 3;
@@ -113,6 +122,10 @@
             this.profilepanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.profilepanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.profilepanel.Controls.Add(this.website_link);
+            this.profilepanel.Controls.Add(this.pinterest_link);
+            this.profilepanel.Controls.Add(this.instagram_link);
+            this.profilepanel.Controls.Add(this.facebook_pic);
             this.profilepanel.Controls.Add(this.button14);
             this.profilepanel.Controls.Add(this.label4);
             this.profilepanel.Controls.Add(this.address);
@@ -131,12 +144,56 @@
             this.profilepanel.Size = new System.Drawing.Size(387, 508);
             this.profilepanel.TabIndex = 0;
             // 
+            // website_link
+            // 
+            this.website_link.Image = ((System.Drawing.Image)(resources.GetObject("website_link.Image")));
+            this.website_link.Location = new System.Drawing.Point(269, 414);
+            this.website_link.Name = "website_link";
+            this.website_link.Size = new System.Drawing.Size(40, 37);
+            this.website_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.website_link.TabIndex = 19;
+            this.website_link.TabStop = false;
+            this.website_link.Click += new System.EventHandler(this.website_link_Click);
+            // 
+            // pinterest_link
+            // 
+            this.pinterest_link.Image = ((System.Drawing.Image)(resources.GetObject("pinterest_link.Image")));
+            this.pinterest_link.Location = new System.Drawing.Point(211, 414);
+            this.pinterest_link.Name = "pinterest_link";
+            this.pinterest_link.Size = new System.Drawing.Size(40, 37);
+            this.pinterest_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pinterest_link.TabIndex = 18;
+            this.pinterest_link.TabStop = false;
+            this.pinterest_link.Click += new System.EventHandler(this.pinterest_link_Click);
+            // 
+            // instagram_link
+            // 
+            this.instagram_link.Image = ((System.Drawing.Image)(resources.GetObject("instagram_link.Image")));
+            this.instagram_link.Location = new System.Drawing.Point(156, 414);
+            this.instagram_link.Name = "instagram_link";
+            this.instagram_link.Size = new System.Drawing.Size(40, 37);
+            this.instagram_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.instagram_link.TabIndex = 17;
+            this.instagram_link.TabStop = false;
+            this.instagram_link.Click += new System.EventHandler(this.instagram_link_Click);
+            // 
+            // facebook_pic
+            // 
+            this.facebook_pic.Image = ((System.Drawing.Image)(resources.GetObject("facebook_pic.Image")));
+            this.facebook_pic.Location = new System.Drawing.Point(98, 414);
+            this.facebook_pic.Name = "facebook_pic";
+            this.facebook_pic.Size = new System.Drawing.Size(40, 37);
+            this.facebook_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.facebook_pic.TabIndex = 16;
+            this.facebook_pic.TabStop = false;
+            this.facebook_pic.Click += new System.EventHandler(this.facebook_pic_Click);
+            // 
             // button14
             // 
             this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button14.BackColor = System.Drawing.Color.Lime;
             this.button14.Location = new System.Drawing.Point(281, 11);
-            this.button14.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button14.Margin = new System.Windows.Forms.Padding(5);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(100, 28);
             this.button14.TabIndex = 11;
@@ -274,7 +331,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(5, 5);
-            this.panel2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel2.Margin = new System.Windows.Forms.Padding(5);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1675, 115);
             this.panel2.TabIndex = 1;
@@ -286,7 +343,7 @@
             this.Logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Logout.ForeColor = System.Drawing.Color.Red;
             this.Logout.Location = new System.Drawing.Point(1555, 43);
-            this.Logout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Logout.Margin = new System.Windows.Forms.Padding(4);
             this.Logout.Name = "Logout";
             this.Logout.Size = new System.Drawing.Size(100, 28);
             this.Logout.TabIndex = 1;
@@ -328,7 +385,7 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(5, 130);
-            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(327, 703);
             this.panel1.TabIndex = 0;
@@ -336,7 +393,7 @@
             // artistboard
             // 
             this.artistboard.Location = new System.Drawing.Point(65, 618);
-            this.artistboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.artistboard.Margin = new System.Windows.Forms.Padding(4);
             this.artistboard.Name = "artistboard";
             this.artistboard.Size = new System.Drawing.Size(165, 28);
             this.artistboard.TabIndex = 16;
@@ -347,7 +404,7 @@
             // adminDashboard
             // 
             this.adminDashboard.Location = new System.Drawing.Point(65, 654);
-            this.adminDashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.adminDashboard.Margin = new System.Windows.Forms.Padding(4);
             this.adminDashboard.Name = "adminDashboard";
             this.adminDashboard.Size = new System.Drawing.Size(165, 28);
             this.adminDashboard.TabIndex = 15;
@@ -362,7 +419,7 @@
             this.button13.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.ForeColor = System.Drawing.Color.DarkGreen;
             this.button13.Location = new System.Drawing.Point(0, 548);
-            this.button13.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button13.Margin = new System.Windows.Forms.Padding(5);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(327, 37);
             this.button13.TabIndex = 14;
@@ -375,7 +432,7 @@
             this.button12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.DarkGreen;
             this.button12.Location = new System.Drawing.Point(0, 511);
-            this.button12.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button12.Margin = new System.Windows.Forms.Padding(5);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(327, 37);
             this.button12.TabIndex = 13;
@@ -388,7 +445,7 @@
             this.button11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.DarkGreen;
             this.button11.Location = new System.Drawing.Point(0, 474);
-            this.button11.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button11.Margin = new System.Windows.Forms.Padding(5);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(327, 37);
             this.button11.TabIndex = 12;
@@ -401,7 +458,7 @@
             this.button10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.DarkGreen;
             this.button10.Location = new System.Drawing.Point(0, 437);
-            this.button10.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button10.Margin = new System.Windows.Forms.Padding(5);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(327, 37);
             this.button10.TabIndex = 11;
@@ -416,7 +473,7 @@
             this.button9.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.DarkGreen;
             this.button9.Location = new System.Drawing.Point(0, 394);
-            this.button9.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button9.Margin = new System.Windows.Forms.Padding(5);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(327, 43);
             this.button9.TabIndex = 10;
@@ -427,7 +484,7 @@
             // 
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 351);
-            this.panel5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel5.Margin = new System.Windows.Forms.Padding(5);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(327, 43);
             this.panel5.TabIndex = 9;
@@ -438,7 +495,7 @@
             this.button8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.DarkGreen;
             this.button8.Location = new System.Drawing.Point(0, 314);
-            this.button8.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button8.Margin = new System.Windows.Forms.Padding(5);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(327, 37);
             this.button8.TabIndex = 8;
@@ -451,7 +508,7 @@
             this.button7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.DarkGreen;
             this.button7.Location = new System.Drawing.Point(0, 277);
-            this.button7.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button7.Margin = new System.Windows.Forms.Padding(5);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(327, 37);
             this.button7.TabIndex = 7;
@@ -464,7 +521,7 @@
             this.button6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.DarkGreen;
             this.button6.Location = new System.Drawing.Point(0, 240);
-            this.button6.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button6.Margin = new System.Windows.Forms.Padding(5);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(327, 37);
             this.button6.TabIndex = 6;
@@ -478,7 +535,7 @@
             this.button5.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.DarkGreen;
             this.button5.Location = new System.Drawing.Point(0, 197);
-            this.button5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button5.Margin = new System.Windows.Forms.Padding(5);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(327, 43);
             this.button5.TabIndex = 5;
@@ -489,7 +546,7 @@
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 154);
-            this.panel3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel3.Margin = new System.Windows.Forms.Padding(5);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(327, 43);
             this.panel3.TabIndex = 4;
@@ -500,7 +557,7 @@
             this.button4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.DarkGreen;
             this.button4.Location = new System.Drawing.Point(0, 117);
-            this.button4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button4.Margin = new System.Windows.Forms.Padding(5);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(327, 37);
             this.button4.TabIndex = 3;
@@ -513,7 +570,7 @@
             this.button3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.DarkGreen;
             this.button3.Location = new System.Drawing.Point(0, 80);
-            this.button3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button3.Margin = new System.Windows.Forms.Padding(5);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(327, 37);
             this.button3.TabIndex = 2;
@@ -526,7 +583,7 @@
             this.button2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.DarkGreen;
             this.button2.Location = new System.Drawing.Point(0, 43);
-            this.button2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button2.Margin = new System.Windows.Forms.Padding(5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(327, 37);
             this.button2.TabIndex = 1;
@@ -540,7 +597,7 @@
             this.button1.Font = new System.Drawing.Font("Arial Black", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.DarkGreen;
             this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button1.Margin = new System.Windows.Forms.Padding(5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(327, 43);
             this.button1.TabIndex = 0;
@@ -560,7 +617,7 @@
             this.tableLayoutPanel1.Controls.Add(this.midpanel, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -588,7 +645,7 @@
             this.midpanel.Controls.Add(this.label5);
             this.midpanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.midpanel.Location = new System.Drawing.Point(341, 129);
-            this.midpanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.midpanel.Margin = new System.Windows.Forms.Padding(4);
             this.midpanel.Name = "midpanel";
             this.midpanel.Size = new System.Drawing.Size(918, 705);
             this.midpanel.TabIndex = 4;
@@ -596,7 +653,7 @@
             // Submit
             // 
             this.Submit.Location = new System.Drawing.Point(651, 642);
-            this.Submit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Submit.Margin = new System.Windows.Forms.Padding(4);
             this.Submit.Name = "Submit";
             this.Submit.Size = new System.Drawing.Size(100, 28);
             this.Submit.TabIndex = 37;
@@ -606,7 +663,7 @@
             // remove
             // 
             this.remove.Location = new System.Drawing.Point(760, 274);
-            this.remove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.remove.Margin = new System.Windows.Forms.Padding(4);
             this.remove.Name = "remove";
             this.remove.Size = new System.Drawing.Size(88, 26);
             this.remove.TabIndex = 36;
@@ -616,7 +673,7 @@
             // add
             // 
             this.add.Location = new System.Drawing.Point(637, 309);
-            this.add.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.add.Margin = new System.Windows.Forms.Padding(4);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(115, 28);
             this.add.TabIndex = 35;
@@ -628,7 +685,7 @@
             this.paid.AutoSize = true;
             this.paid.BackColor = System.Drawing.Color.White;
             this.paid.Location = new System.Drawing.Point(555, 528);
-            this.paid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.paid.Margin = new System.Windows.Forms.Padding(4);
             this.paid.Name = "paid";
             this.paid.Size = new System.Drawing.Size(158, 20);
             this.paid.TabIndex = 34;
@@ -641,7 +698,7 @@
             this.free.AutoSize = true;
             this.free.BackColor = System.Drawing.Color.White;
             this.free.Location = new System.Drawing.Point(269, 528);
-            this.free.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.free.Margin = new System.Windows.Forms.Padding(4);
             this.free.Name = "free";
             this.free.Size = new System.Drawing.Size(158, 20);
             this.free.TabIndex = 33;
@@ -700,7 +757,7 @@
             this.photobtn.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.photobtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.photobtn.Location = new System.Drawing.Point(663, 274);
-            this.photobtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.photobtn.Margin = new System.Windows.Forms.Padding(4);
             this.photobtn.Name = "photobtn";
             this.photobtn.Size = new System.Drawing.Size(89, 25);
             this.photobtn.TabIndex = 22;
@@ -710,7 +767,7 @@
             // photobox
             // 
             this.photobox.Location = new System.Drawing.Point(269, 274);
-            this.photobox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.photobox.Margin = new System.Windows.Forms.Padding(4);
             this.photobox.Name = "photobox";
             this.photobox.ReadOnly = true;
             this.photobox.Size = new System.Drawing.Size(481, 22);
@@ -719,7 +776,7 @@
             // artPrice
             // 
             this.artPrice.Location = new System.Drawing.Point(269, 556);
-            this.artPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.artPrice.Margin = new System.Windows.Forms.Padding(4);
             this.artPrice.Name = "artPrice";
             this.artPrice.Size = new System.Drawing.Size(481, 22);
             this.artPrice.TabIndex = 25;
@@ -728,7 +785,7 @@
             // Description
             // 
             this.Description.Location = new System.Drawing.Point(269, 162);
-            this.Description.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Description.Margin = new System.Windows.Forms.Padding(4);
             this.Description.Multiline = true;
             this.Description.Name = "Description";
             this.Description.Size = new System.Drawing.Size(481, 94);
@@ -737,7 +794,7 @@
             // arttitle
             // 
             this.arttitle.Location = new System.Drawing.Point(269, 119);
-            this.arttitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.arttitle.Margin = new System.Windows.Forms.Padding(4);
             this.arttitle.Name = "arttitle";
             this.arttitle.Size = new System.Drawing.Size(481, 22);
             this.arttitle.TabIndex = 23;
@@ -759,13 +816,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1685, 838);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "CreateArts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserDashBoard";
             this.panel4.ResumeLayout(false);
             this.profilepanel.ResumeLayout(false);
             this.profilepanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.website_link)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pinterest_link)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instagram_link)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facebook_pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilepic)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -831,5 +892,9 @@
         private System.Windows.Forms.Button add;
         private System.Windows.Forms.Button remove;
         private System.Windows.Forms.Button Submit;
+        private System.Windows.Forms.PictureBox website_link;
+        private System.Windows.Forms.PictureBox pinterest_link;
+        private System.Windows.Forms.PictureBox instagram_link;
+        private System.Windows.Forms.PictureBox facebook_pic;
     }
 }
