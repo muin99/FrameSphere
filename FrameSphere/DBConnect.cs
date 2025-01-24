@@ -9,7 +9,7 @@ namespace FrameSphere
 {
     public static class DB
     {
-        private static readonly string ServerName = @"Mazharul75\SQLEXPRESS";
+        private static readonly string ServerName = @"ONUKROM";
         private static readonly string ConnectionString = $@"Data Source={ServerName}; Initial Catalog = FrameSphere; Integrated Security = true";
 
         public static SqlConnection Connection = new SqlConnection(ConnectionString);
@@ -17,7 +17,7 @@ namespace FrameSphere
         static DB()
         {
             Connection = new SqlConnection(ConnectionString);
-        }
+        } 
         public static SqlConnection Connect()
         {
             return new SqlConnection(ConnectionString);
