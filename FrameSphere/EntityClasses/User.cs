@@ -7,10 +7,19 @@ namespace FrameSphere.EntityClasses
 {
     public class User
     {
+        private string _firstname;
+        private string _lastname;
+        private string _email;
+        private string _address;
+        private string _facebook;
+        private string _instagram;
+        private string _pinterest;
+        private string _phone;
+        private string _website;
         public string FirstName {
             get{
-                string firtname
-                string query = $"SELECT FirstName FROM AllUser WHERE Username = '{this.Username}'";
+               
+                string query = $"SELECT FirstName FROM AllUser WHERE Username = '{this.UserName}'";
                 using (SqlConnection connection = DB.Connect())
                 {
                     try
@@ -18,29 +27,75 @@ namespace FrameSphere.EntityClasses
                         connection.Open();
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {
-
-                            using (SqlDataReader reader = command.ExecuteScalar)
-                            {
-                                if (reader.Read())
-                                {
-                                    FirstName = reader["FirstName"].ToString();
-
-                                }
-                                else
-                                {
-                                    throw new Exception("User not found.");
-                                }
-                            }
+                            _firstname = (string)command.ExecuteScalar();
+                            return _firstname;
                         }
                     }
                     catch (Exception ex)
                     {
                         throw new Exception($"An error occurred while loading user data: {ex.Message}");
                     }
-
-                };
+                }
+             }
+            set {
+                string query = $"UPDATE AllUser SET FirstName = '{value}' WHERE Username = '{this.UserName}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+                }
+            }
+  
         }
-        public string LastName { get; set; }
+        public string LastName {
+            get {
+                string query = $"SELECT LastName FROM AllUser WHERE Username = '{this.UserName}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            _lastname = (string)command.ExecuteScalar();
+                            return _lastname;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+                }
+            }
+            set {
+                string query = $"UPDATE AllUser SET LastName = '{value}' WHERE Username = '{this.UserName}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading user data: {ex.Message}");
+                    }
+                }
+            }
+        }
         public string FullName()
         {
             return FirstName + " " + LastName;
@@ -172,8 +227,8 @@ namespace FrameSphere.EntityClasses
         {
             string query = $@"
                 SELECT 
-                    au.FirstName, 
-                    au.LastName, 
+                     
+                  
                     au.Email, 
                     au.UserName, 
                     au.Status,
@@ -206,8 +261,8 @@ namespace FrameSphere.EntityClasses
                         {
                             if (reader.Read())
                             {
-                                FirstName = reader["FirstName"].ToString();
-                                LastName = reader["LastName"].ToString();
+                                //FirstName = reader["FirstName"].ToString();
+                                //LastName = reader["LastName"].ToString();
                                 Email = reader["Email"].ToString();
                                 UserName = reader["UserName"].ToString();
                                 Status = reader["Status"].ToString();
@@ -271,7 +326,7 @@ namespace FrameSphere.EntityClasses
 
             string query = @"
                 SELECT 
-                    au.FirstName, 
+                    
                     au.LastName, 
                     au.Email, 
                     au.UserName, 
@@ -307,7 +362,7 @@ namespace FrameSphere.EntityClasses
                         {
                             if (reader.Read())
                             {
-                                FirstName = reader["FirstName"].ToString();
+                                //FirstName = reader["FirstName"].ToString();
                                 LastName = reader["LastName"].ToString();
                                 Email = reader["Email"].ToString();
                                 UserName = reader["UserName"].ToString();

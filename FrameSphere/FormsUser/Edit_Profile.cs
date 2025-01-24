@@ -119,7 +119,7 @@ namespace FrameSphere
                 string updateQuery = @"
                 UPDATE AllUser
                 SET 
-                    FirstName = @FirstName,
+                   
                     LastName = @LastName,
                     Email = @Email
                 WHERE UserName = @UserName AND Password = @CurrentPW;
@@ -144,7 +144,7 @@ namespace FrameSphere
                 using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
                 {
                     // Add parameters to prevent SQL injection
-                    cmd.Parameters.AddWithValue("@FirstName", FirstNameField.Text);
+                    //cmd.Parameters.AddWithValue("@FirstName", FirstNameField.Text);
                     cmd.Parameters.AddWithValue("@LastName", LastNameField.Text);
                     cmd.Parameters.AddWithValue("@Email", EmailField.Text);
                     cmd.Parameters.AddWithValue("@UserName", FSystem.loggedInUser.UserName); // Logged-in user's username
@@ -188,6 +188,7 @@ namespace FrameSphere
                     }
                 }
             }
+            FSystem.loggedInUser.FirstName = FirstNameField.Text;
 
             // Reload the logged-in user's information
             FSystem.loggedInUser.loadUser();

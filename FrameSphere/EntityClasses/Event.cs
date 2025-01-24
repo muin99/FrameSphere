@@ -7,9 +7,24 @@ namespace FrameSphere.EntityClasses
 {
     public class Event
     {
+        private string _EventID;
+        private string _EventTitle;
+        private string _EventDescription;
+        private string _Organization;
+        private double _TicketPrice;
+        private DateTime _StartsAt;
+        private DateTime _EndsAt;
+        public Event(string EventID) { this._EventID = EventID; }
+
         // Properties
-        public string EventID { get; set; }
-        public string EventTitle { get; set; }
+        public string EventID {
+            get {return _EventID }
+        }
+        public string EventTitle {
+            get {
+
+            }
+        }
         public string EventDescription { get; set; }
         public string Organization { get; set; }
         public double TicketPrice { get; set; }
