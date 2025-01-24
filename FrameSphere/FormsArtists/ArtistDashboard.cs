@@ -43,5 +43,34 @@ namespace FrameSphere
         {
 
         }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void returnDashBoard_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserDashBoard user = new UserDashBoard();
+            user.Show();   
+        }
+
+        private void ArtistDash_button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You are currently viewing Artist Dashboard");
+        }
+
+        private void adminDash_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editProfile_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Edit_Profile ep = new Edit_Profile();
+            ep.Show();
+        }
     }
 }

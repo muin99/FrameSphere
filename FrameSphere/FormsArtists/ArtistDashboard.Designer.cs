@@ -42,7 +42,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.address = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.button14 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.ArtistProfile_Label = new System.Windows.Forms.Label();
             this.Logout = new System.Windows.Forms.Button();
@@ -62,8 +61,6 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
-            this.adminDashboard = new System.Windows.Forms.Button();
-            this.artistboard = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.otherForms_panel = new System.Windows.Forms.Panel();
@@ -90,11 +87,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.upComingEvents_label = new System.Windows.Forms.Label();
             this.artSubmits_label = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.associatedEvents_panel = new System.Windows.Forms.Panel();
             this.facebook_pic = new System.Windows.Forms.PictureBox();
             this.instagram_link = new System.Windows.Forms.PictureBox();
             this.website_link = new System.Windows.Forms.PictureBox();
             this.pinterest_link = new System.Windows.Forms.PictureBox();
+            this.seeAllEvents_button = new System.Windows.Forms.Button();
+            this.editProfile_button = new System.Windows.Forms.Button();
+            this.ArtistDash_button = new System.Windows.Forms.Button();
+            this.adminDash_button = new System.Windows.Forms.Button();
             this.artistProfile_tableLayout.SuspendLayout();
             this.profilepanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
@@ -113,6 +114,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.artStatistics_panel.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.associatedEvents_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.facebook_pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.instagram_link)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.website_link)).BeginInit();
@@ -147,11 +149,11 @@
             this.profilepanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.profilepanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.profilepanel.Controls.Add(this.editProfile_button);
             this.profilepanel.Controls.Add(this.website_link);
             this.profilepanel.Controls.Add(this.pinterest_link);
             this.profilepanel.Controls.Add(this.instagram_link);
             this.profilepanel.Controls.Add(this.facebook_pic);
-            this.profilepanel.Controls.Add(this.button14);
             this.profilepanel.Controls.Add(this.label4);
             this.profilepanel.Controls.Add(this.address);
             this.profilepanel.Controls.Add(this.label8);
@@ -291,18 +293,6 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Socials:";
             // 
-            // button14
-            // 
-            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button14.BackColor = System.Drawing.Color.Lime;
-            this.button14.Location = new System.Drawing.Point(281, 11);
-            this.button14.Margin = new System.Windows.Forms.Padding(5);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(100, 28);
-            this.button14.TabIndex = 11;
-            this.button14.Text = "Edit Profile";
-            this.button14.UseVisualStyleBackColor = false;
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.LightGreen;
@@ -330,7 +320,7 @@
             this.Logout.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.Logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Logout.ForeColor = System.Drawing.Color.Red;
-            this.Logout.Location = new System.Drawing.Point(1555, 43);
+            this.Logout.Location = new System.Drawing.Point(1543, 43);
             this.Logout.Margin = new System.Windows.Forms.Padding(4);
             this.Logout.Name = "Logout";
             this.Logout.Size = new System.Drawing.Size(100, 28);
@@ -344,23 +334,28 @@
             this.returnDashBoard_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.returnDashBoard_button.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.returnDashBoard_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.returnDashBoard_button.Location = new System.Drawing.Point(40, 44);
+            this.returnDashBoard_button.Location = new System.Drawing.Point(40, 31);
             this.returnDashBoard_button.Margin = new System.Windows.Forms.Padding(4);
             this.returnDashBoard_button.Name = "returnDashBoard_button";
             this.returnDashBoard_button.Size = new System.Drawing.Size(211, 31);
             this.returnDashBoard_button.TabIndex = 2;
             this.returnDashBoard_button.Text = "Return to Dashboard";
             this.returnDashBoard_button.UseVisualStyleBackColor = false;
+            this.returnDashBoard_button.Click += new System.EventHandler(this.returnDashBoard_button_Click);
             // 
             // CreateArt
             // 
-            this.CreateArt.Location = new System.Drawing.Point(30, 685);
+            this.CreateArt.BackColor = System.Drawing.Color.White;
+            this.CreateArt.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.CreateArt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CreateArt.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateArt.Location = new System.Drawing.Point(30, 672);
             this.CreateArt.Margin = new System.Windows.Forms.Padding(4);
             this.CreateArt.Name = "CreateArt";
-            this.CreateArt.Size = new System.Drawing.Size(275, 28);
+            this.CreateArt.Size = new System.Drawing.Size(275, 41);
             this.CreateArt.TabIndex = 0;
             this.CreateArt.Text = "CreateArt";
-            this.CreateArt.UseVisualStyleBackColor = true;
+            this.CreateArt.UseVisualStyleBackColor = false;
             this.CreateArt.Click += new System.EventHandler(this.CreateArt_Click);
             // 
             // header_panel
@@ -549,35 +544,13 @@
             this.button13.Text = "My Orders";
             this.button13.UseVisualStyleBackColor = true;
             // 
-            // adminDashboard
-            // 
-            this.adminDashboard.Location = new System.Drawing.Point(86, 630);
-            this.adminDashboard.Margin = new System.Windows.Forms.Padding(4);
-            this.adminDashboard.Name = "adminDashboard";
-            this.adminDashboard.Size = new System.Drawing.Size(165, 28);
-            this.adminDashboard.TabIndex = 15;
-            this.adminDashboard.Text = "Admin Dashboard";
-            this.adminDashboard.UseVisualStyleBackColor = true;
-            this.adminDashboard.Visible = false;
-            // 
-            // artistboard
-            // 
-            this.artistboard.Location = new System.Drawing.Point(86, 594);
-            this.artistboard.Margin = new System.Windows.Forms.Padding(4);
-            this.artistboard.Name = "artistboard";
-            this.artistboard.Size = new System.Drawing.Size(165, 28);
-            this.artistboard.TabIndex = 16;
-            this.artistboard.Text = "Artist Dashboard";
-            this.artistboard.UseVisualStyleBackColor = true;
-            this.artistboard.Click += new System.EventHandler(this.artistboard_Click);
-            // 
             // panel1
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.LightGreen;
+            this.panel1.Controls.Add(this.adminDash_button);
+            this.panel1.Controls.Add(this.ArtistDash_button);
             this.panel1.Controls.Add(this.CreateArt);
-            this.panel1.Controls.Add(this.artistboard);
-            this.panel1.Controls.Add(this.adminDashboard);
             this.panel1.Controls.Add(this.button13);
             this.panel1.Controls.Add(this.button12);
             this.panel1.Controls.Add(this.button11);
@@ -623,7 +596,7 @@
             // midpanel
             // 
             this.midpanel.BackColor = System.Drawing.Color.LightGreen;
-            this.midpanel.Controls.Add(this.panel3);
+            this.midpanel.Controls.Add(this.associatedEvents_panel);
             this.midpanel.Controls.Add(this.panel2);
             this.midpanel.Controls.Add(this.artStatistics_panel);
             this.midpanel.Controls.Add(this.userProfile_button);
@@ -863,12 +836,14 @@
             this.artSubmits_label.TabIndex = 2;
             this.artSubmits_label.Text = "(Arts submitted) ";
             // 
-            // panel3
+            // associatedEvents_panel
             // 
-            this.panel3.Location = new System.Drawing.Point(39, 250);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(851, 299);
-            this.panel3.TabIndex = 8;
+            this.associatedEvents_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.associatedEvents_panel.Controls.Add(this.seeAllEvents_button);
+            this.associatedEvents_panel.Location = new System.Drawing.Point(39, 250);
+            this.associatedEvents_panel.Name = "associatedEvents_panel";
+            this.associatedEvents_panel.Size = new System.Drawing.Size(851, 299);
+            this.associatedEvents_panel.TabIndex = 8;
             // 
             // facebook_pic
             // 
@@ -910,6 +885,69 @@
             this.pinterest_link.TabIndex = 14;
             this.pinterest_link.TabStop = false;
             // 
+            // seeAllEvents_button
+            // 
+            this.seeAllEvents_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.seeAllEvents_button.BackColor = System.Drawing.Color.LimeGreen;
+            this.seeAllEvents_button.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.seeAllEvents_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.seeAllEvents_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.seeAllEvents_button.ForeColor = System.Drawing.Color.White;
+            this.seeAllEvents_button.Location = new System.Drawing.Point(737, 262);
+            this.seeAllEvents_button.Margin = new System.Windows.Forms.Padding(5);
+            this.seeAllEvents_button.Name = "seeAllEvents_button";
+            this.seeAllEvents_button.Size = new System.Drawing.Size(100, 28);
+            this.seeAllEvents_button.TabIndex = 12;
+            this.seeAllEvents_button.Text = "See All";
+            this.seeAllEvents_button.UseVisualStyleBackColor = false;
+            // 
+            // editProfile_button
+            // 
+            this.editProfile_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.editProfile_button.BackColor = System.Drawing.Color.DarkGreen;
+            this.editProfile_button.FlatAppearance.BorderColor = System.Drawing.Color.LimeGreen;
+            this.editProfile_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editProfile_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editProfile_button.ForeColor = System.Drawing.Color.White;
+            this.editProfile_button.Location = new System.Drawing.Point(281, 6);
+            this.editProfile_button.Margin = new System.Windows.Forms.Padding(5);
+            this.editProfile_button.Name = "editProfile_button";
+            this.editProfile_button.Size = new System.Drawing.Size(100, 28);
+            this.editProfile_button.TabIndex = 16;
+            this.editProfile_button.Text = "Edit Profile";
+            this.editProfile_button.UseVisualStyleBackColor = false;
+            this.editProfile_button.Click += new System.EventHandler(this.editProfile_button_Click);
+            // 
+            // ArtistDash_button
+            // 
+            this.ArtistDash_button.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ArtistDash_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ArtistDash_button.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ArtistDash_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ArtistDash_button.Location = new System.Drawing.Point(71, 594);
+            this.ArtistDash_button.Margin = new System.Windows.Forms.Padding(4);
+            this.ArtistDash_button.Name = "ArtistDash_button";
+            this.ArtistDash_button.Size = new System.Drawing.Size(211, 31);
+            this.ArtistDash_button.TabIndex = 16;
+            this.ArtistDash_button.Text = "Artist Dashboard";
+            this.ArtistDash_button.UseVisualStyleBackColor = false;
+            this.ArtistDash_button.Click += new System.EventHandler(this.ArtistDash_button_Click);
+            // 
+            // adminDash_button
+            // 
+            this.adminDash_button.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.adminDash_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.adminDash_button.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adminDash_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.adminDash_button.Location = new System.Drawing.Point(71, 633);
+            this.adminDash_button.Margin = new System.Windows.Forms.Padding(4);
+            this.adminDash_button.Name = "adminDash_button";
+            this.adminDash_button.Size = new System.Drawing.Size(211, 31);
+            this.adminDash_button.TabIndex = 17;
+            this.adminDash_button.Text = "Admin Dashboard";
+            this.adminDash_button.UseVisualStyleBackColor = false;
+            this.adminDash_button.Click += new System.EventHandler(this.adminDash_button_Click);
+            // 
             // ArtistDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -942,6 +980,7 @@
             this.artStatistics_panel.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.associatedEvents_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.facebook_pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.instagram_link)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.website_link)).EndInit();
@@ -953,8 +992,6 @@
         #endregion
         private System.Windows.Forms.TableLayoutPanel artistProfile_tableLayout;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button artistboard;
-        private System.Windows.Forms.Button adminDashboard;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
@@ -977,7 +1014,6 @@
         private System.Windows.Forms.Label ArtistProfile_Label;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel profilepanel;
-        private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label address;
         private System.Windows.Forms.Label label8;
@@ -1007,7 +1043,7 @@
         private System.Windows.Forms.Label numberOfArtsSold_label;
         private System.Windows.Forms.Label numberOfArts_label;
         private System.Windows.Forms.Label ArtStatistics_label;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel associatedEvents_panel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label artSubmits_label;
         private System.Windows.Forms.Label upComingEvents_label;
@@ -1017,5 +1053,9 @@
         private System.Windows.Forms.PictureBox pinterest_link;
         private System.Windows.Forms.PictureBox instagram_link;
         private System.Windows.Forms.PictureBox facebook_pic;
+        private System.Windows.Forms.Button seeAllEvents_button;
+        private System.Windows.Forms.Button editProfile_button;
+        private System.Windows.Forms.Button adminDash_button;
+        private System.Windows.Forms.Button ArtistDash_button;
     }
 }
