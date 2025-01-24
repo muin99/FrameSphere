@@ -96,10 +96,10 @@
     <Compile Include="FormsEvents\Event_page.Designer.cs">
       <DependentUpon>Event_page.cs</DependentUpon>
     </Compile>
-    <Compile Include="ForgetPass.cs">
+    <Compile Include="FormsUser\ForgetPass.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ForgetPass.Designer.cs">
+    <Compile Include="FormsUser\ForgetPass.Designer.cs">
       <DependentUpon>ForgetPass.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsEvents\ArtDisplayForm.cs">
@@ -115,10 +115,10 @@
     <Compile Include="EntityClasses\Event.cs" />
     <Compile Include="EntityClasses\Organizer.cs" />
     <Compile Include="EntityClasses\User.cs" />
-    <Compile Include="LoginForm.cs">
+    <Compile Include="FormsUser\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="FormsUser\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsEvents\ManageEvents.cs">
@@ -129,10 +129,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistrationForm.cs">
+    <Compile Include="FormsUser\RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistrationForm.Designer.cs">
+    <Compile Include="FormsUser\RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsUser\UserDashboard.cs">
@@ -174,7 +174,7 @@
     <EmbeddedResource Include="FormsEvents\Event_page.resx">
       <DependentUpon>Event_page.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="FormsUser\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsEvents\ManageEvents.resx">
@@ -190,7 +190,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RegistrationForm.resx">
+    <EmbeddedResource Include="FormsUser\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsUser\UserDashboard.resx">
