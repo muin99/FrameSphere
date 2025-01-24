@@ -17,7 +17,7 @@ namespace FrameSphere
         static DB()
         {
             Connection = new SqlConnection(ConnectionString);
-        }
+        } 
         public static SqlConnection Connect()
         {
             return new SqlConnection(ConnectionString);//a

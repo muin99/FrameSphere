@@ -17,7 +17,7 @@ namespace FrameSphere
 {
     public partial class CreateArts : Form
     {
-
+        private string imagePath;
         public CreateArts()
         {
             InitializeComponent();
@@ -102,6 +102,107 @@ namespace FrameSphere
                 applyForArtist.Show();
             }
         }
+        private List<byte[]> selectedPhotos = new List<byte[]>();
 
+        [Obsolete]
+        private void Submit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection connection = DB.Connect())
+                {
+                    connection.Open();
+                    string UserID = FSystem.loggedInUser.UserName;
+                    string artTitle = arttitle.Text;
+                    string description = Description.Text;
+                    string SellingOption = free.Checked ? "Free" : "Paid";
+                    decimal? artprice = paid.Checked && decimal.TryParse(artPrice.Text, out decimal price) ? price : (decimal?)null;
+
+                    if (string.IsNullOrEmpty(imagePath))
+                    {
+                        MessageBox.Show("Please select an Art Photo.");
+                        return;
+                    }
+
+                    byte[] imageBytes = File.ReadAllBytes(imagePath);
+
+                    // Insert into Art table
+                    string artQuery = @"INSERT INTO Art (ArtTitle, ArtDescription, SellingOption, Price)
+                                VALUES (@ArtTitle, @ArtDescription, @SellingOption, @Price);
+                                SELECT SCOPE_IDENTITY();"; // Get the inserted ArtId
+
+                    int artId;
+                    using (SqlCommand command = new SqlCommand(artQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@ArtTitle", artTitle);
+                        command.Parameters.AddWithValue("@ArtDescription", description);
+                        command.Parameters.AddWithValue("@SellingOption", SellingOption);
+                        command.Parameters.AddWithValue("@Price", (object)artprice ?? DBNull.Value);
+
+                        artId = Convert.ToInt32(command.ExecuteScalar()); // Get the newly inserted ArtId
+                    }
+
+                    // Insert into ArtArtist table
+                    string artArtistQuery = @"INSERT INTO ArtArtist (ArtId, UserName)
+                                      VALUES (@ArtId, @UserName)";
+                    using (SqlCommand command = new SqlCommand(artArtistQuery, connection))
+                    {
+                        command.Parameters.AddWithValue("@ArtId", artId);
+                        command.Parameters.AddWithValue("@UserName", UserID);
+                        command.ExecuteNonQuery();
+                    }
+
+                    // Insert into ArtPhotos table (assuming multiple photos)
+                    string artPhotosQuery = @"INSERT INTO ArtPhotos (ArtId, Photo)
+                          VALUES (@ArtId, @Photo)";
+                    foreach (var photo in selectedPhotos) // Loop through selected photos
+                    {
+                        using (SqlCommand command = new SqlCommand(artPhotosQuery, connection))
+                        {
+                            command.Parameters.AddWithValue("@ArtId", artId); // Add ArtId parameter
+                            command.Parameters.Add("@Photo", SqlDbType.VarBinary).Value = photo; // Add Photo parameter with explicit type
+                            command.ExecuteNonQuery();
+                        }
+                    }
+
+                    MessageBox.Show("Art created successfully!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void photobtn_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Multiselect = true; // Enable multi-selection
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    selectedPhotos.Clear(); // Clear any previously selected photos
+                    imagePath = openFileDialog.FileName;
+                    photobox.Text = string.Join(";", openFileDialog.FileNames); // Display all selected paths
+
+                    foreach (string filePath in openFileDialog.FileNames)
+                    {
+                        byte[] imageBytes = File.ReadAllBytes(filePath); // Read file as byte array
+                        selectedPhotos.Add(imageBytes); // Add to the list
+
+                        using (MemoryStream ms = new MemoryStream(imageBytes))
+                        {
+                            // Optionally display each image in the PictureBox (replace as needed)
+                            //pictureBox.Image = System.Drawing.Image.FromStream(ms);
+                        }
+                    }
+
+                    MessageBox.Show($"{selectedPhotos.Count} photos selected successfully!");
+                }
+            }
+
+        }
     }
 }
