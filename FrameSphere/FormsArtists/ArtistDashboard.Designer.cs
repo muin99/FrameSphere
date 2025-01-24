@@ -39,6 +39,7 @@
             this.CreateArt.TabIndex = 0;
             this.CreateArt.Text = "CreateArt";
             this.CreateArt.UseVisualStyleBackColor = true;
+            this.CreateArt.Click += new System.EventHandler(this.CreateArt_Click);
             // 
             // ArtistDashboard
             // 

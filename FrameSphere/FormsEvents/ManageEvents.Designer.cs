@@ -263,13 +263,13 @@ namespace FrameSphere
             this.panel1.Size = new System.Drawing.Size(796, 577);
             this.panel1.TabIndex = 1;
             // 
-            // manageevent
+            // ManageEvents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 574);
+            this.ClientSize = new System.Drawing.Size(1145, 635);
             this.Controls.Add(this.panel1);
-            this.Name = "manageevent";
+            this.Name = "ManageEvents";
             this.Text = "manageevent";
             this.Load += new System.EventHandler(this.manageevent_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

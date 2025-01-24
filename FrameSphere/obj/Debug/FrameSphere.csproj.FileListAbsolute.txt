@@ -21,3 +21,4 @@ C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.ApplyForA
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.ArtistApplications.resources
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.EventsAdminView.resources
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.UsersAdminView.resources
+C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.CreateArts.resources

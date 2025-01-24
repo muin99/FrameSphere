@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FrameSphere.EntityClasses
@@ -34,7 +31,7 @@ namespace FrameSphere.EntityClasses
         private bool _isArtist;
         public bool isArtist {
             get {
-                string query = "SELECT COUNT(*) FROM artists WHERE username = @UserName and status ='Approved'";
+                string query = "SELECT COUNT(*) FROM artists WHERE username = @UserName AND status = 'Approved'";
 
                 using (SqlConnection connection = DB.Connect())
                 {
@@ -45,6 +42,7 @@ namespace FrameSphere.EntityClasses
                         {
                             cmd.Parameters.AddWithValue("@UserName", this.UserName);
                             int count = (int)cmd.ExecuteScalar();
+                            FSystem.loggedInUser = new Artist(this.UserName);
                             return count > 0;
                         }
                     }
@@ -98,50 +96,54 @@ namespace FrameSphere.EntityClasses
                 MessageBox.Show("You are already an artist");
                 return;
             }
-            DB.Connection.Open();
-            string qr = $"select count(*) from artists where username = '{this.UserName}'";
-            SqlCommand c = new SqlCommand(qr, DB.Connection);
-            if ((int)c.ExecuteScalar() > 0)
+
+            string queryCheck = "SELECT COUNT(*) FROM artists WHERE username = @UserName";
+            string queryInsert = "INSERT INTO artists (username, status) VALUES (@UserName, 'Pending')";
+
+            using (SqlConnection connection = DB.Connect())
             {
-                MessageBox.Show("You have already applied wait");
-                return;
+                try
+                {
+                    connection.Open();
+
+                    using (SqlCommand cmdCheck = new SqlCommand(queryCheck, connection))
+                    {
+                        cmdCheck.Parameters.AddWithValue("@UserName", this.UserName);
+                        if ((int)cmdCheck.ExecuteScalar() > 0)
+                        {
+                            MessageBox.Show("You have already applied. Please wait for approval.");
+                            return;
+                        }
+                    }
+
+                    using (SqlCommand cmdInsert = new SqlCommand(queryInsert, connection))
+                    {
+                        cmdInsert.Parameters.AddWithValue("@UserName", this.UserName);
+                        if (cmdInsert.ExecuteNonQuery() > 0)
+                        {
+                            MessageBox.Show("Application successful!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Something went wrong. Please try again.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}");
+                }
             }
-            
-            string q = $"insert into artists (username, status) values('{this.UserName}', 'Pending')";
-
-            if (DB.Connection.State != System.Data.ConnectionState.Open)
-            {
-                DB.Connection.Open();
-            }
-
-            SqlCommand cmd = new SqlCommand(q, DB.Connection);
-
-            if ((int)cmd.ExecuteNonQuery() > 0)
-            {
-                MessageBox.Show("Application successfull!");
-                DB.Connection.Close();
-            }
-            else
-            {
-                MessageBox.Show("Either you have already applied or something went wrong.!");
-                DB.Connection.Close();
-            }
-
-
-
         }
 
         public void loadUser()
         {
-            string userName = this.UserName;
-
-            string query = @"
+            string query = $@"
                 SELECT 
-                    au.UserName,
                     au.FirstName, 
                     au.LastName, 
                     au.Email, 
-                    au.Username, 
+                    au.UserName, 
                     au.Status,
                     uc.Phone, 
                     uc.Address, 
@@ -155,8 +157,9 @@ namespace FrameSphere.EntityClasses
                 INNER JOIN UserContact uc ON uc.UserName = au.UserName
                 INNER JOIN UserSocials us ON uc.UserName = us.UserName
                 WHERE 
-                    au.UserName = @UserName
+                    au.UserName = '{this.UserName}'
             ";
+      
 
             using (SqlConnection connection = DB.Connect())
             {
@@ -165,7 +168,7 @@ namespace FrameSphere.EntityClasses
                     connection.Open();
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@UserName", userName);
+                      
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -174,11 +177,10 @@ namespace FrameSphere.EntityClasses
                                 FirstName = reader["FirstName"].ToString();
                                 LastName = reader["LastName"].ToString();
                                 Email = reader["Email"].ToString();
-                                this.UserName = reader["UserName"].ToString();
+                                UserName = reader["UserName"].ToString();
                                 Status = reader["Status"].ToString();
                                 Phone = reader["Phone"].ToString();
                                 Address = reader["Address"].ToString();
-                                // Corrected ProfilePic to read byte[] instead of string
                                 ProfilePic = reader["ProfilePic"] as byte[];
                                 Facebook = reader["Facebook"].ToString();
                                 Instagram = reader["Instagram"].ToString();
@@ -191,19 +193,10 @@ namespace FrameSphere.EntityClasses
                             }
                         }
                     }
-
-                    //string adminQuery = "SELECT COUNT(*) FROM adminlist WHERE UserName = @UserName";
-                    //using (SqlCommand adminCommand = new SqlCommand(adminQuery, connection))
-                    //{
-                    //    adminCommand.Parameters.AddWithValue("@UserName", this.UserName);
-                    //    int adminCount = (int)adminCommand.ExecuteScalar();
-
-                    //    isAdmin = adminCount > 0;
-                    //}
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"An error occurred while fetching user data: {ex.Message}");
+                    throw new Exception($"An error occurred while loading user data: {ex.Message}");
                 }
             }
         }
@@ -235,6 +228,10 @@ namespace FrameSphere.EntityClasses
         }
 
         public User() { }
+        public User(string UserName) {
+            this.UserName = UserName;
+            this.loadUser();
+        }
 
         public User(string userName, string password)
         {
@@ -242,11 +239,10 @@ namespace FrameSphere.EntityClasses
 
             string query = @"
                 SELECT 
-                    au.UserName,
                     au.FirstName, 
                     au.LastName, 
                     au.Email, 
-                    au.Username, 
+                    au.UserName, 
                     au.Status,
                     uc.Phone, 
                     uc.Address, 
@@ -282,11 +278,10 @@ namespace FrameSphere.EntityClasses
                                 FirstName = reader["FirstName"].ToString();
                                 LastName = reader["LastName"].ToString();
                                 Email = reader["Email"].ToString();
-                                this.UserName = reader["UserName"].ToString();
+                                UserName = reader["UserName"].ToString();
                                 Status = reader["Status"].ToString();
                                 Phone = reader["Phone"].ToString();
                                 Address = reader["Address"].ToString();
-                                // Corrected ProfilePic to read byte[] instead of string
                                 ProfilePic = reader["ProfilePic"] as byte[];
                                 Facebook = reader["Facebook"].ToString();
                                 Instagram = reader["Instagram"].ToString();
@@ -295,7 +290,7 @@ namespace FrameSphere.EntityClasses
                             }
                             else
                             {
-                                throw new Exception("User not found.");
+                                throw new Exception("Invalid credentials.");
                             }
                         }
                     }
@@ -304,14 +299,12 @@ namespace FrameSphere.EntityClasses
                     using (SqlCommand adminCommand = new SqlCommand(adminQuery, connection))
                     {
                         adminCommand.Parameters.AddWithValue("@UserName", this.UserName);
-                        int adminCount = (int)adminCommand.ExecuteScalar();
-
-                        isAdmin = adminCount > 0;
+                        isAdmin = (int)adminCommand.ExecuteScalar() > 0;
                     }
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"An error occurred while fetching user data: {ex.Message}");
+                    throw new Exception($"An error occurred during authentication: {ex.Message}");
                 }
             }
         }

@@ -18,5 +18,11 @@ namespace FrameSphere
             InitializeComponent();
         }
 
+        private void CreateArt_Click(object sender, EventArgs e)
+        {
+            CreateArts createArts = new CreateArts();
+            this.Hide();
+            createArts.Show();
+        }
     }
 }

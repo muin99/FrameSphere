@@ -67,18 +67,21 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.midpanel = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.posterbtn = new System.Windows.Forms.Button();
-            this.poster = new System.Windows.Forms.TextBox();
-            this.ticketprice = new System.Windows.Forms.TextBox();
-            this.Description = new System.Windows.Forms.TextBox();
-            this.Title = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.remove = new System.Windows.Forms.Button();
+            this.add = new System.Windows.Forms.Button();
             this.paid = new System.Windows.Forms.RadioButton();
             this.free = new System.Windows.Forms.RadioButton();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.photobtn = new System.Windows.Forms.Button();
+            this.photobox = new System.Windows.Forms.TextBox();
+            this.artPrice = new System.Windows.Forms.TextBox();
+            this.Description = new System.Windows.Forms.TextBox();
+            this.arttitle = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Submit = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.profilepanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
@@ -104,7 +107,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(309, 571);
             this.panel4.TabIndex = 3;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // profilepanel
             // 
@@ -241,7 +243,6 @@
             this.name.TabIndex = 1;
             this.name.Text = "Md. Muinul Islam";
             this.name.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.name.Click += new System.EventHandler(this.name_Click);
             // 
             // profilepic
             // 
@@ -254,7 +255,6 @@
             this.profilepic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.profilepic.TabIndex = 0;
             this.profilepic.TabStop = false;
-            this.profilepic.Click += new System.EventHandler(this.profilepic_Click);
             // 
             // panel2
             // 
@@ -268,7 +268,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1256, 94);
             this.panel2.TabIndex = 1;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // Logout
             // 
@@ -321,7 +320,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(244, 571);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // artistboard
             // 
@@ -356,7 +354,6 @@
             this.button13.TabIndex = 14;
             this.button13.Text = "My Orders";
             this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // button12
             // 
@@ -370,7 +367,6 @@
             this.button12.TabIndex = 13;
             this.button12.Text = "My Entries";
             this.button12.UseVisualStyleBackColor = true;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button11
             // 
@@ -384,7 +380,6 @@
             this.button11.TabIndex = 12;
             this.button11.Text = "Manage Events";
             this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button10
             // 
@@ -413,7 +408,6 @@
             this.button9.TabIndex = 10;
             this.button9.Text = "Your Events";
             this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // panel5
             // 
@@ -423,7 +417,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(244, 35);
             this.panel5.TabIndex = 9;
-            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // button8
             // 
@@ -437,7 +430,6 @@
             this.button8.TabIndex = 8;
             this.button8.Text = "Upcoming Events";
             this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
@@ -451,7 +443,6 @@
             this.button7.TabIndex = 7;
             this.button7.Text = "Running Events";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button6
             // 
@@ -465,7 +456,6 @@
             this.button6.TabIndex = 6;
             this.button6.Text = "Previous Events";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 
@@ -480,7 +470,6 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "All Events";
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // panel3
             // 
@@ -490,7 +479,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(244, 35);
             this.panel3.TabIndex = 4;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // button4
             // 
@@ -504,7 +492,6 @@
             this.button4.TabIndex = 3;
             this.button4.Text = "My Profile";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -518,7 +505,6 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "All Artists";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -532,7 +518,6 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "All Users";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -547,7 +532,6 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Users";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -569,22 +553,24 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1264, 681);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // midpanel
             // 
             this.midpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.midpanel.Controls.Add(this.Submit);
+            this.midpanel.Controls.Add(this.remove);
+            this.midpanel.Controls.Add(this.add);
             this.midpanel.Controls.Add(this.paid);
             this.midpanel.Controls.Add(this.free);
             this.midpanel.Controls.Add(this.label10);
             this.midpanel.Controls.Add(this.label9);
             this.midpanel.Controls.Add(this.label6);
             this.midpanel.Controls.Add(this.label7);
-            this.midpanel.Controls.Add(this.posterbtn);
-            this.midpanel.Controls.Add(this.poster);
-            this.midpanel.Controls.Add(this.ticketprice);
+            this.midpanel.Controls.Add(this.photobtn);
+            this.midpanel.Controls.Add(this.photobox);
+            this.midpanel.Controls.Add(this.artPrice);
             this.midpanel.Controls.Add(this.Description);
-            this.midpanel.Controls.Add(this.Title);
+            this.midpanel.Controls.Add(this.arttitle);
             this.midpanel.Controls.Add(this.label5);
             this.midpanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.midpanel.Location = new System.Drawing.Point(255, 105);
@@ -592,106 +578,29 @@
             this.midpanel.Size = new System.Drawing.Size(689, 573);
             this.midpanel.TabIndex = 4;
             // 
-            // label5
+            // remove
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(295, 21);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 24);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Create an Art";
+            this.remove.Location = new System.Drawing.Point(570, 223);
+            this.remove.Name = "remove";
+            this.remove.Size = new System.Drawing.Size(66, 21);
+            this.remove.TabIndex = 36;
+            this.remove.Text = "Remove";
+            this.remove.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // add
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(142, 512);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 21);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "Price";
-            this.label6.Visible = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(97, 223);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(38, 21);
-            this.label7.TabIndex = 27;
-            this.label7.Text = "Arts";
-            // 
-            // posterbtn
-            // 
-            this.posterbtn.BackColor = System.Drawing.Color.DarkGreen;
-            this.posterbtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.posterbtn.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.posterbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.posterbtn.Location = new System.Drawing.Point(497, 223);
-            this.posterbtn.Name = "posterbtn";
-            this.posterbtn.Size = new System.Drawing.Size(67, 20);
-            this.posterbtn.TabIndex = 22;
-            this.posterbtn.Text = "Browse";
-            this.posterbtn.UseVisualStyleBackColor = false;
-            // 
-            // poster
-            // 
-            this.poster.Location = new System.Drawing.Point(202, 223);
-            this.poster.Name = "poster";
-            this.poster.ReadOnly = true;
-            this.poster.Size = new System.Drawing.Size(362, 20);
-            this.poster.TabIndex = 26;
-            // 
-            // ticketprice
-            // 
-            this.ticketprice.Location = new System.Drawing.Point(202, 522);
-            this.ticketprice.Name = "ticketprice";
-            this.ticketprice.Size = new System.Drawing.Size(362, 20);
-            this.ticketprice.TabIndex = 25;
-            this.ticketprice.Visible = false;
-            // 
-            // Description
-            // 
-            this.Description.Location = new System.Drawing.Point(202, 132);
-            this.Description.Multiline = true;
-            this.Description.Name = "Description";
-            this.Description.Size = new System.Drawing.Size(362, 77);
-            this.Description.TabIndex = 24;
-            // 
-            // Title
-            // 
-            this.Title.Location = new System.Drawing.Point(202, 97);
-            this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(362, 20);
-            this.Title.TabIndex = 23;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(97, 96);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(64, 21);
-            this.label9.TabIndex = 30;
-            this.label9.Text = "Art Title";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(97, 132);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 21);
-            this.label10.TabIndex = 31;
-            this.label10.Text = "Description";
+            this.add.Location = new System.Drawing.Point(478, 251);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(86, 23);
+            this.add.TabIndex = 35;
+            this.add.Text = "Add";
+            this.add.UseVisualStyleBackColor = true;
             // 
             // paid
             // 
             this.paid.AutoSize = true;
             this.paid.BackColor = System.Drawing.Color.White;
-            this.paid.Location = new System.Drawing.Point(416, 499);
+            this.paid.Location = new System.Drawing.Point(416, 429);
             this.paid.Name = "paid";
             this.paid.Size = new System.Drawing.Size(148, 17);
             this.paid.TabIndex = 34;
@@ -703,13 +612,116 @@
             // 
             this.free.AutoSize = true;
             this.free.BackColor = System.Drawing.Color.White;
-            this.free.Location = new System.Drawing.Point(202, 499);
+            this.free.Location = new System.Drawing.Point(202, 429);
             this.free.Name = "free";
             this.free.Size = new System.Drawing.Size(148, 17);
             this.free.TabIndex = 33;
             this.free.TabStop = true;
             this.free.Text = "              Free                    ";
             this.free.UseVisualStyleBackColor = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(97, 132);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(89, 21);
+            this.label10.TabIndex = 31;
+            this.label10.Text = "Description";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(97, 96);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(64, 21);
+            this.label9.TabIndex = 30;
+            this.label9.Text = "Art Title";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(152, 440);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 21);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "Price";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(97, 223);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(38, 21);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Arts";
+            // 
+            // photobtn
+            // 
+            this.photobtn.BackColor = System.Drawing.Color.DarkGreen;
+            this.photobtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.photobtn.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.photobtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.photobtn.Location = new System.Drawing.Point(497, 223);
+            this.photobtn.Name = "photobtn";
+            this.photobtn.Size = new System.Drawing.Size(67, 20);
+            this.photobtn.TabIndex = 22;
+            this.photobtn.Text = "Browse";
+            this.photobtn.UseVisualStyleBackColor = false;
+            // 
+            // photobox
+            // 
+            this.photobox.Location = new System.Drawing.Point(202, 223);
+            this.photobox.Name = "photobox";
+            this.photobox.ReadOnly = true;
+            this.photobox.Size = new System.Drawing.Size(362, 20);
+            this.photobox.TabIndex = 26;
+            // 
+            // artPrice
+            // 
+            this.artPrice.Location = new System.Drawing.Point(202, 452);
+            this.artPrice.Name = "artPrice";
+            this.artPrice.Size = new System.Drawing.Size(362, 20);
+            this.artPrice.TabIndex = 25;
+            this.artPrice.Visible = false;
+            // 
+            // Description
+            // 
+            this.Description.Location = new System.Drawing.Point(202, 132);
+            this.Description.Multiline = true;
+            this.Description.Name = "Description";
+            this.Description.Size = new System.Drawing.Size(362, 77);
+            this.Description.TabIndex = 24;
+            // 
+            // arttitle
+            // 
+            this.arttitle.Location = new System.Drawing.Point(202, 97);
+            this.arttitle.Name = "arttitle";
+            this.arttitle.Size = new System.Drawing.Size(362, 20);
+            this.arttitle.TabIndex = 23;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(295, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(119, 24);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Create an Art";
+            // 
+            // Submit
+            // 
+            this.Submit.Location = new System.Drawing.Point(488, 522);
+            this.Submit.Name = "Submit";
+            this.Submit.Size = new System.Drawing.Size(75, 23);
+            this.Submit.TabIndex = 37;
+            this.Submit.Text = "Submit";
+            this.Submit.UseVisualStyleBackColor = true;
             // 
             // CreateArts
             // 
@@ -721,7 +733,6 @@
             this.Name = "CreateArts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UserDashBoard";
-            this.Load += new System.EventHandler(this.UserDashBoard_Load);
             this.panel4.ResumeLayout(false);
             this.profilepanel.ResumeLayout(false);
             this.profilepanel.PerformLayout();
@@ -780,12 +791,15 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button posterbtn;
-        private System.Windows.Forms.TextBox poster;
-        private System.Windows.Forms.TextBox ticketprice;
+        private System.Windows.Forms.Button photobtn;
+        private System.Windows.Forms.TextBox photobox;
+        private System.Windows.Forms.TextBox artPrice;
         private System.Windows.Forms.TextBox Description;
-        private System.Windows.Forms.TextBox Title;
+        private System.Windows.Forms.TextBox arttitle;
         private System.Windows.Forms.RadioButton paid;
         private System.Windows.Forms.RadioButton free;
+        private System.Windows.Forms.Button add;
+        private System.Windows.Forms.Button remove;
+        private System.Windows.Forms.Button Submit;
     }
 }
