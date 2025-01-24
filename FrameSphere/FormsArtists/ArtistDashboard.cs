@@ -1,0 +1,81 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace FrameSphere
+{
+    public partial class ArtistDashboard : Form
+    {
+        public ArtistDashboard()
+        {
+            InitializeComponent();
+        }
+
+        private void CreateArt_Click(object sender, EventArgs e)
+        {
+            CreateArts createArts = new CreateArts();
+            this.Hide();
+            createArts.Show();
+        }
+
+        private void ArtistDashboard_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void artistboard_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void returnDashBoard_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserDashBoard user = new UserDashBoard();
+            user.Show();   
+        }
+
+        private void ArtistDash_button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You are currently viewing Artist Dashboard");
+        }
+
+        private void adminDash_button_Click(object sender, EventArgs e)
+        {
+            if (FSystem.loggedInUser.isAdmin)
+            {
+                this.Hide();
+                Admin_dashboard ad = new Admin_dashboard();
+                ad.Show();
+            }
+        }
+
+        private void editProfile_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Edit_Profile ep = new Edit_Profile();
+            ep.Show();
+        }
+    }
+}

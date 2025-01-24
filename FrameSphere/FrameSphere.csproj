@@ -47,28 +47,72 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin_dashboard.cs">
+    <Compile Include="FormsAdmin\Admin_dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin_dashboard.Designer.cs">
+    <Compile Include="FormsAdmin\Admin_dashboard.Designer.cs">
       <DependentUpon>Admin_dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateEvent.cs">
+    <Compile Include="FormsArtists\ApplyForArtist.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateEvent.Designer.cs">
+    <Compile Include="FormsArtists\ApplyForArtist.Designer.cs">
+      <DependentUpon>ApplyForArtist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsAdmin\ArtistApplications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsAdmin\ArtistApplications.Designer.cs">
+      <DependentUpon>ArtistApplications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsArtists\ArtistDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsArtists\ArtistDashboard.Designer.cs">
+      <DependentUpon>ArtistDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsArtists\CreateArts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsArtists\CreateArts.Designer.cs">
+      <DependentUpon>CreateArts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsEvents\CreateEvent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsEvents\CreateEvent.Designer.cs">
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnect.cs" />
-    <Compile Include="Edit_Profile.cs" />
-    <Compile Include="Edit_Profile.Designer.cs">
-      <DependentUpon>Edit_Profile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Event_page.cs">
+    <Compile Include="FormsUser\Edit_Profile.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Event_page.Designer.cs">
+    <Compile Include="FormsUser\Edit_Profile.Designer.cs">
+      <DependentUpon>Edit_Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsAdmin\EventsAdminView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsAdmin\EventsAdminView.Designer.cs">
+      <DependentUpon>EventsAdminView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsEvents\Event_page.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsEvents\Event_page.Designer.cs">
       <DependentUpon>Event_page.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsUser\ForgetPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsUser\ForgetPass.Designer.cs">
+      <DependentUpon>ForgetPass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsEvents\ArtDisplayForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsEvents\ArtDisplayForm.Designer.cs">
+      <DependentUpon>ArtDisplayForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FSystem.cs" />
     <!-- Adding EntityClasses files -->
@@ -77,40 +121,73 @@
     <Compile Include="EntityClasses\Event.cs" />
     <Compile Include="EntityClasses\Organizer.cs" />
     <Compile Include="EntityClasses\User.cs" />
-    <Compile Include="LoginForm.cs">
+    <Compile Include="FormsUser\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="FormsUser\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsEvents\ManageEvents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsEvents\ManageEvents.Designer.cs">
+      <DependentUpon>ManageEvents.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistrationForm.cs">
+    <Compile Include="FormsUser\RegistrationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegistrationForm.Designer.cs">
+    <Compile Include="FormsUser\RegistrationForm.Designer.cs">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserDashboard.cs">
+    <Compile Include="FormsUser\UserDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserDashboard.Designer.cs">
+    <Compile Include="FormsUser\UserDashboard.Designer.cs">
       <DependentUpon>UserDashboard.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Admin_dashboard.resx">
+    <Compile Include="FormsAdmin\UsersAdminView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsAdmin\UsersAdminView.Designer.cs">
+      <DependentUpon>UsersAdminView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormsAdmin\Admin_dashboard.resx">
       <DependentUpon>Admin_dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateEvent.resx">
+    <EmbeddedResource Include="FormsArtists\ApplyForArtist.resx">
+      <DependentUpon>ApplyForArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsArtists\CreateArts.resx">
+      <DependentUpon>CreateArts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsEvents\ArtDisplayForm.resx">
+      <DependentUpon>ArtDisplayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsAdmin\ArtistApplications.resx">
+      <DependentUpon>ArtistApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsArtists\ArtistDashboard.resx">
+      <DependentUpon>ArtistDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsEvents\CreateEvent.resx">
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Edit_Profile.resx">
+    <EmbeddedResource Include="FormsUser\Edit_Profile.resx">
       <DependentUpon>Edit_Profile.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Event_page.resx">
+    <EmbeddedResource Include="FormsAdmin\EventsAdminView.resx">
+      <DependentUpon>EventsAdminView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsEvents\Event_page.resx">
       <DependentUpon>Event_page.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="FormsUser\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsEvents\ManageEvents.resx">
+      <DependentUpon>ManageEvents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -122,11 +199,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RegistrationForm.resx">
+    <EmbeddedResource Include="FormsUser\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserDashboard.resx">
+    <EmbeddedResource Include="FormsUser\UserDashboard.resx">
       <DependentUpon>UserDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsAdmin\UsersAdminView.resx">
+      <DependentUpon>UsersAdminView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -145,6 +225,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SmallerNetworkConnectionBackgroundtest-ezgif.com-video-to-gif-converter.gif" />
+    <None Include="Resources\cross.png" />
+    <None Include="Resources\10-3--thumb.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

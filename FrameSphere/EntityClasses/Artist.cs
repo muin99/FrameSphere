@@ -12,6 +12,10 @@ namespace FrameSphere.EntityClasses
         public int NumberOfArts { get; private set; } = 0;
         public List<Art> HisArts = new List<Art>();
 
+        public Artist(string UserName) : base(UserName)
+        {
+
+        }
         public void AddArt(Art art)
         {
             HisArts.Add(art);
