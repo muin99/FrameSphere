@@ -20,7 +20,7 @@ namespace FrameSphere
         }
         public static SqlConnection Connect()
         {
-            return new SqlConnection(ConnectionString);
+            return new SqlConnection(ConnectionString);//a
         }
     }
 }
