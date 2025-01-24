@@ -15,7 +15,7 @@ namespace FrameSphere
     public partial class Edit_Profile : Form
     {
         byte[] imageBytes = null;
-        public Edit_Profile()
+        public Edit_Profile(string username)
         {
             InitializeComponent();
 
@@ -47,10 +47,10 @@ namespace FrameSphere
             userDashBoard.Show();
         }
 
-        public Edit_Profile(string username)
-        {
-            InitializeComponent();
-        }
+        //public Edit_Profile(string username)
+        //{
+        //    InitializeComponent();
+        //}
 
         private void button2_Click(object sender, EventArgs e)
         {
