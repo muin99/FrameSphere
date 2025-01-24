@@ -15,11 +15,11 @@ namespace FrameSphere
     public partial class Event_page : Form
     {
 
-        public Event_page(string eventId)
+        public Event_page(string Title)
         {
             InitializeComponent();
 
-            Event e = new Event(eventId);
+            Event e = new Event(Title);
 
             // Format the title and description
             title.Text = e.EventTitle;

@@ -17,7 +17,8 @@ namespace FrameSphere
 {
     public partial class UserDashBoard : Form
     {
-
+        string Title;
+        
         public UserDashBoard()
         {
             InitializeComponent();
@@ -101,7 +102,7 @@ namespace FrameSphere
                 }
             }
         }
-
+        
         private void CreateEventBox(string title, string description, string time, Image eventImage, string eventId)
         {
             int panelWidth = eventspanel.Width - 40;
@@ -146,7 +147,7 @@ namespace FrameSphere
                 Location = new Point(120, 90),
                 AutoSize = true
             };
-
+            Title = title;
             Button enterButton = new Button {
                 Text = "Enter",
                 BackColor = Color.Green,
@@ -154,7 +155,8 @@ namespace FrameSphere
                 Size = new Size(80, 30),
                 Location = new Point(panelWidth - 90, 40),
                 FlatStyle = FlatStyle.Flat,
-                Tag = eventId // Store the event ID in the button's Tag property
+                
+                Tag = title // Store the event ID in the button's Tag property
             };
             enterButton.Click += EnterButton_Click; // Attach the click event handler
 
@@ -175,7 +177,7 @@ namespace FrameSphere
             if (button != null && button.Tag != null)
             {
                 string eventId = button.Tag.ToString();
-                Event_page eventPage = new Event_page(eventId); // Pass the event ID to the EventPage
+                Event_page eventPage = new Event_page(Title); // Pass the event ID to the EventPage
                 this.Hide();
                 eventPage.Show(); // Show the EventPage
             }

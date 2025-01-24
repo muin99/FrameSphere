@@ -19,9 +19,9 @@ namespace FrameSphere.EntityClasses
         public List<Artist> Artists { get; set; } = new List<Artist>();
         public List<User> Organizers { get; set; } = new List<User>();
 
-        public Event(string eventID)
+        public Event(string title)
         {
-            this.EventID = eventID;
+            this.EventTitle = title;
 
             // Query to fetch event data from the Events table
             string query = $@"SELECT 
@@ -36,7 +36,7 @@ namespace FrameSphere.EntityClasses
         FROM 
             Events
         WHERE 
-            EventID = '{eventID}'";
+            Title = '{title}'";
 
             using (SqlConnection connection = DB.Connect())
             {
@@ -67,7 +67,7 @@ namespace FrameSphere.EntityClasses
                                     Poster = null; // Or set to some default byte array if needed
                                 }
 
-                                TicketPrice = Convert.ToDouble(reader["TicketPrice"]);
+                                TicketPrice = reader["TicketPrice"] != DBNull.Value ? Convert.ToDouble(reader["TicketPrice"]) : 0.0;
                             }
                             else
                             {
