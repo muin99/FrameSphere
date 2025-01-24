@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+using System.Windows.Forms.VisualStyles;
 
 namespace FrameSphere
 {
@@ -76,6 +78,22 @@ namespace FrameSphere
             this.Hide();
             Edit_Profile ep = new Edit_Profile();
             ep.Show();
+        }
+
+        private void facebook_pic_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fb_URL = FSystem.loggedInUser.Facebook;
+                Process.Start(new ProcessStartInfo {
+                    FileName = fb_URL,
+                    UseShellExecute = true
+                });
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"An error occurred:{ex.Message}");
+            }  
         }
     }
 }
