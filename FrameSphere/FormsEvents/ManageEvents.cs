@@ -38,21 +38,21 @@ namespace FrameSphere
                     {
                         if (reader.Read())
                         {
-                            TitleLabel.Text = reader["Title"].ToString();
-                            descriptionlabel.Text = reader["Description"].ToString();
+                            eventTitle_field.Text = reader["Title"].ToString();
+                            eventDesc_field.Text = reader["Description"].ToString();
                             DateTime startDate = Convert.ToDateTime(reader["StartDate"]);
                             DateTime endDate = Convert.ToDateTime(reader["EndDate"]);
-                            stimelabel.Text = startDate.ToString();
-                            etimelabel.Text = endDate.ToString();
-                            pricelabel.Text = reader["TicketPrice"].ToString();
-                            organizerdeslabel.Text = reader["OrganizerDetails"].ToString();
+                            startdate.Text = startDate.ToString();
+                            enddate.Text = endDate.ToString();
+                            ticketprice_field.Text = reader["TicketPrice"].ToString();
+                            OrgDetails_field.Text = reader["OrganizerDetails"].ToString();
 
                             byte[] eventPosterBytes = reader["EventPoster"] != DBNull.Value ? (byte[])reader["EventPoster"] : null;
                             Image eventPosterImage = eventPosterBytes != null ? Image.FromStream(new MemoryStream(eventPosterBytes)) : Properties.Resources._10_3__thumb;
 
                             if (eventPosterImage != null)
                             {
-                                pictureBox1.Image = eventPosterImage;
+                                posterImage.Image = eventPosterImage;
                             }
 
                         }
@@ -151,6 +151,36 @@ namespace FrameSphere
             Admin_dashboard a = new Admin_dashboard();
             a.Show();
             this.Hide();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void body_panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CurrentPWField_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

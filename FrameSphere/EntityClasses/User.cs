@@ -20,7 +20,7 @@ namespace FrameSphere.EntityClasses
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Status { get; set; }
-        public byte[] ProfilePic { get; set; }
+        public string ProfilePic { get; set; }
         public string Facebook { get; set; }
         public string Instagram { get; set; }
         public string Website { get; set; }
@@ -181,7 +181,7 @@ namespace FrameSphere.EntityClasses
                                 Status = reader["Status"].ToString();
                                 Phone = reader["Phone"].ToString();
                                 Address = reader["Address"].ToString();
-                                ProfilePic = reader["ProfilePic"] as byte[];
+                                ProfilePic = reader["ProfilePic"].ToString();
                                 Facebook = reader["Facebook"].ToString();
                                 Instagram = reader["Instagram"].ToString();
                                 Pinterest = reader["Pinterest"].ToString();
@@ -282,7 +282,7 @@ namespace FrameSphere.EntityClasses
                                 Status = reader["Status"].ToString();
                                 Phone = reader["Phone"].ToString();
                                 Address = reader["Address"].ToString();
-                                ProfilePic = reader["ProfilePic"] as byte[];
+                                ProfilePic = reader["ProfilePic"].ToString();
                                 Facebook = reader["Facebook"].ToString();
                                 Instagram = reader["Instagram"].ToString();
                                 Pinterest = reader["Pinterest"].ToString();

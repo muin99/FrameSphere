@@ -120,7 +120,6 @@ namespace FrameSphere
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1240, 574);
             this.panel2.TabIndex = 1;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // pictureBox
             // 
@@ -225,7 +224,7 @@ namespace FrameSphere
             this.Create.TabIndex = 1;
             this.Create.Text = "Create Event";
             this.Create.UseVisualStyleBackColor = false;
-            this.Create.Click += new System.EventHandler(this.button5_Click);
+            this.Create.Click += new System.EventHandler(this.CreateEventBTN);
             // 
             // paid
             // 
@@ -251,7 +250,7 @@ namespace FrameSphere
             this.free.TabStop = true;
             this.free.Text = "              Free                    ";
             this.free.UseVisualStyleBackColor = false;
-            this.free.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.free.CheckedChanged += new System.EventHandler(this.free_CheckedChanged_1);
             // 
             // posterbtn
             // 
@@ -282,7 +281,6 @@ namespace FrameSphere
             this.startdate.Name = "startdate";
             this.startdate.Size = new System.Drawing.Size(362, 20);
             this.startdate.TabIndex = 6;
-            this.startdate.ValueChanged += new System.EventHandler(this.startdate_ValueChanged);
             // 
             // poster
             // 
@@ -291,7 +289,6 @@ namespace FrameSphere
             this.poster.ReadOnly = true;
             this.poster.Size = new System.Drawing.Size(362, 20);
             this.poster.TabIndex = 5;
-            this.poster.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // ticketprice
             // 
@@ -308,7 +305,6 @@ namespace FrameSphere
             this.OrgDetails.Name = "OrgDetails";
             this.OrgDetails.Size = new System.Drawing.Size(362, 77);
             this.OrgDetails.TabIndex = 3;
-            this.OrgDetails.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // Description
             // 
@@ -328,7 +324,6 @@ namespace FrameSphere
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // CreateEvent
             // 
@@ -341,7 +336,6 @@ namespace FrameSphere
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateEvent";
-            this.Load += new System.EventHandler(this.CreateEvent_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

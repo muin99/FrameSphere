@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.IO;
@@ -30,13 +31,7 @@ namespace FrameSphere
             phone.Text = FSystem.loggedInUser.Phone;
             email.Text = FSystem.loggedInUser.Email;
             address.Text = FSystem.loggedInUser.Address;
-            if (FSystem.loggedInUser.ProfilePic != null)
-            {
-                using (MemoryStream ms = new MemoryStream(FSystem.loggedInUser.ProfilePic))
-                {
-                    profilepic.Image = Image.FromStream(ms);
-                }
-            }
+            profilepic.Image = FSystem.GetImageFromPath(FSystem.loggedInUser.ProfilePic);
 
             if (FSystem.loggedInUser.isAdmin)
             {
@@ -71,7 +66,7 @@ namespace FrameSphere
         private void button14_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            Edit_Profile edit_Profile = new Edit_Profile();
+            Edit_Profile edit_Profile = new Edit_Profile(FSystem.loggedInUser.UserName);
             edit_Profile.Show();
         }
 
@@ -204,5 +199,117 @@ namespace FrameSphere
             }
 
         }
+        private void facebook_pic_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fb_URL = FSystem.loggedInUser.Facebook;
+                if (fb_URL != null)
+                {
+                    Process.Start(new ProcessStartInfo {
+                        FileName = fb_URL,
+                        UseShellExecute = true
+                    });
+                }
+                else
+                {
+                    Process.Start(new ProcessStartInfo {
+                        FileName = "#",
+                        UseShellExecute = true
+                    });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred:{ex.Message}");
+            }
+        }
+
+        private void instagram_link_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string insta_URL = FSystem.loggedInUser.Instagram;
+                if (insta_URL != null)
+                {
+                    Process.Start(new ProcessStartInfo {
+                        FileName = insta_URL,
+                        UseShellExecute = true
+                    });
+                }
+                else
+                {
+                    Process.Start(new ProcessStartInfo {
+                        FileName = "#",
+                        UseShellExecute = true
+                    });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred:{ex.Message}");
+            }
+        }
+
+        private void pinterest_link_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string pint_URL = FSystem.loggedInUser.Pinterest;
+                if (pint_URL != null)
+                {
+                    Process.Start(new ProcessStartInfo {
+                        FileName = pint_URL,
+                        UseShellExecute = true
+                    });
+                }
+                else
+                {
+                    Process.Start(new ProcessStartInfo {
+                        FileName = "#",
+                        UseShellExecute = true
+                    });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred:{ex.Message}");
+            }
+
+        }
+
+        private void website_link_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                string web_URL = FSystem.loggedInUser.Website;
+                if (web_URL != null)
+                {
+                    Process.Start(new ProcessStartInfo {
+                        FileName = web_URL,
+                        UseShellExecute = true
+                    });
+                }
+                else
+                {
+                    Process.Start(new ProcessStartInfo {
+                        FileName = "#",
+                        UseShellExecute = true
+                    });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred:{ex.Message}");
+            }
+        }
+
+     
     }
 }

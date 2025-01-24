@@ -228,6 +228,8 @@
     <None Include="Resources\cross.png" />
     <None Include="Resources\10-3--thumb.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="images\defaultProfilePic.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -409,7 +409,6 @@ namespace FrameSphere
             this.profilepic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.profilepic.TabIndex = 0;
             this.profilepic.TabStop = false;
-            this.profilepic.Click += new System.EventHandler(this.profilepic_Click);
             // 
             // profilepanel
             // 

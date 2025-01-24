@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrameSphere;
 
 namespace FrameSphere
 {
     public partial class CreateEvent : Form
     {
-        private string imagePath;
+        private string imagePath; // Full path to the selected image
+        private string eventPosterRelativePath; // Relative path for the database
+
         public CreateEvent()
         {
             InitializeComponent();
@@ -33,69 +30,45 @@ namespace FrameSphere
             userDashBoard.Show();
         }
 
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
+            // Open file dialog to select the event poster
             OpenFileDialog openFileDialog = new OpenFileDialog {
                 Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp",
                 Title = "Select Event Poster"
             };
+
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 imagePath = openFileDialog.FileName;
                 poster.Text = imagePath;
-                byte[] imageBytes = File.ReadAllBytes(imagePath);
-                using (MemoryStream ms = new MemoryStream(imageBytes))
-                {
-                    pictureBox.Image = System.Drawing.Image.FromStream(ms);
-                }
+
+                // Save the image to the "EventPosters" folder
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string eventPostersFolder = Path.Combine(baseDirectory, "EventPosters");
+                Directory.CreateDirectory(eventPostersFolder); // Ensure the folder exists
+
+                // Copy the selected image to the EventPosters folder
+                string fileName = Path.GetFileName(imagePath);
+                string destinationPath = Path.Combine(eventPostersFolder, fileName);
+                File.Copy(imagePath, destinationPath, true);
+
+                // Store the relative path for the database
+                eventPosterRelativePath = Path.Combine("EventPosters", fileName);
+
+                // Display the image in the PictureBox using FSystem.GetImageFromPath
+                pictureBox.Image = FSystem.GetImageFromPath(eventPosterRelativePath);
             }
         }
 
-
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void CreateEvent_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (free.Checked)
-            {
-                label8.Visible = false;
-                ticketprice.Visible = false;
-            }
-        }
-
-        private void button5_Click(object sender, EventArgs e)
+        private void CreateEventBTN(object sender, EventArgs e)
         {
             try
             {
                 using (SqlConnection connection = DB.Connect())
                 {
                     connection.Open();
-                    string UserID = FSystem.loggedInUser.UserName;
+                    string userID = FSystem.loggedInUser.UserName;
                     string title = Title.Text;
                     string description = Description.Text;
                     string organizerDetails = OrgDetails.Text;
@@ -104,14 +77,13 @@ namespace FrameSphere
                     string registrationType = free.Checked ? "Free" : "Paid";
                     decimal? ticketPrice = paid.Checked && decimal.TryParse(ticketprice.Text, out decimal price) ? price : (decimal?)null;
 
-                    if (string.IsNullOrEmpty(imagePath))
+                    if (string.IsNullOrEmpty(eventPosterRelativePath))
                     {
                         MessageBox.Show("Please select an event poster image.");
                         return;
                     }
 
-                    byte[] imageBytes = File.ReadAllBytes(imagePath);
-
+                    // Insert event data into the database, including the relative path for the poster
                     string query = @"INSERT INTO Events (Title, Description, OrganizerDetails, StartDate, EndDate, EventPoster, RegistrationType, TicketPrice, Creator)
                                      VALUES (@Title, @Description, @OrganizerDetails, @StartDate, @EndDate, @EventPoster, @RegistrationType, @TicketPrice, @Creator)";
 
@@ -122,15 +94,26 @@ namespace FrameSphere
                         command.Parameters.AddWithValue("@OrganizerDetails", organizerDetails);
                         command.Parameters.AddWithValue("@StartDate", startDate);
                         command.Parameters.AddWithValue("@EndDate", endDate);
-                        command.Parameters.AddWithValue("@EventPoster", imageBytes);
+                        command.Parameters.AddWithValue("@EventPoster", eventPosterRelativePath); // Save relative path
                         command.Parameters.AddWithValue("@RegistrationType", registrationType);
                         command.Parameters.AddWithValue("@TicketPrice", (object)ticketPrice ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@Creator", UserID);
+                        command.Parameters.AddWithValue("@Creator", userID);
+
                         command.ExecuteNonQuery();
                         MessageBox.Show("Event created successfully!");
 
+                        // Navigate to the Event Page and display the event data
                         Event_page eventPage = new Event_page(title);
-                        eventPage.LoadEventData(title, description, organizerDetails, startDate, endDate, registrationType, ticketPrice, imageBytes);
+                        eventPage.LoadEventData(
+                            title,
+                            description,
+                            organizerDetails,
+                            startDate,
+                            endDate,
+                            registrationType,
+                            ticketPrice,
+                            eventPosterRelativePath // Load image using the relative path
+                        );
                         this.Hide();
                         eventPage.StartPosition = FormStartPosition.CenterParent;
                         eventPage.ShowDialog();
@@ -143,13 +126,6 @@ namespace FrameSphere
             }
         }
 
-
-
-        private void startdate_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void paid_CheckedChanged(object sender, EventArgs e)
         {
             if (paid.Checked)
@@ -159,7 +135,7 @@ namespace FrameSphere
             }
         }
 
-        private void free_CheckedChanged(object sender, EventArgs e)
+        private void free_CheckedChanged_1(object sender, EventArgs e)
         {
             if (free.Checked)
             {
@@ -168,5 +144,4 @@ namespace FrameSphere
             }
         }
     }
-
 }
