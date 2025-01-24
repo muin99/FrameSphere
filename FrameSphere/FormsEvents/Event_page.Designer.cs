@@ -309,7 +309,6 @@ namespace FrameSphere
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Event_page";
             this.Text = "Event_page";
-            this.Load += new System.EventHandler(this.Event_page_Load);
             this.panel3.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
