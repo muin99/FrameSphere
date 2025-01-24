@@ -224,7 +224,7 @@ namespace FrameSphere
             this.Create.TabIndex = 1;
             this.Create.Text = "Create Event";
             this.Create.UseVisualStyleBackColor = false;
-            this.Create.Click += new System.EventHandler(this.button5_Click);
+            this.Create.Click += new System.EventHandler(this.CreateEventBTN);
             // 
             // paid
             // 

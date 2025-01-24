@@ -61,7 +61,7 @@ namespace FrameSphere
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void CreateEventBTN(object sender, EventArgs e)
         {
             try
             {
@@ -84,8 +84,8 @@ namespace FrameSphere
                     }
 
                     // Insert event data into the database, including the relative path for the poster
-                    string query = @"INSERT INTO Events (Title, Description, OrganizerDetails, StartDate, EndDate, EventPosterPath, RegistrationType, TicketPrice, Creator)
-                                     VALUES (@Title, @Description, @OrganizerDetails, @StartDate, @EndDate, @EventPosterPath, @RegistrationType, @TicketPrice, @Creator)";
+                    string query = @"INSERT INTO Events (Title, Description, OrganizerDetails, StartDate, EndDate, EventPoster, RegistrationType, TicketPrice, Creator)
+                                     VALUES (@Title, @Description, @OrganizerDetails, @StartDate, @EndDate, @EventPoster, @RegistrationType, @TicketPrice, @Creator)";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -94,7 +94,7 @@ namespace FrameSphere
                         command.Parameters.AddWithValue("@OrganizerDetails", organizerDetails);
                         command.Parameters.AddWithValue("@StartDate", startDate);
                         command.Parameters.AddWithValue("@EndDate", endDate);
-                        command.Parameters.AddWithValue("@EventPosterPath", eventPosterRelativePath); // Save relative path
+                        command.Parameters.AddWithValue("@EventPoster", eventPosterRelativePath); // Save relative path
                         command.Parameters.AddWithValue("@RegistrationType", registrationType);
                         command.Parameters.AddWithValue("@TicketPrice", (object)ticketPrice ?? DBNull.Value);
                         command.Parameters.AddWithValue("@Creator", userID);
