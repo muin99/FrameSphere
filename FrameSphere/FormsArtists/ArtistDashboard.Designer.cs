@@ -619,6 +619,7 @@
             this.website_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.website_link.TabIndex = 15;
             this.website_link.TabStop = false;
+            this.website_link.Click += new System.EventHandler(this.website_link_Click);
             // 
             // pinterest_link
             // 
@@ -629,6 +630,7 @@
             this.pinterest_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pinterest_link.TabIndex = 14;
             this.pinterest_link.TabStop = false;
+            this.pinterest_link.Click += new System.EventHandler(this.pinterest_link_Click);
             // 
             // instagram_link
             // 
@@ -639,6 +641,7 @@
             this.instagram_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.instagram_link.TabIndex = 13;
             this.instagram_link.TabStop = false;
+            this.instagram_link.Click += new System.EventHandler(this.instagram_link_Click);
             // 
             // facebook_pic
             // 
