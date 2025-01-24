@@ -33,7 +33,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.profilepanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button14 = new System.Windows.Forms.Button();
+            this.editProfile_button = new System.Windows.Forms.Button();
             this.address = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.email = new System.Windows.Forms.Label();
@@ -98,7 +98,7 @@
             this.profilepanel.Controls.Add(this.facebook_pic);
             this.profilepanel.Controls.Add(this.label4);
             this.profilepanel.Controls.Add(this.pictureBox1);
-            this.profilepanel.Controls.Add(this.button14);
+            this.profilepanel.Controls.Add(this.editProfile_button);
             this.profilepanel.Controls.Add(this.address);
             this.profilepanel.Controls.Add(this.label8);
             this.profilepanel.Controls.Add(this.email);
@@ -128,17 +128,17 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // button14
+            // editProfile_button
             // 
-            this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button14.BackColor = System.Drawing.Color.Lime;
-            this.button14.Location = new System.Drawing.Point(166, 58);
-            this.button14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(100, 28);
-            this.button14.TabIndex = 11;
-            this.button14.Text = "Edit Profile";
-            this.button14.UseVisualStyleBackColor = false;
+            this.editProfile_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.editProfile_button.BackColor = System.Drawing.Color.Lime;
+            this.editProfile_button.Location = new System.Drawing.Point(166, 58);
+            this.editProfile_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editProfile_button.Name = "editProfile_button";
+            this.editProfile_button.Size = new System.Drawing.Size(100, 28);
+            this.editProfile_button.TabIndex = 11;
+            this.editProfile_button.Text = "Edit Profile";
+            this.editProfile_button.UseVisualStyleBackColor = false;
             // 
             // address
             // 
@@ -271,6 +271,7 @@
             this.website_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.website_link.TabIndex = 20;
             this.website_link.TabStop = false;
+            this.website_link.Click += new System.EventHandler(this.website_link_Click);
             // 
             // pinterest_link
             // 
@@ -281,6 +282,7 @@
             this.pinterest_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pinterest_link.TabIndex = 19;
             this.pinterest_link.TabStop = false;
+            this.pinterest_link.Click += new System.EventHandler(this.pinterest_link_Click);
             // 
             // instagram_link
             // 
@@ -291,6 +293,7 @@
             this.instagram_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.instagram_link.TabIndex = 18;
             this.instagram_link.TabStop = false;
+            this.instagram_link.Click += new System.EventHandler(this.instagram_link_Click);
             // 
             // facebook_pic
             // 
@@ -301,6 +304,7 @@
             this.facebook_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.facebook_pic.TabIndex = 17;
             this.facebook_pic.TabStop = false;
+            this.facebook_pic.Click += new System.EventHandler(this.facebook_pic_Click);
             // 
             // label4
             // 
@@ -345,7 +349,7 @@
         private System.Windows.Forms.PictureBox ArtImage;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel profilepanel;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button editProfile_button;
         private System.Windows.Forms.Label address;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label email;
