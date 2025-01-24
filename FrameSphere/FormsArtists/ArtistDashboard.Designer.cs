@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArtistDashboard));
             this.artistProfile_tableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.profilepanel = new System.Windows.Forms.Panel();
             this.profilepic = new System.Windows.Forms.PictureBox();
@@ -78,6 +79,22 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.userProfile_button = new System.Windows.Forms.Button();
+            this.artStatistics_panel = new System.Windows.Forms.Panel();
+            this.ArtStatistics_label = new System.Windows.Forms.Label();
+            this.numberOfArts_label = new System.Windows.Forms.Label();
+            this.numberOfArtsSold_label = new System.Windows.Forms.Label();
+            this.eventsParticipated_label = new System.Windows.Forms.Label();
+            this.TotalArts_label = new System.Windows.Forms.Label();
+            this.TotalSold_label = new System.Windows.Forms.Label();
+            this.TotalParticipations_label = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.upComingEvents_label = new System.Windows.Forms.Label();
+            this.artSubmits_label = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.facebook_pic = new System.Windows.Forms.PictureBox();
+            this.instagram_link = new System.Windows.Forms.PictureBox();
+            this.website_link = new System.Windows.Forms.PictureBox();
+            this.pinterest_link = new System.Windows.Forms.PictureBox();
             this.artistProfile_tableLayout.SuspendLayout();
             this.profilepanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
@@ -94,6 +111,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.artStatistics_panel.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.facebook_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instagram_link)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.website_link)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pinterest_link)).BeginInit();
             this.SuspendLayout();
             // 
             // artistProfile_tableLayout
@@ -124,6 +147,10 @@
             this.profilepanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.profilepanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.profilepanel.Controls.Add(this.website_link);
+            this.profilepanel.Controls.Add(this.pinterest_link);
+            this.profilepanel.Controls.Add(this.instagram_link);
+            this.profilepanel.Controls.Add(this.facebook_pic);
             this.profilepanel.Controls.Add(this.button14);
             this.profilepanel.Controls.Add(this.label4);
             this.profilepanel.Controls.Add(this.address);
@@ -327,7 +354,7 @@
             // 
             // CreateArt
             // 
-            this.CreateArt.Location = new System.Drawing.Point(979, 47);
+            this.CreateArt.Location = new System.Drawing.Point(30, 685);
             this.CreateArt.Margin = new System.Windows.Forms.Padding(4);
             this.CreateArt.Name = "CreateArt";
             this.CreateArt.Size = new System.Drawing.Size(275, 28);
@@ -340,7 +367,6 @@
             // 
             this.header_panel.BackColor = System.Drawing.Color.LightGreen;
             this.artistProfile_tableLayout.SetColumnSpan(this.header_panel, 3);
-            this.header_panel.Controls.Add(this.CreateArt);
             this.header_panel.Controls.Add(this.returnDashBoard_button);
             this.header_panel.Controls.Add(this.Logout);
             this.header_panel.Controls.Add(this.ArtistProfile_Label);
@@ -525,7 +551,7 @@
             // 
             // adminDashboard
             // 
-            this.adminDashboard.Location = new System.Drawing.Point(65, 654);
+            this.adminDashboard.Location = new System.Drawing.Point(86, 630);
             this.adminDashboard.Margin = new System.Windows.Forms.Padding(4);
             this.adminDashboard.Name = "adminDashboard";
             this.adminDashboard.Size = new System.Drawing.Size(165, 28);
@@ -536,18 +562,20 @@
             // 
             // artistboard
             // 
-            this.artistboard.Location = new System.Drawing.Point(65, 618);
+            this.artistboard.Location = new System.Drawing.Point(86, 594);
             this.artistboard.Margin = new System.Windows.Forms.Padding(4);
             this.artistboard.Name = "artistboard";
             this.artistboard.Size = new System.Drawing.Size(165, 28);
             this.artistboard.TabIndex = 16;
             this.artistboard.Text = "Artist Dashboard";
             this.artistboard.UseVisualStyleBackColor = true;
+            this.artistboard.Click += new System.EventHandler(this.artistboard_Click);
             // 
             // panel1
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.LightGreen;
+            this.panel1.Controls.Add(this.CreateArt);
             this.panel1.Controls.Add(this.artistboard);
             this.panel1.Controls.Add(this.adminDashboard);
             this.panel1.Controls.Add(this.button13);
@@ -595,6 +623,9 @@
             // midpanel
             // 
             this.midpanel.BackColor = System.Drawing.Color.LightGreen;
+            this.midpanel.Controls.Add(this.panel3);
+            this.midpanel.Controls.Add(this.panel2);
+            this.midpanel.Controls.Add(this.artStatistics_panel);
             this.midpanel.Controls.Add(this.userProfile_button);
             this.midpanel.Location = new System.Drawing.Point(341, 103);
             this.midpanel.Margin = new System.Windows.Forms.Padding(4);
@@ -700,13 +731,184 @@
             this.userProfile_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.userProfile_button.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userProfile_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.userProfile_button.Location = new System.Drawing.Point(358, 262);
+            this.userProfile_button.Location = new System.Drawing.Point(367, 208);
             this.userProfile_button.Margin = new System.Windows.Forms.Padding(4);
             this.userProfile_button.Name = "userProfile_button";
-            this.userProfile_button.Size = new System.Drawing.Size(211, 31);
+            this.userProfile_button.Size = new System.Drawing.Size(204, 35);
             this.userProfile_button.TabIndex = 3;
             this.userProfile_button.Text = "User Profile";
             this.userProfile_button.UseVisualStyleBackColor = false;
+            // 
+            // artStatistics_panel
+            // 
+            this.artStatistics_panel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.artStatistics_panel.Controls.Add(this.TotalParticipations_label);
+            this.artStatistics_panel.Controls.Add(this.TotalSold_label);
+            this.artStatistics_panel.Controls.Add(this.TotalArts_label);
+            this.artStatistics_panel.Controls.Add(this.eventsParticipated_label);
+            this.artStatistics_panel.Controls.Add(this.numberOfArtsSold_label);
+            this.artStatistics_panel.Controls.Add(this.numberOfArts_label);
+            this.artStatistics_panel.Controls.Add(this.ArtStatistics_label);
+            this.artStatistics_panel.Location = new System.Drawing.Point(34, 26);
+            this.artStatistics_panel.Name = "artStatistics_panel";
+            this.artStatistics_panel.Size = new System.Drawing.Size(425, 172);
+            this.artStatistics_panel.TabIndex = 4;
+            // 
+            // ArtStatistics_label
+            // 
+            this.ArtStatistics_label.AutoSize = true;
+            this.ArtStatistics_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ArtStatistics_label.ForeColor = System.Drawing.Color.DarkGreen;
+            this.ArtStatistics_label.Location = new System.Drawing.Point(20, 18);
+            this.ArtStatistics_label.Name = "ArtStatistics_label";
+            this.ArtStatistics_label.Size = new System.Drawing.Size(141, 25);
+            this.ArtStatistics_label.TabIndex = 0;
+            this.ArtStatistics_label.Text = "Art Statistics:";
+            // 
+            // numberOfArts_label
+            // 
+            this.numberOfArts_label.AutoSize = true;
+            this.numberOfArts_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numberOfArts_label.ForeColor = System.Drawing.Color.DarkGreen;
+            this.numberOfArts_label.Location = new System.Drawing.Point(28, 62);
+            this.numberOfArts_label.Name = "numberOfArts_label";
+            this.numberOfArts_label.Size = new System.Drawing.Size(140, 22);
+            this.numberOfArts_label.TabIndex = 1;
+            this.numberOfArts_label.Text = "Number of Arts: ";
+            // 
+            // numberOfArtsSold_label
+            // 
+            this.numberOfArtsSold_label.AutoSize = true;
+            this.numberOfArtsSold_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numberOfArtsSold_label.ForeColor = System.Drawing.Color.DarkGreen;
+            this.numberOfArtsSold_label.Location = new System.Drawing.Point(28, 92);
+            this.numberOfArtsSold_label.Name = "numberOfArtsSold_label";
+            this.numberOfArtsSold_label.Size = new System.Drawing.Size(181, 22);
+            this.numberOfArtsSold_label.TabIndex = 2;
+            this.numberOfArtsSold_label.Text = "Number of Arts Sold: ";
+            // 
+            // eventsParticipated_label
+            // 
+            this.eventsParticipated_label.AutoSize = true;
+            this.eventsParticipated_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.eventsParticipated_label.ForeColor = System.Drawing.Color.DarkGreen;
+            this.eventsParticipated_label.Location = new System.Drawing.Point(28, 120);
+            this.eventsParticipated_label.Name = "eventsParticipated_label";
+            this.eventsParticipated_label.Size = new System.Drawing.Size(263, 22);
+            this.eventsParticipated_label.TabIndex = 3;
+            this.eventsParticipated_label.Text = "Number of Events Participated: ";
+            // 
+            // TotalArts_label
+            // 
+            this.TotalArts_label.AutoSize = true;
+            this.TotalArts_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalArts_label.ForeColor = System.Drawing.Color.DarkGreen;
+            this.TotalArts_label.Location = new System.Drawing.Point(167, 59);
+            this.TotalArts_label.Name = "TotalArts_label";
+            this.TotalArts_label.Size = new System.Drawing.Size(20, 25);
+            this.TotalArts_label.TabIndex = 4;
+            this.TotalArts_label.Text = "-";
+            // 
+            // TotalSold_label
+            // 
+            this.TotalSold_label.AutoSize = true;
+            this.TotalSold_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalSold_label.ForeColor = System.Drawing.Color.DarkGreen;
+            this.TotalSold_label.Location = new System.Drawing.Point(212, 90);
+            this.TotalSold_label.Name = "TotalSold_label";
+            this.TotalSold_label.Size = new System.Drawing.Size(20, 25);
+            this.TotalSold_label.TabIndex = 5;
+            this.TotalSold_label.Text = "-";
+            // 
+            // TotalParticipations_label
+            // 
+            this.TotalParticipations_label.AutoSize = true;
+            this.TotalParticipations_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalParticipations_label.ForeColor = System.Drawing.Color.DarkGreen;
+            this.TotalParticipations_label.Location = new System.Drawing.Point(288, 120);
+            this.TotalParticipations_label.Name = "TotalParticipations_label";
+            this.TotalParticipations_label.Size = new System.Drawing.Size(20, 25);
+            this.TotalParticipations_label.TabIndex = 6;
+            this.TotalParticipations_label.Text = "-";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.Controls.Add(this.artSubmits_label);
+            this.panel2.Controls.Add(this.upComingEvents_label);
+            this.panel2.Location = new System.Drawing.Point(465, 26);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(425, 172);
+            this.panel2.TabIndex = 7;
+            // 
+            // upComingEvents_label
+            // 
+            this.upComingEvents_label.AutoSize = true;
+            this.upComingEvents_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.upComingEvents_label.ForeColor = System.Drawing.Color.DarkGreen;
+            this.upComingEvents_label.Location = new System.Drawing.Point(20, 18);
+            this.upComingEvents_label.Name = "upComingEvents_label";
+            this.upComingEvents_label.Size = new System.Drawing.Size(187, 25);
+            this.upComingEvents_label.TabIndex = 0;
+            this.upComingEvents_label.Text = "Upcoming Events:";
+            // 
+            // artSubmits_label
+            // 
+            this.artSubmits_label.AutoSize = true;
+            this.artSubmits_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artSubmits_label.ForeColor = System.Drawing.Color.DarkGreen;
+            this.artSubmits_label.Location = new System.Drawing.Point(213, 22);
+            this.artSubmits_label.Name = "artSubmits_label";
+            this.artSubmits_label.Size = new System.Drawing.Size(135, 20);
+            this.artSubmits_label.TabIndex = 2;
+            this.artSubmits_label.Text = "(Arts submitted) ";
+            // 
+            // panel3
+            // 
+            this.panel3.Location = new System.Drawing.Point(39, 250);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(851, 299);
+            this.panel3.TabIndex = 8;
+            // 
+            // facebook_pic
+            // 
+            this.facebook_pic.Image = ((System.Drawing.Image)(resources.GetObject("facebook_pic.Image")));
+            this.facebook_pic.Location = new System.Drawing.Point(98, 413);
+            this.facebook_pic.Name = "facebook_pic";
+            this.facebook_pic.Size = new System.Drawing.Size(40, 37);
+            this.facebook_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.facebook_pic.TabIndex = 12;
+            this.facebook_pic.TabStop = false;
+            // 
+            // instagram_link
+            // 
+            this.instagram_link.Image = ((System.Drawing.Image)(resources.GetObject("instagram_link.Image")));
+            this.instagram_link.Location = new System.Drawing.Point(156, 413);
+            this.instagram_link.Name = "instagram_link";
+            this.instagram_link.Size = new System.Drawing.Size(40, 37);
+            this.instagram_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.instagram_link.TabIndex = 13;
+            this.instagram_link.TabStop = false;
+            // 
+            // website_link
+            // 
+            this.website_link.Image = ((System.Drawing.Image)(resources.GetObject("website_link.Image")));
+            this.website_link.Location = new System.Drawing.Point(269, 413);
+            this.website_link.Name = "website_link";
+            this.website_link.Size = new System.Drawing.Size(40, 37);
+            this.website_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.website_link.TabIndex = 15;
+            this.website_link.TabStop = false;
+            // 
+            // pinterest_link
+            // 
+            this.pinterest_link.Image = ((System.Drawing.Image)(resources.GetObject("pinterest_link.Image")));
+            this.pinterest_link.Location = new System.Drawing.Point(211, 413);
+            this.pinterest_link.Name = "pinterest_link";
+            this.pinterest_link.Size = new System.Drawing.Size(40, 37);
+            this.pinterest_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pinterest_link.TabIndex = 14;
+            this.pinterest_link.TabStop = false;
             // 
             // ArtistDashboard
             // 
@@ -736,6 +938,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.artStatistics_panel.ResumeLayout(false);
+            this.artStatistics_panel.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.facebook_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instagram_link)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.website_link)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pinterest_link)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -791,5 +1001,21 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button userProfile_button;
+        private System.Windows.Forms.Panel artStatistics_panel;
+        private System.Windows.Forms.Label TotalArts_label;
+        private System.Windows.Forms.Label eventsParticipated_label;
+        private System.Windows.Forms.Label numberOfArtsSold_label;
+        private System.Windows.Forms.Label numberOfArts_label;
+        private System.Windows.Forms.Label ArtStatistics_label;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label artSubmits_label;
+        private System.Windows.Forms.Label upComingEvents_label;
+        private System.Windows.Forms.Label TotalParticipations_label;
+        private System.Windows.Forms.Label TotalSold_label;
+        private System.Windows.Forms.PictureBox website_link;
+        private System.Windows.Forms.PictureBox pinterest_link;
+        private System.Windows.Forms.PictureBox instagram_link;
+        private System.Windows.Forms.PictureBox facebook_pic;
     }
 }

@@ -38,5 +38,10 @@ namespace FrameSphere
         {
 
         }
+
+        private void artistboard_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
