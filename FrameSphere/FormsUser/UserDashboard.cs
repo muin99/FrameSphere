@@ -326,7 +326,7 @@ namespace FrameSphere
         private void button14_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            Edit_Profile edit_Profile = new Edit_Profile();
+            Edit_Profile edit_Profile = new Edit_Profile(FSystem.loggedInUser.UserName);
             edit_Profile.Show();
         }
 
