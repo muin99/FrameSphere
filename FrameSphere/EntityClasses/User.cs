@@ -31,9 +31,105 @@ namespace FrameSphere.EntityClasses
 
         public int TotalVisitedEvents { get; private set; } = 0;
         public List<Event> VisitingEvents = new List<Event>();
-        public bool isArtist { get; set; }
-        public bool isAdmin { get; set; }
+        private bool _isArtist;
+        public bool isArtist {
+            get {
+                string query = "SELECT COUNT(*) FROM artists WHERE username = @UserName";
+
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand cmd = new SqlCommand(query, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@UserName", this.UserName);
+                            int count = (int)cmd.ExecuteScalar();
+                            return count > 0;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"An error occurred while checking if the user is an artist: {ex.Message}");
+                        return false;
+                    }
+                }
+            }
+            set {
+                _isArtist = value;
+            }
+        }
+
+        private bool _isAdmin;
+        public bool isAdmin {
+            get {
+                string query = "SELECT COUNT(*) FROM adminlist WHERE username = @UserName";
+
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand cmd = new SqlCommand(query, connection))
+                        {
+                            cmd.Parameters.AddWithValue("@UserName", this.UserName);
+                            int count = (int)cmd.ExecuteScalar();
+                            return count > 0;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"An error occurred while checking if the user is an admin: {ex.Message}");
+                        return false;
+                    }
+                }
+            }
+            set {
+                _isAdmin = value;
+            }
+        }
+
         public bool isLoggedIn { get; set; } = false;
+
+        public void applyforBecomingArtist()
+        {
+            DB.Connection.Open();
+            string qr = $"select count(*) from artistrequests where username = '{this.UserName}'";
+            SqlCommand c = new SqlCommand(qr, DB.Connection);
+            if ((int)c.ExecuteScalar() > 0)
+            {
+                MessageBox.Show("You have already applied wait");
+                return;
+            }
+                if (isArtist) {
+                MessageBox.Show("You are already an artist");
+
+                return;
+
+            }
+            string q = $"insert into artistrequests (username) values('{this.UserName}')";
+
+            if (DB.Connection.State != System.Data.ConnectionState.Open)
+            {
+                DB.Connection.Open();
+            }
+
+            SqlCommand cmd = new SqlCommand(q, DB.Connection);
+
+            if ((int)cmd.ExecuteNonQuery() > 0)
+            {
+                MessageBox.Show("Application successfull!");
+                DB.Connection.Close();
+            }
+            else
+            {
+                MessageBox.Show("Either you have already applied or something went wrong.!");
+                DB.Connection.Close();
+            }
+
+
+
+        }
 
         public void loadUser()
         {
@@ -96,14 +192,14 @@ namespace FrameSphere.EntityClasses
                         }
                     }
 
-                    string adminQuery = "SELECT COUNT(*) FROM adminlist WHERE UserName = @UserName";
-                    using (SqlCommand adminCommand = new SqlCommand(adminQuery, connection))
-                    {
-                        adminCommand.Parameters.AddWithValue("@UserName", this.UserName);
-                        int adminCount = (int)adminCommand.ExecuteScalar();
+                    //string adminQuery = "SELECT COUNT(*) FROM adminlist WHERE UserName = @UserName";
+                    //using (SqlCommand adminCommand = new SqlCommand(adminQuery, connection))
+                    //{
+                    //    adminCommand.Parameters.AddWithValue("@UserName", this.UserName);
+                    //    int adminCount = (int)adminCommand.ExecuteScalar();
 
-                        isAdmin = adminCount > 0;
-                    }
+                    //    isAdmin = adminCount > 0;
+                    //}
                 }
                 catch (Exception ex)
                 {

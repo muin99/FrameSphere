@@ -53,6 +53,24 @@
     <Compile Include="Admin_dashboard.Designer.cs">
       <DependentUpon>Admin_dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="ApplyForArtist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApplyForArtist.Designer.cs">
+      <DependentUpon>ApplyForArtist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ArtistApplications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArtistApplications.Designer.cs">
+      <DependentUpon>ArtistApplications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ArtistDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ArtistDashboard.Designer.cs">
+      <DependentUpon>ArtistDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateEvent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +83,12 @@
     </Compile>
     <Compile Include="Edit_Profile.Designer.cs">
       <DependentUpon>Edit_Profile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EventsAdminView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventsAdminView.Designer.cs">
+      <DependentUpon>EventsAdminView.cs</DependentUpon>
     </Compile>
     <Compile Include="Event_page.cs">
       <SubType>Form</SubType>
@@ -117,17 +141,35 @@
     <Compile Include="UserDashboard.Designer.cs">
       <DependentUpon>UserDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="UsersAdminView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsersAdminView.Designer.cs">
+      <DependentUpon>UsersAdminView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Admin_dashboard.resx">
       <DependentUpon>Admin_dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ApplyForArtist.resx">
+      <DependentUpon>ApplyForArtist.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ArtDisplayForm.resx">
       <DependentUpon>ArtDisplayForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArtistApplications.resx">
+      <DependentUpon>ArtistApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArtistDashboard.resx">
+      <DependentUpon>ArtistDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateEvent.resx">
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Edit_Profile.resx">
       <DependentUpon>Edit_Profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventsAdminView.resx">
+      <DependentUpon>EventsAdminView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Event_page.resx">
       <DependentUpon>Event_page.cs</DependentUpon>
@@ -153,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserDashboard.resx">
       <DependentUpon>UserDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersAdminView.resx">
+      <DependentUpon>UsersAdminView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

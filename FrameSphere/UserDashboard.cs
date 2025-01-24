@@ -21,6 +21,7 @@ namespace FrameSphere
         public UserDashBoard()
         {
             InitializeComponent();
+
             FSystem.loggedInUser.loadUser();
             name.Text = FSystem.loggedInUser.FullName();
             userName.Text = "@"+FSystem.loggedInUser.UserName;
@@ -40,7 +41,6 @@ namespace FrameSphere
             {
                 adminDashboard.Visible = true;
             }
-
 
             LoadEventBoxes();
 
@@ -368,6 +368,22 @@ namespace FrameSphere
         private void UserDashBoard_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void artistboard_Click(object sender, EventArgs e)
+        {
+            if (FSystem.loggedInUser.isArtist)
+            {
+                this.Hide();
+                ArtistDashboard artistDashboard = new ArtistDashboard();
+                artistDashboard.Show();
+            }
+            else
+            {
+                this.Hide();
+                ApplyForArtist applyForArtist = new ApplyForArtist();
+                applyForArtist.Show();
+            }
         }
     }
 }

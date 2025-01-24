@@ -11,7 +11,6 @@ namespace FrameSphere
         public Admin_dashboard()
         {
             InitializeComponent();
-            LoadEventBoxes();
             Loaduserboxes();
 
         }
@@ -106,116 +105,6 @@ namespace FrameSphere
             userpanel.Controls.Add(everyuser);
         }
 
-        private void LoadEventBoxes(string searchQuery = "")
-        {
-            eventpanel.Controls.Clear();
-            eventpanel.Controls.Add(noevent);
-            noevent.Visible = false;
-
-
-            string query = string.IsNullOrEmpty(searchQuery)
-                ? "SELECT EventID, Title, Status FROM Events"
-                : "SELECT EventID, Title, Status FROM Events WHERE Title LIKE @SearchQuery";
-
-            using (SqlConnection connection = DB.Connect())
-            {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    if (!string.IsNullOrEmpty(searchQuery))
-                    {
-                        string formattedQuery = string.Join("%", searchQuery.ToCharArray()) + "%";
-                        command.Parameters.AddWithValue("@SearchQuery", "%" + formattedQuery);
-
-                    }
-
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        
-                        if (!reader.HasRows)
-                        {
-                            noevent.Visible = true;
-                            return;
-                        }
-                        else { noevent.Visible = false; }
-                        while (reader.Read())
-                        {
-                            string title = reader["Title"].ToString();
-                            int eventid = Convert.ToInt32(reader["EventID"]);
-                            string status = reader["Status"].ToString();
-                            CreateEventsBox(title, status, eventid);
-
-
-                        }
-                    }
-                }
-            }
-        }
-
-
-        private void CreateEventsBox(string title, string status, int eventid)
-        {
-            int panelWidth = eventpanel.Width - 21;
-            int panelHeight = 23;
-
-            
-
-            Panel everyevent = new Panel {
-                Size = new Size(panelWidth, panelHeight),
-                Location = new Point(34, 7),
-                BackColor = Color.White,
-                BorderStyle = BorderStyle.FixedSingle,
-                Margin = new Padding(0,0,0,5)
-            };
-
-            Label manageLabel = new Label {
-                Text = "Manage",
-                Font = new Font("Arial", 8, FontStyle.Bold),
-                Location = new Point(408,5),
-                AutoSize = false,
-                Size = new Size(50, 14),
-                ForeColor = Color.Red
-            };
-
-            manageLabel.Click += (sender, e) =>
-            {
-                ManageEvents manageEventForm = new ManageEvents(eventid);
-                this.Hide();
-                manageEventForm.StartPosition = FormStartPosition.CenterParent;
-                manageEventForm.ShowDialog();
-                
-            };
-
-            Label titleLabel = new Label {
-                Text = title,
-                Font = new Font("Arial", 8, FontStyle.Bold),
-                Location = new Point(3, 5),
-                AutoSize = false,
-                Size = new Size(400,14),
-                ForeColor = Color.Black
-            };
-            Label statusLabel = new Label {
-                Text = status,
-                Font = new Font("Arial", 8, FontStyle.Bold),
-                Location = new Point(463, 5),
-                AutoSize = false,
-                Size = new Size(62, 14),
-
-                ForeColor = status == "Approved" ? Color.Green :
-                            status == "Rejected" ? Color.Red : Color.Peru
-            };
-            
-            everyevent.Controls.Add(manageLabel);
-            everyevent.Controls.Add(titleLabel);
-            everyevent.Controls.Add(statusLabel);
-            
-
-        
-
-            eventpanel.Controls.Add(everyevent);
-            
-        }
-
 
 
         private void Admin_dashboard_Load(object sender, EventArgs e)
@@ -231,10 +120,6 @@ namespace FrameSphere
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            LoadEventBoxes(textBox1.Text);
-        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -266,6 +151,13 @@ namespace FrameSphere
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
             Loaduserboxes(textBox2.Text);
+        }
+
+        private void eventsboard_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EventsAdminView eventsAdminView = new EventsAdminView();
+            eventsAdminView.Show();
         }
     }
 }

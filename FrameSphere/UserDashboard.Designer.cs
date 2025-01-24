@@ -48,6 +48,7 @@
             this.Logout = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.artistboard = new System.Windows.Forms.Button();
             this.adminDashboard = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
@@ -289,6 +290,7 @@
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.Color.LightGreen;
+            this.panel1.Controls.Add(this.artistboard);
             this.panel1.Controls.Add(this.adminDashboard);
             this.panel1.Controls.Add(this.button13);
             this.panel1.Controls.Add(this.button12);
@@ -313,9 +315,19 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // artistboard
+            // 
+            this.artistboard.Location = new System.Drawing.Point(49, 502);
+            this.artistboard.Name = "artistboard";
+            this.artistboard.Size = new System.Drawing.Size(124, 23);
+            this.artistboard.TabIndex = 16;
+            this.artistboard.Text = "Artist Dashboard";
+            this.artistboard.UseVisualStyleBackColor = true;
+            this.artistboard.Click += new System.EventHandler(this.artistboard_Click);
+            // 
             // adminDashboard
             // 
-            this.adminDashboard.Location = new System.Drawing.Point(55, 500);
+            this.adminDashboard.Location = new System.Drawing.Point(49, 531);
             this.adminDashboard.Name = "adminDashboard";
             this.adminDashboard.Size = new System.Drawing.Size(124, 23);
             this.adminDashboard.TabIndex = 15;
@@ -660,5 +672,6 @@
         private System.Windows.Forms.Label noitem;
         private System.Windows.Forms.Button adminDashboard;
         private System.Windows.Forms.FlowLayoutPanel eventspanel;
+        private System.Windows.Forms.Button artistboard;
     }
 }

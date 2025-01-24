@@ -156,8 +156,12 @@ namespace FrameSphere
         private void UserName_TextChanged(object sender, EventArgs e)
         {
 
+            if (DB.Connection.State != System.Data.ConnectionState.Open)
+            {
                 DB.Connection.Open();
-                string q = $"select count(*) from AllUser where username = '{UserName.Text.ToString()}'";
+            }
+
+            string q = $"select count(*) from AllUser where username = '{UserName.Text.ToString()}'";
                 using (SqlCommand cmd = new SqlCommand(q, DB.Connection))
                 {
                     int n = (int) cmd.ExecuteScalar();

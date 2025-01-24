@@ -20,6 +20,11 @@ namespace FrameSphere
         public static List<User> Admins = new List<User>();
         public static List<Event> AllEvents = new List<Event>();
         public static User loggedInUser;
+
+        public static void reloadLoggedInUser()
+        {
+            loggedInUser = new User();
+        }
         public static bool Login(string userId, string password)
         {
             using (SqlConnection c = DB.Connect())
