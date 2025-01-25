@@ -14,7 +14,90 @@ namespace FrameSphere.EntityClasses
         private double _TicketPrice;
         private DateTime _StartsAt;
         private DateTime _EndsAt;
+
+        public Event(string eventId)
+        {
+            // Fetch event details from the database using the eventId
+            string connectionString = "your_connection_string_here"; // Replace with your actual connection string
+            string query = "SELECT EventTitle, EventDescription, Organization, StartsAt, EndsAt, TicketPrice, PosterImage FROM Events WHERE EventId = @EventId";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@EventId", eventId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            // Populate the event object properties
+                            EventTitle = reader["EventTitle"].ToString();
+                            EventDescription = reader["EventDescription"].ToString();
+                            Organization = reader["Organization"].ToString();
+                            StartsAt = Convert.ToDateTime(reader["StartsAt"]);
+                            EndsAt = Convert.ToDateTime(reader["EndsAt"]);
+                            TicketPrice = (int)reader["TicketPrice"];
+                            PosterImage = reader["PosterImage"]?.ToString(); // Assuming it's a file path stored as a string
+                        }
+                        else
+                        {
+                            throw new Exception("Event not found with the given ID.");
+                        }
+                    }
+                }
+            }
+        }
+
+
+
         //public Event(string EventID) { this._EventID = EventID; }
+        public Event(string eventID, string eventTitle, string eventDescription, string organization, double ticketPrice, DateTime startsAt, DateTime endsAt, string posterImage)
+        {
+            // Assign values to class properties
+            this.EventID = eventID;
+            this.EventTitle = eventTitle;
+            this.EventDescription = eventDescription;
+            this.Organization = organization;
+            this.TicketPrice = ticketPrice;
+            this.StartsAt = startsAt;
+            this.EndsAt = endsAt;
+            this.PosterImage = posterImage;
+
+            // Add the event to the database
+            string query = @"
+        INSERT INTO Events (EventID, Title, Description, OrganizerDetails, TicketPrice, StartDate, EndDate, EventPoster) 
+        VALUES (@EventID, @Title, @Description, @OrganizerDetails, @TicketPrice, @StartDate, @EndDate, @EventPoster)
+    ";
+
+            using (SqlConnection connection = DB.Connect())
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@EventID", eventID);
+                        command.Parameters.AddWithValue("@Title", eventTitle);
+                        command.Parameters.AddWithValue("@Description", eventDescription);
+                        command.Parameters.AddWithValue("@OrganizerDetails", organization);
+                        command.Parameters.AddWithValue("@TicketPrice", ticketPrice);
+                        command.Parameters.AddWithValue("@StartDate", startsAt);
+                        command.Parameters.AddWithValue("@EndDate", endsAt);
+                        command.Parameters.AddWithValue("@EventPoster", posterImage);
+                        
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"An error occurred while adding the event to the database: {ex.Message}");
+                }
+            }
+        }
+
 
         // Properties
         public string EventID {
@@ -177,7 +260,46 @@ namespace FrameSphere.EntityClasses
                 }
             }
         }
-        public Image PosterImage { get; set; }
+        private string _posterimage;
+        public string PosterImage {
+            get {
+                string query = $"SELECT EventPoster FROM Events WHERE EventId = '{EventID}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            _posterimage = (string)command.ExecuteScalar();
+                            return _posterimage;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while loading event organizer details: {ex.Message}");
+                    }
+                }
+            }
+            set {
+                string query = $"UPDATE Events SET EventPoster = '{value}' WHERE EventId = '{EventID}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception($"An error occurred while updating event organizer details: {ex.Message}");
+                    }
+                }
+            }
+        }
         public DateTime StartsAt {
             get {
                 string query = $"SELECT StartDate FROM Events WHERE EventId = '{EventID}'";
@@ -262,67 +384,6 @@ namespace FrameSphere.EntityClasses
         public List<User> Organizers { get; set; } = new List<User>();
 
         // Constructor to fetch event data by title
-        public Event(string title)
-        {
-            string query = @"
-                SELECT 
-                    EventID,
-                    Title,
-                    Description,
-                    OrganizerDetails,
-                    StartDate,
-                    EndDate,
-                    EventPoster,
-                    TicketPrice
-                FROM 
-                    Events
-                WHERE 
-                    Title = @Title";
-
-            using (SqlConnection connection = DB.Connect())
-            {
-                try
-                {
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@Title", title);
-
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                EventID = reader["EventID"].ToString();
-                                EventTitle = reader["Title"].ToString();
-                                EventDescription = reader["Description"].ToString();
-                                Organization = reader["OrganizerDetails"].ToString();
-                                StartsAt = Convert.ToDateTime(reader["StartDate"]);
-                                EndsAt = Convert.ToDateTime(reader["EndDate"]);
-                                TicketPrice = reader["TicketPrice"] != DBNull.Value
-                                    ? Convert.ToDouble(reader["TicketPrice"])
-                                    : 0.0;
-
-                                string eventPosterPath = reader["EventPoster"] != DBNull.Value
-                                    ? reader["EventPoster"].ToString()
-                                    : null;
-
-                                PosterImage = !string.IsNullOrEmpty(eventPosterPath)
-                                    ? FSystem.GetImageFromPath(eventPosterPath)
-                                    : FrameSphere.Properties.Resources.defaultProfilePic;
-                            }
-                            else
-                            {
-                                throw new Exception("Event not found.");
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception($"An error occurred while fetching event data: {ex.Message}");
-                }
-            }
-        }
 
         // Add a visitor to the event
         public void AddVisitor(User visitor)

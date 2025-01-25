@@ -102,21 +102,6 @@ namespace FrameSphere
                         command.ExecuteNonQuery();
                         MessageBox.Show("Event created successfully!");
 
-                        // Navigate to the Event Page and display the event data
-                        Event_page eventPage = new Event_page(title);
-                        eventPage.LoadEventData(
-                            title,
-                            description,
-                            organizerDetails,
-                            startDate,
-                            endDate,
-                            registrationType,
-                            ticketPrice,
-                            eventPosterRelativePath // Load image using the relative path
-                        );
-                        this.Hide();
-                        eventPage.StartPosition = FormStartPosition.CenterParent;
-                        eventPage.ShowDialog();
                     }
                 }
             }
