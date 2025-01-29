@@ -51,7 +51,7 @@ namespace FrameSphere
         private void update_button_Click(object sender, EventArgs e)
         {
             //FSystem.loggedInUser.CheckPassword(CurrentPWField.Text)
-            if (true)
+            if (FSystem.loggedInUser.CheckPassword(CurrentPWField.Text))
             {
                 ev.EventTitle = eventTitle_field.Text;
                 ev.EventDescription = eventDesc_field.Text;

@@ -28,8 +28,8 @@ namespace FrameSphere
 
 
             string query = string.IsNullOrEmpty(searchQuery)
-                ? "SELECT EventID, Title, Status FROM Events"
-                : "SELECT EventID, Title, Status FROM Events WHERE Title LIKE @SearchQuery";
+                ? "SELECT EventID, EventTitle, Status FROM Events"
+                : "SELECT EventID, EventTitle, Status FROM Events WHERE EventTitle LIKE @SearchQuery";
 
             using (SqlConnection connection = DB.Connect())
             {
@@ -54,7 +54,7 @@ namespace FrameSphere
                         else { noevent.Visible = false; }
                         while (reader.Read())
                         {
-                            string title = reader["Title"].ToString();
+                            string title = reader["EventTitle"].ToString();
                             int eventid = Convert.ToInt32(reader["EventID"]);
                             string status = reader["Status"].ToString();
                             CreateEventsBox(title, status, eventid);
