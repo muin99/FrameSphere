@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using FrameSphere;
+using FrameSphere.EntityClasses;
 
 namespace FrameSphere
 {
@@ -63,67 +64,19 @@ namespace FrameSphere
 
         private void CreateEventBTN(object sender, EventArgs e)
         {
-            try
-            {
-                using (SqlConnection connection = DB.Connect())
-                {
-                    connection.Open();
-                    string userID = FSystem.loggedInUser.UserName;
-                    string title = Title.Text;
-                    string description = Description.Text;
-                    string organizerDetails = OrgDetails.Text;
-                    DateTime startDate = startdate.Value;
-                    DateTime endDate = enddate.Value;
-                    string registrationType = free.Checked ? "Free" : "Paid";
-                    decimal? ticketPrice = paid.Checked && decimal.TryParse(ticketprice.Text, out decimal price) ? price : (decimal?)null;
 
-                    if (string.IsNullOrEmpty(eventPosterRelativePath))
-                    {
-                        MessageBox.Show("Please select an event poster image.");
-                        return;
-                    }
-
-                    // Insert event data into the database, including the relative path for the poster
-                    string query = @"INSERT INTO Events (Title, Description, OrganizerDetails, StartDate, EndDate, EventPoster, RegistrationType, TicketPrice, Creator)
-                                     VALUES (@Title, @Description, @OrganizerDetails, @StartDate, @EndDate, @EventPoster, @RegistrationType, @TicketPrice, @Creator)";
-
-                    using (SqlCommand command = new SqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@Title", title);
-                        command.Parameters.AddWithValue("@Description", description);
-                        command.Parameters.AddWithValue("@OrganizerDetails", organizerDetails);
-                        command.Parameters.AddWithValue("@StartDate", startDate);
-                        command.Parameters.AddWithValue("@EndDate", endDate);
-                        command.Parameters.AddWithValue("@EventPoster", eventPosterRelativePath); // Save relative path
-                        command.Parameters.AddWithValue("@RegistrationType", registrationType);
-                        command.Parameters.AddWithValue("@TicketPrice", (object)ticketPrice ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@Creator", userID);
-
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("Event created successfully!");
-
-                        // Navigate to the Event Page and display the event data
-                        Event_page eventPage = new Event_page(title);
-                        eventPage.LoadEventData(
-                            title,
-                            description,
-                            organizerDetails,
-                            startDate,
-                            endDate,
-                            registrationType,
-                            ticketPrice,
-                            eventPosterRelativePath // Load image using the relative path
-                        );
-                        this.Hide();
-                        eventPage.StartPosition = FormStartPosition.CenterParent;
-                        eventPage.ShowDialog();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            double price = (paid.Checked && double.TryParse(ticketprice.Text, out double parsedPrice)) ? parsedPrice : 0;
+            Event a = new Event(
+                                Title.Text,                // Event Title
+                                Description.Text,          // Event Description
+                                OrgDetails.Text,         // Organization
+                                price,
+                                startdate.Value,  // Start Date
+                                enddate.Value,  // End Date
+                                free.Checked ? "Free" : "Paid",                      // Registration Type
+                                eventPosterRelativePath            // Poster Image Path
+                                );
+            MessageBox.Show("Event created successfully");
         }
 
         private void paid_CheckedChanged(object sender, EventArgs e)

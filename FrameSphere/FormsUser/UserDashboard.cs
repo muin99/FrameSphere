@@ -22,6 +22,7 @@ namespace FrameSphere
         
         public UserDashBoard()
         {
+
             InitializeComponent();
 
             FSystem.loggedInUser.loadUser();
@@ -50,8 +51,8 @@ namespace FrameSphere
 
             // Define the query, with or without a search filter
             string query = string.IsNullOrEmpty(searchQuery)
-                ? "SELECT EventId, Title, Description, EndDate, EventPoster FROM Events"
-                : "SELECT EventId, Title, Description, EndDate, EventPoster FROM Events WHERE Title LIKE @SearchQuery";
+                ? "SELECT EventId, EventTitle, Description, EndDate, EventPoster FROM Events"
+                : "SELECT EventId, EventTitle, Description, EndDate, EventPoster FROM Events WHERE EventTitle LIKE @SearchQuery";
 
             using (SqlConnection connection = DB.Connect())
             {
@@ -77,7 +78,7 @@ namespace FrameSphere
                         {
                             // Extract event data from the database
                             string eventId = reader["EventId"].ToString();
-                            string title = reader["Title"].ToString();
+                            string title = reader["EventTitle"].ToString();
                             string description = reader["Description"].ToString();
                             DateTime endDate = Convert.ToDateTime(reader["EndDate"]);
                             string eventPosterPath = reader["EventPoster"] != DBNull.Value ? reader["EventPoster"].ToString() : null;

@@ -92,7 +92,7 @@ namespace FrameSphere
             };
 
             manageLabel.Click += (sender, e) => {
-                ManageEvents manageEventForm = new ManageEvents(eventid);
+                ManageEvents manageEventForm = new ManageEvents(eventid.ToString());
                 this.Hide();
                 manageEventForm.StartPosition = FormStartPosition.CenterParent;
                 manageEventForm.ShowDialog();
