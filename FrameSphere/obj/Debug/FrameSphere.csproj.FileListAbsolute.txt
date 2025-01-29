@@ -46,3 +46,4 @@ C:\Users\User\Documents\FrameSphere\FrameSphere\obj\Debug\FrameSphere.csproj.Gen
 C:\Users\User\Documents\FrameSphere\FrameSphere\obj\Debug\FrameSphere.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\FrameSphere\FrameSphere\obj\Debug\FrameSphere.exe
 C:\Users\User\Documents\FrameSphere\FrameSphere\obj\Debug\FrameSphere.pdb
+C:\Users\User\Documents\FrameSphere\FrameSphere\obj\Debug\FrameSphere.FormsEvents.ManageParticipants.resources

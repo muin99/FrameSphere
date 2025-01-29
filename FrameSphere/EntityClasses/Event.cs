@@ -14,11 +14,12 @@ namespace FrameSphere.EntityClasses
         private double _TicketPrice;
         private DateTime _StartsAt;
         private DateTime _EndsAt;
-        public Event(string EventID) { this._EventID = EventID; }
+        //public Event(string EventID) { this._EventID = EventID; }
 
         // Properties
         public string EventID {
             get { return _EventID; }
+            set {  _EventID = value; }
         }
         public string EventTitle {
             get {
@@ -41,7 +42,7 @@ namespace FrameSphere.EntityClasses
                 }
             }
             set {
-                string query = $"UPDATE Event SET Title = '{value}' WHERE EventId = '{EventID}'";
+                string query = $"UPDATE Events SET Title = '{value}' WHERE EventId = '{EventID}'";
                 using (SqlConnection connection = DB.Connect())
                 {
                     try
@@ -81,7 +82,7 @@ namespace FrameSphere.EntityClasses
                 }
             }
             set {
-                string query = $"UPDATE Description SET Title = '{value}' WHERE EventId = '{EventID}'";
+                string query = $"UPDATE Events SET Description = '{value}' WHERE EventId = '{EventID}'";
                 using (SqlConnection connection = DB.Connect())
                 {
                     try
@@ -121,7 +122,7 @@ namespace FrameSphere.EntityClasses
                 }
             }
             set {
-                string query = $"UPDATE Event SET OrganizerDetails = '{value}' WHERE EventId = '{EventID}'";
+                string query = $"UPDATE Events SET OrganizerDetails = '{value}' WHERE EventId = '{EventID}'";
                 using (SqlConnection connection = DB.Connect())
                 {
                     try
@@ -161,7 +162,7 @@ namespace FrameSphere.EntityClasses
                 }
             }
             set {
-                string query = $"UPDATE Event SET TicketPrice = '{value}' WHERE EventId = '{EventID}'";
+                string query = $"UPDATE Events SET TicketPrice = '{value}' WHERE EventId = '{EventID}'";
                 using (SqlConnection connection = DB.Connect())
                 {
                     try
@@ -202,7 +203,7 @@ namespace FrameSphere.EntityClasses
                 }
             }
             set {
-                string query = $"UPDATE Event SET StartDate = '{value}' WHERE EventId = '{EventID}'";
+                string query = $"UPDATE Events SET StartDate = '{value}' WHERE EventId = '{EventID}'";
                 using (SqlConnection connection = DB.Connect())
                 {
                     try
@@ -242,7 +243,7 @@ namespace FrameSphere.EntityClasses
                 }
             }
             set {
-                string query = $"UPDATE Event SET EndDate = '{value}' WHERE EventId = '{EventID}'";
+                string query = $"UPDATE Events SET EndDate = '{value}' WHERE EventId = '{EventID}'";
                 using (SqlConnection connection = DB.Connect())
                 {
                     try

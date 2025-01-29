@@ -31,9 +31,16 @@ namespace FrameSphere
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.header_panel = new System.Windows.Forms.Panel();
+            this.Logout = new System.Windows.Forms.Button();
             this.ManageEvent_Title = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.body_panel = new System.Windows.Forms.Panel();
+            this.manageButtons_panel = new System.Windows.Forms.Panel();
+            this.visitors_button = new System.Windows.Forms.Button();
+            this.artCollections_button = new System.Windows.Forms.Button();
+            this.participants_button = new System.Windows.Forms.Button();
+            this.currentPW_label = new System.Windows.Forms.Label();
+            this.CurrentPWField = new System.Windows.Forms.TextBox();
             this.posterImage = new System.Windows.Forms.PictureBox();
             this.ticketPrice_label = new System.Windows.Forms.Label();
             this.end_label = new System.Windows.Forms.Label();
@@ -54,18 +61,11 @@ namespace FrameSphere
             this.OrgDetails_field = new System.Windows.Forms.TextBox();
             this.eventDesc_field = new System.Windows.Forms.TextBox();
             this.eventTitle_field = new System.Windows.Forms.TextBox();
-            this.Logout = new System.Windows.Forms.Button();
-            this.currentPW_label = new System.Windows.Forms.Label();
-            this.CurrentPWField = new System.Windows.Forms.TextBox();
-            this.manageButtons_panel = new System.Windows.Forms.Panel();
-            this.participants_button = new System.Windows.Forms.Button();
-            this.artCollections_button = new System.Windows.Forms.Button();
-            this.visitors_button = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.header_panel.SuspendLayout();
             this.body_panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posterImage)).BeginInit();
             this.manageButtons_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.posterImage)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -92,8 +92,22 @@ namespace FrameSphere
             this.header_panel.Location = new System.Drawing.Point(4, 4);
             this.header_panel.Margin = new System.Windows.Forms.Padding(4);
             this.header_panel.Name = "header_panel";
-            this.header_panel.Size = new System.Drawing.Size(1677, 109);
+            this.header_panel.Size = new System.Drawing.Size(1677, 108);
             this.header_panel.TabIndex = 1;
+            // 
+            // Logout
+            // 
+            this.Logout.BackColor = System.Drawing.Color.Snow;
+            this.Logout.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.Logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Logout.ForeColor = System.Drawing.Color.Red;
+            this.Logout.Location = new System.Drawing.Point(1531, 37);
+            this.Logout.Margin = new System.Windows.Forms.Padding(4);
+            this.Logout.Name = "Logout";
+            this.Logout.Size = new System.Drawing.Size(100, 28);
+            this.Logout.TabIndex = 23;
+            this.Logout.Text = "Log out";
+            this.Logout.UseVisualStyleBackColor = false;
             // 
             // ManageEvent_Title
             // 
@@ -147,12 +161,88 @@ namespace FrameSphere
             this.body_panel.Controls.Add(this.OrgDetails_field);
             this.body_panel.Controls.Add(this.eventDesc_field);
             this.body_panel.Controls.Add(this.eventTitle_field);
-            this.body_panel.Location = new System.Drawing.Point(4, 121);
+            this.body_panel.Location = new System.Drawing.Point(4, 120);
             this.body_panel.Margin = new System.Windows.Forms.Padding(4);
             this.body_panel.Name = "body_panel";
             this.body_panel.Size = new System.Drawing.Size(1653, 706);
             this.body_panel.TabIndex = 2;
             this.body_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.body_panel_Paint);
+            // 
+            // manageButtons_panel
+            // 
+            this.manageButtons_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.manageButtons_panel.Controls.Add(this.visitors_button);
+            this.manageButtons_panel.Controls.Add(this.artCollections_button);
+            this.manageButtons_panel.Controls.Add(this.participants_button);
+            this.manageButtons_panel.Location = new System.Drawing.Point(933, 49);
+            this.manageButtons_panel.Name = "manageButtons_panel";
+            this.manageButtons_panel.Size = new System.Drawing.Size(674, 305);
+            this.manageButtons_panel.TabIndex = 27;
+            // 
+            // visitors_button
+            // 
+            this.visitors_button.BackColor = System.Drawing.Color.DarkGreen;
+            this.visitors_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.visitors_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.visitors_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.visitors_button.Location = new System.Drawing.Point(88, 176);
+            this.visitors_button.Margin = new System.Windows.Forms.Padding(4);
+            this.visitors_button.Name = "visitors_button";
+            this.visitors_button.Size = new System.Drawing.Size(497, 36);
+            this.visitors_button.TabIndex = 6;
+            this.visitors_button.Text = "Manage Visitors";
+            this.visitors_button.UseVisualStyleBackColor = false;
+            // 
+            // artCollections_button
+            // 
+            this.artCollections_button.BackColor = System.Drawing.Color.DarkGreen;
+            this.artCollections_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.artCollections_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artCollections_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.artCollections_button.Location = new System.Drawing.Point(88, 109);
+            this.artCollections_button.Margin = new System.Windows.Forms.Padding(4);
+            this.artCollections_button.Name = "artCollections_button";
+            this.artCollections_button.Size = new System.Drawing.Size(497, 36);
+            this.artCollections_button.TabIndex = 5;
+            this.artCollections_button.Text = "Manage Art Collections";
+            this.artCollections_button.UseVisualStyleBackColor = false;
+            // 
+            // participants_button
+            // 
+            this.participants_button.BackColor = System.Drawing.Color.DarkGreen;
+            this.participants_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.participants_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.participants_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.participants_button.Location = new System.Drawing.Point(88, 36);
+            this.participants_button.Margin = new System.Windows.Forms.Padding(4);
+            this.participants_button.Name = "participants_button";
+            this.participants_button.Size = new System.Drawing.Size(497, 36);
+            this.participants_button.TabIndex = 4;
+            this.participants_button.Text = "Manage Participants";
+            this.participants_button.UseVisualStyleBackColor = false;
+            this.participants_button.Click += new System.EventHandler(this.participants_button_Click);
+            // 
+            // currentPW_label
+            // 
+            this.currentPW_label.AutoSize = true;
+            this.currentPW_label.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentPW_label.Location = new System.Drawing.Point(1212, 394);
+            this.currentPW_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.currentPW_label.Name = "currentPW_label";
+            this.currentPW_label.Size = new System.Drawing.Size(163, 22);
+            this.currentPW_label.TabIndex = 26;
+            this.currentPW_label.Text = "Current Password :";
+            this.currentPW_label.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // CurrentPWField
+            // 
+            this.CurrentPWField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CurrentPWField.Location = new System.Drawing.Point(1383, 394);
+            this.CurrentPWField.Margin = new System.Windows.Forms.Padding(4);
+            this.CurrentPWField.Name = "CurrentPWField";
+            this.CurrentPWField.Size = new System.Drawing.Size(224, 22);
+            this.CurrentPWField.TabIndex = 25;
+            this.CurrentPWField.TextChanged += new System.EventHandler(this.CurrentPWField_TextChanged);
             // 
             // posterImage
             // 
@@ -373,102 +463,13 @@ namespace FrameSphere
             this.eventTitle_field.Size = new System.Drawing.Size(635, 22);
             this.eventTitle_field.TabIndex = 1;
             // 
-            // Logout
-            // 
-            this.Logout.BackColor = System.Drawing.Color.Snow;
-            this.Logout.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.Logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Logout.ForeColor = System.Drawing.Color.Red;
-            this.Logout.Location = new System.Drawing.Point(1531, 37);
-            this.Logout.Margin = new System.Windows.Forms.Padding(4);
-            this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(100, 28);
-            this.Logout.TabIndex = 23;
-            this.Logout.Text = "Log out";
-            this.Logout.UseVisualStyleBackColor = false;
-            // 
-            // currentPW_label
-            // 
-            this.currentPW_label.AutoSize = true;
-            this.currentPW_label.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currentPW_label.Location = new System.Drawing.Point(1212, 394);
-            this.currentPW_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.currentPW_label.Name = "currentPW_label";
-            this.currentPW_label.Size = new System.Drawing.Size(163, 22);
-            this.currentPW_label.TabIndex = 26;
-            this.currentPW_label.Text = "Current Password :";
-            this.currentPW_label.Click += new System.EventHandler(this.label10_Click);
-            // 
-            // CurrentPWField
-            // 
-            this.CurrentPWField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CurrentPWField.Location = new System.Drawing.Point(1383, 394);
-            this.CurrentPWField.Margin = new System.Windows.Forms.Padding(4);
-            this.CurrentPWField.Name = "CurrentPWField";
-            this.CurrentPWField.Size = new System.Drawing.Size(224, 22);
-            this.CurrentPWField.TabIndex = 25;
-            this.CurrentPWField.TextChanged += new System.EventHandler(this.CurrentPWField_TextChanged);
-            // 
-            // manageButtons_panel
-            // 
-            this.manageButtons_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.manageButtons_panel.Controls.Add(this.visitors_button);
-            this.manageButtons_panel.Controls.Add(this.artCollections_button);
-            this.manageButtons_panel.Controls.Add(this.participants_button);
-            this.manageButtons_panel.Location = new System.Drawing.Point(933, 49);
-            this.manageButtons_panel.Name = "manageButtons_panel";
-            this.manageButtons_panel.Size = new System.Drawing.Size(674, 305);
-            this.manageButtons_panel.TabIndex = 27;
-            // 
-            // participants_button
-            // 
-            this.participants_button.BackColor = System.Drawing.Color.DarkGreen;
-            this.participants_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.participants_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.participants_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.participants_button.Location = new System.Drawing.Point(88, 36);
-            this.participants_button.Margin = new System.Windows.Forms.Padding(4);
-            this.participants_button.Name = "participants_button";
-            this.participants_button.Size = new System.Drawing.Size(497, 36);
-            this.participants_button.TabIndex = 4;
-            this.participants_button.Text = "Manage Participants";
-            this.participants_button.UseVisualStyleBackColor = false;
-            // 
-            // artCollections_button
-            // 
-            this.artCollections_button.BackColor = System.Drawing.Color.DarkGreen;
-            this.artCollections_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.artCollections_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.artCollections_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.artCollections_button.Location = new System.Drawing.Point(88, 109);
-            this.artCollections_button.Margin = new System.Windows.Forms.Padding(4);
-            this.artCollections_button.Name = "artCollections_button";
-            this.artCollections_button.Size = new System.Drawing.Size(497, 36);
-            this.artCollections_button.TabIndex = 5;
-            this.artCollections_button.Text = "Manage Art Collections";
-            this.artCollections_button.UseVisualStyleBackColor = false;
-            // 
-            // visitors_button
-            // 
-            this.visitors_button.BackColor = System.Drawing.Color.DarkGreen;
-            this.visitors_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.visitors_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visitors_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.visitors_button.Location = new System.Drawing.Point(88, 176);
-            this.visitors_button.Margin = new System.Windows.Forms.Padding(4);
-            this.visitors_button.Name = "visitors_button";
-            this.visitors_button.Size = new System.Drawing.Size(497, 36);
-            this.visitors_button.TabIndex = 6;
-            this.visitors_button.Text = "Manage Visitors";
-            this.visitors_button.UseVisualStyleBackColor = false;
-            // 
             // ManageEvents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1685, 838);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ManageEvents";
             this.Text = "Manage Event";
             this.Load += new System.EventHandler(this.manageevent_Load);
@@ -477,8 +478,8 @@ namespace FrameSphere
             this.header_panel.PerformLayout();
             this.body_panel.ResumeLayout(false);
             this.body_panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.posterImage)).EndInit();
             this.manageButtons_panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.posterImage)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -182,5 +182,11 @@ namespace FrameSphere
         {
 
         }
+
+        private void participants_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+        }
     }
 }
