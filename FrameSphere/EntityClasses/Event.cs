@@ -23,7 +23,7 @@ namespace FrameSphere.EntityClasses
             // Assuming DB.Connect() is a method that returns a SqlConnection
             private SqlConnection connection;
 
-            // Getter and Setter for EventID
+            // Getter and Setter for EventID aa
             public string EventID {
                 get {
                 return _eventID;
