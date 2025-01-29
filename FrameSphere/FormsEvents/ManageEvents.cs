@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrameSphere.EntityClasses;
 using System.Reflection;
+using FrameSphere.FormsEvents;
 
 namespace FrameSphere
 {
@@ -117,6 +118,9 @@ namespace FrameSphere
         private void participants_button_Click(object sender, EventArgs e)
         {
             this.Hide();
+            ManageParticipants mn = new ManageParticipants(ev);
+            mn.Show();
+
 
         }
     }

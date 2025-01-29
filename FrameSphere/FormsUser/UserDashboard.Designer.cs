@@ -37,6 +37,11 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.profilepanel = new System.Windows.Forms.Panel();
+            this.website_link = new System.Windows.Forms.PictureBox();
+            this.pinterest_link = new System.Windows.Forms.PictureBox();
+            this.instagram_link = new System.Windows.Forms.PictureBox();
+            this.facebook_pic = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.button14 = new System.Windows.Forms.Button();
             this.address = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -70,23 +75,18 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.website_link = new System.Windows.Forms.PictureBox();
-            this.pinterest_link = new System.Windows.Forms.PictureBox();
-            this.instagram_link = new System.Windows.Forms.PictureBox();
-            this.facebook_pic = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.midpanel.SuspendLayout();
             this.eventspanel.SuspendLayout();
             this.panel4.SuspendLayout();
             this.profilepanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.website_link)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pinterest_link)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.instagram_link)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.facebook_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList1
@@ -177,6 +177,61 @@
             this.profilepanel.Name = "profilepanel";
             this.profilepanel.Size = new System.Drawing.Size(387, 508);
             this.profilepanel.TabIndex = 0;
+            // 
+            // website_link
+            // 
+            this.website_link.Image = ((System.Drawing.Image)(resources.GetObject("website_link.Image")));
+            this.website_link.Location = new System.Drawing.Point(269, 423);
+            this.website_link.Name = "website_link";
+            this.website_link.Size = new System.Drawing.Size(40, 37);
+            this.website_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.website_link.TabIndex = 20;
+            this.website_link.TabStop = false;
+            this.website_link.Click += new System.EventHandler(this.website_link_Click);
+            // 
+            // pinterest_link
+            // 
+            this.pinterest_link.Image = ((System.Drawing.Image)(resources.GetObject("pinterest_link.Image")));
+            this.pinterest_link.Location = new System.Drawing.Point(211, 423);
+            this.pinterest_link.Name = "pinterest_link";
+            this.pinterest_link.Size = new System.Drawing.Size(40, 37);
+            this.pinterest_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pinterest_link.TabIndex = 19;
+            this.pinterest_link.TabStop = false;
+            this.pinterest_link.Click += new System.EventHandler(this.pinterest_link_Click);
+            // 
+            // instagram_link
+            // 
+            this.instagram_link.Image = ((System.Drawing.Image)(resources.GetObject("instagram_link.Image")));
+            this.instagram_link.Location = new System.Drawing.Point(156, 423);
+            this.instagram_link.Name = "instagram_link";
+            this.instagram_link.Size = new System.Drawing.Size(40, 37);
+            this.instagram_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.instagram_link.TabIndex = 18;
+            this.instagram_link.TabStop = false;
+            this.instagram_link.Click += new System.EventHandler(this.instagram_link_Click);
+            // 
+            // facebook_pic
+            // 
+            this.facebook_pic.Image = ((System.Drawing.Image)(resources.GetObject("facebook_pic.Image")));
+            this.facebook_pic.Location = new System.Drawing.Point(98, 423);
+            this.facebook_pic.Name = "facebook_pic";
+            this.facebook_pic.Size = new System.Drawing.Size(40, 37);
+            this.facebook_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.facebook_pic.TabIndex = 17;
+            this.facebook_pic.TabStop = false;
+            this.facebook_pic.Click += new System.EventHandler(this.facebook_pic_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(27, 433);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 17);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Socials:";
             // 
             // button14
             // 
@@ -623,61 +678,6 @@
             this.tableLayoutPanel1.TabIndex = 0;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
-            // website_link
-            // 
-            this.website_link.Image = ((System.Drawing.Image)(resources.GetObject("website_link.Image")));
-            this.website_link.Location = new System.Drawing.Point(269, 423);
-            this.website_link.Name = "website_link";
-            this.website_link.Size = new System.Drawing.Size(40, 37);
-            this.website_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.website_link.TabIndex = 20;
-            this.website_link.TabStop = false;
-            this.website_link.Click += new System.EventHandler(this.website_link_Click);
-            // 
-            // pinterest_link
-            // 
-            this.pinterest_link.Image = ((System.Drawing.Image)(resources.GetObject("pinterest_link.Image")));
-            this.pinterest_link.Location = new System.Drawing.Point(211, 423);
-            this.pinterest_link.Name = "pinterest_link";
-            this.pinterest_link.Size = new System.Drawing.Size(40, 37);
-            this.pinterest_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pinterest_link.TabIndex = 19;
-            this.pinterest_link.TabStop = false;
-            this.pinterest_link.Click += new System.EventHandler(this.pinterest_link_Click);
-            // 
-            // instagram_link
-            // 
-            this.instagram_link.Image = ((System.Drawing.Image)(resources.GetObject("instagram_link.Image")));
-            this.instagram_link.Location = new System.Drawing.Point(156, 423);
-            this.instagram_link.Name = "instagram_link";
-            this.instagram_link.Size = new System.Drawing.Size(40, 37);
-            this.instagram_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.instagram_link.TabIndex = 18;
-            this.instagram_link.TabStop = false;
-            this.instagram_link.Click += new System.EventHandler(this.instagram_link_Click);
-            // 
-            // facebook_pic
-            // 
-            this.facebook_pic.Image = ((System.Drawing.Image)(resources.GetObject("facebook_pic.Image")));
-            this.facebook_pic.Location = new System.Drawing.Point(98, 423);
-            this.facebook_pic.Name = "facebook_pic";
-            this.facebook_pic.Size = new System.Drawing.Size(40, 37);
-            this.facebook_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.facebook_pic.TabIndex = 17;
-            this.facebook_pic.TabStop = false;
-            this.facebook_pic.Click += new System.EventHandler(this.facebook_pic_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(27, 433);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 17);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Socials:";
-            // 
             // UserDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -696,15 +696,15 @@
             this.panel4.ResumeLayout(false);
             this.profilepanel.ResumeLayout(false);
             this.profilepanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.website_link)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pinterest_link)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instagram_link)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.facebook_pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.profilepic)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.website_link)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pinterest_link)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.instagram_link)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.facebook_pic)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -30,21 +30,20 @@
         {
             this.mParticipant_tableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.MP_Header = new System.Windows.Forms.Panel();
-            this.ManageParticipants_Title = new System.Windows.Forms.Label();
-            this.Logout = new System.Windows.Forms.Button();
             this.goBack_button = new System.Windows.Forms.Button();
+            this.Logout = new System.Windows.Forms.Button();
+            this.ManageParticipants_Title = new System.Windows.Forms.Label();
             this.MP_Body = new System.Windows.Forms.Panel();
-            this.Participant_List_Grid = new System.Windows.Forms.DataGridView();
-            this.FindArtist_Label = new System.Windows.Forms.Label();
-            this.SearchArtist_Field = new System.Windows.Forms.TextBox();
-            this.addArtist_button = new System.Windows.Forms.Button();
-            this.CurrentArtists_Label = new System.Windows.Forms.Label();
             this.participants_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.noArtists = new System.Windows.Forms.Label();
+            this.CurrentArtists_Label = new System.Windows.Forms.Label();
+            this.addArtist_button = new System.Windows.Forms.Button();
+            this.SearchArtist_Field = new System.Windows.Forms.TextBox();
+            this.FindArtist_Label = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.mParticipant_tableLayout.SuspendLayout();
             this.MP_Header.SuspendLayout();
             this.MP_Body.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Participant_List_Grid)).BeginInit();
             this.participants_panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,16 +73,19 @@
             this.MP_Header.Size = new System.Drawing.Size(1677, 107);
             this.MP_Header.TabIndex = 0;
             // 
-            // ManageParticipants_Title
+            // goBack_button
             // 
-            this.ManageParticipants_Title.AutoSize = true;
-            this.ManageParticipants_Title.Font = new System.Drawing.Font("Microsoft New Tai Lue", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ManageParticipants_Title.Location = new System.Drawing.Point(715, 31);
-            this.ManageParticipants_Title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.ManageParticipants_Title.Name = "ManageParticipants_Title";
-            this.ManageParticipants_Title.Size = new System.Drawing.Size(477, 45);
-            this.ManageParticipants_Title.TabIndex = 22;
-            this.ManageParticipants_Title.Text = "Manage Participating Artists";
+            this.goBack_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.goBack_button.FlatAppearance.BorderColor = System.Drawing.Color.GreenYellow;
+            this.goBack_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.goBack_button.Font = new System.Drawing.Font("Lucida Console", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.goBack_button.ForeColor = System.Drawing.Color.White;
+            this.goBack_button.Location = new System.Drawing.Point(31, 31);
+            this.goBack_button.Name = "goBack_button";
+            this.goBack_button.Size = new System.Drawing.Size(140, 41);
+            this.goBack_button.TabIndex = 25;
+            this.goBack_button.Text = "Go Back";
+            this.goBack_button.UseVisualStyleBackColor = false;
             // 
             // Logout
             // 
@@ -99,80 +101,31 @@
             this.Logout.Text = "Log out";
             this.Logout.UseVisualStyleBackColor = false;
             // 
-            // goBack_button
+            // ManageParticipants_Title
             // 
-            this.goBack_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.goBack_button.FlatAppearance.BorderColor = System.Drawing.Color.GreenYellow;
-            this.goBack_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.goBack_button.Font = new System.Drawing.Font("Lucida Console", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.goBack_button.ForeColor = System.Drawing.Color.White;
-            this.goBack_button.Location = new System.Drawing.Point(31, 31);
-            this.goBack_button.Name = "goBack_button";
-            this.goBack_button.Size = new System.Drawing.Size(140, 41);
-            this.goBack_button.TabIndex = 25;
-            this.goBack_button.Text = "Go Back";
-            this.goBack_button.UseVisualStyleBackColor = false;
+            this.ManageParticipants_Title.AutoSize = true;
+            this.ManageParticipants_Title.Font = new System.Drawing.Font("Microsoft New Tai Lue", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ManageParticipants_Title.Location = new System.Drawing.Point(715, 31);
+            this.ManageParticipants_Title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ManageParticipants_Title.Name = "ManageParticipants_Title";
+            this.ManageParticipants_Title.Size = new System.Drawing.Size(477, 45);
+            this.ManageParticipants_Title.TabIndex = 22;
+            this.ManageParticipants_Title.Text = "Manage Participating Artists";
             // 
             // MP_Body
             // 
             this.MP_Body.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.MP_Body.Controls.Add(this.flowLayoutPanel1);
             this.MP_Body.Controls.Add(this.participants_panel);
             this.MP_Body.Controls.Add(this.CurrentArtists_Label);
             this.MP_Body.Controls.Add(this.addArtist_button);
             this.MP_Body.Controls.Add(this.SearchArtist_Field);
             this.MP_Body.Controls.Add(this.FindArtist_Label);
-            this.MP_Body.Controls.Add(this.Participant_List_Grid);
             this.MP_Body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MP_Body.Location = new System.Drawing.Point(3, 116);
             this.MP_Body.Name = "MP_Body";
             this.MP_Body.Size = new System.Drawing.Size(1679, 719);
             this.MP_Body.TabIndex = 1;
-            // 
-            // Participant_List_Grid
-            // 
-            this.Participant_List_Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Participant_List_Grid.Location = new System.Drawing.Point(31, 88);
-            this.Participant_List_Grid.Name = "Participant_List_Grid";
-            this.Participant_List_Grid.RowHeadersWidth = 51;
-            this.Participant_List_Grid.RowTemplate.Height = 24;
-            this.Participant_List_Grid.Size = new System.Drawing.Size(516, 306);
-            this.Participant_List_Grid.TabIndex = 0;
-            // 
-            // FindArtist_Label
-            // 
-            this.FindArtist_Label.AutoSize = true;
-            this.FindArtist_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FindArtist_Label.Location = new System.Drawing.Point(27, 63);
-            this.FindArtist_Label.Name = "FindArtist_Label";
-            this.FindArtist_Label.Size = new System.Drawing.Size(80, 20);
-            this.FindArtist_Label.TabIndex = 1;
-            this.FindArtist_Label.Text = "Search: ";
-            // 
-            // SearchArtist_Field
-            // 
-            this.SearchArtist_Field.Location = new System.Drawing.Point(114, 60);
-            this.SearchArtist_Field.Name = "SearchArtist_Field";
-            this.SearchArtist_Field.Size = new System.Drawing.Size(342, 22);
-            this.SearchArtist_Field.TabIndex = 2;
-            // 
-            // addArtist_button
-            // 
-            this.addArtist_button.Location = new System.Drawing.Point(472, 59);
-            this.addArtist_button.Name = "addArtist_button";
-            this.addArtist_button.Size = new System.Drawing.Size(75, 23);
-            this.addArtist_button.TabIndex = 3;
-            this.addArtist_button.Text = "Add";
-            this.addArtist_button.UseVisualStyleBackColor = true;
-            // 
-            // CurrentArtists_Label
-            // 
-            this.CurrentArtists_Label.AutoSize = true;
-            this.CurrentArtists_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentArtists_Label.Location = new System.Drawing.Point(602, 59);
-            this.CurrentArtists_Label.Name = "CurrentArtists_Label";
-            this.CurrentArtists_Label.Size = new System.Drawing.Size(204, 20);
-            this.CurrentArtists_Label.TabIndex = 4;
-            this.CurrentArtists_Label.Text = "Currently Participating:";
             // 
             // participants_panel
             // 
@@ -191,6 +144,49 @@
             this.noArtists.TabIndex = 0;
             this.noArtists.Text = "None";
             // 
+            // CurrentArtists_Label
+            // 
+            this.CurrentArtists_Label.AutoSize = true;
+            this.CurrentArtists_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CurrentArtists_Label.Location = new System.Drawing.Point(602, 59);
+            this.CurrentArtists_Label.Name = "CurrentArtists_Label";
+            this.CurrentArtists_Label.Size = new System.Drawing.Size(204, 20);
+            this.CurrentArtists_Label.TabIndex = 4;
+            this.CurrentArtists_Label.Text = "Currently Participating:";
+            // 
+            // addArtist_button
+            // 
+            this.addArtist_button.Location = new System.Drawing.Point(472, 59);
+            this.addArtist_button.Name = "addArtist_button";
+            this.addArtist_button.Size = new System.Drawing.Size(75, 23);
+            this.addArtist_button.TabIndex = 3;
+            this.addArtist_button.Text = "Add";
+            this.addArtist_button.UseVisualStyleBackColor = true;
+            // 
+            // SearchArtist_Field
+            // 
+            this.SearchArtist_Field.Location = new System.Drawing.Point(114, 60);
+            this.SearchArtist_Field.Name = "SearchArtist_Field";
+            this.SearchArtist_Field.Size = new System.Drawing.Size(342, 22);
+            this.SearchArtist_Field.TabIndex = 2;
+            // 
+            // FindArtist_Label
+            // 
+            this.FindArtist_Label.AutoSize = true;
+            this.FindArtist_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FindArtist_Label.Location = new System.Drawing.Point(27, 63);
+            this.FindArtist_Label.Name = "FindArtist_Label";
+            this.FindArtist_Label.Size = new System.Drawing.Size(80, 20);
+            this.FindArtist_Label.TabIndex = 1;
+            this.FindArtist_Label.Text = "Search: ";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(31, 99);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(569, 479);
+            this.flowLayoutPanel1.TabIndex = 6;
+            // 
             // ManageParticipants
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -204,7 +200,6 @@
             this.MP_Header.PerformLayout();
             this.MP_Body.ResumeLayout(false);
             this.MP_Body.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Participant_List_Grid)).EndInit();
             this.participants_panel.ResumeLayout(false);
             this.participants_panel.PerformLayout();
             this.ResumeLayout(false);
@@ -219,12 +214,12 @@
         private System.Windows.Forms.Button goBack_button;
         private System.Windows.Forms.Button Logout;
         private System.Windows.Forms.Panel MP_Body;
-        private System.Windows.Forms.DataGridView Participant_List_Grid;
         private System.Windows.Forms.TextBox SearchArtist_Field;
         private System.Windows.Forms.Label FindArtist_Label;
         private System.Windows.Forms.Label CurrentArtists_Label;
         private System.Windows.Forms.Button addArtist_button;
         private System.Windows.Forms.FlowLayoutPanel participants_panel;
         private System.Windows.Forms.Label noArtists;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

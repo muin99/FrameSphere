@@ -166,7 +166,6 @@ namespace FrameSphere
             this.body_panel.Name = "body_panel";
             this.body_panel.Size = new System.Drawing.Size(1653, 706);
             this.body_panel.TabIndex = 2;
-            this.body_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.body_panel_Paint);
             // 
             // manageButtons_panel
             // 
@@ -232,7 +231,6 @@ namespace FrameSphere
             this.currentPW_label.Size = new System.Drawing.Size(163, 22);
             this.currentPW_label.TabIndex = 26;
             this.currentPW_label.Text = "Current Password :";
-            this.currentPW_label.Click += new System.EventHandler(this.label10_Click);
             // 
             // CurrentPWField
             // 
@@ -242,7 +240,6 @@ namespace FrameSphere
             this.CurrentPWField.Name = "CurrentPWField";
             this.CurrentPWField.Size = new System.Drawing.Size(224, 22);
             this.CurrentPWField.TabIndex = 25;
-            this.CurrentPWField.TextChanged += new System.EventHandler(this.CurrentPWField_TextChanged);
             // 
             // posterImage
             // 
@@ -266,7 +263,6 @@ namespace FrameSphere
             this.ticketPrice_label.TabIndex = 20;
             this.ticketPrice_label.Text = "Ticket Price:";
             this.ticketPrice_label.Visible = false;
-            this.ticketPrice_label.Click += new System.EventHandler(this.label8_Click);
             // 
             // end_label
             // 
@@ -289,7 +285,6 @@ namespace FrameSphere
             this.organizer_label.Size = new System.Drawing.Size(174, 26);
             this.organizer_label.TabIndex = 18;
             this.organizer_label.Text = "Organizers Details:";
-            this.organizer_label.Click += new System.EventHandler(this.label6_Click);
             // 
             // registerType_label
             // 
@@ -301,7 +296,6 @@ namespace FrameSphere
             this.registerType_label.Size = new System.Drawing.Size(122, 26);
             this.registerType_label.TabIndex = 17;
             this.registerType_label.Text = "Registration:";
-            this.registerType_label.Click += new System.EventHandler(this.label5_Click);
             // 
             // eventPoster_label
             // 
@@ -472,7 +466,6 @@ namespace FrameSphere
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ManageEvents";
             this.Text = "Manage Event";
-            this.Load += new System.EventHandler(this.manageevent_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.header_panel.ResumeLayout(false);
             this.header_panel.PerformLayout();

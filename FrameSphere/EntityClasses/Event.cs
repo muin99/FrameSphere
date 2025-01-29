@@ -42,7 +42,7 @@ namespace FrameSphere.EntityClasses
                         SqlCommand command = new SqlCommand(query, connection);
                         command.Parameters.AddWithValue("@EventID", _eventID);
                         connection.Open();
-                        _eventTitle = command.ExecuteScalar()?.ToString();
+                        _eventTitle = command.ExecuteScalar().ToString();
                     }
                     return _eventTitle;
                 }

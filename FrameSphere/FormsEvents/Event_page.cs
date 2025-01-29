@@ -25,5 +25,12 @@ namespace FrameSphere
             UserDashBoard userDashBoard = new UserDashBoard();
             userDashBoard.Show();
         }
+
+        private void manage_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ManageEvents mn = new ManageEvents(currentEvent.EventID);
+            mn.Show();
+        }
     }
 }

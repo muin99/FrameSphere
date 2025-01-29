@@ -58,7 +58,7 @@ namespace FrameSphere.FormsEvents
         private void RemoveArtist(Button btn, string name)
         {
             _event.Artists.RemoveAll(a => a.FirstName == name);
-           // _event.AddArtist()
+           
             participants_panel.Controls.Remove(btn.Parent); // Remove panel
         }
 
