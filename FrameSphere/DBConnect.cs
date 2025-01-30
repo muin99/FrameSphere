@@ -9,17 +9,17 @@ namespace FrameSphere
 {
     public static class DB
     {
-        
+        private static readonly string muin = @"ONUKROM";
+        private static readonly string raisa = @"DESKTOP-5903S8A";
+        private static readonly string nabil = @"MAZHARUL75\SQLEXPRESS"; //THIK KORE NE
 
-        private static readonly string ServerName = muin;
+        private static readonly string ServerName = nabil;
         private static readonly string ConnectionString = $@"Data Source={ServerName}; Initial Catalog = FrameSphere; Integrated Security = true";
         
         
         
         
-        private static readonly string muin = @"ONUKROM";
-        private static readonly string raisa = @"DESKTOP-5903S8A";
-        private static readonly string nabil = @"MAZHARUL75\SQLEXPRESS"; //THIK KORE NE
+        
         public static SqlConnection Connection = new SqlConnection(ConnectionString);
 
         static DB()

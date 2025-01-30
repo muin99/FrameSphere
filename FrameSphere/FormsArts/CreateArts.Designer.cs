@@ -72,11 +72,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.midpanel = new System.Windows.Forms.Panel();
-            this.artPanel = new System.Windows.Forms.Panel();
-            this.remove = new System.Windows.Forms.Button();
-            this.photobox = new System.Windows.Forms.TextBox();
             this.Submit = new System.Windows.Forms.Button();
-            this.add = new System.Windows.Forms.Button();
             this.paid = new System.Windows.Forms.RadioButton();
             this.free = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
@@ -88,6 +84,10 @@
             this.arttitle = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.artContainer = new System.Windows.Forms.FlowLayoutPanel();
+            this.artPanel = new System.Windows.Forms.Panel();
+            this.remove = new System.Windows.Forms.Button();
+            this.photobox = new System.Windows.Forms.TextBox();
+            this.add = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.profilepanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.website_link)).BeginInit();
@@ -99,8 +99,8 @@
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.midpanel.SuspendLayout();
-            this.artPanel.SuspendLayout();
             this.artContainer.SuspendLayout();
+            this.artPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList1
@@ -620,6 +620,7 @@
             // 
             // midpanel
             // 
+            this.midpanel.AutoScroll = true;
             this.midpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.midpanel.Controls.Add(this.Submit);
             this.midpanel.Controls.Add(this.paid);
@@ -639,33 +640,6 @@
             this.midpanel.Size = new System.Drawing.Size(689, 573);
             this.midpanel.TabIndex = 4;
             // 
-            // artPanel
-            // 
-            this.artPanel.Controls.Add(this.remove);
-            this.artPanel.Controls.Add(this.photobox);
-            this.artPanel.Location = new System.Drawing.Point(3, 3);
-            this.artPanel.Name = "artPanel";
-            this.artPanel.Size = new System.Drawing.Size(371, 35);
-            this.artPanel.TabIndex = 38;
-            // 
-            // remove
-            // 
-            this.remove.Location = new System.Drawing.Point(304, 8);
-            this.remove.Name = "remove";
-            this.remove.Size = new System.Drawing.Size(66, 21);
-            this.remove.TabIndex = 36;
-            this.remove.Text = "Remove";
-            this.remove.UseVisualStyleBackColor = true;
-            // 
-            // photobox
-            // 
-            this.photobox.Location = new System.Drawing.Point(9, 8);
-            this.photobox.Name = "photobox";
-            this.photobox.ReadOnly = true;
-            this.photobox.Size = new System.Drawing.Size(289, 20);
-            this.photobox.TabIndex = 26;
-            this.photobox.Click += new System.EventHandler(this.PhotoBox_Click);
-            // 
             // Submit
             // 
             this.Submit.Location = new System.Drawing.Point(488, 522);
@@ -674,16 +648,7 @@
             this.Submit.TabIndex = 37;
             this.Submit.Text = "Submit";
             this.Submit.UseVisualStyleBackColor = true;
-            // 
-            // add
-            // 
-            this.add.Location = new System.Drawing.Point(3, 44);
-            this.add.Name = "add";
-            this.add.Size = new System.Drawing.Size(86, 23);
-            this.add.TabIndex = 35;
-            this.add.Text = "Add";
-            this.add.UseVisualStyleBackColor = true;
-            this.add.Click += new System.EventHandler(this.add_Click);
+            this.Submit.Click += new System.EventHandler(this.Submit_Click_1);
             // 
             // paid
             // 
@@ -696,6 +661,7 @@
             this.paid.TabStop = true;
             this.paid.Text = "              Paid                    ";
             this.paid.UseVisualStyleBackColor = false;
+            this.paid.CheckedChanged += new System.EventHandler(this.paid_CheckedChanged);
             // 
             // free
             // 
@@ -708,6 +674,7 @@
             this.free.TabStop = true;
             this.free.Text = "              Free                    ";
             this.free.UseVisualStyleBackColor = false;
+            this.free.CheckedChanged += new System.EventHandler(this.free_CheckedChanged);
             // 
             // label10
             // 
@@ -733,7 +700,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(152, 440);
+            this.label6.Location = new System.Drawing.Point(142, 452);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 21);
             this.label6.TabIndex = 28;
@@ -784,12 +751,54 @@
             // 
             // artContainer
             // 
+            this.artContainer.AutoScroll = true;
             this.artContainer.Controls.Add(this.artPanel);
             this.artContainer.Controls.Add(this.add);
             this.artContainer.Location = new System.Drawing.Point(190, 226);
             this.artContainer.Name = "artContainer";
-            this.artContainer.Size = new System.Drawing.Size(383, 190);
+            this.artContainer.Size = new System.Drawing.Size(402, 190);
             this.artContainer.TabIndex = 39;
+            this.artContainer.Paint += new System.Windows.Forms.PaintEventHandler(this.artContainer_Paint);
+            // 
+            // artPanel
+            // 
+            this.artPanel.Controls.Add(this.remove);
+            this.artPanel.Controls.Add(this.photobox);
+            this.artPanel.Location = new System.Drawing.Point(0, 0);
+            this.artPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.artPanel.Name = "artPanel";
+            this.artPanel.Size = new System.Drawing.Size(371, 35);
+            this.artPanel.TabIndex = 38;
+            // 
+            // remove
+            // 
+            this.remove.Location = new System.Drawing.Point(304, 8);
+            this.remove.Name = "remove";
+            this.remove.Size = new System.Drawing.Size(66, 21);
+            this.remove.TabIndex = 36;
+            this.remove.Text = "Remove";
+            this.remove.UseVisualStyleBackColor = true;
+            // 
+            // photobox
+            // 
+            this.photobox.Location = new System.Drawing.Point(9, 8);
+            this.photobox.Name = "photobox";
+            this.photobox.ReadOnly = true;
+            this.photobox.Size = new System.Drawing.Size(289, 20);
+            this.photobox.TabIndex = 26;
+            this.photobox.Click += new System.EventHandler(this.PhotoBox_Click);
+            this.photobox.TextChanged += new System.EventHandler(this.photobox_TextChanged);
+            // 
+            // add
+            // 
+            this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.add.Location = new System.Drawing.Point(3, 38);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(86, 23);
+            this.add.TabIndex = 35;
+            this.add.Text = "Add";
+            this.add.UseVisualStyleBackColor = true;
+            this.add.Click += new System.EventHandler(this.add_Click);
             // 
             // CreateArts
             // 
@@ -815,9 +824,9 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.midpanel.ResumeLayout(false);
             this.midpanel.PerformLayout();
+            this.artContainer.ResumeLayout(false);
             this.artPanel.ResumeLayout(false);
             this.artPanel.PerformLayout();
-            this.artContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

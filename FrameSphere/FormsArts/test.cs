@@ -16,5 +16,10 @@ namespace FrameSphere.FormsArts
         {
             InitializeComponent();
         }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

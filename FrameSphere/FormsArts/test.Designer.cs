@@ -28,56 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.artPanel = new System.Windows.Forms.Panel();
-            this.remove = new System.Windows.Forms.Button();
-            this.photobox = new System.Windows.Forms.TextBox();
-            this.artPanel.SuspendLayout();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // artPanel
+            // flowLayoutPanel1
             // 
-            this.artPanel.Controls.Add(this.remove);
-            this.artPanel.Controls.Add(this.photobox);
-            this.artPanel.Location = new System.Drawing.Point(215, 208);
-            this.artPanel.Name = "artPanel";
-            this.artPanel.Size = new System.Drawing.Size(371, 35);
-            this.artPanel.TabIndex = 40;
-            // 
-            // remove
-            // 
-            this.remove.Location = new System.Drawing.Point(304, 8);
-            this.remove.Name = "remove";
-            this.remove.Size = new System.Drawing.Size(66, 21);
-            this.remove.TabIndex = 36;
-            this.remove.Text = "Remove";
-            this.remove.UseVisualStyleBackColor = true;
-            // 
-            // photobox
-            // 
-            this.photobox.Location = new System.Drawing.Point(9, 8);
-            this.photobox.Name = "photobox";
-            this.photobox.ReadOnly = true;
-            this.photobox.Size = new System.Drawing.Size(289, 20);
-            this.photobox.TabIndex = 26;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(196, 65);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 100);
+            this.flowLayoutPanel1.TabIndex = 41;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.artPanel);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "test";
             this.Text = "test";
-            this.artPanel.ResumeLayout(false);
-            this.artPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel artPanel;
-        private System.Windows.Forms.Button remove;
-        private System.Windows.Forms.TextBox photobox;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
