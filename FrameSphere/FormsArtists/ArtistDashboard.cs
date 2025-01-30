@@ -19,6 +19,7 @@ namespace FrameSphere
         {
             InitializeComponent();
             profilepic.Image = FSystem.GetImageFromPath(FSystem.loggedInUser.ProfilePic);
+            LoadArtistEvents(FSystem.loggedInUser.UserName);
         }
 
         private void CreateArt_Click(object sender, EventArgs e)
@@ -27,6 +28,140 @@ namespace FrameSphere
             this.Hide();
             createArts.Show();
         }
+        private void LoadArtistEvents(string artistUsername)
+        {
+            associatedEvents_panel.Controls.Clear(); // Clear existing controls
+            associatedEvents_panel.Controls.Add(noitem); // Add the "no items" label to the panel
+            noitem.Visible = false; // Hide "no items" initially
+
+            // Define the query to fetch only the events where the artist is added
+            string query = "SELECT E.EventID, E.EventTitle, E.Description, E.EndDate, E.EventPoster FROM Events E INNER JOIN ArtistEvent AE ON E.EventID = AE.EventId WHERE AE.UserName = @ArtistUsername";
+
+            using (SqlConnection connection = DB.Connect())
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ArtistUsername", artistUsername);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (!reader.HasRows)
+                        {
+                            noitem.Visible = true; // Show "no items" label if no events are found
+                            return;
+                        }
+
+                        while (reader.Read())
+                        {
+                            // Extract event data with null-check handling
+                            int eventId = Convert.ToInt32(reader["EventID"]);
+                            string title = reader["EventTitle"].ToString();
+                            string description = reader["Description"] != DBNull.Value ? reader["Description"].ToString() : "No description available";
+                            DateTime? endDate = reader["EndDate"] != DBNull.Value ? (DateTime?)reader["EndDate"] : null;
+                            string eventPosterPath = reader["EventPoster"] != DBNull.Value ? reader["EventPoster"].ToString() : null;
+
+                            // Format date or provide default message
+                            string formattedEndDate = endDate.HasValue ? endDate.Value.ToString("dd-MM-yyyy HH:mm:ss") : "No end date provided";
+
+                            // Load the event poster image
+                            Image eventPosterImage = !string.IsNullOrEmpty(eventPosterPath)
+                                ? FSystem.GetImageFromPath(eventPosterPath) // Load the image from path
+                                : FrameSphere.Properties.Resources._10_3__thumb; // Default placeholder image
+
+                            // Create an event box for the current event
+                            CreateEventBox(title, description, formattedEndDate, eventPosterImage, eventId);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void CreateEventBox(string title, string description, string time, Image eventImage, int eventId)
+        {
+            int panelWidth = associatedEvents_panel.Width - 40;
+            int panelHeight = 120;
+
+            Panel boxPanel = new Panel {
+                Size = new Size(panelWidth, panelHeight),
+                BackColor = Color.LightBlue,
+                BorderStyle = BorderStyle.FixedSingle,
+                Margin = new Padding(10)
+            };
+
+            PictureBox pictureBox = new PictureBox {
+                Size = new Size(100, 100),
+                Location = new Point(10, 10),
+                Image = eventImage,
+                SizeMode = PictureBoxSizeMode.StretchImage
+            };
+
+            Label titleLabel = new Label {
+                Text = title,
+                Font = new Font("Arial", 12, FontStyle.Bold),
+                Location = new Point(120, 10),
+                AutoSize = false,
+                Size = new Size(panelWidth - 230, 20),
+                ForeColor = Color.Black
+            };
+
+            Label descriptionLabel = new Label {
+                Text = description,
+                Font = new Font("Arial", 10),
+                Location = new Point(120, 40),
+                AutoSize = false,
+                Size = new Size(panelWidth - 230, 40),
+                ForeColor = Color.Gray
+            };
+
+            Label timeLabel = new Label {
+                Text = time,
+                Font = new Font("Arial", 10, FontStyle.Bold),
+                ForeColor = Color.Red,
+                Location = new Point(120, 90),
+                AutoSize = true
+            };
+
+            Button enterButton = new Button {
+                Text = "Enter",
+                BackColor = Color.Blue,
+                ForeColor = Color.White,
+                Size = new Size(80, 30),
+                Location = new Point(panelWidth - 90, 40),
+                FlatStyle = FlatStyle.Flat,
+                Tag = eventId // Store the event ID in the button's Tag property
+            };
+            enterButton.Click += EnterButton_Click; // Attach the click event handler
+
+            boxPanel.Controls.Add(pictureBox);
+            boxPanel.Controls.Add(titleLabel);
+            boxPanel.Controls.Add(descriptionLabel);
+            boxPanel.Controls.Add(timeLabel);
+            boxPanel.Controls.Add(enterButton);
+
+            boxPanel.Dock = DockStyle.Top;
+
+            associatedEvents_panel.Controls.Add(boxPanel);
+        }
+
+        private void EnterButton_Click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            if (button != null && button.Tag != null)
+            {
+                if (int.TryParse(button.Tag.ToString(), out int eventId))
+                {
+                    Event_page eventPage = new Event_page(eventId); // Pass the event ID to the EventPage
+                    this.Hide();
+                    eventPage.Show(); // Show the EventPage
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Event ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
 
         private void ArtistDashboard_Load(object sender, EventArgs e)
         {

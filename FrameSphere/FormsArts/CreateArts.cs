@@ -386,7 +386,7 @@ namespace FrameSphere
                 {
                     connection.Open();
 
-                    string userID = FSystem.loggedInUser.UserName;
+                    string userID = FSystem.loggedInUser.UserName; // Get the artist username
                     string artTitle = arttitle.Text;
                     string description = Description.Text;
                     string sellingOption = free.Checked ? "Free" : "Paid";
@@ -408,6 +408,13 @@ namespace FrameSphere
                         MessageBox.Show("Failed to insert into Art table.");
                         return;
                     }
+
+                    // **Insert into ArtArtist table**
+                    string artistInsertQuery = "INSERT INTO ArtArtist (ArtId, UserName) VALUES (@ArtID, @UserName)";
+                    SqlCommand artistCommand = new SqlCommand(artistInsertQuery, connection);
+                    artistCommand.Parameters.AddWithValue("@ArtID", artID);
+                    artistCommand.Parameters.AddWithValue("@UserName", userID);
+                    artistCommand.ExecuteNonQuery();
 
                     // Insert into ArtPhotos table
                     foreach (Control control in artContainer.Controls)
@@ -455,6 +462,7 @@ namespace FrameSphere
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
 
 
 
