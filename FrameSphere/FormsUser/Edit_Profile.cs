@@ -25,6 +25,7 @@ namespace FrameSphere
             InstagramField.Text = FSystem.loggedInUser.Instagram;
             PinterestField.Text = FSystem.loggedInUser.Pinterest;
             WebsiteField.Text = FSystem.loggedInUser.Website;
+            poster.Text = FSystem.loggedInUser.ProfilePic.ToString();
 
             // Load profile picture
             if (!string.IsNullOrWhiteSpace(FSystem.loggedInUser.ProfilePic))
@@ -191,7 +192,7 @@ namespace FrameSphere
             FSystem.loggedInUser.FirstName = FirstNameField.Text;
 
             // Reload the logged-in user's information
-            FSystem.loggedInUser.loadUser();
+            //FSystem.loggedInUser.loadUser();
         }
 
         private void button1_Click_1(object sender, EventArgs e)

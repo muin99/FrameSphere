@@ -7,7 +7,7 @@ namespace FrameSphere.EntityClasses
     public class Event
     {
         // Private fields
-        private string _eventID;
+        private int _eventID;
         private string _eventTitle;
         private string _eventDescription;
         private string _organization;
@@ -24,7 +24,7 @@ namespace FrameSphere.EntityClasses
             private SqlConnection connection;
 
             // Getter and Setter for EventID aa
-            public string EventID {
+            public int EventID {
                 get {
                 return _eventID;
                     } 
@@ -42,7 +42,7 @@ namespace FrameSphere.EntityClasses
                         SqlCommand command = new SqlCommand(query, connection);
                         command.Parameters.AddWithValue("@EventID", _eventID);
                         connection.Open();
-                        _eventTitle = command.ExecuteScalar().ToString();
+                        _eventTitle = (command.ExecuteScalar()?.ToString());
                     }
                     return _eventTitle;
                 }
@@ -334,7 +334,7 @@ namespace FrameSphere.EntityClasses
 
 
         // Constructors
-        public Event(string eventID)
+        public Event(int eventID)
         {
             this.EventID = eventID;
             // Fetch event details from the database using the eventID
@@ -374,7 +374,7 @@ namespace FrameSphere.EntityClasses
             //}
         }
 
-        public Event(string eventTitle, string eventDescription, string organization, double ticketPrice, 
+        public Event(string eventTitle, string eventDescription, string organization, double ticketPrice,
             DateTime startsAt,
                      DateTime endsAt, string registrationType, string posterImage)
         {
@@ -403,9 +403,9 @@ namespace FrameSphere.EntityClasses
                     command.ExecuteNonQuery();
                 }
             }
-
-
         }
+
+
 
         // Insert the new event into the database
         private void InsertToDatabase()

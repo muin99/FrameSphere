@@ -25,7 +25,7 @@ namespace FrameSphere
 
             InitializeComponent();
 
-            FSystem.loggedInUser.loadUser();
+            //FSystem.loggedInUser.loadUser();
             name.Text = FSystem.loggedInUser.FullName();
             userName.Text = "@"+FSystem.loggedInUser.UserName;
 
@@ -76,20 +76,23 @@ namespace FrameSphere
 
                         while (reader.Read())
                         {
-                            // Extract event data from the database
-                            string eventId = reader["EventId"].ToString();
+                            // Extract event data with null-check handling
+                            int eventId = Convert.ToInt32(reader["EventId"]);
                             string title = reader["EventTitle"].ToString();
-                            string description = reader["Description"].ToString();
-                            DateTime endDate = Convert.ToDateTime(reader["EndDate"]);
+                            string description = reader["Description"] != DBNull.Value ? reader["Description"].ToString() : "No description available";
+                            DateTime? endDate = reader["EndDate"] != DBNull.Value ? (DateTime?)reader["EndDate"] : null;
                             string eventPosterPath = reader["EventPoster"] != DBNull.Value ? reader["EventPoster"].ToString() : null;
+
+                            // Format date or provide default message
+                            string formattedEndDate = endDate.HasValue ? endDate.Value.ToString("dd-MM-yyyy HH:mm:ss") : "No end date provided";
 
                             // Load the event poster image
                             Image eventPosterImage = !string.IsNullOrEmpty(eventPosterPath)
-                                ? FSystem.GetImageFromPath(eventPosterPath) // Use the reusable method to load the image
+                                ? FSystem.GetImageFromPath(eventPosterPath) // Load the image from path
                                 : FrameSphere.Properties.Resources._10_3__thumb; // Default placeholder image
 
                             // Create an event box for the current event
-                            CreateEventBox(title, description, endDate.ToString("dd-MM-yyyy HH:mm:ss"), eventPosterImage, eventId);
+                            CreateEventBox(title, description, formattedEndDate, eventPosterImage, eventId);
                         }
                     }
                 }
@@ -97,7 +100,8 @@ namespace FrameSphere
         }
 
 
-        private void CreateEventBox(string title, string description, string time, Image eventImage, string eventId)
+
+        private void CreateEventBox(string title, string description, string time, Image eventImage, int eventId)
         {
             int panelWidth = eventspanel.Width - 40;
             int panelHeight = 120;
@@ -141,7 +145,7 @@ namespace FrameSphere
                 Location = new Point(120, 90),
                 AutoSize = true
             };
-            Title = title;
+
             Button enterButton = new Button {
                 Text = "Enter",
                 BackColor = Color.Green,
@@ -149,8 +153,7 @@ namespace FrameSphere
                 Size = new Size(80, 30),
                 Location = new Point(panelWidth - 90, 40),
                 FlatStyle = FlatStyle.Flat,
-                
-                Tag = title // Store the event ID in the button's Tag property
+                Tag = eventId // Store the event ID in the button's Tag property
             };
             enterButton.Click += EnterButton_Click; // Attach the click event handler
 
@@ -165,17 +168,25 @@ namespace FrameSphere
             eventspanel.Controls.Add(boxPanel);
         }
 
+
         private void EnterButton_Click(object sender, EventArgs e)
         {
             Button button = sender as Button;
             if (button != null && button.Tag != null)
             {
-                string eventId = button.Tag.ToString();
-                Event_page eventPage = new Event_page(Title); // Pass the event ID to the EventPage
-                this.Hide();
-                eventPage.Show(); // Show the EventPage
+                if (int.TryParse(button.Tag.ToString(), out int eventId))
+                {
+                    Event_page eventPage = new Event_page(eventId); // Pass the event ID to the EventPage
+                    this.Hide();
+                    eventPage.Show(); // Show the EventPage
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Event ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
+
 
 
 

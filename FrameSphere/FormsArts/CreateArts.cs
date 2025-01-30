@@ -23,7 +23,7 @@ namespace FrameSphere
         {
             InitializeComponent();
 
-            FSystem.loggedInUser.loadUser();
+            //FSystem.loggedInUser.loadUser();
 
             name.Text = FSystem.loggedInUser.FullName();
             userName.Text = "@"+FSystem.loggedInUser.UserName;
@@ -43,14 +43,14 @@ namespace FrameSphere
 
         private void EnterButton_Click(object sender, EventArgs e)
         {
-            Button button = sender as Button;
-            if (button != null && button.Tag != null)
-            {
-                string eventId = button.Tag.ToString();
-                Event_page eventPage = new Event_page(eventId); // Pass the event ID to the EventPage
-                this.Hide();
-                eventPage.Show(); // Show the EventPage
-            }
+            //Button button = sender as Button;
+            //if (button != null && button.Tag != null)
+            //{
+            //    int eventId = button.Tag.ToString();
+            //    Event_page eventPage = new Event_page(eventId); // Pass the event ID to the EventPage
+            //    this.Hide();
+            //    eventPage.Show(); // Show the EventPage
+            //}
         }
 
 
