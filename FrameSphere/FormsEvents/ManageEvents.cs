@@ -18,13 +18,13 @@ namespace FrameSphere
     public partial class ManageEvents : Form
     {
         public Event ev;
-        public ManageEvents(int id)
+        public ManageEvents(int eventId)
         {
             InitializeComponent();
             //this.id = id;
             //LoadEventData(id);
 
-            ev = new Event(id);
+            ev = new Event(eventId);
             eventTitle_field.Text = ev.EventTitle;
             eventDesc_field.Text = ev.EventDescription;
             startdate.Value = ev.StartsAt;
