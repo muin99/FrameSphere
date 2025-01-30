@@ -62,7 +62,7 @@ namespace FrameSphere
                     {
                         if ((int)cmd.ExecuteScalar() > 0)
                         {
-                            FSystem.loggedInUser = new User(userId, password);
+                            FSystem.loggedInUser = new User(userId);
                             return true;
                         }
                     }

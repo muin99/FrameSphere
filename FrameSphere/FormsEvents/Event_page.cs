@@ -7,14 +7,15 @@ namespace FrameSphere
 {
     public partial class Event_page : Form
     {
-        private Event currentEvent;
+        public Event currentEvent;
 
-        public Event_page(string eventId)
+        public Event_page(int eventId)
         {
             InitializeComponent();
-
+            
             // Load the event data
             currentEvent = new Event(eventId);
+            title.Text = currentEvent.EventTitle;
         }
 
 
@@ -30,6 +31,7 @@ namespace FrameSphere
         {
             this.Hide();
             ManageEvents mn = new ManageEvents(currentEvent.EventID);
+            //Application.Run(new ManageEvents("28"));
             mn.Show();
         }
     }
