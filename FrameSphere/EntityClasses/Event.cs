@@ -466,6 +466,49 @@ namespace FrameSphere.EntityClasses
             }
         }
 
+        public void RemoveArt(int ArtID)
+        {
+            Art art = new Art(ArtID);
+            string query = $"DELETE FROM ArtEvent WHERE ArtId = {ArtID} AND EventID = {EventID}";
+
+            using (SqlConnection conn = DB.Connect())
+            {
+                try
+                {
+                    conn.Open();
+
+                    // Check if the art exists in the event.
+                    string checkQuery = $"SELECT COUNT(*) FROM ArtEvent WHERE ArtId = @ArtID AND EventID = @EventID";
+                    SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
+                    checkCmd.Parameters.AddWithValue("@ArtID", art.ArtID);
+                    checkCmd.Parameters.AddWithValue("@EventID", this.EventID);
+
+                    int count = (int)checkCmd.ExecuteScalar();
+
+                    if (count == 0)
+                    {
+                        MessageBox.Show("This art is not in the collections for the event.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Remove the art from the database.
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@UserName", art.ArtID);
+                    cmd.Parameters.AddWithValue("@EventID", this.EventID);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Art successfully removed from the collection.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while removing the art: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
         public void AddArt(int ArtID)
         {
             Art art = new Art(ArtID);

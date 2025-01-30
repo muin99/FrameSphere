@@ -14,11 +14,11 @@ namespace FrameSphere.FormsEvents
 {
     public partial class ManageParticipants : Form
     {
-        private Event e;
+        private Event ep;
         public ManageParticipants(Event _selected)
         {
             InitializeComponent();
-            this.e = _selected;
+            this.ep = _selected;
             LoadAddedArtists();
             LoadArtists();
         }
@@ -78,9 +78,9 @@ namespace FrameSphere.FormsEvents
         }
         private void AddArtist(Button btn, User user)
         {
-            if (!e.Artists.Any(a => a.UserName == user.UserName))
+            if (!ep.Artists.Any(a => a.UserName == user.UserName))
             {
-                e.AddArtist(user); // Add artist to the event's artist list.
+                ep.AddArtist(user); // Add artist to the event's artist list.
                 AddedArtistPanel(user.UserName); // Add to the "Currently Participating" panel.
             }
             else
@@ -92,13 +92,19 @@ namespace FrameSphere.FormsEvents
 
         private void LoadAddedArtists()
         {
-            string q = $"Select username from ArtistEvent where eventId = {e.EventID}";
+            noArtists.Visible = false; // Hide "None" initially
+            string q = $"Select username from ArtistEvent where eventId = {ep.EventID}";
 
             using (SqlConnection conn = DB.Connect())
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(q, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
+                if (!reader.HasRows)
+                {
+                    noArtists.Visible = true; // Show "None" label if event has no participating artists yet
+                    return;
+                }
                 while (reader.Read())
                 {
                     string i = reader["UserName"].ToString();
@@ -142,13 +148,19 @@ namespace FrameSphere.FormsEvents
         }
         private void RemoveArtist(Button btn, User user)
         {
-            e.RemoveArtist(user);
+            ep.RemoveArtist(user);
             participants_panel.Controls.Remove(btn.Parent); // Remove panel
         }
 
         private void SearchArtist_Field_TextChanged(object sender, EventArgs e)
         {
             LoadArtists(SearchArtist_Field.Text);
+        }
+
+        private void goBack_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ManageEvents mn = new ManageEvents(ep.EventID);
         }
     }
 }

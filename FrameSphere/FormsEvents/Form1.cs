@@ -21,7 +21,7 @@ namespace FrameSphere.FormsEvents
             this.ex = a;
             LoadArt();
             //ArtPanel("1", "cat");
-            //LoadAddedArt();
+            LoadAddedArt();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -33,6 +33,7 @@ namespace FrameSphere.FormsEvents
         {
             this.Hide();
             ManageEvents mn = new ManageEvents(ex.EventID);
+            mn.Show();
         }
 
         private void LoadArt(string search = "")
@@ -98,15 +99,38 @@ namespace FrameSphere.FormsEvents
             ex.AddArt(artId);
         }
         private void LoadAddedArt()
-        {   
+        {
+            noArts.Visible = false; // Hide "None" initially
             try
             {
-                string q = $"select ar.ArtId, ar.ArtTitle from Art ar, ArtEvent e where ar.artId= e.artId and eventId={ex.EventID};";
+                string query = $@"
+                                select artId, artTitle 
+                                from art 
+                                where artId in (
+                                    -- art of artist in given event
+                                    select artId from artArtist 
+                                    where username in (
+                                        --artist in given event
+                                        select username from artistEvent where eventId = {ex.EventID}
+                                    )
+                                )
+                                and artId in(
+                                    -- art in given event
+                                    select artId from artEvent where eventId = {ex.EventID}
+                                );
+                             ";
                 using (SqlConnection conn = DB.Connect())
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(q, conn);
+                    SqlCommand cmd = new SqlCommand(query, conn);
                     SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (!reader.HasRows)
+                    {
+                        noArts.Visible = true; // Show "None" label if event has no art collections 
+                        return;
+                    }
+
                     while (reader.Read())
                     {
                         string artID = reader["ArtId"].ToString();
@@ -142,18 +166,18 @@ namespace FrameSphere.FormsEvents
                 ForeColor = Color.White,
                 Tag = artID // Store artid in Tag
             };
-            //remove_button.Click += (s, e) => RemoveArt((Button)s, artID);
+            remove_button.Click += (s, e) => RemoveArt((Button)s, Int32.Parse(artID));
 
             art.Controls.Add(artLabel);
             art.Controls.Add(remove_button);
             submittedArts_panel.Controls.Add(art);
         }
-        //private void RemoveArt(Button btn, string art)
-        //{
-        //    ex.RemoveArt(art);
-        //    submittedArts_panel.Controls.Remove(btn.Parent); // Remove panel
-        //}
-
+        private void RemoveArt(Button btn, int art)
+        {
+            ex.RemoveArt(art);//remove from db
+            submittedArts_panel.Controls.Remove(btn.Parent); // remove from ui
+        }
+         
         private void SearchArt_Field_TextChanged(object sender, EventArgs e)
         {
             LoadArt(SearchArt_Field.Text);

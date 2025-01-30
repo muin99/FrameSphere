@@ -18,7 +18,7 @@ namespace FrameSphere.EntityClasses
         public Art(int artID)
         {
             _ArtID = artID;
-            LoadArtDetails(); // Load the art details (and photos) from DB
+            //LoadArtDetails(); // Load the art details (and photos) from DB
         }
 
         /// <summary>

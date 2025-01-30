@@ -36,7 +36,7 @@
             this.MP_Body = new System.Windows.Forms.Panel();
             this.allArts_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.submittedArts_panel = new System.Windows.Forms.FlowLayoutPanel();
-            this.noArtists = new System.Windows.Forms.Label();
+            this.noArts = new System.Windows.Forms.Label();
             this.CurrentArts_Label = new System.Windows.Forms.Label();
             this.SearchArt_Field = new System.Windows.Forms.TextBox();
             this.FindArtist_Label = new System.Windows.Forms.Label();
@@ -139,21 +139,21 @@
             // 
             // submittedArts_panel
             // 
-            this.submittedArts_panel.Controls.Add(this.noArtists);
+            this.submittedArts_panel.Controls.Add(this.noArts);
             this.submittedArts_panel.Location = new System.Drawing.Point(723, 98);
             this.submittedArts_panel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.submittedArts_panel.Name = "submittedArts_panel";
             this.submittedArts_panel.Size = new System.Drawing.Size(747, 590);
             this.submittedArts_panel.TabIndex = 5;
             // 
-            // noArtists
+            // noArts
             // 
-            this.noArtists.AutoSize = true;
-            this.noArtists.Location = new System.Drawing.Point(3, 0);
-            this.noArtists.Name = "noArtists";
-            this.noArtists.Size = new System.Drawing.Size(40, 16);
-            this.noArtists.TabIndex = 0;
-            this.noArtists.Text = "None";
+            this.noArts.AutoSize = true;
+            this.noArts.Location = new System.Drawing.Point(3, 0);
+            this.noArts.Name = "noArts";
+            this.noArts.Size = new System.Drawing.Size(40, 16);
+            this.noArts.TabIndex = 0;
+            this.noArts.Text = "None";
             // 
             // CurrentArts_Label
             // 
@@ -214,7 +214,7 @@
         private System.Windows.Forms.Panel MP_Body;
         private System.Windows.Forms.FlowLayoutPanel allArts_panel;
         private System.Windows.Forms.FlowLayoutPanel submittedArts_panel;
-        private System.Windows.Forms.Label noArtists;
+        private System.Windows.Forms.Label noArts;
         private System.Windows.Forms.Label CurrentArts_Label;
         private System.Windows.Forms.TextBox SearchArt_Field;
         private System.Windows.Forms.Label FindArtist_Label;
