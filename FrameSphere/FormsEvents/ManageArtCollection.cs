@@ -45,7 +45,12 @@ namespace FrameSphere.FormsEvents
                 string q = string.IsNullOrWhiteSpace(search)
                     ? $"select a.artid, a.arttitle, aa.username from art a, artartist aa where a.artid = aa.artid and aa.username = '{FSystem.loggedInUser.UserName}'"
                     : $"select a.artid, a.arttitle, aa.username from art a, artartist aa where a.artid = aa.artid and aa.username = '{FSystem.loggedInUser.UserName}' and a.artTitle LIKE '%{search}%'";
-
+                if (FSystem.loggedInUser.isAdmin)
+                {
+                     q = string.IsNullOrWhiteSpace(search)
+                    ? $"select a.artid, a.arttitle from art a"
+                    : $"select a.artid, a.arttitle from art a where a.artTitle LIKE '%{search}%'";
+                }
                 using (SqlConnection conn = DB.Connect())
                 {
                     conn.Open();
@@ -119,6 +124,18 @@ namespace FrameSphere.FormsEvents
                                     select artId from artEvent where eventId = {ex.EventID}
                                 );
                              ";
+                if (FSystem.loggedInUser.isAdmin)
+                {
+                    query = $@"
+                            select artId, artTitle 
+                            from art 
+                            where artId in (
+                                -- art of artist in given event
+                                select artId from artEvent where eventId = 28
+                            )
+                            ;
+                            ";
+                }
                 using (SqlConnection conn = DB.Connect())
                 {
                     conn.Open();
