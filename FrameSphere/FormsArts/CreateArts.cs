@@ -19,6 +19,7 @@ namespace FrameSphere
 {
     public partial class CreateArts : Form
     {
+        private int ct = 0;
         private string imagePath;
         public CreateArts()
         {
@@ -33,7 +34,7 @@ namespace FrameSphere
             email.Text = FSystem.loggedInUser.Email;
             address.Text = FSystem.loggedInUser.Address;
             profilepic.Image = FSystem.GetImageFromPath(FSystem.loggedInUser.ProfilePic);
-
+            ct++;
             if (FSystem.loggedInUser.isAdmin)
             {
                 adminDashboard.Visible = true;
@@ -55,103 +56,35 @@ namespace FrameSphere
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string selectedPath = openFileDialog.FileName;
-                ((TextBox)((Control)sender).Tag).Text = selectedPath;
+                TextBox associatedTextBox = ((Control)sender).Tag as TextBox;
+                if (associatedTextBox != null)
+                {
+                    associatedTextBox.Text = selectedPath;
+                }
+
+                // Load the selected image into the PictureBox
+                photobox.Text = selectedPath;
+                PictureBox pictureBox = sender as PictureBox;
+                if (pictureBox != null)
+                {
+                    try
+                    {
+                        pictureBox.Image?.Dispose(); // Dispose previous image if any
+                        pictureBox.Image = Image.FromFile(selectedPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error loading image: {ex.Message}");
+                    }
+                }
             }
         }
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            Panel newArtPanel = new Panel {
-                Width = artPanel.Width,
-                Height = artPanel.Height,
-                BorderStyle = BorderStyle.FixedSingle // Optional: Adds visibility
-            };
-
-            TextBox newTextBox = new TextBox { Width = 200 };
-            Button removeButton = new Button { Text = "Remove", Left = 210 };
-
-            PictureBox newPhotoBox = new PictureBox {
-                Width = 50,
-                Height = 50,
-                BackColor = System.Drawing.Color.Gray,
-                Left = 270,
-                Tag = newTextBox
-            };
-            newPhotoBox.Click += PhotoBox_Click;
-
-            // Make sure remove button correctly removes its parent panel
-            removeButton.Click += (s, ev) =>
-            {
-                artContainer.Controls.Remove(newArtPanel);
-                newArtPanel.Dispose();
-            };
-
-            newArtPanel.Controls.Add(newTextBox);
-            newArtPanel.Controls.Add(removeButton);
-            newArtPanel.Controls.Add(newPhotoBox);
-
-            artContainer.Controls.Add(newArtPanel);
+            
         }
 
-
-
-        private void Submit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (SqlConnection connection = DB.Connect())
-                {
-                    connection.Open();
-                    string userID = FSystem.loggedInUser.UserName;
-                    string artTitle = arttitle.Text;
-                    string description = Description.Text;
-                    string sellingOption = free.Checked ? "Free" : "Paid";
-                    decimal? artPriceValue = paid.Checked && decimal.TryParse(artPrice.Text, out decimal price) ? price : (decimal?)null;
-
-                    // Insert into Art table
-                    string artInsertQuery = "INSERT INTO Art (ArtTitle, ArtDescription, SellingOption, Price, photocnt) OUTPUT INSERTED.ArtID VALUES (@Title, @Desc, @SellOption, @Price, @PhotoCnt)";
-                    SqlCommand artCommand = new SqlCommand(artInsertQuery, connection);
-                    artCommand.Parameters.AddWithValue("@Title", artTitle);
-                    artCommand.Parameters.AddWithValue("@Desc", description);
-                    artCommand.Parameters.AddWithValue("@SellOption", sellingOption);
-                    artCommand.Parameters.AddWithValue("@Price", (object)artPrice ?? DBNull.Value);
-                    artCommand.Parameters.AddWithValue("@PhotoCnt", artContainer.Controls.Count);
-
-                    int artID = (int)artCommand.ExecuteScalar();
-
-                    // Insert into ArtPhotos table
-                    foreach (Control control in artContainer.Controls)
-                    {
-                        if (control is Panel panel)
-                        {
-                            TextBox photoPathBox = panel.Controls[0] as TextBox;
-                            if (!string.IsNullOrWhiteSpace(photoPathBox.Text))
-                            {
-                                string filePath = photoPathBox.Text;
-                                string fileName = Path.GetFileName(filePath);
-                                string storagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ArtImages");
-                                Directory.CreateDirectory(storagePath);
-                                string destinationPath = Path.Combine(storagePath, fileName);
-                                File.Copy(filePath, destinationPath, true);
-
-                                string relativePath = Path.Combine("ArtImages", fileName);
-                                string photoInsertQuery = "INSERT INTO ArtPhotos (ArtID, Photo) VALUES (@ArtID, @Photo)";
-                                SqlCommand photoCommand = new SqlCommand(photoInsertQuery, connection);
-                                photoCommand.Parameters.AddWithValue("@ArtID", artID);
-                                photoCommand.Parameters.AddWithValue("@Photo", relativePath);
-                                photoCommand.ExecuteNonQuery();
-                            }
-                        }
-                    }
-
-                    MessageBox.Show("Art successfully added!");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
 
         private void facebook_pic_Click(object sender, EventArgs e)
         {
@@ -264,20 +197,117 @@ namespace FrameSphere
             }
         }
 
+        private void RepositionAddButton()
+        {
+            if (artContainer.Controls.Count > 0)
+            {
+                // Find the last added panel
+                Control lastPanel = artContainer.Controls[artContainer.Controls.Count - 1];
+                add.Location = new Point(lastPanel.Location.X, lastPanel.Bottom + 10); // Adjust spacing
+            }
+            else
+            {
+                // Default position if no panels exist
+                add.Location = new Point(10, 10);
+            }
+
+            // Ensure the Add button remains visible
+            if (!artContainer.Controls.Contains(add))
+            {
+                artContainer.Controls.Add(add);
+            }
+        }
+        private bool checkphotobox(string s)
+        {
+            if (string.IsNullOrWhiteSpace(s))
+            {
+                MessageBox.Show("Please select a photo for all art items.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         private void add_Click(object sender, EventArgs e)
         {
+           
 
+            // Create a new panel dynamically
+            Panel newArtPanel = new Panel {
+                Width = artPanel.Width,
+                Height = artPanel.Height,
+                
+            };
+
+            // Create a readonly textbox to hold the selected photo path
+            TextBox newTextBox = new TextBox {
+                Width = 289,
+                Left = 9,
+                ReadOnly = true,
+                //Tag = "Check"
+                //Text = photobox.Text // Assign the selected image path
+            };
+            newTextBox.ReadOnly = true;
+            newTextBox.Click += (ss, o) => {
+                OpenFileDialog openFileDialog = new OpenFileDialog {
+                    Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp",
+                    Title = "Select Art Image"
+                };
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedPath = openFileDialog.FileName;
+                    TextBox associatedTextBox = ((Control)sender).Tag as TextBox;
+                    if (associatedTextBox != null)
+                    {
+                        associatedTextBox.Text = selectedPath;
+                        
+                    }
+
+                    // Load the selected image into the PictureBox
+                    newTextBox.Text = selectedPath;
+                    
+                }
+            };
+            // Create a remove button
+            Button removeButton = new Button {
+                Text = "Remove",
+                Left = 302,
+                Size = new Size(66, 21),
+                FlatStyle= FlatStyle.Standard,
+                BackColor= Color.White
+            };
+
+            // Remove the "Add" button before inserting a new panel
+            artContainer.Controls.Remove(add);
+
+            // Handle the remove button click event
+            removeButton.Click += (s, ev) =>
+            {
+                artContainer.Controls.Remove(newArtPanel);
+                newArtPanel.Dispose();
+                RepositionAddButton();
+
+                ct--;
+            };
+
+            // Add controls to the panel
+            newArtPanel.Controls.Add(newTextBox);
+            newArtPanel.Controls.Add(removeButton);
+
+            // Add the panel to the container
+            artContainer.Controls.Add(newArtPanel);
+
+            // Reposition the "Add" button below the last panel
+            RepositionAddButton();
+            ct++;
         }
+
         private void EnterButton_Click(object sender, EventArgs e)
         {
-            //Button button = sender as Button;
-            //if (button != null && button.Tag != null)
-            //{
-            //    int eventId = button.Tag.ToString();
-            //    Event_page eventPage = new Event_page(eventId); // Pass the event ID to the EventPage
-            //    this.Hide();
-            //    eventPage.Show(); // Show the EventPage
-            //}
+           
         }
 
 
@@ -325,5 +355,117 @@ namespace FrameSphere
             }
         }
 
+        private void artContainer_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void photobox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Submit_Click_1(object sender, EventArgs e)
+        {
+            // Check if all the photo paths in the TextBoxes are valid
+            foreach (Control control in artContainer.Controls)
+            {
+                if (control is Panel panel)
+                {
+                    TextBox photoPathBox = panel.Controls.OfType<TextBox>().FirstOrDefault();
+                    if (photoPathBox != null && !checkphotobox(photoPathBox.Text))
+                    {
+                        return; // Exit the method if any photo path is invalid (empty or whitespace)
+                    }
+                }
+            }
+
+            try
+            {
+                using (SqlConnection connection = DB.Connect())
+                {
+                    connection.Open();
+
+                    string userID = FSystem.loggedInUser.UserName;
+                    string artTitle = arttitle.Text;
+                    string description = Description.Text;
+                    string sellingOption = free.Checked ? "Free" : "Paid";
+                    decimal? artPriceValue = paid.Checked && decimal.TryParse(artPrice.Text, out decimal price) ? price : (decimal?)null;
+
+                    // Insert into Art table
+                    string artInsertQuery = "INSERT INTO Art (ArtTitle, ArtDescription, SellingOption, Price, photocnt) OUTPUT INSERTED.ArtID VALUES (@Title, @Desc, @SellOption, @Price, @PhotoCnt)";
+                    SqlCommand artCommand = new SqlCommand(artInsertQuery, connection);
+                    artCommand.Parameters.AddWithValue("@Title", artTitle);
+                    artCommand.Parameters.AddWithValue("@Desc", description);
+                    artCommand.Parameters.AddWithValue("@SellOption", sellingOption);
+                    artCommand.Parameters.AddWithValue("@Price", (object)artPriceValue ?? DBNull.Value);
+                    artCommand.Parameters.AddWithValue("@PhotoCnt", ct);
+
+                    object result = artCommand.ExecuteScalar();
+                    int artID = (result != null) ? Convert.ToInt32(result) : 0;
+                    if (artID == 0)
+                    {
+                        MessageBox.Show("Failed to insert into Art table.");
+                        return;
+                    }
+
+                    // Insert into ArtPhotos table
+                    foreach (Control control in artContainer.Controls)
+                    {
+                        if (control is Panel panel)
+                        {
+                            TextBox photoPathBox = panel.Controls.OfType<TextBox>().FirstOrDefault();
+                            if (photoPathBox != null && !string.IsNullOrWhiteSpace(photoPathBox.Text))
+                            {
+                                string filePath = photoPathBox.Text;
+                                string fileName = Path.GetFileName(filePath);
+                                string storagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ArtImages");
+                                Directory.CreateDirectory(storagePath);
+
+                                // Generate unique filename to prevent overwrites
+                                string uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(fileName)}";
+                                string destinationPath = Path.Combine(storagePath, uniqueFileName);
+                                if (!File.Exists(destinationPath))
+                                {
+                                    File.Copy(filePath, destinationPath);
+                                }
+
+                                string relativePath = "ArtImages/" + uniqueFileName;
+
+                                // Insert into ArtPhotos table
+                                string photoInsertQuery = "INSERT INTO ArtPhotos (ArtID, Photo) VALUES (@ArtID, @Photo)";
+                                SqlCommand photoCommand = new SqlCommand(photoInsertQuery, connection);
+                                photoCommand.Parameters.AddWithValue("@ArtID", artID);
+                                photoCommand.Parameters.AddWithValue("@Photo", relativePath);
+                                photoCommand.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please select an image for all art.");
+                                return;
+                            }
+                        }
+                    }
+
+                    MessageBox.Show("Art successfully added!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+
+
+        private void paid_CheckedChanged(object sender, EventArgs e)
+        {
+            artPrice.Show();
+        }
+
+        private void free_CheckedChanged(object sender, EventArgs e)
+        {
+            artPrice.Hide();
+        }
     }
 }
