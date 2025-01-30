@@ -74,3 +74,4 @@ C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\obj\Debug\FrameSpher
 C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\bin\Debug\FrameSphere.exe.config
 C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\bin\Debug\FrameSphere.exe
 C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\bin\Debug\FrameSphere.pdb
+C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.FormsEvents.Form1.resources

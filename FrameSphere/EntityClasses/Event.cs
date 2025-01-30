@@ -466,6 +466,46 @@ namespace FrameSphere.EntityClasses
             }
         }
 
+        public void AddArt(int ArtID)
+        {
+            Art art = new Art(ArtID);
+            string query = $"insert into ArtEvent values ({ArtID},{EventID})";
+            using (SqlConnection conn = DB.Connect())
+            {
+                try
+                {
+                    conn.Open();
+                    // Check if the art is already added to avoid duplicates.
+                    string checkQuery = $"SELECT COUNT(*) FROM ArtEvent WHERE ArtID = @ArtID AND EventID = @EventID";
+                    SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
+                    checkCmd.Parameters.AddWithValue("@ArtID", art.ArtID);
+                    checkCmd.Parameters.AddWithValue("@EventID", this.EventID);
+
+                    int count = (int)checkCmd.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        MessageBox.Show("This art already exists in the collections for this event.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Insert art into ArtEvent table.
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@ArtID", art.ArtID);
+                    cmd.Parameters.AddWithValue("@EventID", this.EventID);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Art successfully added to the event.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while adding the artist: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
         public void AddArtist(User artist)
         {
             string q = $"INSERT INTO ArtistEvent (UserName, EventID) VALUES (@UserName, @EventID)";

@@ -126,7 +126,8 @@ namespace FrameSphere
         private void artCollections_button_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ManageArtCollections mn = new ManageArtCollections(FSystem.loggedInUser);
+            Form1 mn = new Form1(ev);
+            mn.Show();
         }
     }
 }

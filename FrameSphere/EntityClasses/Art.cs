@@ -6,7 +6,7 @@ namespace FrameSphere.EntityClasses
 {
     public class Art
     {
-        private string _ArtID;
+        private int _ArtID;
         private string _ArtTitle;
         private string _ArtDescription;
         private string _SellingOption;
@@ -15,7 +15,7 @@ namespace FrameSphere.EntityClasses
         private List<string> _artPhotos = new List<string>(); // Stores photo file paths for simplicity.
 
         // Constructor for loading existing Art by ArtID
-        public Art(string artID)
+        public Art(int artID)
         {
             _ArtID = artID;
             LoadArtDetails(); // Load the art details (and photos) from DB
@@ -54,7 +54,7 @@ namespace FrameSphere.EntityClasses
                         command.Parameters.AddWithValue("@PhotoCount", _photocnt);
 
                         // Retrieve the newly generated ArtID
-                        _ArtID = command.ExecuteScalar().ToString();
+                        _ArtID = Int32.Parse(command.ExecuteScalar().ToString());
                     }
 
                     // Add photos to the ArtPhotos table
@@ -73,7 +73,7 @@ namespace FrameSphere.EntityClasses
             }
         }
 
-        public string ArtID => _ArtID;
+        public int ArtID => _ArtID;
 
         public string ArtTitle {
             get => LoadValue("ArtTitle", ref _ArtTitle);

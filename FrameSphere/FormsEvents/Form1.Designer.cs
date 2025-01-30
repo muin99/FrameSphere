@@ -172,6 +172,7 @@
             this.SearchArt_Field.Name = "SearchArt_Field";
             this.SearchArt_Field.Size = new System.Drawing.Size(467, 22);
             this.SearchArt_Field.TabIndex = 2;
+            this.SearchArt_Field.TextChanged += new System.EventHandler(this.SearchArt_Field_TextChanged);
             // 
             // FindArtist_Label
             // 
