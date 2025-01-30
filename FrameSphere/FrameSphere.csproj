@@ -90,6 +90,12 @@
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnect.cs" />
+    <Compile Include="FormsEvents\ManageArtCollections.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsEvents\ManageArtCollections.Designer.cs">
+      <DependentUpon>ManageArtCollections.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsEvents\ManageParticipants.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsEvents\CreateEvent.resx">
       <DependentUpon>CreateEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsEvents\ManageArtCollections.resx">
+      <DependentUpon>ManageArtCollections.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsEvents\ManageParticipants.resx">
       <DependentUpon>ManageParticipants.cs</DependentUpon>

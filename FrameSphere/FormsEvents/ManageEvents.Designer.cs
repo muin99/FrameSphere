@@ -205,6 +205,7 @@ namespace FrameSphere
             this.artCollections_button.TabIndex = 5;
             this.artCollections_button.Text = "Manage Art Collections";
             this.artCollections_button.UseVisualStyleBackColor = false;
+            this.artCollections_button.Click += new System.EventHandler(this.artCollections_button_Click);
             // 
             // participants_button
             // 

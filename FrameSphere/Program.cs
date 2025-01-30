@@ -19,8 +19,8 @@ namespace FrameSphere
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new LoginForm());
-            Application.Run(new ManageEvents("28"));
+            Application.Run(new LoginForm());
+            //Application.Run(new ManageEvents(28));
         }
     }
 }
