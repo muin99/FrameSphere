@@ -72,8 +72,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.midpanel = new System.Windows.Forms.Panel();
-            this.Submit = new System.Windows.Forms.Button();
+            this.artPanel = new System.Windows.Forms.Panel();
             this.remove = new System.Windows.Forms.Button();
+            this.photobox = new System.Windows.Forms.TextBox();
+            this.Submit = new System.Windows.Forms.Button();
             this.add = new System.Windows.Forms.Button();
             this.paid = new System.Windows.Forms.RadioButton();
             this.free = new System.Windows.Forms.RadioButton();
@@ -81,12 +83,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.photobtn = new System.Windows.Forms.Button();
-            this.photobox = new System.Windows.Forms.TextBox();
             this.artPrice = new System.Windows.Forms.TextBox();
             this.Description = new System.Windows.Forms.TextBox();
             this.arttitle = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.artContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.panel4.SuspendLayout();
             this.profilepanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.website_link)).BeginInit();
@@ -98,6 +99,8 @@
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.midpanel.SuspendLayout();
+            this.artPanel.SuspendLayout();
+            this.artContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList1
@@ -619,25 +622,49 @@
             // 
             this.midpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.midpanel.Controls.Add(this.Submit);
-            this.midpanel.Controls.Add(this.remove);
-            this.midpanel.Controls.Add(this.add);
             this.midpanel.Controls.Add(this.paid);
             this.midpanel.Controls.Add(this.free);
             this.midpanel.Controls.Add(this.label10);
             this.midpanel.Controls.Add(this.label9);
             this.midpanel.Controls.Add(this.label6);
             this.midpanel.Controls.Add(this.label7);
-            this.midpanel.Controls.Add(this.photobtn);
-            this.midpanel.Controls.Add(this.photobox);
             this.midpanel.Controls.Add(this.artPrice);
             this.midpanel.Controls.Add(this.Description);
             this.midpanel.Controls.Add(this.arttitle);
             this.midpanel.Controls.Add(this.label5);
+            this.midpanel.Controls.Add(this.artContainer);
             this.midpanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.midpanel.Location = new System.Drawing.Point(255, 105);
             this.midpanel.Name = "midpanel";
             this.midpanel.Size = new System.Drawing.Size(689, 573);
             this.midpanel.TabIndex = 4;
+            // 
+            // artPanel
+            // 
+            this.artPanel.Controls.Add(this.remove);
+            this.artPanel.Controls.Add(this.photobox);
+            this.artPanel.Location = new System.Drawing.Point(3, 3);
+            this.artPanel.Name = "artPanel";
+            this.artPanel.Size = new System.Drawing.Size(371, 35);
+            this.artPanel.TabIndex = 38;
+            // 
+            // remove
+            // 
+            this.remove.Location = new System.Drawing.Point(304, 8);
+            this.remove.Name = "remove";
+            this.remove.Size = new System.Drawing.Size(66, 21);
+            this.remove.TabIndex = 36;
+            this.remove.Text = "Remove";
+            this.remove.UseVisualStyleBackColor = true;
+            // 
+            // photobox
+            // 
+            this.photobox.Location = new System.Drawing.Point(9, 8);
+            this.photobox.Name = "photobox";
+            this.photobox.ReadOnly = true;
+            this.photobox.Size = new System.Drawing.Size(289, 20);
+            this.photobox.TabIndex = 26;
+            this.photobox.Click += new System.EventHandler(this.PhotoBox_Click);
             // 
             // Submit
             // 
@@ -648,18 +675,9 @@
             this.Submit.Text = "Submit";
             this.Submit.UseVisualStyleBackColor = true;
             // 
-            // remove
-            // 
-            this.remove.Location = new System.Drawing.Point(570, 223);
-            this.remove.Name = "remove";
-            this.remove.Size = new System.Drawing.Size(66, 21);
-            this.remove.TabIndex = 36;
-            this.remove.Text = "Remove";
-            this.remove.UseVisualStyleBackColor = true;
-            // 
             // add
             // 
-            this.add.Location = new System.Drawing.Point(478, 251);
+            this.add.Location = new System.Drawing.Point(3, 44);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(86, 23);
             this.add.TabIndex = 35;
@@ -731,27 +749,6 @@
             this.label7.TabIndex = 27;
             this.label7.Text = "Arts";
             // 
-            // photobtn
-            // 
-            this.photobtn.BackColor = System.Drawing.Color.DarkGreen;
-            this.photobtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.photobtn.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.photobtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.photobtn.Location = new System.Drawing.Point(497, 223);
-            this.photobtn.Name = "photobtn";
-            this.photobtn.Size = new System.Drawing.Size(67, 20);
-            this.photobtn.TabIndex = 22;
-            this.photobtn.Text = "Browse";
-            this.photobtn.UseVisualStyleBackColor = false;
-            // 
-            // photobox
-            // 
-            this.photobox.Location = new System.Drawing.Point(202, 223);
-            this.photobox.Name = "photobox";
-            this.photobox.ReadOnly = true;
-            this.photobox.Size = new System.Drawing.Size(362, 20);
-            this.photobox.TabIndex = 26;
-            // 
             // artPrice
             // 
             this.artPrice.Location = new System.Drawing.Point(202, 452);
@@ -785,6 +782,15 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Create an Art";
             // 
+            // artContainer
+            // 
+            this.artContainer.Controls.Add(this.artPanel);
+            this.artContainer.Controls.Add(this.add);
+            this.artContainer.Location = new System.Drawing.Point(190, 226);
+            this.artContainer.Name = "artContainer";
+            this.artContainer.Size = new System.Drawing.Size(383, 190);
+            this.artContainer.TabIndex = 39;
+            // 
             // CreateArts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -809,6 +815,9 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.midpanel.ResumeLayout(false);
             this.midpanel.PerformLayout();
+            this.artPanel.ResumeLayout(false);
+            this.artPanel.PerformLayout();
+            this.artContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -857,7 +866,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button photobtn;
         private System.Windows.Forms.TextBox photobox;
         private System.Windows.Forms.TextBox artPrice;
         private System.Windows.Forms.TextBox Description;
@@ -871,5 +879,7 @@
         private System.Windows.Forms.PictureBox pinterest_link;
         private System.Windows.Forms.PictureBox instagram_link;
         private System.Windows.Forms.PictureBox facebook_pic;
+        private System.Windows.Forms.Panel artPanel;
+        private System.Windows.Forms.FlowLayoutPanel artContainer;
     }
 }
