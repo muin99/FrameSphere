@@ -57,7 +57,6 @@ C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\obj\Debug\FrameSpher
 C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.ArtistDashboard.resources
 C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.FormsArts.test.resources
 C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.CreateEvent.resources
-C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.FormsEvents.ManageArtCollections.resources
 C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.FormsEvents.ManageParticipants.resources
 C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.Edit_Profile.resources
 C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.EventsAdminView.resources
@@ -74,4 +73,4 @@ C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\obj\Debug\FrameSpher
 C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\bin\Debug\FrameSphere.exe.config
 C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\bin\Debug\FrameSphere.exe
 C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\bin\Debug\FrameSphere.pdb
-C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.FormsEvents.Form1.resources
+C:\Users\User\Documents\FrameSphere\FrameSphere\FrameSphere\obj\Debug\FrameSphere.FormsEvents.ManageArtCollection.resources

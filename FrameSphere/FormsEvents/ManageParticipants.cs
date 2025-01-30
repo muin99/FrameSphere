@@ -161,6 +161,7 @@ namespace FrameSphere.FormsEvents
         {
             this.Hide();
             ManageEvents mn = new ManageEvents(ep.EventID);
+            mn.Show();
         }
     }
 }

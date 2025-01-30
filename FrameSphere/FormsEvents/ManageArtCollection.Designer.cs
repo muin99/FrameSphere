@@ -1,6 +1,6 @@
 ﻿namespace FrameSphere.FormsEvents
 {
-    partial class Form1
+    partial class ManageArtCollection
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.MP_Header = new System.Windows.Forms.Panel();
-            this.goBack_button = new System.Windows.Forms.Button();
-            this.Logout = new System.Windows.Forms.Button();
-            this.ManageArtCollection_Title = new System.Windows.Forms.Label();
             this.MP_Body = new System.Windows.Forms.Panel();
             this.allArts_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.submittedArts_panel = new System.Windows.Forms.FlowLayoutPanel();
@@ -40,10 +36,14 @@
             this.CurrentArts_Label = new System.Windows.Forms.Label();
             this.SearchArt_Field = new System.Windows.Forms.TextBox();
             this.FindArtist_Label = new System.Windows.Forms.Label();
+            this.MP_Header = new System.Windows.Forms.Panel();
+            this.goBack_button = new System.Windows.Forms.Button();
+            this.Logout = new System.Windows.Forms.Button();
+            this.ManageArtCollection_Title = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
-            this.MP_Header.SuspendLayout();
             this.MP_Body.SuspendLayout();
             this.submittedArts_panel.SuspendLayout();
+            this.MP_Header.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -61,59 +61,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1262, 673);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // MP_Header
-            // 
-            this.MP_Header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.MP_Header.Controls.Add(this.goBack_button);
-            this.MP_Header.Controls.Add(this.Logout);
-            this.MP_Header.Controls.Add(this.ManageArtCollection_Title);
-            this.MP_Header.Location = new System.Drawing.Point(3, 2);
-            this.MP_Header.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MP_Header.Name = "MP_Header";
-            this.MP_Header.Size = new System.Drawing.Size(1256, 107);
-            this.MP_Header.TabIndex = 1;
-            // 
-            // goBack_button
-            // 
-            this.goBack_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.goBack_button.FlatAppearance.BorderColor = System.Drawing.Color.GreenYellow;
-            this.goBack_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.goBack_button.Font = new System.Drawing.Font("Lucida Console", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.goBack_button.ForeColor = System.Drawing.Color.White;
-            this.goBack_button.Location = new System.Drawing.Point(31, 31);
-            this.goBack_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.goBack_button.Name = "goBack_button";
-            this.goBack_button.Size = new System.Drawing.Size(140, 41);
-            this.goBack_button.TabIndex = 25;
-            this.goBack_button.Text = "Go Back";
-            this.goBack_button.UseVisualStyleBackColor = false;
-            this.goBack_button.Click += new System.EventHandler(this.goBack_button_Click);
-            // 
-            // Logout
-            // 
-            this.Logout.BackColor = System.Drawing.Color.Snow;
-            this.Logout.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.Logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Logout.ForeColor = System.Drawing.Color.Red;
-            this.Logout.Location = new System.Drawing.Point(1547, 44);
-            this.Logout.Margin = new System.Windows.Forms.Padding(4);
-            this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(100, 28);
-            this.Logout.TabIndex = 24;
-            this.Logout.Text = "Log out";
-            this.Logout.UseVisualStyleBackColor = false;
-            // 
-            // ManageArtCollection_Title
-            // 
-            this.ManageArtCollection_Title.AutoSize = true;
-            this.ManageArtCollection_Title.Font = new System.Drawing.Font("Microsoft New Tai Lue", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ManageArtCollection_Title.Location = new System.Drawing.Point(715, 31);
-            this.ManageArtCollection_Title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.ManageArtCollection_Title.Name = "ManageArtCollection_Title";
-            this.ManageArtCollection_Title.Size = new System.Drawing.Size(394, 45);
-            this.ManageArtCollection_Title.TabIndex = 22;
-            this.ManageArtCollection_Title.Text = "Manage Art Collections";
-            // 
             // MP_Body
             // 
             this.MP_Body.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -123,10 +70,10 @@
             this.MP_Body.Controls.Add(this.SearchArt_Field);
             this.MP_Body.Controls.Add(this.FindArtist_Label);
             this.MP_Body.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MP_Body.Location = new System.Drawing.Point(3, 115);
+            this.MP_Body.Location = new System.Drawing.Point(3, 114);
             this.MP_Body.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MP_Body.Name = "MP_Body";
-            this.MP_Body.Size = new System.Drawing.Size(1256, 556);
+            this.MP_Body.Size = new System.Drawing.Size(1256, 557);
             this.MP_Body.TabIndex = 2;
             // 
             // allArts_panel
@@ -184,22 +131,75 @@
             this.FindArtist_Label.TabIndex = 1;
             this.FindArtist_Label.Text = "Search: ";
             // 
-            // Form1
+            // MP_Header
+            // 
+            this.MP_Header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.MP_Header.Controls.Add(this.goBack_button);
+            this.MP_Header.Controls.Add(this.Logout);
+            this.MP_Header.Controls.Add(this.ManageArtCollection_Title);
+            this.MP_Header.Location = new System.Drawing.Point(3, 2);
+            this.MP_Header.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MP_Header.Name = "MP_Header";
+            this.MP_Header.Size = new System.Drawing.Size(1256, 107);
+            this.MP_Header.TabIndex = 1;
+            // 
+            // goBack_button
+            // 
+            this.goBack_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.goBack_button.FlatAppearance.BorderColor = System.Drawing.Color.GreenYellow;
+            this.goBack_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.goBack_button.Font = new System.Drawing.Font("Lucida Console", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.goBack_button.ForeColor = System.Drawing.Color.White;
+            this.goBack_button.Location = new System.Drawing.Point(31, 31);
+            this.goBack_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.goBack_button.Name = "goBack_button";
+            this.goBack_button.Size = new System.Drawing.Size(140, 41);
+            this.goBack_button.TabIndex = 25;
+            this.goBack_button.Text = "Go Back";
+            this.goBack_button.UseVisualStyleBackColor = false;
+            this.goBack_button.Click += new System.EventHandler(this.goBack_button_Click);
+            // 
+            // Logout
+            // 
+            this.Logout.BackColor = System.Drawing.Color.Snow;
+            this.Logout.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.Logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Logout.ForeColor = System.Drawing.Color.Red;
+            this.Logout.Location = new System.Drawing.Point(1547, 44);
+            this.Logout.Margin = new System.Windows.Forms.Padding(4);
+            this.Logout.Name = "Logout";
+            this.Logout.Size = new System.Drawing.Size(100, 28);
+            this.Logout.TabIndex = 24;
+            this.Logout.Text = "Log out";
+            this.Logout.UseVisualStyleBackColor = false;
+            // 
+            // ManageArtCollection_Title
+            // 
+            this.ManageArtCollection_Title.AutoSize = true;
+            this.ManageArtCollection_Title.Font = new System.Drawing.Font("Microsoft New Tai Lue", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ManageArtCollection_Title.Location = new System.Drawing.Point(715, 31);
+            this.ManageArtCollection_Title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ManageArtCollection_Title.Name = "ManageArtCollection_Title";
+            this.ManageArtCollection_Title.Size = new System.Drawing.Size(394, 45);
+            this.ManageArtCollection_Title.TabIndex = 22;
+            this.ManageArtCollection_Title.Text = "Manage Art Collections";
+            // 
+            // ManageArtCollection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1262, 673);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "ManageArtCollection";
+            this.Text = "Manage Art Collection";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.MP_Header.ResumeLayout(false);
-            this.MP_Header.PerformLayout();
             this.MP_Body.ResumeLayout(false);
             this.MP_Body.PerformLayout();
             this.submittedArts_panel.ResumeLayout(false);
             this.submittedArts_panel.PerformLayout();
+            this.MP_Header.ResumeLayout(false);
+            this.MP_Header.PerformLayout();
             this.ResumeLayout(false);
 
         }

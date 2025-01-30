@@ -117,6 +117,7 @@ namespace FrameSphere
         private void participants_button_Click(object sender, EventArgs e)
         {
             this.Hide();
+            //if(FSystem.loggedInUser=)
             ManageParticipants mn = new ManageParticipants(ev);
             mn.Show();
 
@@ -126,7 +127,7 @@ namespace FrameSphere
         private void artCollections_button_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 mn = new Form1(ev);
+            ManageArtCollection mn = new ManageArtCollection(ev);
             mn.Show();
         }
     }

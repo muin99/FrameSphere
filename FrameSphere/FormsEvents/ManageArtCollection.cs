@@ -12,10 +12,10 @@ using FrameSphere.EntityClasses;
 
 namespace FrameSphere.FormsEvents
 {
-    public partial class Form1 : Form
+    public partial class ManageArtCollection : Form
     {
         private Event ex;
-        public Form1(Event a)
+        public ManageArtCollection(Event a)
         {
             InitializeComponent();
             this.ex = a;
