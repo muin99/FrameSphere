@@ -126,11 +126,13 @@ namespace FrameSphere
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       
+        private void dashBoardButton_Click(object sender, EventArgs e)//return button
         {
             this.Hide();
             UserDashBoard userDashBoard = new UserDashBoard();
             userDashBoard.Show();
+
         }
 
         private void label1_Click_1(object sender, EventArgs e)
@@ -153,18 +155,31 @@ namespace FrameSphere
             Loaduserboxes(textBox2.Text);
         }
 
-        private void eventsboard_Click(object sender, EventArgs e)
+        private void eventsboard_Click(object sender, EventArgs e)//list of events button
         {
             this.Hide();
             EventsAdminView eventsAdminView = new EventsAdminView();
             eventsAdminView.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)//artist applications button
         {
             this.Hide();
             ArtistApplications artistApplications = new ArtistApplications();
             artistApplications.Show();
+        }
+
+        private void UserBoard_Click(object sender, EventArgs e)//list of users button
+        {
+            MessageBox.Show("You are current viewing List of Users Page", "!", MessageBoxButtons.OK);
+            return;
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
         }
     }
 }

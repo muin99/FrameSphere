@@ -138,8 +138,35 @@ namespace FrameSphere
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Admin_dashboard userDashBoard = new Admin_dashboard();
-            userDashBoard.Show();
+            UserDashBoard us = new UserDashBoard();
+            us.Show();
+        }
+
+        private void eventsboard_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You are current viewing List of Events Page", "!", MessageBoxButtons.OK);
+            return;
+        }
+
+        private void UserBoard_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Admin_dashboard ad = new Admin_dashboard();
+            ad.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)//artist applications button
+        {
+            this.Hide();
+            ArtistApplications artistApplications = new ArtistApplications();
+            artistApplications.Show();
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
         }
     }
 }

@@ -518,7 +518,7 @@
             // 
             // returnDashBoard_button
             // 
-            this.returnDashBoard_button.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.returnDashBoard_button.BackColor = System.Drawing.Color.Black;
             this.returnDashBoard_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.returnDashBoard_button.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.returnDashBoard_button.ForeColor = System.Drawing.SystemColors.ButtonHighlight;

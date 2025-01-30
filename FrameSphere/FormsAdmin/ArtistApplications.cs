@@ -160,11 +160,38 @@ namespace FrameSphere
             LoadArtists(textBox1.Text);
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)//return button
         {
             this.Hide();
-            Admin_dashboard userDashBoard = new Admin_dashboard();
-            userDashBoard.Show();
+            UserDashBoard us = new UserDashBoard();
+            us.Show();
+        }
+
+        private void eventsboard_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EventsAdminView eventsAdminView = new EventsAdminView();
+            eventsAdminView.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("You are current viewing Artist Applications Page", "!", MessageBoxButtons.OK);
+            return;
+        }
+
+        private void UserBoard_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Admin_dashboard ad = new Admin_dashboard();
+            ad.Show();
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
         }
     }
 }
