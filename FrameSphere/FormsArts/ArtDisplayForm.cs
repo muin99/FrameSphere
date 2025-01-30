@@ -2,20 +2,66 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrameSphere.EntityClasses;
 
 namespace FrameSphere
 {
     public partial class ArtDisplayForm : Form
     {
-        public ArtDisplayForm()
+        public Art art;
+        public User user;
+        public string[] photos;  // Array for storing photos
+        int ct = 0;
+        int t = 0;
+        public ArtDisplayForm(int artid)
         {
+            art = new Art(artid);
+            string username;
+            using(SqlConnection con = DB.Connect())
+            {
+                con.Open();
+                string q = $"select username from ArtArtist where artid = '{artid}'";
+                SqlCommand cmd = new SqlCommand(q, con);
+                username = cmd.ExecuteScalar().ToString();
+            }
+            user = new User(username);
             InitializeComponent();
+            name.Text = user.FullName();
+            userName.Text = "@" + user.UserName;
+            phone.Text = user.Phone;
+            email.Text = user.Email;
+            address.Text = user.Address;
+            title.Text = art.ArtTitle;
+            Description.Text = art.ArtDescription;
+
+            using (SqlConnection con = DB.Connect())
+            {
+                con.Open();
+                string q = $"SELECT photo FROM ArtPhotos WHERE artid = {art.ArtID}";
+                SqlCommand cmd = new SqlCommand(q, con);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                List<string> tempPhotos = new List<string>();
+                while (reader.Read())
+                {
+                    tempPhotos.Add(reader["photo"].ToString());
+                }
+                reader.Close();
+
+                ct = tempPhotos.Count;
+                photos = tempPhotos.ToArray();
+
+
+            }
+            ArtImage.Image = FSystem.GetImageFromPath(photos[t]);
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -138,6 +184,27 @@ namespace FrameSphere
             {
                 MessageBox.Show($"An error occurred:{ex.Message}");
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (t > 0)
+            {
+                ArtImage.Image = FSystem.GetImageFromPath(photos[--t]);
+            }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if (t < ct-1)
+            {
+                ArtImage.Image = FSystem.GetImageFromPath(photos[++t]);
+            }
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

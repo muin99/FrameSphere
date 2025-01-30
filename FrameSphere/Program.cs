@@ -17,10 +17,10 @@ namespace FrameSphere
         {
 
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
-            //Application.Run(new ManageEvents(28));
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new LoginForm());
+            Application.Run(new ArtDisplayForm(12));
         }
     }
 }
