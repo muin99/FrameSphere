@@ -29,8 +29,6 @@ namespace FrameSphere
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -49,38 +47,19 @@ namespace FrameSphere
             this.label2 = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.Label();
             this.cover = new System.Windows.Forms.PictureBox();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.imagescontainer = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cover)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Location = new System.Drawing.Point(9, 255);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1245, 426);
-            this.panel3.TabIndex = 26;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.SteelBlue;
-            this.pictureBox2.Location = new System.Drawing.Point(8, 7);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(406, 200);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Location = new System.Drawing.Point(8, 8);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1264, 681);
             this.panel1.TabIndex = 1;
@@ -281,17 +260,24 @@ namespace FrameSphere
             this.cover.TabIndex = 0;
             this.cover.TabStop = false;
             // 
+            // imagescontainer
+            // 
+            this.imagescontainer.AutoScroll = true;
+            this.imagescontainer.Location = new System.Drawing.Point(-1, 263);
+            this.imagescontainer.Name = "imagescontainer";
+            this.imagescontainer.Size = new System.Drawing.Size(1268, 426);
+            this.imagescontainer.TabIndex = 26;
+            // 
             // Event_page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.imagescontainer);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Event_page";
             this.Text = "Event_page";
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -303,9 +289,7 @@ namespace FrameSphere
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button1;
@@ -323,5 +307,6 @@ namespace FrameSphere
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.PictureBox cover;
+        private System.Windows.Forms.FlowLayoutPanel imagescontainer;
     }
 }

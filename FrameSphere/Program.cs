@@ -20,7 +20,7 @@ namespace FrameSphere
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LoginForm());
-            Application.Run(new ArtDisplayForm(12));
+            Application.Run(new Event_page(28));
         }
     }
 }
