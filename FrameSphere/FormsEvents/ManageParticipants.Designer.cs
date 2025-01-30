@@ -34,11 +34,10 @@
             this.Logout = new System.Windows.Forms.Button();
             this.ManageParticipants_Title = new System.Windows.Forms.Label();
             this.MP_Body = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.allartists = new System.Windows.Forms.FlowLayoutPanel();
             this.participants_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.noArtists = new System.Windows.Forms.Label();
             this.CurrentArtists_Label = new System.Windows.Forms.Label();
-            this.addArtist_button = new System.Windows.Forms.Button();
             this.SearchArtist_Field = new System.Windows.Forms.TextBox();
             this.FindArtist_Label = new System.Windows.Forms.Label();
             this.mParticipant_tableLayout.SuspendLayout();
@@ -55,7 +54,7 @@
             this.mParticipant_tableLayout.Controls.Add(this.MP_Body, 0, 1);
             this.mParticipant_tableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mParticipant_tableLayout.Location = new System.Drawing.Point(0, 0);
-            this.mParticipant_tableLayout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mParticipant_tableLayout.Margin = new System.Windows.Forms.Padding(2);
             this.mParticipant_tableLayout.Name = "mParticipant_tableLayout";
             this.mParticipant_tableLayout.RowCount = 2;
             this.mParticipant_tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.48449F));
@@ -70,7 +69,7 @@
             this.MP_Header.Controls.Add(this.Logout);
             this.MP_Header.Controls.Add(this.ManageParticipants_Title);
             this.MP_Header.Location = new System.Drawing.Point(2, 2);
-            this.MP_Header.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MP_Header.Margin = new System.Windows.Forms.Padding(2);
             this.MP_Header.Name = "MP_Header";
             this.MP_Header.Size = new System.Drawing.Size(1258, 87);
             this.MP_Header.TabIndex = 0;
@@ -83,7 +82,7 @@
             this.goBack_button.Font = new System.Drawing.Font("Lucida Console", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.goBack_button.ForeColor = System.Drawing.Color.White;
             this.goBack_button.Location = new System.Drawing.Point(23, 25);
-            this.goBack_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.goBack_button.Margin = new System.Windows.Forms.Padding(2);
             this.goBack_button.Name = "goBack_button";
             this.goBack_button.Size = new System.Drawing.Size(105, 33);
             this.goBack_button.TabIndex = 25;
@@ -116,34 +115,33 @@
             // MP_Body
             // 
             this.MP_Body.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.MP_Body.Controls.Add(this.flowLayoutPanel1);
+            this.MP_Body.Controls.Add(this.allartists);
             this.MP_Body.Controls.Add(this.participants_panel);
             this.MP_Body.Controls.Add(this.CurrentArtists_Label);
-            this.MP_Body.Controls.Add(this.addArtist_button);
             this.MP_Body.Controls.Add(this.SearchArtist_Field);
             this.MP_Body.Controls.Add(this.FindArtist_Label);
             this.MP_Body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MP_Body.Location = new System.Drawing.Point(2, 93);
-            this.MP_Body.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MP_Body.Margin = new System.Windows.Forms.Padding(2);
             this.MP_Body.Name = "MP_Body";
             this.MP_Body.Size = new System.Drawing.Size(1260, 586);
             this.MP_Body.TabIndex = 1;
             // 
-            // flowLayoutPanel1
+            // allartists
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(23, 80);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(504, 389);
-            this.flowLayoutPanel1.TabIndex = 6;
+            this.allartists.Location = new System.Drawing.Point(23, 80);
+            this.allartists.Margin = new System.Windows.Forms.Padding(2);
+            this.allartists.Name = "allartists";
+            this.allartists.Size = new System.Drawing.Size(504, 479);
+            this.allartists.TabIndex = 6;
             // 
             // participants_panel
             // 
             this.participants_panel.Controls.Add(this.noArtists);
-            this.participants_panel.Location = new System.Drawing.Point(542, 72);
-            this.participants_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.participants_panel.Location = new System.Drawing.Point(542, 80);
+            this.participants_panel.Margin = new System.Windows.Forms.Padding(2);
             this.participants_panel.Name = "participants_panel";
-            this.participants_panel.Size = new System.Drawing.Size(560, 398);
+            this.participants_panel.Size = new System.Drawing.Size(560, 479);
             this.participants_panel.TabIndex = 5;
             // 
             // noArtists
@@ -160,30 +158,21 @@
             // 
             this.CurrentArtists_Label.AutoSize = true;
             this.CurrentArtists_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentArtists_Label.Location = new System.Drawing.Point(452, 48);
+            this.CurrentArtists_Label.Location = new System.Drawing.Point(539, 49);
             this.CurrentArtists_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CurrentArtists_Label.Name = "CurrentArtists_Label";
             this.CurrentArtists_Label.Size = new System.Drawing.Size(175, 17);
             this.CurrentArtists_Label.TabIndex = 4;
             this.CurrentArtists_Label.Text = "Currently Participating:";
             // 
-            // addArtist_button
-            // 
-            this.addArtist_button.Location = new System.Drawing.Point(354, 48);
-            this.addArtist_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.addArtist_button.Name = "addArtist_button";
-            this.addArtist_button.Size = new System.Drawing.Size(56, 19);
-            this.addArtist_button.TabIndex = 3;
-            this.addArtist_button.Text = "Add";
-            this.addArtist_button.UseVisualStyleBackColor = true;
-            // 
             // SearchArtist_Field
             // 
             this.SearchArtist_Field.Location = new System.Drawing.Point(86, 49);
-            this.SearchArtist_Field.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SearchArtist_Field.Margin = new System.Windows.Forms.Padding(2);
             this.SearchArtist_Field.Name = "SearchArtist_Field";
-            this.SearchArtist_Field.Size = new System.Drawing.Size(258, 20);
+            this.SearchArtist_Field.Size = new System.Drawing.Size(351, 20);
             this.SearchArtist_Field.TabIndex = 2;
+            this.SearchArtist_Field.TextChanged += new System.EventHandler(this.SearchArtist_Field_TextChanged);
             // 
             // FindArtist_Label
             // 
@@ -202,7 +191,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.mParticipant_tableLayout);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ManageParticipants";
             this.Text = "ManageParticipants";
             this.mParticipant_tableLayout.ResumeLayout(false);
@@ -227,9 +216,8 @@
         private System.Windows.Forms.TextBox SearchArtist_Field;
         private System.Windows.Forms.Label FindArtist_Label;
         private System.Windows.Forms.Label CurrentArtists_Label;
-        private System.Windows.Forms.Button addArtist_button;
         private System.Windows.Forms.FlowLayoutPanel participants_panel;
         private System.Windows.Forms.Label noArtists;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel allartists;
     }
 }

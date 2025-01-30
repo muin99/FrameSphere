@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace FrameSphere.EntityClasses
 {
@@ -423,12 +424,89 @@ namespace FrameSphere.EntityClasses
             if (visitor == null) throw new ArgumentNullException(nameof(visitor));
             Visitors.Add(visitor);
         }
-
-        public void AddArtist(Artist artist)
+        public void RemoveArtist(User artist)
         {
-            if (artist == null) throw new ArgumentNullException(nameof(artist));
-            Artists.Add(artist);
+            string query = $"DELETE FROM ArtistEvent WHERE UserName = @UserName AND EventID = @EventID";
+
+            using (SqlConnection conn = DB.Connect())
+            {
+                try
+                {
+                    conn.Open();
+
+                    // Check if the artist exists in the event.
+                    string checkQuery = $"SELECT COUNT(*) FROM ArtistEvent WHERE UserName = @UserName AND EventID = @EventID";
+                    SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
+                    checkCmd.Parameters.AddWithValue("@UserName", artist.UserName);
+                    checkCmd.Parameters.AddWithValue("@EventID", this.EventID);
+
+                    int count = (int)checkCmd.ExecuteScalar();
+
+                    if (count == 0)
+                    {
+                        MessageBox.Show("This artist is not part of the event.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Remove the artist from the database.
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@UserName", artist.UserName);
+                    cmd.Parameters.AddWithValue("@EventID", this.EventID);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Artist successfully removed from the event.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while removing the artist: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
+
+        public void AddArtist(User artist)
+        {
+            string q = $"INSERT INTO ArtistEvent (UserName, EventID) VALUES (@UserName, @EventID)";
+
+            using (SqlConnection conn = DB.Connect())
+            {
+                try
+                {
+                    conn.Open();
+                    // Check if the artist is already added to avoid duplicates.
+                    string checkQuery = $"SELECT COUNT(*) FROM ArtistEvent WHERE UserName = @UserName AND EventID = @EventID";
+                    SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
+                    checkCmd.Parameters.AddWithValue("@UserName", artist.UserName);
+                    checkCmd.Parameters.AddWithValue("@EventID", this.EventID);
+
+                    int count = (int)checkCmd.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        MessageBox.Show("This artist is already participating in this event.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Insert artist into ArtistEvent table.
+                    SqlCommand cmd = new SqlCommand(q, conn);
+                    cmd.Parameters.AddWithValue("@UserName", artist.UserName);
+                    cmd.Parameters.AddWithValue("@EventID", this.EventID);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Artist successfully added to the event.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while adding the artist: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
 
         public void AddOrganizer(User organizer)
         {
