@@ -210,7 +210,7 @@ namespace FrameSphere
             this.Hide();
         }
 
-        private void chat_Click(object sender, EventArgs e)
+        private void chat_Click_1(object sender, EventArgs e)
         {
             Chat chat = new Chat(user);
             chat.Show();
@@ -226,5 +226,6 @@ namespace FrameSphere
             ArtReviewPage a1 = new ArtReviewPage(Artid);
             a1.ShowDialog();
         }
+
     }
 }

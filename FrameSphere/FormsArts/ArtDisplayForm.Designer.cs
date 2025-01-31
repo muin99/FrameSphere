@@ -49,6 +49,7 @@
             this.profilepic = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.review = new System.Windows.Forms.Button();
             this.chat = new System.Windows.Forms.Button();
             this.buy = new System.Windows.Forms.Button();
             this.Description = new System.Windows.Forms.Label();
@@ -57,7 +58,6 @@
             this.ArtImage = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.review = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.website_link)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pinterest_link)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.instagram_link)).BeginInit();
@@ -310,6 +310,18 @@
             this.panel1.Size = new System.Drawing.Size(882, 128);
             this.panel1.TabIndex = 5;
             // 
+            // review
+            // 
+            this.review.BackColor = System.Drawing.Color.LightGreen;
+            this.review.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.review.Location = new System.Drawing.Point(670, 40);
+            this.review.Name = "review";
+            this.review.Size = new System.Drawing.Size(191, 29);
+            this.review.TabIndex = 23;
+            this.review.Text = "Review Art";
+            this.review.UseVisualStyleBackColor = false;
+            this.review.Click += new System.EventHandler(this.review_Click);
+            // 
             // chat
             // 
             this.chat.BackColor = System.Drawing.Color.LightGreen;
@@ -320,6 +332,7 @@
             this.chat.TabIndex = 22;
             this.chat.Text = "Chat with artist";
             this.chat.UseVisualStyleBackColor = false;
+            this.chat.Click += new System.EventHandler(this.chat_Click_1);
             // 
             // buy
             // 
@@ -406,18 +419,6 @@
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // review
-            // 
-            this.review.BackColor = System.Drawing.Color.LightGreen;
-            this.review.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.review.Location = new System.Drawing.Point(670, 40);
-            this.review.Name = "review";
-            this.review.Size = new System.Drawing.Size(191, 29);
-            this.review.TabIndex = 23;
-            this.review.Text = "Review Art";
-            this.review.UseVisualStyleBackColor = false;
-            this.review.Click += new System.EventHandler(this.review_Click);
             // 
             // ArtDisplayForm
             // 
