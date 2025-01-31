@@ -19,7 +19,7 @@ namespace FrameSphere.EntityClasses
 
         public List<string> artPhotos { get {
                 return _artPhotos;
-            } set; }
+            } }
         public Art(int artID)
         {
             _ArtID = artID;
