@@ -8,6 +8,7 @@ using System.Diagnostics.Tracing;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -51,8 +52,8 @@ namespace FrameSphere
 
             // Define the query, with or without a search filter
             string query = string.IsNullOrEmpty(searchQuery)
-                ? "SELECT EventId, EventTitle, Description, EndDate, EventPoster FROM Events"
-                : "SELECT EventId, EventTitle, Description, EndDate, EventPoster FROM Events WHERE EventTitle LIKE @SearchQuery";
+                ? "SELECT EventId, EventTitle, Description,StartDate, EndDate, EventPoster FROM Events"
+                : "SELECT EventId, EventTitle, Description,StartDate, EndDate, EventPoster FROM Events WHERE EventTitle LIKE @SearchQuery";
 
             using (SqlConnection connection = DB.Connect())
             {
@@ -80,11 +81,12 @@ namespace FrameSphere
                             int eventId = Convert.ToInt32(reader["EventId"]);
                             string title = reader["EventTitle"].ToString();
                             string description = reader["Description"] != DBNull.Value ? reader["Description"].ToString() : "No description available";
-                            DateTime? endDate = reader["EndDate"] != DBNull.Value ? (DateTime?)reader["EndDate"] : null;
+                            DateTime endDate = reader["EndDate"] != DBNull.Value ? (DateTime)reader["EndDate"]:DateTime.Now;
+                            DateTime StartDate = reader["StartDate"] != DBNull.Value ? (DateTime)reader["StartDate"]:DateTime.Now ;
                             string eventPosterPath = reader["EventPoster"] != DBNull.Value ? reader["EventPoster"].ToString() : null;
 
                             // Format date or provide default message
-                            string formattedEndDate = endDate.HasValue ? endDate.Value.ToString("dd-MM-yyyy HH:mm:ss") : "No end date provided";
+                            //string formattedEndDate = endDate.HasValue ? endDate.Value.ToString("dd-MM-yyyy HH:mm:ss") : "No end date provided";
 
                             // Load the event poster image
                             Image eventPosterImage = !string.IsNullOrEmpty(eventPosterPath)
@@ -92,7 +94,7 @@ namespace FrameSphere
                                 : FrameSphere.Properties.Resources._10_3__thumb; // Default placeholder image
 
                             // Create an event box for the current event
-                            CreateEventBox(title, description, formattedEndDate, eventPosterImage, eventId);
+                            CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId);
                         }
                     }
                 }
@@ -101,7 +103,7 @@ namespace FrameSphere
 
 
 
-        private void CreateEventBox(string title, string description, string time, Image eventImage, int eventId)
+        private void CreateEventBox(string title, string description, DateTime endDate, DateTime StartDate, Image eventImage, int eventId)
         {
             int panelWidth = eventspanel.Width - 40;
             int panelHeight = 120;
@@ -139,7 +141,7 @@ namespace FrameSphere
             };
 
             Label timeLabel = new Label {
-                Text = time,
+                //Text = endDate.ToString(),
                 Font = new Font("Arial", 10, FontStyle.Bold),
                 ForeColor = Color.Red,
                 Location = new Point(120, 90),
@@ -155,6 +157,32 @@ namespace FrameSphere
                 FlatStyle = FlatStyle.Flat,
                 Tag = eventId // Store the event ID in the button's Tag property
             };
+
+            Timer eventTimer = new Timer();
+            eventTimer.Interval = 1000; // 1 second interval
+            eventTimer.Tick += (sender, e) =>
+            {
+                DateTime now = DateTime.Now;
+                TimeSpan remainingTime = StartDate - now;
+
+                if (remainingTime.TotalSeconds > 0) // Event not started yet
+                {
+                    timeLabel.Text = $"Starts in: {remainingTime.Days}d {remainingTime.Hours:D2}h {remainingTime.Minutes:D2}m {remainingTime.Seconds:D2}s";
+                }
+                else if (now >= StartDate && now < endDate) // Event started but not ended
+                {
+                    TimeSpan remainingUntilEnd = endDate - now;
+                    timeLabel.Text = $"Ends in: {remainingUntilEnd.Days}d {remainingUntilEnd.Hours:D2}h {remainingUntilEnd.Minutes:D2}m {remainingUntilEnd.Seconds:D2}s";
+                }
+                else // Event finished
+                {
+                    timeLabel.Text = "Event Finished!";
+                    eventTimer.Stop(); // Stop timer since the event is over
+                }
+            };
+
+            eventTimer.Start(); // Start the timer
+
             enterButton.Click += EnterButton_Click; // Attach the click event handler
 
             boxPanel.Controls.Add(pictureBox);
@@ -174,11 +202,12 @@ namespace FrameSphere
             Button button = sender as Button;
             if (button != null && button.Tag != null)
             {
-                if (int.TryParse(button.Tag.ToString(), out int eventId))
-                {
-                    Event_page eventPage = new Event_page(eventId); // Pass the event ID to the EventPage
+                if (int.TryParse(button.Tag.ToString(), out int eventId)) { 
+
                     this.Hide();
-                    eventPage.Show(); // Show the EventPage
+                    Event_page eventPage = new Event_page(eventId); // Pass the event ID to the EventPage
+                    
+                    //eventPage.Show(); // Show the EventPage dorkar nai
                 }
                 else
                 {
@@ -186,6 +215,7 @@ namespace FrameSphere
                 }
             }
         }
+
 
 
 

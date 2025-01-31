@@ -71,6 +71,12 @@
     <Compile Include="FormsArtists\ArtistDashboard.Designer.cs">
       <DependentUpon>ArtistDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsArts\ArtReview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsArts\ArtReview.Designer.cs">
+      <DependentUpon>ArtReview.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsArts\CreateArts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,12 @@
     </Compile>
     <Compile Include="FormsArts\test.Designer.cs">
       <DependentUpon>test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsEvents\BuyTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsEvents\BuyTicket.Designer.cs">
+      <DependentUpon>BuyTicket.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsEvents\CreateEvent.cs">
       <SubType>Form</SubType>
@@ -101,6 +113,12 @@
     </Compile>
     <Compile Include="FormsEvents\ManageParticipants.Designer.cs">
       <DependentUpon>ManageParticipants.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsEvents\WaitingPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsEvents\WaitingPage.Designer.cs">
+      <DependentUpon>WaitingPage.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsUser\Chat.cs">
       <SubType>Form</SubType>
@@ -177,6 +195,9 @@
     <EmbeddedResource Include="FormsArtists\ApplyForArtist.resx">
       <DependentUpon>ApplyForArtist.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormsArts\ArtReview.resx">
+      <DependentUpon>ArtReview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormsArts\CreateArts.resx">
       <DependentUpon>CreateArts.cs</DependentUpon>
     </EmbeddedResource>
@@ -192,6 +213,9 @@
     <EmbeddedResource Include="FormsArts\test.resx">
       <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormsEvents\BuyTicket.resx">
+      <DependentUpon>BuyTicket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormsEvents\CreateEvent.resx">
       <DependentUpon>CreateEvent.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsEvents\ManageParticipants.resx">
       <DependentUpon>ManageParticipants.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsEvents\WaitingPage.resx">
+      <DependentUpon>WaitingPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsUser\Chat.resx">
       <DependentUpon>Chat.cs</DependentUpon>
@@ -257,6 +284,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="images\defaultProfilePic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rating_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rating_hollow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bkash_payment_logo %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bkash_payment_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bookmark_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bookmark_hollow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

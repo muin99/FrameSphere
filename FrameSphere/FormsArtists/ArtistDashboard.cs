@@ -20,8 +20,46 @@ namespace FrameSphere
             InitializeComponent();
             profilepic.Image = FSystem.GetImageFromPath(FSystem.loggedInUser.ProfilePic);
             LoadArtistEvents(FSystem.loggedInUser.UserName);
+            LoadStatistics();
         }
-
+        public void LoadStatistics()
+        {
+            getNumberOfArts();
+            //getNumberOfArtsSold();
+            getNumberOfEventsParticipated();
+        }
+        public void getNumberOfEventsParticipated()
+        {
+            try
+            {
+                string query = $"select count(*) eventid from artistEvent where username = '{FSystem.loggedInUser.UserName}';";
+                using (SqlConnection conn = DB.Connect())
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        TotalParticipations_label.Text = cmd.ExecuteScalar().ToString();
+                    }
+                }
+            }
+            catch (Exception ex) { throw ex; }
+        }
+        public void getNumberOfArts()
+        {
+            try
+            {
+                string query = $"select count(*) artid from artArtist where username = '{FSystem.loggedInUser.UserName}';";
+                using (SqlConnection conn = DB.Connect())
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        TotalArts_label.Text = cmd.ExecuteScalar().ToString();
+                    }
+                }
+            }
+            catch (Exception ex) { throw ex; }
+        }
         private void CreateArt_Click(object sender, EventArgs e)
         {
             CreateArts createArts = new CreateArts();

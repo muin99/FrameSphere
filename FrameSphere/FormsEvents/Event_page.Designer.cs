@@ -37,7 +37,7 @@ namespace FrameSphere
             this.manage = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.organizer = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.price = new System.Windows.Forms.Label();
             this.ends = new System.Windows.Forms.Label();
             this.starts = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -104,7 +104,7 @@ namespace FrameSphere
             this.panel4.Controls.Add(this.manage);
             this.panel4.Controls.Add(this.button2);
             this.panel4.Controls.Add(this.organizer);
-            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.price);
             this.panel4.Controls.Add(this.ends);
             this.panel4.Controls.Add(this.starts);
             this.panel4.Controls.Add(this.label5);
@@ -157,16 +157,16 @@ namespace FrameSphere
             this.organizer.Text = "vfvc cvvcc  fgdf dgfrdg fdgdfgbf gh fvb vbxvcv vvcfbgfhfgbcv vb bgv bn gfh bfgnbg" +
     "f bgfbv bbvcbgh fghbgvfbgvbh cvb fghfgbhngv bhg bngfhbbvb b";
             // 
-            // label8
+            // price
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(296, 129);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(42, 20);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Free";
+            this.price.AutoSize = true;
+            this.price.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.price.ForeColor = System.Drawing.Color.Red;
+            this.price.Location = new System.Drawing.Point(296, 129);
+            this.price.Name = "price";
+            this.price.Size = new System.Drawing.Size(42, 20);
+            this.price.TabIndex = 9;
+            this.price.Text = "Free";
             // 
             // ends
             // 
@@ -297,7 +297,7 @@ namespace FrameSphere
         private System.Windows.Forms.Button manage;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox organizer;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label price;
         private System.Windows.Forms.Label ends;
         private System.Windows.Forms.Label starts;
         private System.Windows.Forms.Label label5;

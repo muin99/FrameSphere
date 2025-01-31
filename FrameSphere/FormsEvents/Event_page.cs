@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 using FrameSphere.EntityClasses;
+using FrameSphere.FormsEvents;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace FrameSphere
@@ -14,15 +16,98 @@ namespace FrameSphere
 
         public Event_page(int eventId)
         {
-            InitializeComponent();
-            
-            // Load the event data
             currentEvent = new Event(eventId);
-            title.Text = currentEvent.EventTitle;
+            InitializeComponent();
 
+            if (!checkEntrance())
+            {
+                this.Visible = false;
+                // Return early to prevent loading the rest of the form
+                return;
+            }
+            else
+            {
+                this.Visible = true;
+            }
+            title.Text = currentEvent.EventTitle;
+            organizer.Text = currentEvent.EventDescription;
+            starts.Text = currentEvent.StartsAt.ToString();
+            ends.Text = currentEvent.EndsAt.ToString();
+            price.Text = (currentEvent.RegistrationType == "Free") ? "Free" : currentEvent.TicketPrice.ToString();
+            cover.Image = FSystem.GetImageFromPath(currentEvent.PosterImage);
+
+
+            // Load the event data AFTER entrance check
+            title.Text = currentEvent.EventTitle;
             loadImages(currentEvent.EventID);
+        }
+
+        private bool artistOfTheEvent()
+        {
+            using (SqlConnection con = DB.Connect())
+            {
+                con.Open();
+                string query = "SELECT COUNT(*) FROM ArtistEvent WHERE username = @username AND eventid = @eventid";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+                cmd.Parameters.AddWithValue("@eventid", currentEvent.EventID);
+
+                int res = Convert.ToInt32(cmd.ExecuteScalar());
+                return res > 0;
+            }
+        }
+
+        private bool validVisitor()
+        {
+            using (SqlConnection con = DB.Connect())
+            {
+                con.Open();
+                string query = "SELECT COUNT(*) FROM TicketPurchases WHERE username = @username AND eventid = @eventid";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+                cmd.Parameters.AddWithValue("@eventid", currentEvent.EventID);
+
+                int res = Convert.ToInt32(cmd.ExecuteScalar());
+                return res > 0;
+            }
+        }
+
+        private bool checkEntrance()
+        {
+            if (FSystem.loggedInUser.isAdmin || artistOfTheEvent())
+            {
+                return true; // Admins and event artists have access
+            }
+
+            if (currentEvent.StartsAt > DateTime.Now)
+            {
+                this.Hide();
+                WaitingPage waitingPage = new WaitingPage(currentEvent);
+                waitingPage.FormClosed += (s, e) => this.Show(); // Show Event Page after Waiting Page is closed
+                waitingPage.Show();
+                return false;
+            }
+
+            if (currentEvent.RegistrationType == "Free")
+            {
+                //return true;
+            }
+
+            if (currentEvent.RegistrationType == "Paid" && !validVisitor())
+            {
+                this.Hide();
+                BuyTicket buyTicketPage = new BuyTicket(currentEvent);
+ // Show Event Page after Buy Ticket Page is closed
+                buyTicketPage.Show();
+                return false;
+            }
+            else
+            {
+                return true;
+            }
             
         }
+
         public void loadImages(int eventid)
         {
             using (SqlConnection conn = DB.Connect())

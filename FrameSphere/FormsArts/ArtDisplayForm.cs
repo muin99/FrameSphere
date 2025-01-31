@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrameSphere.EntityClasses;
+using FrameSphere.FormsUser;
 
 namespace FrameSphere
 {
@@ -20,9 +21,11 @@ namespace FrameSphere
         public string[] photos;  // Array for storing photos
         int ct = 0;
         int t = 0;
+        int Artid;
         public ArtDisplayForm(int artid)
         {
             art = new Art(artid);
+            Artid = artid;
             string username;
             using(SqlConnection con = DB.Connect())
             {
@@ -206,5 +209,23 @@ namespace FrameSphere
         {
             this.Hide();
         }
+
+        private void chat_Click_1(object sender, EventArgs e)
+        {
+            Chat chat = new Chat(user);
+            chat.Show();
+        }
+
+        private void buy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void review_Click(object sender, EventArgs e)
+        {
+            ArtReviewPage a1 = new ArtReviewPage(Artid);
+            a1.ShowDialog();
+        }
+
     }
 }
