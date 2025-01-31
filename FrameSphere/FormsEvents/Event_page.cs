@@ -21,9 +21,13 @@ namespace FrameSphere
 
             if (!checkEntrance())
             {
-                this.Hide();
+                this.Visible = false;
                 // Return early to prevent loading the rest of the form
                 return;
+            }
+            else
+            {
+                this.Visible = true;
             }
             title.Text = currentEvent.EventTitle;
             organizer.Text = currentEvent.EventDescription;
@@ -86,7 +90,7 @@ namespace FrameSphere
 
             if (currentEvent.RegistrationType == "Free")
             {
-                return true;
+                //return true;
             }
 
             if (currentEvent.RegistrationType == "Paid" && !validVisitor())
@@ -97,8 +101,11 @@ namespace FrameSphere
                 buyTicketPage.Show();
                 return false;
             }
-
-            return true;
+            else
+            {
+                return true;
+            }
+            
         }
 
         public void loadImages(int eventid)

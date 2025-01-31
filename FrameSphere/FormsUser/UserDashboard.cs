@@ -207,7 +207,7 @@ namespace FrameSphere
                     this.Hide();
                     Event_page eventPage = new Event_page(eventId); // Pass the event ID to the EventPage
                     
-                    eventPage.Show(); // Show the EventPage
+                    //eventPage.Show(); // Show the EventPage dorkar nai
                 }
                 else
                 {
