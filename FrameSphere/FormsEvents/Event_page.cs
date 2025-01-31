@@ -13,81 +13,85 @@ namespace FrameSphere
     {
         public Event currentEvent;
 
-        public bool artistOfTheEvent()
+        public Event_page(int eventId)
+        {
+            currentEvent = new Event(eventId);
+            InitializeComponent();
+
+            if (!checkEntrance())
+            {
+                // Return early to prevent loading the rest of the form
+                return;
+            }
+
+            // Load the event data AFTER entrance check
+            title.Text = currentEvent.EventTitle;
+            loadImages(currentEvent.EventID);
+        }
+
+        private bool artistOfTheEvent()
         {
             using (SqlConnection con = DB.Connect())
             {
                 con.Open();
-                string q = $"select count(*) from ArtistEvent where username ='{FSystem.loggedInUser.UserName}' and " +
-                    $"eventid = {currentEvent.EventID}";
-                SqlCommand cmd = new SqlCommand(q, con);
-                int res = Int32.Parse(cmd.ExecuteScalar().ToString());
-                if (res > 0)
-                {
-                    return true;
-                }
-                else { return false; }
+                string query = "SELECT COUNT(*) FROM ArtistEvent WHERE username = @username AND eventid = @eventid";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+                cmd.Parameters.AddWithValue("@eventid", currentEvent.EventID);
+
+                int res = Convert.ToInt32(cmd.ExecuteScalar());
+                return res > 0;
             }
         }
-        public bool validVisitor()
+
+        private bool validVisitor()
         {
-            using (SqlConnection con = DB.Connect()) { 
+            using (SqlConnection con = DB.Connect())
+            {
                 con.Open();
-                string q = $"select count(*) from TicketPurchases where username = '{FSystem.loggedInUser.UserName}' and" +
-                    $" eventid = '{currentEvent.EventID}'";
-                SqlCommand cmd = new SqlCommand (q, con);
-                int res = Int32.Parse(cmd.ExecuteScalar().ToString());
-                if (res > 0) {
-                    return true;
-                }
-                else { return false; }
+                string query = "SELECT COUNT(*) FROM TicketPurchases WHERE username = @username AND eventid = @eventid";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+                cmd.Parameters.AddWithValue("@eventid", currentEvent.EventID);
+
+                int res = Convert.ToInt32(cmd.ExecuteScalar());
+                return res > 0;
             }
         }
 
-        public void checkEntrance()
+        private bool checkEntrance()
         {
-            if (FSystem.loggedInUser.isAdmin)
+            if (FSystem.loggedInUser.isAdmin || artistOfTheEvent())
             {
-                return;
+                //return true; // Admins and event artists have access
             }
-            if (artistOfTheEvent())
-            {
-                return;
-            }
-            if (currentEvent.StartsAt > System.DateTime.Now)
+
+            if (currentEvent.StartsAt > DateTime.Now)
             {
                 this.Hide();
-                WaitingPage rr = new WaitingPage(currentEvent);
-                rr.Show();
+                WaitingPage waitingPage = new WaitingPage(currentEvent);
+                waitingPage.ShowDialog(); // Use ShowDialog() instead of Show() to prevent multiple instances
+                this.Close(); // Close the current form after WaitingPage is closed
+                return false;
             }
-            else if (currentEvent.RegistrationType == "Free") {
-                return;
+
+            if (currentEvent.RegistrationType == "Free")
+            {
+                return true;
             }
-            else if(currentEvent.RegistrationType == "Paid")
+
+            if (currentEvent.RegistrationType == "Paid" && !validVisitor())
             {
                 this.Hide();
-                BuyTicket rr = new BuyTicket(currentEvent);
-                rr.Show();
+                BuyTicket buyTicketPage = new BuyTicket(currentEvent);
+                buyTicketPage.ShowDialog();
+                this.Close();
+                return false;
             }
 
+            return true;
         }
-        public Event_page(int eventId)
 
-        {
-            currentEvent = new Event(eventId);
-
-            checkEntrance();
-
-
-            InitializeComponent();
-            
-            // Load the event data
-            
-            title.Text = currentEvent.EventTitle;
-
-            loadImages(currentEvent.EventID);
-            
-        }
         public void loadImages(int eventid)
         {
             using (SqlConnection conn = DB.Connect())

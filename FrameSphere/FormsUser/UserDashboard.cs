@@ -174,10 +174,11 @@ namespace FrameSphere
             Button button = sender as Button;
             if (button != null && button.Tag != null)
             {
-                if (int.TryParse(button.Tag.ToString(), out int eventId))
-                {
-                    Event_page eventPage = new Event_page(eventId); // Pass the event ID to the EventPage
+                if (int.TryParse(button.Tag.ToString(), out int eventId)) { 
+
                     this.Hide();
+                    Event_page eventPage = new Event_page(eventId); // Pass the event ID to the EventPage
+                    
                     eventPage.Show(); // Show the EventPage
                 }
                 else
@@ -186,6 +187,7 @@ namespace FrameSphere
                 }
             }
         }
+
 
 
 

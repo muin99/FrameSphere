@@ -41,5 +41,12 @@ namespace FrameSphere.FormsEvents
             }
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserDashBoard u = new UserDashBoard();
+            u.Show();
+        }
     }
 }
