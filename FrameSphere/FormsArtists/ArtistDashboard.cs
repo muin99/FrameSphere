@@ -28,7 +28,7 @@ namespace FrameSphere
             profilepic.Image = FSystem.GetImageFromPath(FSystem.loggedInUser.ProfilePic);
             LoadArtistEvents(FSystem.loggedInUser.UserName);
             LoadStatistics();
-            LoadFeaturedPanel();
+            //LoadFeaturedPanel();
         }
         public void LoadImagePaths()
         {

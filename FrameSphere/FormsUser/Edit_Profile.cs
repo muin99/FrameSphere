@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using FrameSphere.EntityClasses;
 
 namespace FrameSphere
 {
@@ -10,28 +11,29 @@ namespace FrameSphere
     {
         private string imagePath = null; // Path to the selected image
         private string profilePicRelativePath = null; // Relative path for storing in the database
+        private User user;
 
         public Edit_Profile(string username)
         {
             InitializeComponent();
-
-            // Populate fields with logged-in user data
-            FirstNameField.Text = FSystem.loggedInUser.FirstName;
-            LastNameField.Text = FSystem.loggedInUser.LastName;
-            PhoneField.Text = FSystem.loggedInUser.Phone;
-            EmailField.Text = FSystem.loggedInUser.Email;
-            AddressField.Text = FSystem.loggedInUser.Address;
-            FaceBookField.Text = FSystem.loggedInUser.Facebook;
-            InstagramField.Text = FSystem.loggedInUser.Instagram;
-            PinterestField.Text = FSystem.loggedInUser.Pinterest;
-            WebsiteField.Text = FSystem.loggedInUser.Website;
-            poster.Text = FSystem.loggedInUser.ProfilePic.ToString();
+            user = new User(username);
+            // Populate fields with given user data
+            FirstNameField.Text = user.FirstName;
+            LastNameField.Text = user.LastName;
+            PhoneField.Text = user.Phone;
+            EmailField.Text = user.Email;
+            AddressField.Text = user.Address;
+            FaceBookField.Text = user.Facebook;
+            InstagramField.Text = user.Instagram;
+            PinterestField.Text = user.Pinterest;
+            WebsiteField.Text = user.Website;
+            poster.Text = user.ProfilePic.ToString();
 
             // Load profile picture
-            if (!string.IsNullOrWhiteSpace(FSystem.loggedInUser.ProfilePic))
+            if (!string.IsNullOrWhiteSpace(user.ProfilePic))
             {
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string fullPath = Path.Combine(baseDirectory, FSystem.loggedInUser.ProfilePic);
+                string fullPath = Path.Combine(baseDirectory, user.ProfilePic);
 
                 if (File.Exists(fullPath))
                 {
@@ -148,7 +150,7 @@ namespace FrameSphere
                     //cmd.Parameters.AddWithValue("@FirstName", FirstNameField.Text);
                     cmd.Parameters.AddWithValue("@LastName", LastNameField.Text);
                     cmd.Parameters.AddWithValue("@Email", EmailField.Text);
-                    cmd.Parameters.AddWithValue("@UserName", FSystem.loggedInUser.UserName); // Logged-in user's username
+                    cmd.Parameters.AddWithValue("@UserName", user.UserName); // Logged-in user's username
                     cmd.Parameters.AddWithValue("@CurrentPW", CurrentPWField.Text);
 
                     cmd.Parameters.AddWithValue("@Address", AddressField.Text);
@@ -189,7 +191,7 @@ namespace FrameSphere
                     }
                 }
             }
-            FSystem.loggedInUser.FirstName = FirstNameField.Text;
+            user.FirstName = FirstNameField.Text;
 
             // Reload the logged-in user's information
             //FSystem.loggedInUser.loadUser();
