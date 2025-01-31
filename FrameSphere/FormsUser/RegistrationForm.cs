@@ -157,7 +157,7 @@ namespace FrameSphere
         private void UserName_TextChanged(object sender, EventArgs e)
         {
 
-            if (DB.Connection.State != System.Data.ConnectionState.Open)
+            if (DB.Connection.State!= System.Data.ConnectionState.Open)
             {
                 DB.Connection.Open();
             }
