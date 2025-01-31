@@ -475,6 +475,26 @@ namespace FrameSphere.EntityClasses
                 _isArtist = value;
             }
         }
+        public List<Art> myArts = new List<Art>();
+        public void loadArtList()
+        {
+            if (isArtist)
+            {
+                string query = $"select artId from ArtArtist where username = '{this.UserName}'";
+                using (SqlConnection connection = DB.Connect())
+                {
+                    connection.Open();
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int aid = Int32.Parse(reader["ArtId"].ToString());
+                        Art a = new Art(aid);
+                        myArts.Add(a);
+                    }
+                }
+            }
+        }
 
         private bool _isAdmin;
         public bool isAdmin {
@@ -649,6 +669,7 @@ namespace FrameSphere.EntityClasses
         public User(string UserName) {
             this.UserName = UserName;
             //this.loadUser();
+            loadArtList();
         }
 
         //public User(string userName, string password)

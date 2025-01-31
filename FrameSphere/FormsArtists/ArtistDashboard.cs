@@ -10,17 +10,53 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Windows.Forms.VisualStyles;
+using FrameSphere.EntityClasses;
 
 namespace FrameSphere
 {
     public partial class ArtistDashboard : Form
     {
+        //featured art panel 
+        private const int ImageWidth = 117;
+        private const int ImageHeight = 117;
+        private const int ImageSpacing = 27;
+        private const int ImageShift = ImageWidth+ImageSpacing;
+        private string[] ImagePaths;
         public ArtistDashboard()
         {
             InitializeComponent();
             profilepic.Image = FSystem.GetImageFromPath(FSystem.loggedInUser.ProfilePic);
             LoadArtistEvents(FSystem.loggedInUser.UserName);
             LoadStatistics();
+            LoadFeaturedPanel();
+        }
+        public void LoadImagePaths()
+        {
+            int i = 0;
+            foreach (Art a in FSystem.loggedInUser.myArts)//for each artid of logged user
+            {
+                ImagePaths[i] = a.artPhotos[0];//store the path for the first image per artid
+            }
+        }
+        public void AddImageBoxes()
+        {
+            int currentPos = 0;
+            foreach(string path in  ImagePaths)
+            {
+                PictureBox artPic = new PictureBox() {
+                    Size = new Size(ImageWidth, ImageHeight),
+                    Location = new Point(currentPos, 46),
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Image = Image.FromFile(path)
+                };
+                featuredArt_panel.Controls.Add(artPic);
+                currentPos += ImageShift;
+            }
+        }
+        public void LoadFeaturedPanel()
+        {
+            LoadImagePaths();
+            AddImageBoxes();
         }
         public void LoadStatistics()
         {

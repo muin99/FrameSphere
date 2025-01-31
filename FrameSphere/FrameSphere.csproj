@@ -79,6 +79,12 @@
     <Compile Include="FormsArtists\ArtistDashboard.Designer.cs">
       <DependentUpon>ArtistDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsArtists\test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsArtists\test.Designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsArts\ArtReview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsArtists\ApplyForArtist.resx">
       <DependentUpon>ApplyForArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsArtists\test.resx">
+      <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsArts\ArtReview.resx">
       <DependentUpon>ArtReview.cs</DependentUpon>
