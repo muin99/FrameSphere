@@ -20,9 +20,11 @@ namespace FrameSphere
         public string[] photos;  // Array for storing photos
         int ct = 0;
         int t = 0;
+        int Artid;
         public ArtDisplayForm(int artid)
         {
             art = new Art(artid);
+            Artid = artid;
             string username;
             using(SqlConnection con = DB.Connect())
             {
@@ -205,6 +207,17 @@ namespace FrameSphere
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void buy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void review_Click(object sender, EventArgs e)
+        {
+            ArtReviewPage a1 = new ArtReviewPage(Artid);
+            a1.ShowDialog();
         }
     }
 }

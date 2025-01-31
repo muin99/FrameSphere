@@ -24,14 +24,20 @@ namespace FrameSphere
         {
             try
             {
+                if (FSystem.loggedInUser == null || string.IsNullOrEmpty(FSystem.loggedInUser.UserName))
+                {
+                    MessageBox.Show("Error: User not logged in or username is missing.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 using (SqlConnection con = DB.Connect())
                 {
                     con.Open();
-                    string sql = "SELECT Rating, Review FROM ArtReviews WHERE ArtID = @ArtID AND UserID = @UserID";
+                    string sql = "SELECT Rating, Review FROM Rating WHERE ArtId = @ArtId AND Username = @UserName";
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                        cmd.Parameters.AddWithValue("@ArtID", artId);
-                        cmd.Parameters.AddWithValue("@UserName", FSystem.loggedInUser.UserName);
+                        cmd.Parameters.AddWithValue("@ArtId", artId);
+                        cmd.Parameters.AddWithValue("@UserName", (object)FSystem.loggedInUser.UserName ?? DBNull.Value);
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -51,6 +57,7 @@ namespace FrameSphere
                 MessageBox.Show($"Error loading review: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void InitializeRatings()
         {
@@ -91,15 +98,16 @@ namespace FrameSphere
             {
                 using (SqlConnection con = DB.Connect())
                 {
-                    string sql = "INSERT INTO ArtReviews (ArtID, UserID, Rating, Review, ReviewDate) " +
-                                 "VALUES (@ArtID, @UserID, @Rating, @Review, @ReviewDate)";
+                    string sql = "INSERT INTO Rating (ArtId, Username, Rating, Review, RatingDate) " +
+                                 "VALUES (@ArtId, @UserName, @Rating, @Review, @ReviewDate)";
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
-                        cmd.Parameters.AddWithValue("@ArtID", artId);
+                        cmd.Parameters.AddWithValue("@ArtId", artId);
                         cmd.Parameters.AddWithValue("@UserName", FSystem.loggedInUser.UserName);
                         cmd.Parameters.AddWithValue("@Rating", selectedRating);
                         cmd.Parameters.AddWithValue("@Review", review);
                         cmd.Parameters.AddWithValue("@ReviewDate", DateTime.Now);
+
                         con.Open();
                         cmd.ExecuteNonQuery();
                     }
@@ -114,6 +122,7 @@ namespace FrameSphere
                 MessageBox.Show($"Error submitting review: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
