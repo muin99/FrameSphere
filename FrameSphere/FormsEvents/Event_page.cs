@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
@@ -20,9 +21,17 @@ namespace FrameSphere
 
             if (!checkEntrance())
             {
+                this.Hide();
                 // Return early to prevent loading the rest of the form
                 return;
             }
+            title.Text = currentEvent.EventTitle;
+            organizer.Text = currentEvent.EventDescription;
+            starts.Text = currentEvent.StartsAt.ToString();
+            ends.Text = currentEvent.EndsAt.ToString();
+            price.Text = (currentEvent.RegistrationType == "Free") ? "Free" : currentEvent.TicketPrice.ToString();
+            cover.Image = FSystem.GetImageFromPath(currentEvent.PosterImage);
+
 
             // Load the event data AFTER entrance check
             title.Text = currentEvent.EventTitle;
@@ -70,8 +79,8 @@ namespace FrameSphere
             {
                 this.Hide();
                 WaitingPage waitingPage = new WaitingPage(currentEvent);
-                waitingPage.ShowDialog(); // Use ShowDialog() instead of Show() to prevent multiple instances
-                this.Close(); // Close the current form after WaitingPage is closed
+                waitingPage.FormClosed += (s, e) => this.Show(); // Show Event Page after Waiting Page is closed
+                waitingPage.Show();
                 return false;
             }
 
@@ -84,8 +93,8 @@ namespace FrameSphere
             {
                 this.Hide();
                 BuyTicket buyTicketPage = new BuyTicket(currentEvent);
-                buyTicketPage.ShowDialog();
-                this.Close();
+                buyTicketPage.FormClosed += (s, e) => this.Show(); // Show Event Page after Buy Ticket Page is closed
+                buyTicketPage.Show();
                 return false;
             }
 

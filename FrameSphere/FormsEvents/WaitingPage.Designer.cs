@@ -257,13 +257,14 @@
             // 
             // timer
             // 
-            this.timer.AutoSize = true;
             this.timer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timer.Location = new System.Drawing.Point(604, 389);
+            this.timer.Location = new System.Drawing.Point(511, 391);
             this.timer.Name = "timer";
-            this.timer.Size = new System.Drawing.Size(59, 24);
+            this.timer.Size = new System.Drawing.Size(239, 23);
             this.timer.TabIndex = 28;
             this.timer.Text = "Timer";
+            this.timer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.timer.Click += new System.EventHandler(this.timer_Click);
             // 
             // timer1
             // 

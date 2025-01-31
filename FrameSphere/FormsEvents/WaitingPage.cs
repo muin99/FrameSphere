@@ -35,6 +35,7 @@ namespace FrameSphere.FormsEvents
             if (remainingTime.TotalSeconds > 0)
             {
                 timer.Text = $"{remainingTime.Days}d {remainingTime.Hours:D2}h {remainingTime.Minutes:D2}m {remainingTime.Seconds:D2}s";
+                return;
             }
             else
             {
@@ -52,6 +53,11 @@ namespace FrameSphere.FormsEvents
             this.Hide();
             UserDashBoard u = new UserDashBoard();
             u.Show();
+        }
+
+        private void timer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
