@@ -49,14 +49,14 @@
             this.profilepic = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chat = new System.Windows.Forms.Button();
+            this.buy = new System.Windows.Forms.Button();
             this.Description = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.ArtImage = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.buy = new System.Windows.Forms.Button();
-            this.chat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.website_link)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pinterest_link)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.instagram_link)).BeginInit();
@@ -308,6 +308,29 @@
             this.panel1.Size = new System.Drawing.Size(844, 108);
             this.panel1.TabIndex = 5;
             // 
+            // chat
+            // 
+            this.chat.BackColor = System.Drawing.Color.LightGreen;
+            this.chat.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chat.Location = new System.Drawing.Point(653, 30);
+            this.chat.Name = "chat";
+            this.chat.Size = new System.Drawing.Size(191, 29);
+            this.chat.TabIndex = 22;
+            this.chat.Text = "Chat with artist";
+            this.chat.UseVisualStyleBackColor = false;
+            this.chat.Click += new System.EventHandler(this.chat_Click);
+            // 
+            // buy
+            // 
+            this.buy.BackColor = System.Drawing.Color.LightGreen;
+            this.buy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buy.Location = new System.Drawing.Point(653, 70);
+            this.buy.Name = "buy";
+            this.buy.Size = new System.Drawing.Size(191, 29);
+            this.buy.TabIndex = 2;
+            this.buy.Text = "Buy";
+            this.buy.UseVisualStyleBackColor = false;
+            // 
             // Description
             // 
             this.Description.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -352,7 +375,7 @@
             this.ArtImage.Location = new System.Drawing.Point(2, 2);
             this.ArtImage.Margin = new System.Windows.Forms.Padding(2);
             this.ArtImage.Name = "ArtImage";
-            this.ArtImage.Size = new System.Drawing.Size(500, 411);
+            this.ArtImage.Size = new System.Drawing.Size(500, 412);
             this.ArtImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ArtImage.TabIndex = 1;
             this.ArtImage.TabStop = false;
@@ -362,9 +385,9 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(149, 418);
+            this.pictureBox2.Location = new System.Drawing.Point(149, 419);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 29);
+            this.pictureBox2.Size = new System.Drawing.Size(100, 28);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
@@ -374,35 +397,13 @@
             // 
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(255, 418);
+            this.pictureBox3.Location = new System.Drawing.Point(255, 419);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 29);
+            this.pictureBox3.Size = new System.Drawing.Size(100, 28);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // buy
-            // 
-            this.buy.BackColor = System.Drawing.Color.LightGreen;
-            this.buy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buy.Location = new System.Drawing.Point(653, 70);
-            this.buy.Name = "buy";
-            this.buy.Size = new System.Drawing.Size(191, 29);
-            this.buy.TabIndex = 2;
-            this.buy.Text = "Buy";
-            this.buy.UseVisualStyleBackColor = false;
-            // 
-            // chat
-            // 
-            this.chat.BackColor = System.Drawing.Color.LightGreen;
-            this.chat.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chat.Location = new System.Drawing.Point(653, 30);
-            this.chat.Name = "chat";
-            this.chat.Size = new System.Drawing.Size(191, 29);
-            this.chat.TabIndex = 22;
-            this.chat.Text = "Chat with artist";
-            this.chat.UseVisualStyleBackColor = false;
             // 
             // ArtDisplayForm
             // 

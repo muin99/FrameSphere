@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrameSphere.EntityClasses;
+using FrameSphere.FormsUser;
 
 namespace FrameSphere
 {
@@ -205,6 +206,11 @@ namespace FrameSphere
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void chat_Click(object sender, EventArgs e)
+        {
+            Chat chat = new Chat(user);
         }
     }
 }

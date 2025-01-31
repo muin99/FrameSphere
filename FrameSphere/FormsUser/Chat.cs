@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrameSphere.EntityClasses;
 
 namespace FrameSphere.FormsUser
 {
     public partial class Chat : Form
     {
-        public Chat()
+        User u;
+        public Chat(User u)
         {
+            this.u = u;
             InitializeComponent();
         }
 
