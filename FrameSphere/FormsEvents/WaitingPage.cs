@@ -28,19 +28,24 @@ namespace FrameSphere.FormsEvents
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            TimeSpan remainingTime = currentEvent.StartsAt - DateTime.Now;
+            DateTime eventStartTime = currentEvent.StartsAt;
+
+            TimeSpan remainingTime = eventStartTime - DateTime.Now;
 
             if (remainingTime.TotalSeconds > 0)
             {
-                timer.Text = $"{remainingTime.Hours:D2}:{remainingTime.Minutes:D2}:{remainingTime.Seconds:D2}";
+                timer.Text = $"{remainingTime.Days}d {remainingTime.Hours:D2}h {remainingTime.Minutes:D2}m {remainingTime.Seconds:D2}s";
             }
             else
             {
                 timer.Text = "Event Started!";
+                this.Hide();
+                Event_page ev = new Event_page(currentEvent.EventID);
+                ev.Show();
                 timer1.Stop();
             }
-
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
