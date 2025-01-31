@@ -106,5 +106,14 @@ namespace FrameSphere.FormsUser
             msgpanel.Controls.Add(container);
             msgpanel.ScrollControlIntoView(container);
         }
+        private void message_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void message_Leave(object sender, EventArgs e)
+        {
+
+        }
     }
 }
