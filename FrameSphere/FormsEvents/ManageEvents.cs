@@ -18,82 +18,137 @@ namespace FrameSphere
     public partial class ManageEvents : Form
     {
         public Event ev;
+        private string _status;
+
         public ManageEvents(int eventId)
         {
             InitializeComponent();
 
+            // DateTime picker formatting
             startdate.CustomFormat = "MM/dd/yyyy hh:mm tt";
-              
             enddate.CustomFormat = "MM/dd/yyyy hh:mm tt";
-            //this.id = id;
-            //LoadEventData(id);
 
+            // Load event data
             ev = new Event(eventId);
             eventTitle_field.Text = ev.EventTitle;
             eventDesc_field.Text = ev.EventDescription;
             startdate.Value = ev.StartsAt;
             enddate.Value = ev.EndsAt;
             OrgDetails_field.Text = ev.Organization;
-            if (ev.RegistrationType == "Free")
+            _status = ev.Status;  // Load existing status
+
+            // Registration type setup
+            if (ev.RegistrationType.ToLower() == "paid")
+            {
+                paid.Checked = true;
+                free.Checked = false;
+                ticketprice_field.Text = ev.TicketPrice.ToString();
+                ticketprice_field.Show();
+            }
+            else
             {
                 free.Checked = true;
                 paid.Checked = false;
+                ticketprice_field.Hide();
             }
 
-            if (ev.RegistrationType == "Paid")
-            {
-                ticketprice_field.Visible = true;
-                paid.Checked = true;
-                free.Checked = false;
-            }
-            ticketprice_field.Text = ev.TicketPrice.ToString();
+            // Poster image setup
             poster_field.Text = ev.PosterImage;
             posterImage.Image = FSystem.GetImageFromPath(ev.PosterImage);
-
-
-
-
         }
-        private void update_button_Click(object sender, EventArgs e)
+
+        #region Button Click Handlers
+        private void approveButton_Click(object sender, EventArgs e)
         {
-            //FSystem.loggedInUser.CheckPassword(CurrentPWField.Text)
+            
+        }
+
+        private void rejectButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void update_button_Click_1(object sender, EventArgs e)
+        {
             if (FSystem.loggedInUser.CheckPassword(CurrentPWField.Text))
             {
+                // Update event properties
                 ev.EventTitle = eventTitle_field.Text;
                 ev.EventDescription = eventDesc_field.Text;
                 ev.StartsAt = startdate.Value;
                 ev.EndsAt = enddate.Value;
                 ev.Organization = OrgDetails_field.Text;
+                ev.Status = _status;
+
+                // Handle registration type
                 if (free.Checked)
                 {
                     ev.RegistrationType = "Free";
                     ev.TicketPrice = 0;
                 }
-                else if (paid.Checked) {
+                else if (paid.Checked)
+                {
+                    if (!int.TryParse(ticketprice_field.Text, out int price))
+                    {
+                        MessageBox.Show("Invalid ticket price format!");
+                        return;
+                    }
                     ev.RegistrationType = "Paid";
-                    ev.TicketPrice = Int32.Parse(ticketprice_field.Text);
+                    ev.TicketPrice = price;
                 }
-                
 
-                // Save the image to the "EventPosters" folder
-                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string eventPostersFolder = Path.Combine(baseDirectory, "EventPosters");
-                Directory.CreateDirectory(eventPostersFolder); // Ensure the folder exists
+                // Handle image upload
+                if (!string.IsNullOrEmpty(poster_field.Text))
+                {
+                    string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                    string eventPostersFolder = Path.Combine(baseDirectory, "EventPosters");
+                    Directory.CreateDirectory(eventPostersFolder);
 
-                // Copy the selected image to the EventPosters folder
-                string fileName = Path.GetFileName(poster_field.Text);
-                string destinationPath = Path.Combine(eventPostersFolder, fileName);
-                File.Copy(poster_field.Text, destinationPath, true);
+                    string fileName = Path.GetFileName(poster_field.Text);
+                    string destinationPath = Path.Combine(eventPostersFolder, fileName);
 
-                // Store the relative path for the database
-                string eventPosterRelativePath = Path.Combine("EventPosters", fileName);
-                ev.PosterImage = eventPosterRelativePath;
+                    try
+                    {
+                        File.Copy(poster_field.Text, destinationPath, true);
+                        ev.PosterImage = Path.Combine("EventPosters", fileName);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error saving image: {ex.Message}");
+                        return;
+                    }
+                }
+
+                // Save to database
+                try
+                {
+                    ev.Save();
+                    MessageBox.Show("Event updated successfully!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Database error: {ex.Message}");
+                }
             }
             else
             {
-                MessageBox.Show("Please enter your valid password");
+                MessageBox.Show("Invalid password!");
             }
+        }
 
+        private void posterbtn_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog {
+                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp",
+                Title = "Select Event Poster"
+            };
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string imagePath = openFileDialog.FileName;
+                poster_field.Text = imagePath;
+                posterImage.Image = Image.FromFile(imagePath);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -103,31 +158,11 @@ namespace FrameSphere
             this.Hide();
         }
 
-        private void posterbtn_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog {
-                Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp",
-                Title = "Select Event Poster"
-            };
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string imagePath = openFileDialog.FileName;
-                poster_field.Text = imagePath;
-
-
-                // Display the image in the PictureBox using FSystem.GetImageFromPath
-                posterImage.Image = Image.FromFile(imagePath);
-            }
-        }
-
         private void participants_button_Click(object sender, EventArgs e)
         {
             this.Hide();
-            //if(FSystem.loggedInUser=)
             ManageParticipants mn = new ManageParticipants(ev);
             mn.Show();
-
-
         }
 
         private void artCollections_button_Click(object sender, EventArgs e)
@@ -136,5 +171,32 @@ namespace FrameSphere
             ManageArtCollection mn = new ManageArtCollection(ev);
             mn.Show();
         }
+        #endregion
+
+        #region Radio Button Handlers
+        private void free_CheckedChanged(object sender, EventArgs e)
+        {
+            if (free.Checked) ticketprice_field.Hide();
+        }
+
+        private void paid_CheckedChanged(object sender, EventArgs e)
+        {
+            if (paid.Checked) ticketprice_field.Show();
+        }
+        #endregion
+
+        private void reject_Click(object sender, EventArgs e)
+        {
+            _status = "Rejected";
+            MessageBox.Show("Status set to Rejected. Click Update to save changes.");
+        }
+
+        private void approve_Click(object sender, EventArgs e)
+        {
+            _status = "Approved";
+            MessageBox.Show("Status set to Approved. Click Update to save changes.");
+        }
     }
+
+    
 }

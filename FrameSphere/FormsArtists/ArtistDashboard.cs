@@ -28,7 +28,7 @@ namespace FrameSphere
             profilepic.Image = FSystem.GetImageFromPath(FSystem.loggedInUser.ProfilePic);
             LoadArtistEvents(FSystem.loggedInUser.UserName);
             LoadStatistics();
-            LoadFeaturedPanel();
+            //LoadFeaturedPanel();
         }
         public void LoadImagePaths()
         {
@@ -53,11 +53,11 @@ namespace FrameSphere
                 currentPos += ImageShift;
             }
         }
-        public void LoadFeaturedPanel()
-        {
-            LoadImagePaths();
-            AddImageBoxes();
-        }
+        //public void LoadFeaturedPanel()
+        //{
+        //    LoadImagePaths();
+        //    AddImageBoxes();
+        //}
         public void LoadStatistics()
         {
             getNumberOfArts();

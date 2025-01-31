@@ -408,6 +408,7 @@ namespace FrameSphere.EntityClasses
 
 
 
+
         // Insert the new event into the database
         private void InsertToDatabase()
         {
@@ -596,5 +597,39 @@ namespace FrameSphere.EntityClasses
             if (organizer == null) throw new ArgumentNullException(nameof(organizer));
             Organizers.Add(organizer);
         }
+        public void Save()
+        {
+            using (connection = DB.Connect())
+            {
+                connection.Open();
+                string query = @"UPDATE Events SET 
+                                EventTitle = @EventTitle,
+                                Description = @Description,
+                                OrganizerDetails = @OrganizerDetails,
+                                StartDate = @StartDate,
+                                EndDate = @EndDate,
+                                RegistrationType = @RegistrationType,
+                                TicketPrice = @TicketPrice,
+                                EventPoster = @EventPoster,
+                                Status = @Status
+                                WHERE EventID = @EventID";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@EventTitle", EventTitle);
+                cmd.Parameters.AddWithValue("@Description", EventDescription);
+                cmd.Parameters.AddWithValue("@OrganizerDetails", Organization);
+                cmd.Parameters.AddWithValue("@StartDate", StartsAt);
+                cmd.Parameters.AddWithValue("@EndDate", EndsAt);
+                cmd.Parameters.AddWithValue("@RegistrationType", RegistrationType);
+                cmd.Parameters.AddWithValue("@TicketPrice", TicketPrice);
+                cmd.Parameters.AddWithValue("@EventPoster", PosterImage);
+                cmd.Parameters.AddWithValue("@Status", Status);
+                cmd.Parameters.AddWithValue("@EventID", EventID);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
+
+
 }
