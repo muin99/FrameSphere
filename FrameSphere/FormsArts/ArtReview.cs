@@ -16,8 +16,9 @@ namespace FrameSphere
             InitializeComponent();
             this.artId = artId;
             //name.Text = FSystem.loggedInUser.FullName();
-            LoadReviewData();
             InitializeRatings();
+            LoadReviewData();
+
         }
 
         private void LoadReviewData()
@@ -79,7 +80,7 @@ namespace FrameSphere
             rating5.Image = rating >= 5 ? Properties.Resources.rating_filled : Properties.Resources.rating_hollow;
         }
 
-        private void SubmitReview_Click(object sender, EventArgs e)
+        private void submitbtn_Click(object sender, EventArgs e)
         {
             if (selectedRating == 0)
             {
@@ -98,8 +99,19 @@ namespace FrameSphere
             {
                 using (SqlConnection con = DB.Connect())
                 {
-                    string sql = "INSERT INTO Rating (ArtId, Username, Rating, Review, RatingDate) " +
-                                 "VALUES (@ArtId, @UserName, @Rating, @Review, @ReviewDate)";
+                    string sql = @"
+                IF EXISTS (SELECT 1 FROM Rating WHERE ArtId = @ArtId AND Username = @UserName)
+                BEGIN
+                    UPDATE Rating 
+                    SET Rating = @Rating, Review = @Review, RatingDate = @ReviewDate
+                    WHERE ArtId = @ArtId AND Username = @UserName;
+                END
+                ELSE
+                BEGIN
+                    INSERT INTO Rating (ArtId, Username, Rating, Review, RatingDate) 
+                    VALUES (@ArtId, @UserName, @Rating, @Review, @ReviewDate);
+                END";
+
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         cmd.Parameters.AddWithValue("@ArtId", artId);
@@ -114,8 +126,7 @@ namespace FrameSphere
                 }
 
                 MessageBox.Show("Review submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                InitializeRatings();
-                reviewTextBox.Clear();
+                //reviewTextBox.Clear();
             }
             catch (Exception ex)
             {
@@ -124,9 +135,61 @@ namespace FrameSphere
         }
 
 
+
         private void CloseButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void rating1_Click(object sender, EventArgs e)
+        {
+            rating1.Image = Properties.Resources.rating_filled;
+            rating2.Image = Properties.Resources.rating_hollow;
+            rating3.Image = Properties.Resources.rating_hollow;
+            rating4.Image = Properties.Resources.rating_hollow;
+            rating5.Image = Properties.Resources.rating_hollow;
+            selectedRating = 1;
+        }
+
+        private void rating2_Click(object sender, EventArgs e)
+        {
+            rating1.Image = Properties.Resources.rating_filled;
+            rating2.Image = Properties.Resources.rating_filled;
+            rating3.Image = Properties.Resources.rating_hollow;
+            rating4.Image = Properties.Resources.rating_hollow;
+            rating5.Image = Properties.Resources.rating_hollow;
+            selectedRating = 2;
+        }
+
+        private void rating3_Click(object sender, EventArgs e)
+        {
+            rating1.Image = Properties.Resources.rating_filled;
+            rating2.Image = Properties.Resources.rating_filled;
+            rating3.Image = Properties.Resources.rating_filled;
+            rating4.Image = Properties.Resources.rating_hollow;
+            rating5.Image = Properties.Resources.rating_hollow;
+            selectedRating = 3;
+        }
+
+        private void rating4_Click(object sender, EventArgs e)
+        {
+            rating1.Image = Properties.Resources.rating_filled;
+            rating2.Image = Properties.Resources.rating_filled;
+            rating3.Image = Properties.Resources.rating_filled;
+            rating4.Image = Properties.Resources.rating_filled;
+            rating5.Image = Properties.Resources.rating_hollow;
+            selectedRating = 4;
+        }
+
+        private void rating5_Click(object sender, EventArgs e)
+        {
+            rating1.Image = Properties.Resources.rating_filled;
+            rating2.Image = Properties.Resources.rating_filled;
+            rating3.Image = Properties.Resources.rating_filled;
+            rating4.Image = Properties.Resources.rating_filled;
+            rating5.Image = Properties.Resources.rating_filled;
+            selectedRating = 5;
+        }
+
     }
 }

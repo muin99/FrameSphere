@@ -30,34 +30,34 @@ namespace FrameSphere
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.rating5 = new System.Windows.Forms.PictureBox();
+            this.rating4 = new System.Windows.Forms.PictureBox();
+            this.rating3 = new System.Windows.Forms.PictureBox();
+            this.rating2 = new System.Windows.Forms.PictureBox();
+            this.rating1 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.updateprofile_btn = new System.Windows.Forms.Button();
+            this.submitbtn = new System.Windows.Forms.Button();
             this.reviewTextBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.artphoto = new System.Windows.Forms.PictureBox();
             this.artdes = new System.Windows.Forms.Label();
             this.artTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.logout_btn = new System.Windows.Forms.Button();
             this.userdashboard_label = new System.Windows.Forms.Label();
-            this.rating1 = new System.Windows.Forms.PictureBox();
-            this.artphoto = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.rating2 = new System.Windows.Forms.PictureBox();
-            this.rating3 = new System.Windows.Forms.PictureBox();
-            this.rating5 = new System.Windows.Forms.PictureBox();
-            this.rating4 = new System.Windows.Forms.PictureBox();
             this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rating1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.artphoto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rating2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rating3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rating5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rating4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rating3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rating2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rating1)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.artphoto)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -69,7 +69,7 @@ namespace FrameSphere
             this.panel3.Controls.Add(this.rating2);
             this.panel3.Controls.Add(this.rating1);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.updateprofile_btn);
+            this.panel3.Controls.Add(this.submitbtn);
             this.panel3.Controls.Add(this.reviewTextBox);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.label7);
@@ -77,6 +77,61 @@ namespace FrameSphere
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(804, 272);
             this.panel3.TabIndex = 22;
+            // 
+            // rating5
+            // 
+            this.rating5.Image = global::FrameSphere.Properties.Resources.rating_hollow;
+            this.rating5.InitialImage = global::FrameSphere.Properties.Resources.cart;
+            this.rating5.Location = new System.Drawing.Point(540, 44);
+            this.rating5.Name = "rating5";
+            this.rating5.Size = new System.Drawing.Size(48, 48);
+            this.rating5.TabIndex = 39;
+            this.rating5.TabStop = false;
+            this.rating5.Click += new System.EventHandler(this.rating5_Click);
+            // 
+            // rating4
+            // 
+            this.rating4.Image = global::FrameSphere.Properties.Resources.rating_hollow;
+            this.rating4.InitialImage = global::FrameSphere.Properties.Resources.cart;
+            this.rating4.Location = new System.Drawing.Point(486, 44);
+            this.rating4.Name = "rating4";
+            this.rating4.Size = new System.Drawing.Size(48, 48);
+            this.rating4.TabIndex = 38;
+            this.rating4.TabStop = false;
+            this.rating4.Click += new System.EventHandler(this.rating4_Click);
+            // 
+            // rating3
+            // 
+            this.rating3.Image = global::FrameSphere.Properties.Resources.rating_hollow;
+            this.rating3.InitialImage = global::FrameSphere.Properties.Resources.cart;
+            this.rating3.Location = new System.Drawing.Point(432, 44);
+            this.rating3.Name = "rating3";
+            this.rating3.Size = new System.Drawing.Size(48, 48);
+            this.rating3.TabIndex = 37;
+            this.rating3.TabStop = false;
+            this.rating3.Click += new System.EventHandler(this.rating3_Click);
+            // 
+            // rating2
+            // 
+            this.rating2.Image = global::FrameSphere.Properties.Resources.rating_hollow;
+            this.rating2.InitialImage = global::FrameSphere.Properties.Resources.cart;
+            this.rating2.Location = new System.Drawing.Point(378, 44);
+            this.rating2.Name = "rating2";
+            this.rating2.Size = new System.Drawing.Size(48, 48);
+            this.rating2.TabIndex = 36;
+            this.rating2.TabStop = false;
+            this.rating2.Click += new System.EventHandler(this.rating2_Click);
+            // 
+            // rating1
+            // 
+            this.rating1.Image = global::FrameSphere.Properties.Resources.rating_hollow;
+            this.rating1.InitialImage = global::FrameSphere.Properties.Resources.cart;
+            this.rating1.Location = new System.Drawing.Point(324, 44);
+            this.rating1.Name = "rating1";
+            this.rating1.Size = new System.Drawing.Size(48, 48);
+            this.rating1.TabIndex = 31;
+            this.rating1.TabStop = false;
+            this.rating1.Click += new System.EventHandler(this.rating1_Click);
             // 
             // label8
             // 
@@ -89,18 +144,19 @@ namespace FrameSphere
             this.label8.TabIndex = 30;
             this.label8.Text = "Rate This Note:";
             // 
-            // updateprofile_btn
+            // submitbtn
             // 
-            this.updateprofile_btn.BackColor = System.Drawing.SystemColors.Highlight;
-            this.updateprofile_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updateprofile_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updateprofile_btn.ForeColor = System.Drawing.Color.Transparent;
-            this.updateprofile_btn.Location = new System.Drawing.Point(345, 210);
-            this.updateprofile_btn.Name = "updateprofile_btn";
-            this.updateprofile_btn.Size = new System.Drawing.Size(68, 32);
-            this.updateprofile_btn.TabIndex = 29;
-            this.updateprofile_btn.Text = "Submit";
-            this.updateprofile_btn.UseVisualStyleBackColor = false;
+            this.submitbtn.BackColor = System.Drawing.SystemColors.Highlight;
+            this.submitbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.submitbtn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.submitbtn.ForeColor = System.Drawing.Color.Transparent;
+            this.submitbtn.Location = new System.Drawing.Point(345, 210);
+            this.submitbtn.Name = "submitbtn";
+            this.submitbtn.Size = new System.Drawing.Size(68, 32);
+            this.submitbtn.TabIndex = 29;
+            this.submitbtn.Text = "Submit";
+            this.submitbtn.UseVisualStyleBackColor = false;
+            this.submitbtn.Click += new System.EventHandler(this.submitbtn_Click);
             // 
             // reviewTextBox
             // 
@@ -145,6 +201,15 @@ namespace FrameSphere
             this.panel2.Size = new System.Drawing.Size(804, 117);
             this.panel2.TabIndex = 23;
             // 
+            // artphoto
+            // 
+            this.artphoto.BackColor = System.Drawing.Color.SteelBlue;
+            this.artphoto.Location = new System.Drawing.Point(24, 10);
+            this.artphoto.Name = "artphoto";
+            this.artphoto.Size = new System.Drawing.Size(97, 92);
+            this.artphoto.TabIndex = 7;
+            this.artphoto.TabStop = false;
+            // 
             // artdes
             // 
             this.artdes.AutoSize = true;
@@ -176,6 +241,14 @@ namespace FrameSphere
             this.panel1.Size = new System.Drawing.Size(804, 133);
             this.panel1.TabIndex = 21;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Location = new System.Drawing.Point(743, 10);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(50, 48);
+            this.pictureBox3.TabIndex = 31;
+            this.pictureBox3.TabStop = false;
+            // 
             // logout_btn
             // 
             this.logout_btn.BackColor = System.Drawing.SystemColors.Highlight;
@@ -200,73 +273,6 @@ namespace FrameSphere
             this.userdashboard_label.TabIndex = 2;
             this.userdashboard_label.Text = "Feedback Form";
             // 
-            // rating1
-            // 
-            this.rating1.Image = global::FrameSphere.Properties.Resources.rating_hollow;
-            this.rating1.InitialImage = global::FrameSphere.Properties.Resources.cart;
-            this.rating1.Location = new System.Drawing.Point(324, 44);
-            this.rating1.Name = "rating1";
-            this.rating1.Size = new System.Drawing.Size(48, 48);
-            this.rating1.TabIndex = 31;
-            this.rating1.TabStop = false;
-            // 
-            // artphoto
-            // 
-            this.artphoto.BackColor = System.Drawing.Color.SteelBlue;
-            this.artphoto.Location = new System.Drawing.Point(24, 10);
-            this.artphoto.Name = "artphoto";
-            this.artphoto.Size = new System.Drawing.Size(97, 92);
-            this.artphoto.TabIndex = 7;
-            this.artphoto.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(743, 10);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(50, 48);
-            this.pictureBox3.TabIndex = 31;
-            this.pictureBox3.TabStop = false;
-            // 
-            // rating2
-            // 
-            this.rating2.Image = global::FrameSphere.Properties.Resources.rating_hollow;
-            this.rating2.InitialImage = global::FrameSphere.Properties.Resources.cart;
-            this.rating2.Location = new System.Drawing.Point(378, 44);
-            this.rating2.Name = "rating2";
-            this.rating2.Size = new System.Drawing.Size(48, 48);
-            this.rating2.TabIndex = 36;
-            this.rating2.TabStop = false;
-            // 
-            // rating3
-            // 
-            this.rating3.Image = global::FrameSphere.Properties.Resources.rating_hollow;
-            this.rating3.InitialImage = global::FrameSphere.Properties.Resources.cart;
-            this.rating3.Location = new System.Drawing.Point(432, 44);
-            this.rating3.Name = "rating3";
-            this.rating3.Size = new System.Drawing.Size(48, 48);
-            this.rating3.TabIndex = 37;
-            this.rating3.TabStop = false;
-            // 
-            // rating5
-            // 
-            this.rating5.Image = global::FrameSphere.Properties.Resources.rating_hollow;
-            this.rating5.InitialImage = global::FrameSphere.Properties.Resources.cart;
-            this.rating5.Location = new System.Drawing.Point(540, 44);
-            this.rating5.Name = "rating5";
-            this.rating5.Size = new System.Drawing.Size(48, 48);
-            this.rating5.TabIndex = 39;
-            this.rating5.TabStop = false;
-            // 
-            // rating4
-            // 
-            this.rating4.Image = global::FrameSphere.Properties.Resources.rating_hollow;
-            this.rating4.InitialImage = global::FrameSphere.Properties.Resources.cart;
-            this.rating4.Location = new System.Drawing.Point(486, 44);
-            this.rating4.Name = "rating4";
-            this.rating4.Size = new System.Drawing.Size(48, 48);
-            this.rating4.TabIndex = 38;
-            this.rating4.TabStop = false;
-            // 
             // ArtReviewPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,17 +285,17 @@ namespace FrameSphere
             this.Text = "ArtReview";
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rating1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.artphoto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rating2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rating3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rating5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rating4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rating3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rating2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rating1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.artphoto)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -299,7 +305,7 @@ namespace FrameSphere
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox rating1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button updateprofile_btn;
+        private System.Windows.Forms.Button submitbtn;
         private System.Windows.Forms.TextBox reviewTextBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label7;
