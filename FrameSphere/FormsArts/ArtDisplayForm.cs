@@ -211,6 +211,7 @@ namespace FrameSphere
         private void chat_Click(object sender, EventArgs e)
         {
             Chat chat = new Chat(user);
+            chat.Show();
         }
     }
 }

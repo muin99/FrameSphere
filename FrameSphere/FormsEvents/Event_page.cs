@@ -72,7 +72,7 @@ namespace FrameSphere
         {
             if (FSystem.loggedInUser.isAdmin || artistOfTheEvent())
             {
-                //return true; // Admins and event artists have access
+                return true; // Admins and event artists have access
             }
 
             if (currentEvent.StartsAt > DateTime.Now)
@@ -86,7 +86,7 @@ namespace FrameSphere
 
             if (currentEvent.RegistrationType == "Free")
             {
-                //return true;
+                return true;
             }
 
             if (currentEvent.RegistrationType == "Paid" && !validVisitor())
