@@ -330,5 +330,12 @@ namespace FrameSphere
             AddPhotoPanel("");
             RepositionAddButton();
         }
+
+        private void goBack_Click(object sender, EventArgs e)
+        {
+            AllArt a = new AllArt();
+            this.Hide();
+            a.Show();
+        }
     }
 }

@@ -42,8 +42,9 @@ namespace FrameSphere
             this.arttitle = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.artContainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.add = new System.Windows.Forms.Button();
             this.artPanel = new System.Windows.Forms.Panel();
+            this.add = new System.Windows.Forms.Button();
+            this.goBack = new System.Windows.Forms.Button();
             this.midpanel.SuspendLayout();
             this.artContainer.SuspendLayout();
             this.SuspendLayout();
@@ -52,6 +53,7 @@ namespace FrameSphere
             // 
             this.midpanel.AutoScroll = true;
             this.midpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.midpanel.Controls.Add(this.goBack);
             this.midpanel.Controls.Add(this.Submit);
             this.midpanel.Controls.Add(this.paid);
             this.midpanel.Controls.Add(this.free);
@@ -188,6 +190,14 @@ namespace FrameSphere
             this.artContainer.Size = new System.Drawing.Size(402, 190);
             this.artContainer.TabIndex = 39;
             // 
+            // artPanel
+            // 
+            this.artPanel.Location = new System.Drawing.Point(0, 0);
+            this.artPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.artPanel.Name = "artPanel";
+            this.artPanel.Size = new System.Drawing.Size(371, 35);
+            this.artPanel.TabIndex = 38;
+            // 
             // add
             // 
             this.add.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -199,13 +209,21 @@ namespace FrameSphere
             this.add.UseVisualStyleBackColor = true;
             this.add.Click += new System.EventHandler(this.add_Click_1);
             // 
-            // artPanel
+            // goBack
             // 
-            this.artPanel.Location = new System.Drawing.Point(0, 0);
-            this.artPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.artPanel.Name = "artPanel";
-            this.artPanel.Size = new System.Drawing.Size(371, 35);
-            this.artPanel.TabIndex = 38;
+            this.goBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.goBack.FlatAppearance.BorderColor = System.Drawing.Color.GreenYellow;
+            this.goBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.goBack.Font = new System.Drawing.Font("Lucida Console", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.goBack.ForeColor = System.Drawing.Color.White;
+            this.goBack.Location = new System.Drawing.Point(28, 32);
+            this.goBack.Margin = new System.Windows.Forms.Padding(2);
+            this.goBack.Name = "goBack";
+            this.goBack.Size = new System.Drawing.Size(105, 33);
+            this.goBack.TabIndex = 26;
+            this.goBack.Text = "Go Back";
+            this.goBack.UseVisualStyleBackColor = false;
+            this.goBack.Click += new System.EventHandler(this.goBack_Click);
             // 
             // ManageArt
             // 
@@ -239,5 +257,6 @@ namespace FrameSphere
         private System.Windows.Forms.FlowLayoutPanel artContainer;
         private System.Windows.Forms.Button add;
         private System.Windows.Forms.Panel artPanel;
+        private System.Windows.Forms.Button goBack;
     }
 }
