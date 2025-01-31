@@ -669,7 +669,7 @@ namespace FrameSphere.EntityClasses
         public User(string UserName) {
             this.UserName = UserName;
             //this.loadUser();
-            loadArtList();
+            //loadArtList();
         }
 
         //public User(string userName, string password)
