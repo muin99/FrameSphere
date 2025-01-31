@@ -13,8 +13,10 @@ namespace FrameSphere.FormsEvents
 {
     public partial class BuyTicket : Form
     {
+        Event currentEvent;
         public BuyTicket(Event ee)
         {
+            this.currentEvent = ee;
             InitializeComponent();
         }
     }

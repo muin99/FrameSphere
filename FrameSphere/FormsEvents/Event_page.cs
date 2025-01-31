@@ -86,14 +86,14 @@ namespace FrameSphere
 
             if (currentEvent.RegistrationType == "Free")
             {
-                return true;
+                //return true;
             }
 
             if (currentEvent.RegistrationType == "Paid" && !validVisitor())
             {
                 this.Hide();
                 BuyTicket buyTicketPage = new BuyTicket(currentEvent);
-                buyTicketPage.FormClosed += (s, e) => this.Show(); // Show Event Page after Buy Ticket Page is closed
+ // Show Event Page after Buy Ticket Page is closed
                 buyTicketPage.Show();
                 return false;
             }
