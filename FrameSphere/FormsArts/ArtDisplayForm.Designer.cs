@@ -57,6 +57,7 @@
             this.ArtImage = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.review = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.website_link)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pinterest_link)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.instagram_link)).BeginInit();
@@ -153,9 +154,9 @@
             this.panel4.BackColor = System.Drawing.Color.LightGreen;
             this.panel4.Controls.Add(this.profilepanel);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(513, 3);
+            this.panel4.Location = new System.Drawing.Point(535, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(334, 450);
+            this.panel4.Size = new System.Drawing.Size(350, 528);
             this.panel4.TabIndex = 4;
             // 
             // profilepanel
@@ -181,7 +182,7 @@
             this.profilepanel.Location = new System.Drawing.Point(0, 0);
             this.profilepanel.Margin = new System.Windows.Forms.Padding(10);
             this.profilepanel.Name = "profilepanel";
-            this.profilepanel.Size = new System.Drawing.Size(334, 450);
+            this.profilepanel.Size = new System.Drawing.Size(350, 528);
             this.profilepanel.TabIndex = 0;
             // 
             // label8
@@ -247,7 +248,7 @@
             // userName
             // 
             this.userName.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.userName.Location = new System.Drawing.Point(114, 199);
+            this.userName.Location = new System.Drawing.Point(122, 199);
             this.userName.Name = "userName";
             this.userName.Size = new System.Drawing.Size(100, 13);
             this.userName.TabIndex = 2;
@@ -258,7 +259,7 @@
             // 
             this.name.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.name.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.name.Location = new System.Drawing.Point(81, 184);
+            this.name.Location = new System.Drawing.Point(89, 184);
             this.name.Name = "name";
             this.name.Size = new System.Drawing.Size(166, 15);
             this.name.TabIndex = 1;
@@ -269,7 +270,7 @@
             // 
             this.profilepic.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.profilepic.Image = global::FrameSphere.Properties.Resources.SmallerNetworkConnectionBackgroundtest_ezgif_com_video_to_gif_converter;
-            this.profilepic.Location = new System.Drawing.Point(114, 75);
+            this.profilepic.Location = new System.Drawing.Point(122, 75);
             this.profilepic.Margin = new System.Windows.Forms.Padding(20);
             this.profilepic.Name = "profilepic";
             this.profilepic.Size = new System.Drawing.Size(100, 104);
@@ -292,44 +293,45 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(850, 570);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(888, 668);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.panel1, 2);
+            this.panel1.Controls.Add(this.review);
             this.panel1.Controls.Add(this.chat);
             this.panel1.Controls.Add(this.buy);
             this.panel1.Controls.Add(this.Description);
             this.panel1.Controls.Add(this.title);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 459);
+            this.panel1.Location = new System.Drawing.Point(3, 537);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(844, 108);
+            this.panel1.Size = new System.Drawing.Size(882, 128);
             this.panel1.TabIndex = 5;
             // 
             // chat
             // 
             this.chat.BackColor = System.Drawing.Color.LightGreen;
             this.chat.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chat.Location = new System.Drawing.Point(653, 30);
+            this.chat.Location = new System.Drawing.Point(12, 90);
             this.chat.Name = "chat";
             this.chat.Size = new System.Drawing.Size(191, 29);
             this.chat.TabIndex = 22;
             this.chat.Text = "Chat with artist";
             this.chat.UseVisualStyleBackColor = false;
-            this.chat.Click += new System.EventHandler(this.chat_Click);
             // 
             // buy
             // 
             this.buy.BackColor = System.Drawing.Color.LightGreen;
             this.buy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buy.Location = new System.Drawing.Point(653, 70);
+            this.buy.Location = new System.Drawing.Point(670, 90);
             this.buy.Name = "buy";
             this.buy.Size = new System.Drawing.Size(191, 29);
             this.buy.TabIndex = 2;
             this.buy.Text = "Buy";
             this.buy.UseVisualStyleBackColor = false;
+            this.buy.Click += new System.EventHandler(this.buy_Click);
             // 
             // Description
             // 
@@ -364,7 +366,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.44444F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.555555F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(504, 450);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(526, 528);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // ArtImage
@@ -375,7 +377,7 @@
             this.ArtImage.Location = new System.Drawing.Point(2, 2);
             this.ArtImage.Margin = new System.Windows.Forms.Padding(2);
             this.ArtImage.Name = "ArtImage";
-            this.ArtImage.Size = new System.Drawing.Size(500, 412);
+            this.ArtImage.Size = new System.Drawing.Size(522, 484);
             this.ArtImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ArtImage.TabIndex = 1;
             this.ArtImage.TabStop = false;
@@ -385,9 +387,9 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(149, 419);
+            this.pictureBox2.Location = new System.Drawing.Point(160, 491);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 28);
+            this.pictureBox2.Size = new System.Drawing.Size(100, 34);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
@@ -397,19 +399,31 @@
             // 
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(255, 419);
+            this.pictureBox3.Location = new System.Drawing.Point(266, 491);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 28);
+            this.pictureBox3.Size = new System.Drawing.Size(100, 34);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
+            // review
+            // 
+            this.review.BackColor = System.Drawing.Color.LightGreen;
+            this.review.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.review.Location = new System.Drawing.Point(670, 40);
+            this.review.Name = "review";
+            this.review.Size = new System.Drawing.Size(191, 29);
+            this.review.TabIndex = 23;
+            this.review.Text = "Review Art";
+            this.review.UseVisualStyleBackColor = false;
+            this.review.Click += new System.EventHandler(this.review_Click);
+            // 
             // ArtDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(850, 570);
+            this.ClientSize = new System.Drawing.Size(888, 668);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -465,5 +479,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button chat;
         private System.Windows.Forms.Button buy;
+        private System.Windows.Forms.Button review;
     }
 }

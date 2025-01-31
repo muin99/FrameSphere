@@ -21,6 +21,7 @@ namespace FrameSphere
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
             //Application.Run(new Event_page(28));
+            //Application.Run(new ArtReviewPage(7));
         }
     }
 }

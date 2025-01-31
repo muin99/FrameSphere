@@ -71,6 +71,12 @@
     <Compile Include="FormsArtists\ArtistDashboard.Designer.cs">
       <DependentUpon>ArtistDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsArts\ArtReview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsArts\ArtReview.Designer.cs">
+      <DependentUpon>ArtReview.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsArts\CreateArts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     <EmbeddedResource Include="FormsArtists\ApplyForArtist.resx">
       <DependentUpon>ApplyForArtist.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormsArts\ArtReview.resx">
+      <DependentUpon>ArtReview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormsArts\CreateArts.resx">
       <DependentUpon>CreateArts.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +284,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="images\defaultProfilePic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-search-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rating_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rating_hollow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bkash_payment_logo %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bkash_payment_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bookmark_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bookmark_hollow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
