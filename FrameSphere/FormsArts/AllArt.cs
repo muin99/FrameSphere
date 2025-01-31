@@ -154,8 +154,22 @@ namespace FrameSphere
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            UserDashBoard dashboard = new UserDashBoard();
-            dashboard.Show();
+            Admin_dashboard ad = new Admin_dashboard();
+            ad.Show();
+        }
+
+        private void eventsboard_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EventsAdminView eventsAdminView = new EventsAdminView();
+            eventsAdminView.Show();
+        }
+
+        private void UserBoard_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Admin_dashboard ad = new Admin_dashboard();
+            ad.Show();
         }
     }
 }

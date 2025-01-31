@@ -30,6 +30,7 @@ namespace FrameSphere
         private void InitializeComponent()
         {
             this.buttons_panel = new System.Windows.Forms.Panel();
+            this.artlist = new System.Windows.Forms.Button();
             this.UserBoard = new System.Windows.Forms.Button();
             this.eventsboard = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@ namespace FrameSphere
             this.noArtLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.artlist = new System.Windows.Forms.Button();
             this.buttons_panel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -64,6 +64,20 @@ namespace FrameSphere
             this.buttons_panel.Size = new System.Drawing.Size(303, 571);
             this.buttons_panel.TabIndex = 22;
             // 
+            // artlist
+            // 
+            this.artlist.BackColor = System.Drawing.Color.DarkGreen;
+            this.artlist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.artlist.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artlist.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.artlist.Location = new System.Drawing.Point(53, 213);
+            this.artlist.Name = "artlist";
+            this.artlist.Size = new System.Drawing.Size(195, 29);
+            this.artlist.TabIndex = 20;
+            this.artlist.Text = "List of Arts";
+            this.artlist.UseVisualStyleBackColor = false;
+            this.artlist.Click += new System.EventHandler(this.artsBoardButton_Click);
+            // 
             // UserBoard
             // 
             this.UserBoard.BackColor = System.Drawing.Color.DarkGreen;
@@ -78,6 +92,7 @@ namespace FrameSphere
             this.UserBoard.TabIndex = 15;
             this.UserBoard.Text = "List of Users";
             this.UserBoard.UseVisualStyleBackColor = false;
+            this.UserBoard.Click += new System.EventHandler(this.UserBoard_Click);
             // 
             // eventsboard
             // 
@@ -91,6 +106,7 @@ namespace FrameSphere
             this.eventsboard.TabIndex = 13;
             this.eventsboard.Text = "List of Events";
             this.eventsboard.UseVisualStyleBackColor = false;
+            this.eventsboard.Click += new System.EventHandler(this.eventsboard_Click);
             // 
             // button2
             // 
@@ -242,20 +258,6 @@ namespace FrameSphere
             this.searchTextBox.Size = new System.Drawing.Size(812, 24);
             this.searchTextBox.TabIndex = 17;
             this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged_1);
-            // 
-            // artlist
-            // 
-            this.artlist.BackColor = System.Drawing.Color.DarkGreen;
-            this.artlist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.artlist.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.artlist.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.artlist.Location = new System.Drawing.Point(53, 213);
-            this.artlist.Name = "artlist";
-            this.artlist.Size = new System.Drawing.Size(195, 29);
-            this.artlist.TabIndex = 20;
-            this.artlist.Text = "List of Arts";
-            this.artlist.UseVisualStyleBackColor = false;
-            this.artlist.Click += new System.EventHandler(this.artsBoardButton_Click);
             // 
             // AllArt
             // 

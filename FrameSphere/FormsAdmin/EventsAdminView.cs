@@ -138,8 +138,8 @@ namespace FrameSphere
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            UserDashBoard us = new UserDashBoard();
-            us.Show();
+            Admin_dashboard ad = new Admin_dashboard();
+            ad.Show();
         }
 
         private void eventsboard_Click(object sender, EventArgs e)

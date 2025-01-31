@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
@@ -190,6 +191,30 @@ namespace FrameSphere
                 
             }
             charWarning.Visible = false;
+
+        }
+
+        private void Password_TextChanged(object sender, EventArgs e)
+        {
+            string password = Password.Text;
+            string pattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\d\s]).{8,}$";
+            bool isValid = Regex.IsMatch(password, pattern);
+
+            string strengthMessage = "Weak";
+            if (isValid)
+            {
+                strengthMessage = "Strong";
+            }
+            else if (password.Length >= 8)
+            {
+                strengthMessage = "Medium";
+            }
+
+            lblPassStrength.Text = $"Password Strength: {strengthMessage}";
+            lblPassStrength.ForeColor = strengthMessage == "Strong" ? Color.DarkBlue :
+                                        strengthMessage == "Medium" ? Color.DarkOrchid : Color.Red;
+
+            lblPassStrength.Visible = password.Length > 0;
 
         }
     }
