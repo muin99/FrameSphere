@@ -85,7 +85,7 @@ namespace FrameSphere.FormsUser
             this.message.Name = "message";
             this.message.Size = new System.Drawing.Size(600, 69);
             this.message.TabIndex = 4;
-            this.message.Text = "Type your message here ";
+            this.message.Text = "";
             // 
             // Chat
             // 
