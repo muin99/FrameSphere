@@ -55,9 +55,7 @@ namespace FrameSphere
             noitem.Visible = false; // Hide "no items" initially
 
             // Define the query, with or without a search filter
-            string query = string.IsNullOrEmpty(searchQuery)
-                ? "SELECT EventId, EventTitle, Description,StartDate, EndDate, EventPoster FROM Events"
-                : "SELECT EventId, EventTitle, Description,StartDate, EndDate, EventPoster FROM Events WHERE EventTitle LIKE @SearchQuery";
+            string query = string.IsNullOrEmpty(searchQuery) ? "SELECT EventId, EventTitle, Description, StartDate, EndDate, EventPoster FROM Events ORDER BY CASE WHEN EndDate < GETDATE() THEN 2 WHEN StartDate > GETDATE() THEN 0 ELSE 1 END, StartDate ASC" : "SELECT EventId, EventTitle, Description, StartDate, EndDate, EventPoster FROM Events WHERE EventTitle LIKE @SearchQuery ORDER BY CASE WHEN EndDate < GETDATE() THEN 2 WHEN StartDate > GETDATE() THEN 0 ELSE 1 END, StartDate ASC";
 
             using (SqlConnection connection = DB.Connect())
             {
