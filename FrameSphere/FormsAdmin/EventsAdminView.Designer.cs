@@ -43,6 +43,7 @@
             this.UserBoard = new System.Windows.Forms.Button();
             this.eventsboard = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.artlist = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.eventpanel.SuspendLayout();
@@ -189,11 +190,12 @@
             // buttons_panel
             // 
             this.buttons_panel.BackColor = System.Drawing.Color.LightGreen;
+            this.buttons_panel.Controls.Add(this.artlist);
             this.buttons_panel.Controls.Add(this.UserBoard);
             this.buttons_panel.Controls.Add(this.eventsboard);
             this.buttons_panel.Controls.Add(this.button2);
             this.buttons_panel.Location = new System.Drawing.Point(12, 100);
-            this.buttons_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttons_panel.Margin = new System.Windows.Forms.Padding(2);
             this.buttons_panel.Name = "buttons_panel";
             this.buttons_panel.Size = new System.Drawing.Size(303, 571);
             this.buttons_panel.TabIndex = 19;
@@ -206,7 +208,7 @@
             this.UserBoard.Font = new System.Drawing.Font("Lucida Console", 11.25F);
             this.UserBoard.ForeColor = System.Drawing.Color.White;
             this.UserBoard.Location = new System.Drawing.Point(53, 161);
-            this.UserBoard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.UserBoard.Margin = new System.Windows.Forms.Padding(2);
             this.UserBoard.Name = "UserBoard";
             this.UserBoard.Size = new System.Drawing.Size(195, 29);
             this.UserBoard.TabIndex = 15;
@@ -241,6 +243,20 @@
             this.button2.Text = "Artist Applications";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // artlist
+            // 
+            this.artlist.BackColor = System.Drawing.Color.DarkGreen;
+            this.artlist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.artlist.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artlist.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.artlist.Location = new System.Drawing.Point(53, 214);
+            this.artlist.Name = "artlist";
+            this.artlist.Size = new System.Drawing.Size(195, 29);
+            this.artlist.TabIndex = 20;
+            this.artlist.Text = "List of Arts";
+            this.artlist.UseVisualStyleBackColor = false;
+            this.artlist.Click += new System.EventHandler(this.artlist_Click);
             // 
             // EventsAdminView
             // 
@@ -283,5 +299,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label EventsList_label;
         private System.Windows.Forms.Button Logout;
+        private System.Windows.Forms.Button artlist;
     }
 }

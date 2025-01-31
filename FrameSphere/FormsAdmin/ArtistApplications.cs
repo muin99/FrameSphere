@@ -193,5 +193,12 @@ namespace FrameSphere
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
         }
+
+        private void artlist_Click(object sender, EventArgs e)
+        {
+            AllArt a1 = new AllArt();
+            a1.Show();
+            this.Hide();
+        }
     }
 }
