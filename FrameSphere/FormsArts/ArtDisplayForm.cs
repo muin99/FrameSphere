@@ -227,5 +227,10 @@ namespace FrameSphere
             a1.ShowDialog();
         }
 
+        private void mange_Click(object sender, EventArgs e)
+        {
+            ManageArt m1 = new ManageArt(Artid);
+            m1.Show();
+        }
     }
 }
