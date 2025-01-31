@@ -83,6 +83,12 @@
     <Compile Include="FormsArts\test.Designer.cs">
       <DependentUpon>test.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsEvents\BuyTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsEvents\BuyTicket.Designer.cs">
+      <DependentUpon>BuyTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsEvents\CreateEvent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,12 @@
     </Compile>
     <Compile Include="FormsEvents\ManageParticipants.Designer.cs">
       <DependentUpon>ManageParticipants.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsEvents\WaitingPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsEvents\WaitingPage.Designer.cs">
+      <DependentUpon>WaitingPage.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsUser\Chat.cs">
       <SubType>Form</SubType>
@@ -200,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsEvents\ManageParticipants.resx">
       <DependentUpon>ManageParticipants.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsEvents\WaitingPage.resx">
+      <DependentUpon>WaitingPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsUser\Chat.resx">
       <DependentUpon>Chat.cs</DependentUpon>

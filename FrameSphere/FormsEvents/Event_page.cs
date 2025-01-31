@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 using FrameSphere.EntityClasses;
+using FrameSphere.FormsEvents;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace FrameSphere
@@ -12,12 +13,76 @@ namespace FrameSphere
     {
         public Event currentEvent;
 
-        public Event_page(int eventId)
+        public bool artistOfTheEvent()
         {
+            using (SqlConnection con = DB.Connect())
+            {
+                con.Open();
+                string q = $"select count(*) from ArtistEvent where username ='{FSystem.loggedInUser.UserName}' and " +
+                    $"eventid = {currentEvent.EventID}";
+                SqlCommand cmd = new SqlCommand(q, con);
+                int res = Int32.Parse(cmd.ExecuteScalar().ToString());
+                if (res > 0)
+                {
+                    return true;
+                }
+                else { return false; }
+            }
+        }
+        public bool validVisitor()
+        {
+            using (SqlConnection con = DB.Connect()) { 
+                con.Open();
+                string q = $"select count(*) from TicketPurchases where username = '{FSystem.loggedInUser.UserName}' and" +
+                    $" eventid = '{currentEvent.EventID}'";
+                SqlCommand cmd = new SqlCommand (q, con);
+                int res = Int32.Parse(cmd.ExecuteScalar().ToString());
+                if (res > 0) {
+                    return true;
+                }
+                else { return false; }
+            }
+        }
+
+        public void checkEntrance()
+        {
+            if (FSystem.loggedInUser.isAdmin)
+            {
+                return;
+            }
+            if (artistOfTheEvent())
+            {
+                return;
+            }
+            if (currentEvent.StartsAt > System.DateTime.Now)
+            {
+                this.Hide();
+                WaitingPage rr = new WaitingPage(currentEvent);
+                rr.Show();
+            }
+            else if (currentEvent.RegistrationType == "Free") {
+                return;
+            }
+            else if(currentEvent.RegistrationType == "Paid")
+            {
+                this.Hide();
+                BuyTicket rr = new BuyTicket(currentEvent);
+                rr.Show();
+            }
+
+        }
+        public Event_page(int eventId)
+
+        {
+            currentEvent = new Event(eventId);
+
+            checkEntrance();
+
+
             InitializeComponent();
             
             // Load the event data
-            currentEvent = new Event(eventId);
+            
             title.Text = currentEvent.EventTitle;
 
             loadImages(currentEvent.EventID);
