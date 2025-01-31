@@ -94,14 +94,16 @@ namespace FrameSphere
         {
             Panel newArtPanel = new Panel {
                 Width = artPanel.Width,
-                Height = artPanel.Height
+                Height = artPanel.Height,
+                Tag = "phtag"
             };
 
             TextBox newTextBox = new TextBox {
                 Width = 289,
                 Left = 9,
                 ReadOnly = true,
-                Text = imagePath
+                Text = imagePath,
+                
             };
 
             Button removeButton = new Button {
@@ -130,6 +132,8 @@ namespace FrameSphere
                 RepositionAddButton();
                 ct--;
             };
+
+            artContainer.Controls.Remove(add);
 
             newArtPanel.Controls.Add(newTextBox);
             newArtPanel.Controls.Add(removeButton);
@@ -211,18 +215,18 @@ namespace FrameSphere
                 return false;
             }
 
-            //foreach (Control control in artContainer.Controls)
-            //{
-            //    if (control is Panel panel)
-            //    {
-            //        TextBox photoBox = panel.Controls.OfType<TextBox>().FirstOrDefault();
-            //        if (photoBox == null || string.IsNullOrWhiteSpace(photoBox.Text))
-            //        {
-            //            MessageBox.Show("Please select images for all art items");
-            //            return false;
-            //        }
-            //    }
-            //}
+            foreach (Control control in artContainer.Controls)
+            {
+                if (control is Panel panel && control.Tag=="phtag")
+                {
+                    TextBox photoBox = panel.Controls.OfType<TextBox>().FirstOrDefault();
+                    if (photoBox == null || string.IsNullOrWhiteSpace(photoBox.Text))
+                    {
+                        MessageBox.Show("Please select images for all art items");
+                        return false;
+                    }
+                }
+            }
             return true;
         }
         
