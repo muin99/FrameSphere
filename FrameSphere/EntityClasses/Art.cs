@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace FrameSphere.EntityClasses
 {
@@ -15,9 +16,14 @@ namespace FrameSphere.EntityClasses
         private List<string> _artPhotos = new List<string>(); // Stores photo file paths for simplicity.
 
         // Constructor for loading existing Art by ArtID
+
+        public List<string> artPhotos { get {
+                return _artPhotos;
+            } set; }
         public Art(int artID)
         {
             _ArtID = artID;
+            LoadArtPhotos();
             //LoadArtDetails(); // Load the art details (and photos) from DB
         }
 
@@ -60,7 +66,7 @@ namespace FrameSphere.EntityClasses
                     // Add photos to the ArtPhotos table
                     foreach (string photoPath in photoPaths)
                     {
-                        AddArtPhoto(photoPath, connection);
+                        AddArtPhoto(photoPath);
                     }
 
                     // Store the photo paths in the local list
@@ -230,10 +236,10 @@ namespace FrameSphere.EntityClasses
         /// <summary>
         /// Adds a new photo for the art piece to the ArtPhotos table by taking a file path.
         /// </summary>
-        public void AddArtPhoto(string photoPath, SqlConnection connection)
+        public void AddArtPhoto(string photoPath)
         {
             string query = "INSERT INTO ArtPhotos (ArtId, Photo) VALUES (@ArtID, @Photo)";
-            using (connection = DB.Connect())
+            using (SqlConnection connection = DB.Connect())
             {
                 try
                 {
@@ -252,6 +258,38 @@ namespace FrameSphere.EntityClasses
                 }
             }
         }
+        public void RemoveArtPhoto(string photoPath)
+        {
+            string query = "DELETE FROM ArtPhotos WHERE ArtId = @ArtID AND Photo = @Photo";
+            using (SqlConnection connection = DB.Connect())
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ArtID", _ArtID);
+                        command.Parameters.AddWithValue("@Photo", photoPath); // Use the photo path to delete
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            _artPhotos.Remove(photoPath); // Remove from the list after deletion
+                            MessageBox.Show("Art photo removed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No matching photo found to remove.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Error removing art photo: {ex.Message}");
+                }
+            }
+        }
+
 
         /// <summary>
         /// Displays the art details and its associated photos.

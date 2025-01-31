@@ -20,7 +20,11 @@ namespace FrameSphere
     public partial class UserDashBoard : Form
     {
         string Title;
-        
+        bool previous = false;
+        bool current = false;
+        bool upcoming = false;
+
+
         public UserDashBoard()
         {
 
@@ -44,7 +48,7 @@ namespace FrameSphere
 
 
         }
-        private void LoadEventBoxes(string searchQuery = "")
+        private void LoadEventBoxes(string searchQuery = "" )
         {
             eventspanel.Controls.Clear(); // Clear existing controls
             eventspanel.Controls.Add(noitem); // Add the "no items" label to the panel
@@ -93,8 +97,23 @@ namespace FrameSphere
                                 ? FSystem.GetImageFromPath(eventPosterPath) // Load the image from path
                                 : FrameSphere.Properties.Resources._10_3__thumb; // Default placeholder image
 
+                            if (previous && endDate < DateTime.Now) {
+                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId);
+                            }
+                            if (current && StartDate < DateTime.Now && endDate > DateTime.Now)
+                            {
+                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId);
+                            }
+                            if (upcoming &&  StartDate > DateTime.Now)
+                            {
+                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId);
+                            }
+                            if(!previous && !current && !upcoming)
+                            {
+                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId);
+                            }
                             // Create an event box for the current event
-                            CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId);
+                            
                         }
                     }
                 }
@@ -228,80 +247,6 @@ namespace FrameSphere
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-            
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void button11_Click(object sender, EventArgs e)
         {
@@ -310,55 +255,6 @@ namespace FrameSphere
             //me.Show();
         }
 
-        private void button12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void name_Click(object sender, EventArgs e)
-        {
-
-        }
         private void button14_Click_1(object sender, EventArgs e)
         {
             this.Hide();
@@ -366,31 +262,12 @@ namespace FrameSphere
             edit_Profile.Show();
         }
 
-
-        private void profilepic_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Logout_Click(object sender, EventArgs e)
         {
             FSystem.loggedInUser.Logout(this);
         }
 
-        private void eventspanel_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
-
-        private void eventspanel_Paint_1(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void eventspanel_Paint_2(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void textBox1_TextChanged_2(object sender, EventArgs e)
         {
@@ -402,11 +279,6 @@ namespace FrameSphere
             this.Hide();
             Admin_dashboard admin_Dashboard = new Admin_dashboard();
             admin_Dashboard.Show();
-        }
-
-        private void UserDashBoard_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void artistboard_Click(object sender, EventArgs e)
@@ -534,6 +406,57 @@ namespace FrameSphere
             {
                 MessageBox.Show($"An error occurred:{ex.Message}");
             }
+        }
+
+        private void previousbtn_Click(object sender, EventArgs e)
+        {
+            if (previous)
+            {
+                previous = false;
+                previousbtn.BackColor = Color.White;
+                previousbtn.ForeColor = Color.ForestGreen;
+            }
+            else
+            {
+                previous = true;
+                previousbtn.BackColor = Color.ForestGreen;
+                previousbtn.ForeColor = Color.White;
+            }
+            LoadEventBoxes();
+        }
+
+        private void currentbtn_Click(object sender, EventArgs e)
+        {
+            if (current)
+            {
+                current = false;
+                currentbtn.BackColor = Color.White;
+                currentbtn.ForeColor = Color.ForestGreen;
+            }
+            else
+            {
+                current = true;
+                currentbtn.BackColor = Color.ForestGreen;
+                currentbtn.ForeColor = Color.White;
+            }
+            LoadEventBoxes();
+        }
+
+        private void upcomingbtn_Click(object sender, EventArgs e)
+        {
+            if (upcoming)
+            {
+                upcoming = false;
+                upcomingbtn.BackColor = Color.White;
+                upcomingbtn.ForeColor = Color.ForestGreen;
+            }
+            else
+            {
+                upcoming = true;
+                upcomingbtn.BackColor = Color.ForestGreen;
+                upcomingbtn.ForeColor = Color.White;
+            }
+            LoadEventBoxes();
         }
     }
 }

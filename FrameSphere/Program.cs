@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrameSphere.EntityClasses;
+using FrameSphere.FormsArts;
 namespace FrameSphere
 {
     internal static class Program
@@ -20,7 +21,7 @@ namespace FrameSphere
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
-            //Application.Run(new Event_page(28));
+            //Application.Run(new test());
             //Application.Run(new ArtReviewPage(7));
         }
     }
