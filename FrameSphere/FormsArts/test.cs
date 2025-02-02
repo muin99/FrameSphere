@@ -24,6 +24,11 @@ namespace FrameSphere.FormsArts
             label5.Text = art.Price.ToString();
             label6.Text = art.PhotoCount.ToString();
             pictureBox1.Image = FSystem.GetImageFromPath(art.artPhotos.FirstOrDefault());
+
+            foreach(string p in art.artPhotos)
+            {
+                label6.Text += "\n"+ FSystem.GetPathFromRelative(p);
+            }
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)

@@ -14,9 +14,37 @@ namespace FrameSphere.EntityClasses
         private double _Price;
         private int _photocnt;
         private List<string> _artPhotos = new List<string>(); // Stores photo file paths for simplicity.
+        private string _creator;
+
+        public string Creator {
+            get {
+                using (SqlConnection connection = DB.Connect())
+                {
+                    string query = "SELECT UserName FROM ArtArtist WHERE ArtId = @ArtID";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@ArtID", _ArtID);
+                    connection.Open();
+                    _creator = command.ExecuteScalar()?.ToString();
+                }
+                return _creator;
+            }
+            set {
+                _creator = value;
+                using (SqlConnection connection = DB.Connect())
+                {
+                    string query = "UPDATE ArtArtist SET UserName = @UserName WHERE ArtId = @ArtID";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@UserName", _creator);
+                    command.Parameters.AddWithValue("@ArtID", _ArtID);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
 
         // Constructor for loading existing Art by ArtID
-
+        public Art() { }
         public List<string> artPhotos { get {
                 return _artPhotos;
             } }
@@ -37,6 +65,8 @@ namespace FrameSphere.EntityClasses
             _SellingOption = sellingOption;
             _Price = price;
             _photocnt = photoPaths.Count;
+
+
 
             // Insert the new art into the database
             string insertArtQuery = @"

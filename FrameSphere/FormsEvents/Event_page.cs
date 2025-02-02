@@ -2,8 +2,10 @@
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
+using FrameSphere.D3Program;
 using FrameSphere.EntityClasses;
 using FrameSphere.FormsEvents;
 using static System.Net.Mime.MediaTypeNames;
@@ -125,6 +127,8 @@ namespace FrameSphere
                 cmd.Parameters.AddWithValue("@eventid", eventid);
 
                 SqlDataReader reader = cmd.ExecuteReader();
+                string filePath = "..\\..\\D3Program\\artsCollections.json"; // JSON file path
+                File.WriteAllText(filePath, "[]");
                 while (reader.Read())
                 {
                     int artID = reader.GetInt32(0); // ArtID
@@ -132,6 +136,8 @@ namespace FrameSphere
                     string photoPath = reader.IsDBNull(2) ? "default.jpg" : reader.GetString(2); // Photo
 
                     AddDynamicPanel(artID, title, photoPath);
+                    DataClass data = new DataClass(artID);
+                    FSystem.insert3DData(data);
                 }
             }
         }
@@ -189,6 +195,11 @@ namespace FrameSphere
             ManageEvents mn = new ManageEvents(currentEvent.EventID);
             //Application.Run(new ManageEvents("28"));
             mn.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

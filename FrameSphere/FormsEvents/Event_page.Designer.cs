@@ -143,6 +143,7 @@ namespace FrameSphere
             this.button2.TabIndex = 22;
             this.button2.Text = "Enter 3D Hall";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // organizer
             // 

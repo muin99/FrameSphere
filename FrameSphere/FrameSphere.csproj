@@ -35,6 +35,9 @@
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -49,11 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="D3Program\DataClass.cs" />
     <Compile Include="Bidding\BiddingPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Bidding\BiddingPage.Designer.cs">
       <DependentUpon>BiddingPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="D3Program\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="D3Program\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsAdmin\Admin_dashboard.cs">
       <SubType>Form</SubType>
@@ -85,10 +95,10 @@
     <Compile Include="FormsArtists\test.Designer.cs">
       <DependentUpon>test.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormsArts\AllArt.cs">
+    <Compile Include="FormsAdmin\AllArt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormsArts\AllArt.Designer.cs">
+    <Compile Include="FormsAdmin\AllArt.Designer.cs">
       <DependentUpon>AllArt.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsArts\ArtReview.cs">
@@ -227,7 +237,7 @@
     <EmbeddedResource Include="FormsArtists\test.resx">
       <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormsArts\AllArt.resx">
+    <EmbeddedResource Include="FormsAdmin\AllArt.resx">
       <DependentUpon>AllArt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsArts\ArtReview.resx">
@@ -300,6 +310,8 @@
     <EmbeddedResource Include="FormsUser\UserDashboard.resx">
       <DependentUpon>UserDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="D3Program\artsCollections.json" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

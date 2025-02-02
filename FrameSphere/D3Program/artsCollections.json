@@ -1,0 +1,102 @@
+[
+  {
+    "ArtID": 4,
+    "Title": "starry night",
+    "PhotoPath": null,
+    "Description": null,
+    "nameofCreator": "a a",
+    "Creator": "a"
+  },
+  {
+    "ArtID": 5,
+    "Title": "mona lisa",
+    "PhotoPath": null,
+    "Description": null,
+    "nameofCreator": "a a",
+    "Creator": "a"
+  },
+  {
+    "ArtID": 6,
+    "Title": "water",
+    "PhotoPath": null,
+    "Description": null,
+    "nameofCreator": "aa aa",
+    "Creator": "aa"
+  },
+  {
+    "ArtID": 10,
+    "Title": "ssfsfsafadf",
+    "PhotoPath": [
+      "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\bin\\Debug\\ArtImages/e9b3bab5-9dca-4a51-a9aa-bd39ac9848b8.png",
+      "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\bin\\Debug\\ArtImages/c8ababf9-2766-40d7-adb0-4d69d7eec71f.png"
+    ],
+    "Description": "sfsfsfsfaff",
+    "nameofCreator": "a a",
+    "Creator": "a"
+  },
+  {
+    "ArtID": 10,
+    "Title": "ssfsfsafadf",
+    "PhotoPath": [
+      "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\bin\\Debug\\ArtImages/e9b3bab5-9dca-4a51-a9aa-bd39ac9848b8.png",
+      "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\bin\\Debug\\ArtImages/c8ababf9-2766-40d7-adb0-4d69d7eec71f.png"
+    ],
+    "Description": "sfsfsfsfaff",
+    "nameofCreator": "a a",
+    "Creator": "a"
+  },
+  {
+    "ArtID": 11,
+    "Title": "afasf",
+    "PhotoPath": [
+      "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\bin\\Debug\\ArtImages/3cbdb94f-8af5-48a1-aee1-b480d0b8383b.png",
+      "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\bin\\Debug\\ArtImages/6089c2dd-868b-4c48-a071-9676a966eb1c.png"
+    ],
+    "Description": "afadf",
+    "nameofCreator": "a a",
+    "Creator": "a"
+  },
+  {
+    "ArtID": 11,
+    "Title": "afasf",
+    "PhotoPath": [
+      "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\bin\\Debug\\ArtImages/3cbdb94f-8af5-48a1-aee1-b480d0b8383b.png",
+      "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\bin\\Debug\\ArtImages/6089c2dd-868b-4c48-a071-9676a966eb1c.png"
+    ],
+    "Description": "afadf",
+    "nameofCreator": "a a",
+    "Creator": "a"
+  },
+  {
+    "ArtID": 12,
+    "Title": "fadfadf",
+    "PhotoPath": [
+      "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\bin\\Debug\\ArtImages/9b6dca1d-ab36-4515-a7a4-ca96dc679cc2.png",
+      "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\bin\\Debug\\ArtImages/dd18cf1a-9bd2-4235-b114-9b9ec87fdd92.png"
+    ],
+    "Description": "adfadfaf",
+    "nameofCreator": "a a",
+    "Creator": "a"
+  },
+  {
+    "ArtID": 12,
+    "Title": "fadfadf",
+    "PhotoPath": [
+      "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\bin\\Debug\\ArtImages/9b6dca1d-ab36-4515-a7a4-ca96dc679cc2.png",
+      "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\bin\\Debug\\ArtImages/dd18cf1a-9bd2-4235-b114-9b9ec87fdd92.png"
+    ],
+    "Description": "adfadfaf",
+    "nameofCreator": "a a",
+    "Creator": "a"
+  },
+  {
+    "ArtID": 13,
+    "Title": "I am muin",
+    "PhotoPath": [
+      "C:\\Users\\56mui\\Downloads\\FrameSphere\\FrameSphere\\bin\\Debug\\ArtImages/d029cb19-d25d-440b-9828-75bc648d711f.JPG"
+    ],
+    "Description": "sss",
+    "nameofCreator": "aa aa",
+    "Creator": "aa"
+  }
+]
