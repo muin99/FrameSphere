@@ -10,35 +10,159 @@ namespace FrameSphere
     {
         private string imagePath = null; // Path to the selected image
         private string profilePicRelativePath = null; // Relative path for storing in the database
-
+        private string managedUserName;
         public Edit_Profile(string username)
         {
+            
+
             InitializeComponent();
+            managedUserName = username;
+            // Determine if the profile is being managed by an admin or edited by the logged-in user.
+            bool isManageMode = !username.Equals(FSystem.loggedInUser.UserName, StringComparison.OrdinalIgnoreCase);
 
-            // Populate fields with logged-in user data
-            FirstNameField.Text = FSystem.loggedInUser.FirstName;
-            LastNameField.Text = FSystem.loggedInUser.LastName;
-            PhoneField.Text = FSystem.loggedInUser.Phone;
-            EmailField.Text = FSystem.loggedInUser.Email;
-            AddressField.Text = FSystem.loggedInUser.Address;
-            FaceBookField.Text = FSystem.loggedInUser.Facebook;
-            InstagramField.Text = FSystem.loggedInUser.Instagram;
-            PinterestField.Text = FSystem.loggedInUser.Pinterest;
-            WebsiteField.Text = FSystem.loggedInUser.Website;
-            poster.Text = FSystem.loggedInUser.ProfilePic.ToString();
+            if (isManageMode)
+            {
+                // Admin is managing another user's profile.
+                // Show the Approve and Reject buttons.
+                approve.Visible = true;
+                reject.Visible = true;
 
-            // Load profile picture
-            if (!string.IsNullOrWhiteSpace(FSystem.loggedInUser.ProfilePic))
+                // Change label11 to "Manage Profile".
+                label11.Text = "Manage Profile";
+
+                // Load the selected user's data from the database.
+                using (SqlConnection connection = DB.Connect())
+                {
+                    // Query only the available columns.
+                    string query = "SELECT FirstName, LastName, Email, Status FROM AllUser WHERE UserName = @username";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@username", username);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                FirstNameField.Text = reader["FirstName"].ToString();
+                                LastNameField.Text = reader["LastName"].ToString();
+                                EmailField.Text = reader["Email"].ToString();
+
+                                // For fields not available in the table, set them to empty or a default value.
+                                PhoneField.Text = "";
+                                AddressField.Text = "";
+                                FaceBookField.Text = "";
+                                InstagramField.Text = "";
+                                PinterestField.Text = "";
+                                WebsiteField.Text = "";
+
+                                // If you store a profile picture path elsewhere, update accordingly.
+                                // For now, we'll clear it.
+                                poster.Text = "";
+                            }
+                            else
+                            {
+                                MessageBox.Show("User not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                // Logged-in user is editing their own profile.
+                // Hide the Approve and Reject buttons.
+                approve.Visible = false;
+                reject.Visible = false;
+
+                // Load data from FSystem.loggedInUser.
+                FirstNameField.Text = FSystem.loggedInUser.FirstName;
+                LastNameField.Text = FSystem.loggedInUser.LastName;
+                EmailField.Text = FSystem.loggedInUser.Email;
+
+                // If these fields exist in your FSystem.loggedInUser, otherwise clear them.
+                PhoneField.Text = FSystem.loggedInUser.Phone;
+                AddressField.Text = FSystem.loggedInUser.Address;
+                FaceBookField.Text = FSystem.loggedInUser.Facebook;
+                InstagramField.Text = FSystem.loggedInUser.Instagram;
+                PinterestField.Text = FSystem.loggedInUser.Pinterest;
+                WebsiteField.Text = FSystem.loggedInUser.Website;
+                poster.Text = FSystem.loggedInUser.ProfilePic;
+            }
+
+            // Common code to load the profile picture from file (if a profile picture path exists).
+            string profilePicPath = poster.Text;
+            if (!string.IsNullOrWhiteSpace(profilePicPath))
             {
                 string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string fullPath = Path.Combine(baseDirectory, FSystem.loggedInUser.ProfilePic);
-
+                string fullPath = Path.Combine(baseDirectory, profilePicPath);
                 if (File.Exists(fullPath))
                 {
                     profilepic.Image = Image.FromFile(fullPath);
                 }
             }
+
+
         }
+
+        private void approve_Click(object sender, EventArgs e)
+        {
+            // Only allow status update in Manage mode (i.e. when the managed user is not the logged-in user)
+            if (managedUserName.Equals(FSystem.loggedInUser.UserName, StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("You cannot approve your own profile.", "Operation Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SqlConnection conn = DB.Connect())
+            {
+                string query = "UPDATE AllUser SET Status = 'Approved' WHERE UserName = @username";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", managedUserName);
+                    conn.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("User status updated to Approved.", "Status Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to update status.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void reject_Click(object sender, EventArgs e)
+        {
+            // Only allow status update in Manage mode.
+            if (managedUserName.Equals(FSystem.loggedInUser.UserName, StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show("You cannot reject your own profile.", "Operation Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SqlConnection conn = DB.Connect())
+            {
+                string query = "UPDATE AllUser SET Status = 'Rejected' WHERE UserName = @username";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", managedUserName);
+                    conn.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("User status updated to Rejected.", "Status Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to update status.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
