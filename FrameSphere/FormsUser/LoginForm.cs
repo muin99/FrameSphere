@@ -52,32 +52,72 @@ namespace FrameSphere
 
         }
 
+        private string GetUserStatus(string userName)
+        {
+            string status = "";
+            string query = "SELECT Status FROM AllUser WHERE UserName = @userName";
 
+            using (SqlConnection connection = DB.Connect())
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@userName", userName);
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        status = result.ToString();
+                    }
+                }
+            }
+            return status;
+        }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            if (UserId.Text != "" && Password.Text != "") { 
-                if(FSystem.Login(UserId.Text, Password.Text))
-                {
-                    this.Hide();
-                    UserDashBoard userDashboard = new UserDashBoard();
-                    userDashboard.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Please enter a valid userid or password");
-                }
+            // Clear previous warnings
+            useridwar.Visible = false;
+            passwordWarning.Visible = false;
+
+            if (UserId.Text == "")
+            {
+                useridwar.Visible = true;
             }
-
-            if (UserId.Text == ""){ useridwar.Visible = true; }
-            else { useridwar.Visible = false; }
-
-            if(Password.Text == "")
+            if (Password.Text == "")
             {
                 passwordWarning.Visible = true;
             }
 
+            if (string.IsNullOrEmpty(UserId.Text) || string.IsNullOrEmpty(Password.Text))
+                return;
+
+            if (FSystem.Login(UserId.Text, Password.Text))
+            {
+                string status = GetUserStatus(UserId.Text);
+
+                switch (status.ToLower()) // Case-insensitive comparison
+                {
+                    case "approved":
+                        this.Hide();
+                        new UserDashBoard().Show();
+                        break;
+                    case "rejected":
+                        MessageBox.Show("Admin rejected your account.");
+                        break;
+                    case "pending":
+                        MessageBox.Show("You can't Login right now. Please wait for admin approval.");
+                        break;
+                    default:
+                        MessageBox.Show("Unknown account status.");
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Invalid credentials.");
+            }
         }
+
 
         private void label1_Click_2(object sender, EventArgs e)
         {

@@ -72,3 +72,4 @@ C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSph.32EAACE9.Up2
 C:\Users\user\source\repos\muin99\FrameSphere\FrameSphere\bin\Debug\Newtonsoft.Json.dll
 C:\Users\user\source\repos\muin99\FrameSphere\FrameSphere\bin\Debug\Newtonsoft.Json.xml
 C:\Users\user\source\repos\muin99\FrameSphere\FrameSphere\obj\Debug\FrameSphere.csproj.CopyComplete
+C:\Users\user\source\repos\muin99\FrameSphere\FrameSphere\obj\Debug\FrameSphere.MakeAdmin.resources
