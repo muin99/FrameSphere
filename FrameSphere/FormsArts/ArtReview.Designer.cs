@@ -204,6 +204,7 @@ namespace FrameSphere
             // artphoto
             // 
             this.artphoto.BackColor = System.Drawing.Color.SteelBlue;
+            this.artphoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.artphoto.Location = new System.Drawing.Point(24, 10);
             this.artphoto.Name = "artphoto";
             this.artphoto.Size = new System.Drawing.Size(97, 92);

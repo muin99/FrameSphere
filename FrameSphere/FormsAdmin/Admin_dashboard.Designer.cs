@@ -42,9 +42,10 @@ namespace FrameSphere
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.buttons_panel = new System.Windows.Forms.Panel();
+            this.artlist = new System.Windows.Forms.Button();
             this.UserBoard = new System.Windows.Forms.Button();
             this.Logout = new System.Windows.Forms.Button();
-            this.artlist = new System.Windows.Forms.Button();
+            this.adminRequest = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.userpanel.SuspendLayout();
@@ -197,15 +198,30 @@ namespace FrameSphere
             // buttons_panel
             // 
             this.buttons_panel.BackColor = System.Drawing.Color.LightGreen;
+            this.buttons_panel.Controls.Add(this.adminRequest);
             this.buttons_panel.Controls.Add(this.artlist);
             this.buttons_panel.Controls.Add(this.UserBoard);
             this.buttons_panel.Controls.Add(this.eventsboard);
             this.buttons_panel.Controls.Add(this.button2);
             this.buttons_panel.Location = new System.Drawing.Point(12, 100);
-            this.buttons_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttons_panel.Margin = new System.Windows.Forms.Padding(2);
             this.buttons_panel.Name = "buttons_panel";
             this.buttons_panel.Size = new System.Drawing.Size(303, 571);
             this.buttons_panel.TabIndex = 17;
+            // 
+            // artlist
+            // 
+            this.artlist.BackColor = System.Drawing.Color.DarkGreen;
+            this.artlist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.artlist.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.artlist.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.artlist.Location = new System.Drawing.Point(53, 215);
+            this.artlist.Name = "artlist";
+            this.artlist.Size = new System.Drawing.Size(195, 29);
+            this.artlist.TabIndex = 16;
+            this.artlist.Text = "List of Arts";
+            this.artlist.UseVisualStyleBackColor = false;
+            this.artlist.Click += new System.EventHandler(this.artlist_Click);
             // 
             // UserBoard
             // 
@@ -215,7 +231,7 @@ namespace FrameSphere
             this.UserBoard.Font = new System.Drawing.Font("Lucida Console", 11.25F);
             this.UserBoard.ForeColor = System.Drawing.Color.White;
             this.UserBoard.Location = new System.Drawing.Point(53, 161);
-            this.UserBoard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.UserBoard.Margin = new System.Windows.Forms.Padding(2);
             this.UserBoard.Name = "UserBoard";
             this.UserBoard.Size = new System.Drawing.Size(195, 29);
             this.UserBoard.TabIndex = 15;
@@ -239,19 +255,19 @@ namespace FrameSphere
             this.Logout.UseVisualStyleBackColor = false;
             this.Logout.Click += new System.EventHandler(this.Logout_Click);
             // 
-            // artlist
+            // adminRequest
             // 
-            this.artlist.BackColor = System.Drawing.Color.DarkGreen;
-            this.artlist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.artlist.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.artlist.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.artlist.Location = new System.Drawing.Point(53, 215);
-            this.artlist.Name = "artlist";
-            this.artlist.Size = new System.Drawing.Size(195, 29);
-            this.artlist.TabIndex = 16;
-            this.artlist.Text = "List of Arts";
-            this.artlist.UseVisualStyleBackColor = false;
-            this.artlist.Click += new System.EventHandler(this.artlist_Click);
+            this.adminRequest.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.adminRequest.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.adminRequest.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adminRequest.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.adminRequest.Location = new System.Drawing.Point(53, 508);
+            this.adminRequest.Name = "adminRequest";
+            this.adminRequest.Size = new System.Drawing.Size(195, 29);
+            this.adminRequest.TabIndex = 17;
+            this.adminRequest.Text = "Admin Request";
+            this.adminRequest.UseVisualStyleBackColor = false;
+            this.adminRequest.Click += new System.EventHandler(this.adminRequest_Click);
             // 
             // Admin_dashboard
             // 
@@ -297,5 +313,6 @@ namespace FrameSphere
         private System.Windows.Forms.Label search_label;
         private System.Windows.Forms.Button Logout;
         private System.Windows.Forms.Button artlist;
+        private System.Windows.Forms.Button adminRequest;
     }
 }

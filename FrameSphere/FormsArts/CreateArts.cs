@@ -366,103 +366,103 @@ namespace FrameSphere
         {
 
         }
-    private void Submit_Click_1(object sender, EventArgs e)
+        private void Submit_Click_1(object sender, EventArgs e)
+        {
+            // Check if all the photo paths in the TextBoxes are valid
+            foreach (Control control in artContainer.Controls)
             {
-                // Check if all the photo paths in the TextBoxes are valid
-                foreach (Control control in artContainer.Controls)
+                if (control is Panel panel)
                 {
-                    if (control is Panel panel)
+                    TextBox photoPathBox = panel.Controls.OfType<TextBox>().FirstOrDefault();
+                    if (photoPathBox != null && !checkphotobox(photoPathBox.Text))
                     {
-                        TextBox photoPathBox = panel.Controls.OfType<TextBox>().FirstOrDefault();
-                        if (photoPathBox != null && !checkphotobox(photoPathBox.Text))
-                        {
-                            return; // Exit the method if any photo path is invalid (empty or whitespace)
-                        }
+                        return; // Exit the method if any photo path is invalid (empty or whitespace)
                     }
-                }
-
-                try
-                {
-                    using (SqlConnection connection = DB.Connect())
-                    {
-                        connection.Open();
-
-                        string userID = FSystem.loggedInUser.UserName; // Get the artist username
-                        string artTitle = arttitle.Text;
-                        string description = Description.Text;
-                        string sellingOption = free.Checked ? "Free" : "Paid";
-                        decimal? artPriceValue = paid.Checked && decimal.TryParse(artPrice.Text, out decimal price) ? price : (decimal?)null;
-
-                        // Insert into Art table
-                        string artInsertQuery = "INSERT INTO Art (ArtTitle, ArtDescription, SellingOption, Price, photocnt) OUTPUT INSERTED.ArtID VALUES (@Title, @Desc, @SellOption, @Price, @PhotoCnt)";
-                        SqlCommand artCommand = new SqlCommand(artInsertQuery, connection);
-                        artCommand.Parameters.AddWithValue("@Title", artTitle);
-                        artCommand.Parameters.AddWithValue("@Desc", description);
-                        artCommand.Parameters.AddWithValue("@SellOption", sellingOption);
-                        artCommand.Parameters.AddWithValue("@Price", (object)artPriceValue ?? DBNull.Value);
-                        artCommand.Parameters.AddWithValue("@PhotoCnt", ct);
-
-                        object result = artCommand.ExecuteScalar();
-                        int artID = (result != null) ? Convert.ToInt32(result) : 0;
-                        if (artID == 0)
-                        {
-                            MessageBox.Show("Failed to insert into Art table.");
-                            return;
-                        }
-
-                        // Insert into ArtArtist table
-                        string artistInsertQuery = "INSERT INTO ArtArtist (ArtId, UserName) VALUES (@ArtID, @UserName)";
-                        SqlCommand artistCommand = new SqlCommand(artistInsertQuery, connection);
-                        artistCommand.Parameters.AddWithValue("@ArtID", artID);
-                        artistCommand.Parameters.AddWithValue("@UserName", userID);
-                        artistCommand.ExecuteNonQuery();
-
-                        // Insert into ArtPhotos table
-                        foreach (Control control in artContainer.Controls)
-                        {
-                            if (control is Panel panel)
-                            {
-                                TextBox photoPathBox = panel.Controls.OfType<TextBox>().FirstOrDefault();
-                                if (photoPathBox != null && !string.IsNullOrWhiteSpace(photoPathBox.Text))
-                                {
-                                    string filePath = photoPathBox.Text;
-                                    string fileName = Path.GetFileName(filePath);
-                                    string storagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ArtImages");
-                                    Directory.CreateDirectory(storagePath);
-
-                                    // Generate unique filename to prevent overwrites
-                                    string uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(fileName)}";
-                                    string destinationPath = Path.Combine(storagePath, uniqueFileName);
-                                    if (!File.Exists(destinationPath))
-                                    {
-                                        File.Copy(filePath, destinationPath);
-                                    }
-
-                                    string relativePath = "ArtImages/" + uniqueFileName;
-
-    // Insert into ArtPhotos table
-                            string photoInsertQuery = "INSERT INTO ArtPhotos (ArtID, Photo) VALUES (@ArtID, @Photo)";
-                                    SqlCommand photoCommand = new SqlCommand(photoInsertQuery, connection);
-                                    photoCommand.Parameters.AddWithValue("@ArtID", artID);
-                                    photoCommand.Parameters.AddWithValue("@Photo", relativePath);
-                                    photoCommand.ExecuteNonQuery();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Please select an image for all art.");
-                                    return;
-                                }
-                            }
-                        }
-
-                        MessageBox.Show("Art successfully added!");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
                 }
             }
+
+            try
+            {
+                using (SqlConnection connection = DB.Connect())
+                {
+                    connection.Open();
+
+                    string userID = FSystem.loggedInUser.UserName; // Get the artist username
+                    string artTitle = arttitle.Text;
+                    string description = Description.Text;
+                    string sellingOption = free.Checked ? "Free" : "Paid";
+                    decimal? artPriceValue = paid.Checked && decimal.TryParse(artPrice.Text, out decimal price) ? price : (decimal?)null;
+
+                    // Insert into Art table
+                    string artInsertQuery = "INSERT INTO Art (ArtTitle, ArtDescription, SellingOption, Price, photocnt) OUTPUT INSERTED.ArtID VALUES (@Title, @Desc, @SellOption, @Price, @PhotoCnt)";
+                    SqlCommand artCommand = new SqlCommand(artInsertQuery, connection);
+                    artCommand.Parameters.AddWithValue("@Title", artTitle);
+                    artCommand.Parameters.AddWithValue("@Desc", description);
+                    artCommand.Parameters.AddWithValue("@SellOption", sellingOption);
+                    artCommand.Parameters.AddWithValue("@Price", (object)artPriceValue ?? DBNull.Value);
+                    artCommand.Parameters.AddWithValue("@PhotoCnt", ct);
+
+                    object result = artCommand.ExecuteScalar();
+                    int artID = (result != null) ? Convert.ToInt32(result) : 0;
+                    if (artID == 0)
+                    {
+                        MessageBox.Show("Failed to insert into Art table.");
+                        return;
+                    }
+
+                    // Insert into ArtArtist table
+                    string artistInsertQuery = "INSERT INTO ArtArtist (ArtId, UserName) VALUES (@ArtID, @UserName)";
+                    SqlCommand artistCommand = new SqlCommand(artistInsertQuery, connection);
+                    artistCommand.Parameters.AddWithValue("@ArtID", artID);
+                    artistCommand.Parameters.AddWithValue("@UserName", userID);
+                    artistCommand.ExecuteNonQuery();
+
+                    // Insert into ArtPhotos table
+                    foreach (Control control in artContainer.Controls)
+                    {
+                        if (control is Panel panel)
+                        {
+                            TextBox photoPathBox = panel.Controls.OfType<TextBox>().FirstOrDefault();
+                            if (photoPathBox != null && !string.IsNullOrWhiteSpace(photoPathBox.Text))
+                            {
+                                string filePath = photoPathBox.Text;
+                                string fileName = Path.GetFileName(filePath);
+                                string storagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ArtImages");
+                                Directory.CreateDirectory(storagePath);
+
+                                // Generate unique filename to prevent overwrites
+                                string uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(fileName)}";
+                                string destinationPath = Path.Combine(storagePath, uniqueFileName);
+                                if (!File.Exists(destinationPath))
+                                {
+                                    File.Copy(filePath, destinationPath);
+                                }
+
+                                string relativePath = "ArtImages/" + uniqueFileName;
+
+                                // Insert into ArtPhotos table
+                                string photoInsertQuery = "INSERT INTO ArtPhotos (ArtID, Photo) VALUES (@ArtID, @Photo)";
+                                SqlCommand photoCommand = new SqlCommand(photoInsertQuery, connection);
+                                photoCommand.Parameters.AddWithValue("@ArtID", artID);
+                                photoCommand.Parameters.AddWithValue("@Photo", relativePath);
+                                photoCommand.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please select an image for all art.");
+                                return;
+                            }
+                        }
+                    }
+
+                    MessageBox.Show("Art successfully added!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
         //private void Submit_Click_1(object sender, EventArgs e)
         //{
         //    // Check if all the photo paths in the TextBoxes are valid

@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
-using FrameSphere;
 
 namespace FrameSphere
 {
@@ -16,9 +20,77 @@ namespace FrameSphere
             InitializeComponent();
             this.artId = artId;
             //name.Text = FSystem.loggedInUser.FullName();
+            LoadArtDetails();
             InitializeRatings();
             LoadReviewData();
 
+        }
+        private void LoadArtDetails()
+        {
+            try
+            {
+                using (SqlConnection con = DB.Connect())
+                {
+                    con.Open();
+
+                    // First get art title and description
+                    string artSql = "SELECT ArtTitle, ArtDescription FROM Art WHERE ArtId = @ArtId";
+                    using (SqlCommand artCmd = new SqlCommand(artSql, con))
+                    {
+                        artCmd.Parameters.AddWithValue("@ArtId", artId);
+                        using (SqlDataReader artReader = artCmd.ExecuteReader())
+                        {
+                            if (artReader.Read())
+                            {
+                                artTitle.Text = artReader["ArtTitle"].ToString();
+                                artdes.Text = artReader["ArtDescription"].ToString();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Artwork not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                this.Close();
+                                return;
+                            }
+                        }
+                    }
+
+                    // Now get associated photo from ArtPhotos
+                    string photoSql = "SELECT TOP 1 Photo FROM ArtPhotos WHERE ArtId = @ArtId";
+                    using (SqlCommand photoCmd = new SqlCommand(photoSql, con))
+                    {
+                        photoCmd.Parameters.AddWithValue("@ArtId", artId);
+                        using (SqlDataReader photoReader = photoCmd.ExecuteReader())
+                        {
+                            if (photoReader.Read())
+                            {
+                                string relativePath = photoReader["Photo"].ToString();
+                                string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
+
+                                if (File.Exists(fullPath))
+                                {
+                                    artphoto.SizeMode = PictureBoxSizeMode.Zoom;
+                                    artphoto.Image = Image.FromFile(fullPath);
+                                }
+                                else
+                                {
+                                    artphoto.SizeMode = PictureBoxSizeMode.Zoom;
+                                    artphoto.Image = Properties.Resources.SmallerNetworkConnectionBackgroundtest_ezgif_com_video_to_gif_converter;
+                                    MessageBox.Show("Image file not found", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+                            }
+                            else
+                            {
+                                artphoto.Image = Properties.Resources.SmallerNetworkConnectionBackgroundtest_ezgif_com_video_to_gif_converter;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading artwork: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
         }
 
         private void LoadReviewData()
