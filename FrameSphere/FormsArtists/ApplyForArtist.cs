@@ -27,5 +27,12 @@ namespace FrameSphere
             u.Show();
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UserDashBoard u = new UserDashBoard();
+            u.Show();
+            this.Hide();
+        }
     }
 }

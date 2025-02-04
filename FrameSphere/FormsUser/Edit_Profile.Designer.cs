@@ -52,6 +52,8 @@ namespace FrameSphere
             this.poster = new System.Windows.Forms.TextBox();
             this.profilepic = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.reject = new System.Windows.Forms.Button();
+            this.approve = new System.Windows.Forms.Button();
             this.PWVerifyLabel = new System.Windows.Forms.Label();
             this.WrongPWLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,8 +66,7 @@ namespace FrameSphere
             this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
-            this.approve = new System.Windows.Forms.Button();
-            this.reject = new System.Windows.Forms.Button();
+            this.makeAdmin = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.profilepanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
@@ -301,6 +302,7 @@ namespace FrameSphere
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.panel1.Controls.Add(this.makeAdmin);
             this.panel1.Controls.Add(this.reject);
             this.panel1.Controls.Add(this.approve);
             this.panel1.Controls.Add(this.PWVerifyLabel);
@@ -330,6 +332,34 @@ namespace FrameSphere
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(703, 539);
             this.panel1.TabIndex = 26;
+            // 
+            // reject
+            // 
+            this.reject.BackColor = System.Drawing.Color.Crimson;
+            this.reject.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.reject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reject.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.reject.Location = new System.Drawing.Point(509, 499);
+            this.reject.Name = "reject";
+            this.reject.Size = new System.Drawing.Size(179, 31);
+            this.reject.TabIndex = 28;
+            this.reject.Text = "REJECT";
+            this.reject.UseVisualStyleBackColor = false;
+            this.reject.Click += new System.EventHandler(this.reject_Click);
+            // 
+            // approve
+            // 
+            this.approve.BackColor = System.Drawing.Color.DarkGreen;
+            this.approve.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.approve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.approve.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.approve.Location = new System.Drawing.Point(309, 499);
+            this.approve.Name = "approve";
+            this.approve.Size = new System.Drawing.Size(179, 31);
+            this.approve.TabIndex = 27;
+            this.approve.Text = "APPROVE";
+            this.approve.UseVisualStyleBackColor = false;
+            this.approve.Click += new System.EventHandler(this.approve_Click);
             // 
             // PWVerifyLabel
             // 
@@ -451,33 +481,19 @@ namespace FrameSphere
             this.button4.Text = "Change Password ?";
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // approve
+            // makeAdmin
             // 
-            this.approve.BackColor = System.Drawing.Color.DarkGreen;
-            this.approve.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.approve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.approve.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.approve.Location = new System.Drawing.Point(309, 499);
-            this.approve.Name = "approve";
-            this.approve.Size = new System.Drawing.Size(179, 31);
-            this.approve.TabIndex = 27;
-            this.approve.Text = "APPROVE";
-            this.approve.UseVisualStyleBackColor = false;
-            this.approve.Click += new System.EventHandler(this.approve_Click);
-            // 
-            // reject
-            // 
-            this.reject.BackColor = System.Drawing.Color.Crimson;
-            this.reject.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.reject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reject.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.reject.Location = new System.Drawing.Point(509, 499);
-            this.reject.Name = "reject";
-            this.reject.Size = new System.Drawing.Size(179, 31);
-            this.reject.TabIndex = 28;
-            this.reject.Text = "REJECT";
-            this.reject.UseVisualStyleBackColor = false;
-            this.reject.Click += new System.EventHandler(this.reject_Click);
+            this.makeAdmin.BackColor = System.Drawing.Color.Navy;
+            this.makeAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.makeAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.makeAdmin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.makeAdmin.Location = new System.Drawing.Point(25, 499);
+            this.makeAdmin.Name = "makeAdmin";
+            this.makeAdmin.Size = new System.Drawing.Size(179, 31);
+            this.makeAdmin.TabIndex = 29;
+            this.makeAdmin.Text = "Make an Admin";
+            this.makeAdmin.UseVisualStyleBackColor = false;
+            this.makeAdmin.Click += new System.EventHandler(this.makeAdmin_Click);
             // 
             // Edit_Profile
             // 
@@ -543,5 +559,6 @@ namespace FrameSphere
         private System.Windows.Forms.TextBox poster;
         private System.Windows.Forms.Button reject;
         private System.Windows.Forms.Button approve;
+        private System.Windows.Forms.Button makeAdmin;
     }
 }

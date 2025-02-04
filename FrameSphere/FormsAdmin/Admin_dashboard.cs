@@ -188,5 +188,15 @@ namespace FrameSphere
             a1.Show();
             this.Hide();
         }
+
+        private void adminRequest_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            if (MakeAdmin.Instance != null && !MakeAdmin.Instance.IsDisposed)
+                MakeAdmin.Instance.ShowDialog();
+            else
+                new MakeAdmin().ShowDialog();
+
+        }
     }
 }

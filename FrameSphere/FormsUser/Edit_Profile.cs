@@ -8,13 +8,14 @@ namespace FrameSphere
 {
     public partial class Edit_Profile : Form
     {
+
+        public MakeAdmin m1;
+        
         private string imagePath = null; // Path to the selected image
         private string profilePicRelativePath = null; // Relative path for storing in the database
         private string managedUserName;
         public Edit_Profile(string username)
         {
-            
-
             InitializeComponent();
             managedUserName = username;
             // Determine if the profile is being managed by an admin or edited by the logged-in user.
@@ -26,7 +27,7 @@ namespace FrameSphere
                 // Show the Approve and Reject buttons.
                 approve.Visible = true;
                 reject.Visible = true;
-
+                
                 // Change label11 to "Manage Profile".
                 label11.Text = "Manage Profile";
 
@@ -46,6 +47,17 @@ namespace FrameSphere
                                 FirstNameField.Text = reader["FirstName"].ToString();
                                 LastNameField.Text = reader["LastName"].ToString();
                                 EmailField.Text = reader["Email"].ToString();
+
+                                string status = reader["Status"].ToString();
+                                if (status.ToLower() == "approved")
+                                {
+                                    makeAdmin.Visible = true;
+                                }
+                                else
+                                {
+                                    makeAdmin.Visible = false;
+                                }
+
 
                                 // For fields not available in the table, set them to empty or a default value.
                                 PhoneField.Text = "";
@@ -73,6 +85,7 @@ namespace FrameSphere
                 // Hide the Approve and Reject buttons.
                 approve.Visible = false;
                 reject.Visible = false;
+                makeAdmin.Visible = false;
 
                 // Load data from FSystem.loggedInUser.
                 FirstNameField.Text = FSystem.loggedInUser.FirstName;
@@ -103,6 +116,119 @@ namespace FrameSphere
 
 
         }
+
+        private void makeAdmin_Click(object sender, EventArgs e)
+        {
+            string selectedUser = managedUserName; // The user to be made admin
+            string currentAdmin = FSystem.loggedInUser.UserName; // Current logged-in admin
+
+            string firstName = "", lastName = "", email = "";
+
+            using (SqlConnection connection = DB.Connect())
+            {
+                connection.Open();
+
+                // Fetch user details from AllUser table
+                string getUserDetailsQuery = "SELECT FirstName, LastName, Email FROM AllUser WHERE UserName = @UserName";
+                using (SqlCommand userDetailsCommand = new SqlCommand(getUserDetailsQuery, connection))
+                {
+                    userDetailsCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                    using (SqlDataReader reader = userDetailsCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            firstName = reader["FirstName"].ToString();
+                            lastName = reader["LastName"].ToString();
+                            email = reader["Email"].ToString();
+                        }
+                    }
+                }
+
+                // Open MakeAdmin form with the selected user's details
+                MakeAdmin makeAdminForm = new MakeAdmin();
+                this.m1 = makeAdminForm;
+
+                makeAdminForm.FirstName.Text = firstName;
+                makeAdminForm.LastName.Text = lastName;
+                makeAdminForm.Email.Text = email;
+                makeAdminForm.UserName.Text = selectedUser;
+                makeAdminForm.txt.Text = currentAdmin+" wants to make this user an Admin.";
+                makeAdminForm.txt2.Text = "Do You Want To Give Approval..??";
+                //makeAdminForm.ShowDialog();
+
+                // Check if the user is already in the PendingAdminRequests table
+                string checkRequestQuery = "SELECT Approvals, TotalAdmins FROM PendingAdminRequests WHERE UserName = @UserName";
+                using (SqlCommand checkCommand = new SqlCommand(checkRequestQuery, connection))
+                {
+                    checkCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                    using (SqlDataReader reader = checkCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int approvals = Convert.ToInt32(reader["Approvals"]);
+                            int totalAdmins = Convert.ToInt32(reader["TotalAdmins"]);
+                            reader.Close(); // Close the reader before executing another command
+
+                            // Update approvals count
+                            string updateApprovalQuery = "UPDATE PendingAdminRequests SET Approvals = Approvals + 1 WHERE UserName = @UserName";
+                            using (SqlCommand updateCommand = new SqlCommand(updateApprovalQuery, connection))
+                            {
+                                updateCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                                updateCommand.ExecuteNonQuery();
+                            }
+
+                            // Check if approvals match total admins
+                            if (approvals + 1 >= totalAdmins)
+                            {
+                                // Approvals are complete, move to AdminList
+                                string insertAdminQuery = "INSERT INTO AdminList (UserName) VALUES (@UserName)";
+                                using (SqlCommand insertCommand = new SqlCommand(insertAdminQuery, connection))
+                                {
+                                    insertCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                                    insertCommand.ExecuteNonQuery();
+                                }
+
+                                // Remove from PendingAdminRequests
+                                string deleteRequestQuery = "DELETE FROM PendingAdminRequests WHERE UserName = @UserName";
+                                using (SqlCommand deleteCommand = new SqlCommand(deleteRequestQuery, connection))
+                                {
+                                    deleteCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                                    deleteCommand.ExecuteNonQuery();
+                                }
+
+                                MessageBox.Show("User has been successfully promoted to Admin!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Approval recorded. Waiting for all admins to approve.", "Pending", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            return;
+                        }
+                    }
+                }
+
+                // If no request exists, create a new one
+                string totalAdminsQuery = "SELECT COUNT(*) FROM AdminList";
+                int totalAdminsCount;
+                using (SqlCommand totalAdminsCommand = new SqlCommand(totalAdminsQuery, connection))
+                {
+                    totalAdminsCount = (int)totalAdminsCommand.ExecuteScalar();
+                }
+
+                string insertRequestQuery = "INSERT INTO PendingAdminRequests (UserName, RequestedBy, Approvals, TotalAdmins, Status) VALUES (@UserName, @RequestedBy, 1, @TotalAdmins, 'Pending')";
+                using (SqlCommand insertCommand = new SqlCommand(insertRequestQuery, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                    insertCommand.Parameters.AddWithValue("@RequestedBy", currentAdmin);
+                    insertCommand.Parameters.AddWithValue("@TotalAdmins", totalAdminsCount);
+                    insertCommand.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Admin promotion request submitted. Waiting for other admins to approve.", "Request Sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
 
         private void approve_Click(object sender, EventArgs e)
         {
@@ -326,5 +452,7 @@ namespace FrameSphere
             this.Hide();
             adminDashboard.Show();
         }
+
+        
     }
 }
