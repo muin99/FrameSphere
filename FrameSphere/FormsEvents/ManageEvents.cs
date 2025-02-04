@@ -49,6 +49,7 @@ namespace FrameSphere
             ticketprice_field.Text = ev.TicketPrice.ToString();
             poster_field.Text = ev.PosterImage;
             posterImage.Image = FSystem.GetImageFromPath(ev.PosterImage);
+    
 
 
 
