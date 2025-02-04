@@ -49,6 +49,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.buyTicket_button = new System.Windows.Forms.Button();
+            this.validation_label = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cover)).BeginInit();
             this.panel2.SuspendLayout();
@@ -58,18 +60,20 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(531, 330);
+            this.label1.Location = new System.Drawing.Point(708, 406);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 28);
+            this.label1.Size = new System.Drawing.Size(266, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "Event will start in :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(439, 225);
+            this.label2.Location = new System.Drawing.Point(585, 277);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(44, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "label2";
             // 
@@ -88,9 +92,10 @@
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.title);
             this.panel4.Controls.Add(this.cover);
-            this.panel4.Location = new System.Drawing.Point(3, 107);
+            this.panel4.Location = new System.Drawing.Point(4, 132);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1266, 153);
+            this.panel4.Size = new System.Drawing.Size(1688, 188);
             this.panel4.TabIndex = 27;
             // 
             // button2
@@ -98,9 +103,10 @@
             this.button2.BackColor = System.Drawing.Color.DarkGreen;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(1072, 101);
+            this.button2.Location = new System.Drawing.Point(1429, 124);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(148, 29);
+            this.button2.Size = new System.Drawing.Size(197, 36);
             this.button2.TabIndex = 22;
             this.button2.Text = "Enter 3D Hall";
             this.button2.UseVisualStyleBackColor = false;
@@ -109,11 +115,12 @@
             // 
             this.organizer.BackColor = System.Drawing.Color.LightGreen;
             this.organizer.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.organizer.Location = new System.Drawing.Point(732, 34);
+            this.organizer.Location = new System.Drawing.Point(976, 42);
+            this.organizer.Margin = new System.Windows.Forms.Padding(4);
             this.organizer.Multiline = true;
             this.organizer.Name = "organizer";
             this.organizer.ReadOnly = true;
-            this.organizer.Size = new System.Drawing.Size(305, 87);
+            this.organizer.Size = new System.Drawing.Size(407, 107);
             this.organizer.TabIndex = 10;
             this.organizer.Text = "vfvc cvvcc  fgdf dgfrdg fdgdfgbf gh fvb vbxvcv vvcfbgfhfgbcv vb bgv bn gfh bfgnbg" +
     "f bgfbv bbvcbgh fghbgvfbgvbh cvb fghfgbhngv bhg bngfhbbvb b";
@@ -123,9 +130,10 @@
             this.price.AutoSize = true;
             this.price.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.price.ForeColor = System.Drawing.Color.Red;
-            this.price.Location = new System.Drawing.Point(296, 129);
+            this.price.Location = new System.Drawing.Point(395, 159);
+            this.price.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.price.Name = "price";
-            this.price.Size = new System.Drawing.Size(42, 20);
+            this.price.Size = new System.Drawing.Size(52, 25);
             this.price.TabIndex = 9;
             this.price.Text = "Free";
             // 
@@ -133,9 +141,10 @@
             // 
             this.ends.AutoSize = true;
             this.ends.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ends.Location = new System.Drawing.Point(294, 101);
+            this.ends.Location = new System.Drawing.Point(392, 124);
+            this.ends.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ends.Name = "ends";
-            this.ends.Size = new System.Drawing.Size(92, 20);
+            this.ends.Size = new System.Drawing.Size(115, 25);
             this.ends.TabIndex = 8;
             this.ends.Text = "9 Jan, 2025";
             // 
@@ -143,9 +152,10 @@
             // 
             this.starts.AutoSize = true;
             this.starts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.starts.Location = new System.Drawing.Point(312, 74);
+            this.starts.Location = new System.Drawing.Point(416, 91);
+            this.starts.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.starts.Name = "starts";
-            this.starts.Size = new System.Drawing.Size(92, 20);
+            this.starts.Size = new System.Drawing.Size(115, 25);
             this.starts.TabIndex = 7;
             this.starts.Text = "2 Jan, 2025";
             // 
@@ -153,9 +163,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(178, 129);
+            this.label5.Location = new System.Drawing.Point(237, 159);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 20);
+            this.label5.Size = new System.Drawing.Size(120, 25);
             this.label5.TabIndex = 6;
             this.label5.Text = "Ticket Price:";
             // 
@@ -163,9 +174,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(178, 101);
+            this.label4.Location = new System.Drawing.Point(237, 124);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 20);
+            this.label4.Size = new System.Drawing.Size(128, 25);
             this.label4.TabIndex = 5;
             this.label4.Text = "Ending Time:";
             // 
@@ -173,9 +185,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(178, 74);
+            this.label3.Location = new System.Drawing.Point(237, 91);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 20);
+            this.label3.Size = new System.Drawing.Size(134, 25);
             this.label3.TabIndex = 4;
             this.label3.Text = "Starting Time:";
             // 
@@ -183,11 +196,12 @@
             // 
             this.description.BackColor = System.Drawing.Color.LightGreen;
             this.description.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.description.Location = new System.Drawing.Point(181, 34);
+            this.description.Location = new System.Drawing.Point(241, 42);
+            this.description.Margin = new System.Windows.Forms.Padding(4);
             this.description.Multiline = true;
             this.description.Name = "description";
             this.description.ReadOnly = true;
-            this.description.Size = new System.Drawing.Size(420, 30);
+            this.description.Size = new System.Drawing.Size(560, 37);
             this.description.TabIndex = 3;
             this.description.Text = "vfvc cvvcc  fgdf dgfrdg fdgdfgbf gh fvb vbxvcv vvcfbgfhfgbcv vb bgv bn gfh bfgnbg" +
     "f bgfbv bbvcbgh fghbgvfbgvbh cvb fghfgbhngv bhg bngfhbbvb b";
@@ -196,9 +210,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(728, 7);
+            this.label6.Location = new System.Drawing.Point(971, 9);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 24);
+            this.label6.Size = new System.Drawing.Size(119, 29);
             this.label6.TabIndex = 2;
             this.label6.Text = "Organizer";
             // 
@@ -206,17 +221,19 @@
             // 
             this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.Location = new System.Drawing.Point(177, 7);
+            this.title.Location = new System.Drawing.Point(236, 9);
+            this.title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(366, 24);
+            this.title.Size = new System.Drawing.Size(466, 29);
             this.title.TabIndex = 1;
             this.title.Text = "Party at the square photography exhibition.";
             // 
             // cover
             // 
-            this.cover.Location = new System.Drawing.Point(10, 10);
+            this.cover.Location = new System.Drawing.Point(13, 12);
+            this.cover.Margin = new System.Windows.Forms.Padding(4);
             this.cover.Name = "cover";
-            this.cover.Size = new System.Drawing.Size(150, 133);
+            this.cover.Size = new System.Drawing.Size(200, 164);
             this.cover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.cover.TabIndex = 0;
             this.cover.TabStop = false;
@@ -226,18 +243,20 @@
             this.panel2.BackColor = System.Drawing.Color.LightGreen;
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(3, 12);
+            this.panel2.Location = new System.Drawing.Point(4, 15);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1266, 89);
+            this.panel2.Size = new System.Drawing.Size(1688, 110);
             this.panel2.TabIndex = 26;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft New Tai Lue", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(516, 24);
+            this.label9.Location = new System.Drawing.Point(688, 30);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(157, 35);
+            this.label9.Size = new System.Drawing.Size(195, 45);
             this.label9.TabIndex = 21;
             this.label9.Text = "Event Page";
             // 
@@ -247,9 +266,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(12, 30);
+            this.button1.Location = new System.Drawing.Point(16, 37);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(195, 29);
+            this.button1.Size = new System.Drawing.Size(260, 36);
             this.button1.TabIndex = 0;
             this.button1.Text = "Return to Dashboard";
             this.button1.UseVisualStyleBackColor = false;
@@ -258,9 +278,10 @@
             // timer
             // 
             this.timer.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timer.Location = new System.Drawing.Point(511, 391);
+            this.timer.Location = new System.Drawing.Point(681, 481);
+            this.timer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timer.Name = "timer";
-            this.timer.Size = new System.Drawing.Size(239, 23);
+            this.timer.Size = new System.Drawing.Size(319, 28);
             this.timer.TabIndex = 28;
             this.timer.Text = "Timer";
             this.timer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -271,16 +292,42 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // buyTicket_button
+            // 
+            this.buyTicket_button.Location = new System.Drawing.Point(764, 577);
+            this.buyTicket_button.Name = "buyTicket_button";
+            this.buyTicket_button.Size = new System.Drawing.Size(169, 60);
+            this.buyTicket_button.TabIndex = 29;
+            this.buyTicket_button.Text = "Buy Ticket";
+            this.buyTicket_button.UseVisualStyleBackColor = true;
+            this.buyTicket_button.Visible = false;
+            this.buyTicket_button.Click += new System.EventHandler(this.buyTicket_button_Click);
+            // 
+            // validation_label
+            // 
+            this.validation_label.AutoSize = true;
+            this.validation_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.validation_label.Location = new System.Drawing.Point(613, 589);
+            this.validation_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.validation_label.Name = "validation_label";
+            this.validation_label.Size = new System.Drawing.Size(455, 29);
+            this.validation_label.TabIndex = 30;
+            this.validation_label.Text = "You have already registered for this event";
+            this.validation_label.Visible = false;
+            // 
             // WaitingPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1685, 838);
+            this.Controls.Add(this.validation_label);
+            this.Controls.Add(this.buyTicket_button);
             this.Controls.Add(this.timer);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "WaitingPage";
             this.Text = "WaitingPage";
             this.panel4.ResumeLayout(false);
@@ -315,5 +362,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label timer;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button buyTicket_button;
+        private System.Windows.Forms.Label validation_label;
     }
 }

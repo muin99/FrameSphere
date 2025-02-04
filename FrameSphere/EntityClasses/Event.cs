@@ -596,5 +596,20 @@ namespace FrameSphere.EntityClasses
             if (organizer == null) throw new ArgumentNullException(nameof(organizer));
             Organizers.Add(organizer);
         }
+
+        public bool validVisitor()
+        {
+            using (SqlConnection con = DB.Connect())
+            {
+                con.Open();
+                string query = "SELECT COUNT(*) FROM UserEvent WHERE username = @username AND eventid = @eventid";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+                cmd.Parameters.AddWithValue("@eventid", this.EventID);
+
+                int res = Convert.ToInt32(cmd.ExecuteScalar());
+                return res > 0;
+            }
+        }
     }
 }

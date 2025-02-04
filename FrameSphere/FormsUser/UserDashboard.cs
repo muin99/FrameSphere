@@ -55,7 +55,7 @@ namespace FrameSphere
             noitem.Visible = false; // Hide "no items" initially
 
             // Define the query, with or without a search filter
-            string query = string.IsNullOrEmpty(searchQuery) ? "SELECT EventId, EventTitle, Description, StartDate, EndDate, EventPoster FROM Events ORDER BY CASE WHEN EndDate < GETDATE() THEN 2 WHEN StartDate > GETDATE() THEN 0 ELSE 1 END, StartDate ASC" : "SELECT EventId, EventTitle, Description, StartDate, EndDate, EventPoster FROM Events WHERE EventTitle LIKE @SearchQuery ORDER BY CASE WHEN EndDate < GETDATE() THEN 2 WHEN StartDate > GETDATE() THEN 0 ELSE 1 END, StartDate ASC";
+            string query = string.IsNullOrEmpty(searchQuery) ? "SELECT EventId, TicketPrice, RegistrationType, EventTitle, Description, StartDate, EndDate, EventPoster FROM Events ORDER BY CASE WHEN EndDate < GETDATE() THEN 2 WHEN StartDate > GETDATE() THEN 0 ELSE 1 END, StartDate ASC" : "SELECT EventId,TicketPrice,RegistrationType, EventTitle, Description, StartDate, EndDate, EventPoster FROM Events WHERE EventTitle LIKE @SearchQuery ORDER BY CASE WHEN EndDate < GETDATE() THEN 2 WHEN StartDate > GETDATE() THEN 0 ELSE 1 END, StartDate ASC";
 
             using (SqlConnection connection = DB.Connect())
             {
@@ -81,6 +81,8 @@ namespace FrameSphere
                         {
                             // Extract event data with null-check handling
                             int eventId = Convert.ToInt32(reader["EventId"]);
+                            string ticketPrice =reader["TicketPrice"].ToString();
+                            string registrationType = reader["RegistrationType"].ToString();
                             string title = reader["EventTitle"].ToString();
                             string description = reader["Description"] != DBNull.Value ? reader["Description"].ToString() : "No description available";
                             DateTime endDate = reader["EndDate"] != DBNull.Value ? (DateTime)reader["EndDate"]:DateTime.Now;
@@ -96,19 +98,19 @@ namespace FrameSphere
                                 : FrameSphere.Properties.Resources._10_3__thumb; // Default placeholder image
 
                             if (previous && endDate < DateTime.Now) {
-                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId);
+                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId, ticketPrice , registrationType);
                             }
                             if (current && StartDate < DateTime.Now && endDate > DateTime.Now)
                             {
-                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId);
+                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId, ticketPrice, registrationType);
                             }
                             if (upcoming &&  StartDate > DateTime.Now)
                             {
-                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId);
+                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId, ticketPrice, registrationType);
                             }
                             if(!previous && !current && !upcoming)
                             {
-                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId);
+                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId, ticketPrice, registrationType);
                             }
                             // Create an event box for the current event
                             
@@ -120,7 +122,7 @@ namespace FrameSphere
 
 
 
-        private void CreateEventBox(string title, string description, DateTime endDate, DateTime StartDate, Image eventImage, int eventId)
+        private void CreateEventBox(string title, string description, DateTime endDate, DateTime StartDate, Image eventImage, int eventId, string ticketPrice, string type)
         {
             int panelWidth = eventspanel.Width - 40;
             int panelHeight = 120;
@@ -175,6 +177,17 @@ namespace FrameSphere
                 Tag = eventId // Store the event ID in the button's Tag property
             };
 
+            Label priceLabel = new Label {
+                //Text = endDate.ToString(),
+                Font = new Font("Arial", 10, FontStyle.Bold),
+                ForeColor = Color.Red,
+                Location = new Point(panelWidth - 90, 90),
+                AutoSize = true,
+                Text = (type!="Free") ? ticketPrice.ToString() : "Free"
+            };
+
+
+
             Timer eventTimer = new Timer();
             eventTimer.Interval = 1000; // 1 second interval
             eventTimer.Tick += (sender, e) =>
@@ -207,6 +220,7 @@ namespace FrameSphere
             boxPanel.Controls.Add(descriptionLabel);
             boxPanel.Controls.Add(timeLabel);
             boxPanel.Controls.Add(enterButton);
+            boxPanel.Controls.Add(priceLabel);
 
             boxPanel.Dock = DockStyle.Top;
 

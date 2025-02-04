@@ -24,6 +24,14 @@ namespace FrameSphere.FormsEvents
             ends.Text = currentEvent.EndsAt.ToString();
             price.Text = (currentEvent.RegistrationType == "Free") ? "Free" : currentEvent.TicketPrice.ToString();
             timer1.Start();
+            if(currentEvent.RegistrationType != "Free")
+            {
+                buyTicket_button.Visible = true;
+            }
+            if (currentEvent.validVisitor()) { 
+                validation_label.Visible = true;
+                buyTicket_button.Visible = false;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -58,6 +66,13 @@ namespace FrameSphere.FormsEvents
         private void timer_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buyTicket_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            BuyTicket b = new BuyTicket(currentEvent);
+            b.Show();
         }
     }
 }

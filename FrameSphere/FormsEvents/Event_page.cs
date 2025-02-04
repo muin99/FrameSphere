@@ -57,20 +57,7 @@ namespace FrameSphere
             }
         }
 
-        private bool validVisitor()
-        {
-            using (SqlConnection con = DB.Connect())
-            {
-                con.Open();
-                string query = "SELECT COUNT(*) FROM TicketPurchases WHERE username = @username AND eventid = @eventid";
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
-                cmd.Parameters.AddWithValue("@eventid", currentEvent.EventID);
-
-                int res = Convert.ToInt32(cmd.ExecuteScalar());
-                return res > 0;
-            }
-        }
+       
 
         private bool checkEntrance()
         {
@@ -90,10 +77,10 @@ namespace FrameSphere
 
             if (currentEvent.RegistrationType == "Free")
             {
-                //return true;
+                return true;
             }
 
-            if (currentEvent.RegistrationType == "Paid" && !validVisitor())
+            if (currentEvent.RegistrationType == "Paid" && !currentEvent.validVisitor())
             {
                 this.Hide();
                 BuyTicket buyTicketPage = new BuyTicket(currentEvent);
