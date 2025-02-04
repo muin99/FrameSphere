@@ -102,7 +102,7 @@
             // UserName
             // 
             this.UserName.Location = new System.Drawing.Point(313, 210);
-            this.UserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UserName.Margin = new System.Windows.Forms.Padding(4);
             this.UserName.Name = "UserName";
             this.UserName.Size = new System.Drawing.Size(927, 22);
             this.UserName.TabIndex = 6;
@@ -111,7 +111,7 @@
             // Password
             // 
             this.Password.Location = new System.Drawing.Point(313, 271);
-            this.Password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Password.Margin = new System.Windows.Forms.Padding(4);
             this.Password.Name = "Password";
             this.Password.PasswordChar = '*';
             this.Password.Size = new System.Drawing.Size(315, 22);
@@ -120,7 +120,7 @@
             // Email
             // 
             this.Email.Location = new System.Drawing.Point(313, 154);
-            this.Email.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Email.Margin = new System.Windows.Forms.Padding(4);
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(927, 22);
             this.Email.TabIndex = 8;
@@ -129,7 +129,7 @@
             // FirstName
             // 
             this.FirstName.Location = new System.Drawing.Point(313, 101);
-            this.FirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FirstName.Margin = new System.Windows.Forms.Padding(4);
             this.FirstName.Name = "FirstName";
             this.FirstName.Size = new System.Drawing.Size(367, 22);
             this.FirstName.TabIndex = 9;
@@ -138,7 +138,7 @@
             // 
             this.SubmitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitButton.Location = new System.Drawing.Point(1117, 337);
-            this.SubmitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SubmitButton.Margin = new System.Windows.Forms.Padding(4);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(124, 34);
             this.SubmitButton.TabIndex = 10;
@@ -165,7 +165,7 @@
             // 
             this.ClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearButton.Location = new System.Drawing.Point(873, 470);
-            this.ClearButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ClearButton.Margin = new System.Windows.Forms.Padding(4);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(124, 34);
             this.ClearButton.TabIndex = 12;
@@ -178,7 +178,7 @@
             this.panel1.BackColor = System.Drawing.Color.LightGreen;
             this.panel1.Controls.Add(this.RegisterLabel);
             this.panel1.Location = new System.Drawing.Point(-1, -1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1688, 106);
             this.panel1.TabIndex = 13;
@@ -207,7 +207,7 @@
             this.panel2.Controls.Add(this.Password);
             this.panel2.Controls.Add(this.FirstNameLabel);
             this.panel2.Location = new System.Drawing.Point(100, 162);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1483, 617);
             this.panel2.TabIndex = 14;
@@ -278,7 +278,7 @@
             // ConfirmPass
             // 
             this.ConfirmPass.Location = new System.Drawing.Point(943, 273);
-            this.ConfirmPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ConfirmPass.Margin = new System.Windows.Forms.Padding(4);
             this.ConfirmPass.Name = "ConfirmPass";
             this.ConfirmPass.PasswordChar = '*';
             this.ConfirmPass.Size = new System.Drawing.Size(297, 22);
@@ -311,7 +311,7 @@
             // LastName
             // 
             this.LastName.Location = new System.Drawing.Point(873, 101);
-            this.LastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LastName.Margin = new System.Windows.Forms.Padding(4);
             this.LastName.Name = "LastName";
             this.LastName.Size = new System.Drawing.Size(367, 22);
             this.LastName.TabIndex = 13;
@@ -320,10 +320,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1685, 838);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RegistrationForm";
             this.Text = "RegistrationForm";
             this.Load += new System.EventHandler(this.RegistrationForm_Load);
