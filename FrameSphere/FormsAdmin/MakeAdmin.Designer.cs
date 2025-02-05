@@ -30,6 +30,7 @@ namespace FrameSphere
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txt2 = new System.Windows.Forms.Label();
             this.txt = new System.Windows.Forms.Label();
             this.UserName = new System.Windows.Forms.Label();
             this.Email = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@ namespace FrameSphere
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,6 +63,16 @@ namespace FrameSphere
             this.panel1.Size = new System.Drawing.Size(703, 539);
             this.panel1.TabIndex = 27;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // txt2
+            // 
+            this.txt2.AutoSize = true;
+            this.txt2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt2.Location = new System.Drawing.Point(199, 331);
+            this.txt2.Name = "txt2";
+            this.txt2.Size = new System.Drawing.Size(57, 20);
+            this.txt2.TabIndex = 35;
+            this.txt2.Text = "label5";
             // 
             // txt
             // 
@@ -168,16 +178,6 @@ namespace FrameSphere
             this.label2.Size = new System.Drawing.Size(83, 19);
             this.label2.TabIndex = 16;
             this.label2.Text = "Last Name :";
-            // 
-            // txt2
-            // 
-            this.txt2.AutoSize = true;
-            this.txt2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt2.Location = new System.Drawing.Point(224, 332);
-            this.txt2.Name = "txt2";
-            this.txt2.Size = new System.Drawing.Size(57, 20);
-            this.txt2.TabIndex = 35;
-            this.txt2.Text = "label5";
             // 
             // MakeAdmin
             // 

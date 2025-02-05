@@ -8,11 +8,58 @@ namespace FrameSphere
 {
     public partial class MakeAdmin : Form
     {
-        public static MakeAdmin Instance { get; private set; }
+        //public static MakeAdmin Instance { get; private set; }
         public MakeAdmin()
         {
             InitializeComponent();
-            Instance = this;
+            //Instance = this;
+
+            string aquery = "SELECT TOP 1 RequestID, UserName, RequestedBy, Approvals, TotalAdmins, Status FROM PendingAdminRequests ORDER BY RequestID DESC";
+
+            using (SqlConnection connection = DB.Connect())
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(aquery, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read()) // If there is data
+                        {
+                            string selectedUser = reader["UserName"].ToString();
+                            string requestedBy = reader["RequestedBy"].ToString();
+                            string approvals = reader["Approvals"].ToString();
+                            string totalAdmins = reader["TotalAdmins"].ToString();
+                            string status = reader["Status"].ToString();
+                            reader.Close();
+                            // Assuming you fetch user details separately based on UserName
+                            string userQuery = "SELECT FirstName, LastName, Email FROM AllUser WHERE UserName = @UserName";
+                            using (SqlCommand userCommand = new SqlCommand(userQuery, connection))
+                            {
+                                userCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                                using (SqlDataReader userReader = userCommand.ExecuteReader())
+                                {
+                                    if (userReader.Read())
+                                    {
+                                        string firstName = userReader["FirstName"].ToString();
+                                        string lastName = userReader["LastName"].ToString();
+                                        string email = userReader["Email"].ToString();
+                                        string currentAdmin = requestedBy; // Assuming current admin is the one who requested
+
+                                        // Populate form labels
+                                        FirstName.Text = firstName;
+                                        LastName.Text = lastName;
+                                        Email.Text = email;
+                                        UserName.Text = selectedUser;
+                                        txt.Text = currentAdmin + " wants to make this user an Admin.";
+                                        txt2.Text = "Do You Want To Give Approval..??";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
 
         }
 
@@ -74,6 +121,7 @@ namespace FrameSphere
                             this.Close(); // Close the form after approval
                             Admin_dashboard a1 = new Admin_dashboard();
                             a1.Show();
+                            a1.adminRequest.Visible = false;
                             return;
                         }
                     }

@@ -8,7 +8,6 @@ namespace FrameSphere
 {
     public partial class Edit_Profile : Form
     {
-
         public MakeAdmin m1;
         
         private string imagePath = null; // Path to the selected image
@@ -121,12 +120,26 @@ namespace FrameSphere
         {
             string selectedUser = managedUserName; // The user to be made admin
             string currentAdmin = FSystem.loggedInUser.UserName; // Current logged-in admin
-
             string firstName = "", lastName = "", email = "";
 
             using (SqlConnection connection = DB.Connect())
             {
                 connection.Open();
+
+                // Check if the user is already an admin
+                string checkAdminQuery = "SELECT UserName FROM AdminList WHERE UserName = @UserName";
+                using (SqlCommand checkAdminCommand = new SqlCommand(checkAdminQuery, connection))
+                {
+                    checkAdminCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                    using (SqlDataReader reader = checkAdminCommand.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            MessageBox.Show("This user is already an admin.", "Already Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return;
+                        }
+                    }
+                }
 
                 // Fetch user details from AllUser table
                 string getUserDetailsQuery = "SELECT FirstName, LastName, Email FROM AllUser WHERE UserName = @UserName";
@@ -144,17 +157,35 @@ namespace FrameSphere
                     }
                 }
 
-                // Open MakeAdmin form with the selected user's details
-                MakeAdmin makeAdminForm = new MakeAdmin();
-                this.m1 = makeAdminForm;
+                // Get the total number of admins
+                string totalAdminsQuery = "SELECT COUNT(*) FROM AdminList";
+                int totalAdmins;
+                using (SqlCommand totalAdminsCommand = new SqlCommand(totalAdminsQuery, connection))
+                {
+                    totalAdmins = (int)totalAdminsCommand.ExecuteScalar();
+                }
 
-                makeAdminForm.FirstName.Text = firstName;
-                makeAdminForm.LastName.Text = lastName;
-                makeAdminForm.Email.Text = email;
-                makeAdminForm.UserName.Text = selectedUser;
-                makeAdminForm.txt.Text = currentAdmin+" wants to make this user an Admin.";
-                makeAdminForm.txt2.Text = "Do You Want To Give Approval..??";
-                //makeAdminForm.ShowDialog();
+                // If there's only one admin, promote the user immediately
+                if (totalAdmins == 1)
+                {
+                    string insertAdminQuery = "INSERT INTO AdminList (UserName) VALUES (@UserName)";
+                    using (SqlCommand insertCommand = new SqlCommand(insertAdminQuery, connection))
+                    {
+                        insertCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                        insertCommand.ExecuteNonQuery();
+                    }
+
+                    // Remove any pending request (optional safeguard)
+                    string deleteRequestQuery = "DELETE FROM PendingAdminRequests WHERE UserName = @UserName";
+                    using (SqlCommand deleteCommand = new SqlCommand(deleteRequestQuery, connection))
+                    {
+                        deleteCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                        deleteCommand.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("User has been successfully promoted to Admin!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
                 // Check if the user is already in the PendingAdminRequests table
                 string checkRequestQuery = "SELECT Approvals, TotalAdmins FROM PendingAdminRequests WHERE UserName = @UserName";
@@ -166,10 +197,10 @@ namespace FrameSphere
                         if (reader.Read())
                         {
                             int approvals = Convert.ToInt32(reader["Approvals"]);
-                            int totalAdmins = Convert.ToInt32(reader["TotalAdmins"]);
-                            reader.Close(); // Close the reader before executing another command
+                            int totalAdminsRequired = Convert.ToInt32(reader["TotalAdmins"]);
+                            reader.Close(); // Close reader before executing another command
 
-                            // Update approvals count
+                            // Update approval count
                             string updateApprovalQuery = "UPDATE PendingAdminRequests SET Approvals = Approvals + 1 WHERE UserName = @UserName";
                             using (SqlCommand updateCommand = new SqlCommand(updateApprovalQuery, connection))
                             {
@@ -177,10 +208,9 @@ namespace FrameSphere
                                 updateCommand.ExecuteNonQuery();
                             }
 
-                            // Check if approvals match total admins
-                            if (approvals + 1 >= totalAdmins)
+                            // If approvals meet or exceed total admins, promote the user
+                            if (approvals + 1 >= totalAdminsRequired)
                             {
-                                // Approvals are complete, move to AdminList
                                 string insertAdminQuery = "INSERT INTO AdminList (UserName) VALUES (@UserName)";
                                 using (SqlCommand insertCommand = new SqlCommand(insertAdminQuery, connection))
                                 {
@@ -208,25 +238,19 @@ namespace FrameSphere
                 }
 
                 // If no request exists, create a new one
-                string totalAdminsQuery = "SELECT COUNT(*) FROM AdminList";
-                int totalAdminsCount;
-                using (SqlCommand totalAdminsCommand = new SqlCommand(totalAdminsQuery, connection))
-                {
-                    totalAdminsCount = (int)totalAdminsCommand.ExecuteScalar();
-                }
-
                 string insertRequestQuery = "INSERT INTO PendingAdminRequests (UserName, RequestedBy, Approvals, TotalAdmins, Status) VALUES (@UserName, @RequestedBy, 1, @TotalAdmins, 'Pending')";
                 using (SqlCommand insertCommand = new SqlCommand(insertRequestQuery, connection))
                 {
                     insertCommand.Parameters.AddWithValue("@UserName", selectedUser);
                     insertCommand.Parameters.AddWithValue("@RequestedBy", currentAdmin);
-                    insertCommand.Parameters.AddWithValue("@TotalAdmins", totalAdminsCount);
+                    insertCommand.Parameters.AddWithValue("@TotalAdmins", totalAdmins);
                     insertCommand.ExecuteNonQuery();
                 }
 
                 MessageBox.Show("Admin promotion request submitted. Waiting for other admins to approve.", "Request Sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
 
 
 

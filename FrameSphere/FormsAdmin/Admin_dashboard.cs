@@ -12,7 +12,6 @@ namespace FrameSphere
         {
             InitializeComponent();
             Loaduserboxes();
-
         }
 
         private void Loaduserboxes(string searchQuery = "")
@@ -47,6 +46,26 @@ namespace FrameSphere
                     }
                 }
             }
+
+            string aquery = "SELECT COUNT(*) FROM PendingAdminRequests";
+
+            using (SqlConnection connection = DB.Connect())
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(aquery, connection))
+                {
+                    int count = (int)command.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        adminRequest.Visible = true;
+                    }
+                    else
+                    {
+                        adminRequest.Visible = false;
+                    }
+                }
+            }
+
         }
 
         private void CreateUserBox(string userName, string fullName, string email, string status)
@@ -191,12 +210,7 @@ namespace FrameSphere
 
         private void adminRequest_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            if (MakeAdmin.Instance != null && !MakeAdmin.Instance.IsDisposed)
-                MakeAdmin.Instance.ShowDialog();
-            else
                 new MakeAdmin().ShowDialog();
-
         }
     }
 }

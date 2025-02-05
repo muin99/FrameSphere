@@ -42,10 +42,10 @@ namespace FrameSphere
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.buttons_panel = new System.Windows.Forms.Panel();
+            this.adminRequest = new System.Windows.Forms.Button();
             this.artlist = new System.Windows.Forms.Button();
             this.UserBoard = new System.Windows.Forms.Button();
             this.Logout = new System.Windows.Forms.Button();
-            this.adminRequest = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.userpanel.SuspendLayout();
@@ -209,6 +209,20 @@ namespace FrameSphere
             this.buttons_panel.Size = new System.Drawing.Size(303, 571);
             this.buttons_panel.TabIndex = 17;
             // 
+            // adminRequest
+            // 
+            this.adminRequest.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.adminRequest.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.adminRequest.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.adminRequest.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.adminRequest.Location = new System.Drawing.Point(53, 508);
+            this.adminRequest.Name = "adminRequest";
+            this.adminRequest.Size = new System.Drawing.Size(195, 29);
+            this.adminRequest.TabIndex = 17;
+            this.adminRequest.Text = "Admin Request";
+            this.adminRequest.UseVisualStyleBackColor = false;
+            this.adminRequest.Click += new System.EventHandler(this.adminRequest_Click);
+            // 
             // artlist
             // 
             this.artlist.BackColor = System.Drawing.Color.DarkGreen;
@@ -255,20 +269,6 @@ namespace FrameSphere
             this.Logout.UseVisualStyleBackColor = false;
             this.Logout.Click += new System.EventHandler(this.Logout_Click);
             // 
-            // adminRequest
-            // 
-            this.adminRequest.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.adminRequest.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.adminRequest.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.adminRequest.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.adminRequest.Location = new System.Drawing.Point(53, 508);
-            this.adminRequest.Name = "adminRequest";
-            this.adminRequest.Size = new System.Drawing.Size(195, 29);
-            this.adminRequest.TabIndex = 17;
-            this.adminRequest.Text = "Admin Request";
-            this.adminRequest.UseVisualStyleBackColor = false;
-            this.adminRequest.Click += new System.EventHandler(this.adminRequest_Click);
-            // 
             // Admin_dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -313,6 +313,6 @@ namespace FrameSphere
         private System.Windows.Forms.Label search_label;
         private System.Windows.Forms.Button Logout;
         private System.Windows.Forms.Button artlist;
-        private System.Windows.Forms.Button adminRequest;
+        public System.Windows.Forms.Button adminRequest;
     }
 }
