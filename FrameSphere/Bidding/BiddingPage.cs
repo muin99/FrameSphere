@@ -1,13 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Drawing;
 using FrameSphere.EntityClasses;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace FrameSphere.Bidding
 {
     public partial class BiddingPage : Form
     {
         public Bid bid;
+        public Art art;
+        public Event Event;
+
         public BiddingPage(Art art, Event Event)
         {
             InitializeComponent();
@@ -18,43 +24,51 @@ namespace FrameSphere.Bidding
                 NotForSale notForSale = new NotForSale(art, Event);
                 notForSale.Show();
             }
-
+            this.art = art;
+            this.Event = Event;
             bid = new Bid(art, Event);
 
             title.Text = art.ArtTitle;
             description.Text = art.ArtDescription;
             starts.Text = Event.StartsAt.ToString();
             ends.Text = Event.EndsAt.ToString();
-            minBid.Text = art.Price.ToString();
+            minBid.Text = bid.GetMinimumBid().ToString();
             cover.Image = FSystem.GetImageFromPath(art.artPhotos.FirstOrDefault());
+            highestbid.Text = bid.GetMinimumBid().ToString();
+            higestbidder.Text = bid.GetCurrentMaxBidder();
 
             User user = FSystem.loggedInUser;
             name.Text = user.FullName();
             userName.Text = user.UserName;
             profilepic.Image = FSystem.GetImageFromPath(user.ProfilePic);
+
+            LoadPreviousBids();
         }
 
         private void bidBtn_Click(object sender, EventArgs e)
         {
-            // Get the current bid amount entered by the user
             if (double.TryParse(currentbidamount.Text, out double newBidAmount))
             {
-                // Get the minimum bid for validation
-                double minBidAmount = double.Parse(minBid.Text);
+                double minBidAmount = bid.GetMinimumBid();
 
-                // Check if the new bid is higher than the minimum bid
-                if (newBidAmount >= minBidAmount)
+                if (newBidAmount > minBidAmount)
                 {
-                    // Save the bid (could involve updating the database, for example)
-                    // You would likely need to update your Bid object and possibly save it to the database
-                    bid.PlaceBid(newBidAmount);
+                    if (bid.PlaceBid(newBidAmount))
+                    {
+                        MessageBox.Show("Bid placed successfully!");
+                        AddBidToLayout(FSystem.loggedInUser.UserName, newBidAmount);
+                        highestbid.Text = bid.GetMinimumBid().ToString();
+                        higestbidder.Text = new User(bid.GetCurrentMaxBidder()).FullName();
 
-                    // Add the bid to the layout
-                    AddBidToLayout(newBidAmount);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to place bid.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Bid amount must be greater than the minimum bid.");
+                    MessageBox.Show("Bid amount must be greater than the current highest bid.");
                 }
             }
             else
@@ -63,40 +77,75 @@ namespace FrameSphere.Bidding
             }
         }
 
-        private void AddBidToLayout(double newBidAmount)
+        private void LoadPreviousBids()
         {
-            // Check if this bid belongs to the logged-in user or another user
+            List<string[]> previousBids = bid.GetAllBids();
+            foreach (string[] bidEntry in previousBids)
+            {
+                string username = bidEntry[0];
+                double bidAmount = Convert.ToDouble(bidEntry[1]);
+                AddBidToLayout(username, bidAmount);
+            }
+        }
+
+        private void AddBidToLayout(string username, double newBidAmount)
+        {
             User user = FSystem.loggedInUser;
-
-            // Create a new panel to hold the bid
-            Panel bidPanel = new Panel();
-            bidPanel.Size = new System.Drawing.Size(bidtable.Width - 20, 40); // Adjust size as needed
-            bidPanel.BorderStyle = BorderStyle.FixedSingle;
-
-            // Add the bid amount and user details to the panel
-            Label bidAmountLabel = new Label {
-                Text = $"{user.UserName}: ${newBidAmount}",
-                AutoSize = true,
-                Font = new System.Drawing.Font("Arial", 10),
-                Location = new System.Drawing.Point(10, 10)
+            Panel bidPanel = new Panel {
+                Size = new Size(bidtable.Width - 20, 50),
+                BorderStyle = BorderStyle.FixedSingle,
+                BackColor = user.UserName == username ? Color.LightGreen : Color.LightGray,
+                Padding = new Padding(5)
             };
 
-            // Add the label to the panel
+            Label bidAmountLabel = new Label {
+                Text = $"{username}: ${newBidAmount}",
+                AutoSize = true,
+                Font = new Font("Arial", 10, FontStyle.Bold),
+                ForeColor = Color.Black,
+                Location = new Point(10, 10)
+            };
+
             bidPanel.Controls.Add(bidAmountLabel);
 
-            // If it's the logged-in user's bid, add it to the right column
-            if (user.UserName == FSystem.loggedInUser.UserName)
+            if (user.UserName == username)
             {
                 bidtable.Controls.Add(bidPanel, 1, bidtable.RowCount);
             }
             else
             {
-                // Otherwise, add it to the left column for other bids
                 bidtable.Controls.Add(bidPanel, 0, bidtable.RowCount);
             }
 
-            // Optionally, increase the row count to create space for more bids
             bidtable.RowCount++;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ArtDisplayForm a = new ArtDisplayForm(art.ArtID, Event);
+            a.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DateTime now = DateTime.Now;
+            TimeSpan remainingTime = Event.StartsAt - now;
+
+            if (remainingTime.TotalSeconds > 0) // Event not started yet
+            {
+                endtimer.Text = $"{remainingTime.Days}d {remainingTime.Hours:D2}h {remainingTime.Minutes:D2}m {remainingTime.Seconds:D2}s";
+            }
+            else if (now >= Event.StartsAt && now < Event.EndsAt) // Event started but not ended
+            {
+                TimeSpan remainingUntilEnd = Event.EndsAt - now;
+                endtimer.Text = $"{remainingUntilEnd.Days}d {remainingUntilEnd.Hours:D2}h {remainingUntilEnd.Minutes:D2}m {remainingUntilEnd.Seconds:D2}s";
+            }
+            else // Event finished
+            {
+                endtimer.Text = "Event Finished!";
+                timer1.Stop();
+            }
         }
     }
 }

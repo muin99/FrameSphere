@@ -55,7 +55,12 @@ namespace FrameSphere
             noitem.Visible = false; // Hide "no items" initially
 
             // Define the query, with or without a search filter
-            string query = string.IsNullOrEmpty(searchQuery) ? "SELECT EventId, TicketPrice, RegistrationType, EventTitle, Description, StartDate, EndDate, EventPoster FROM Events ORDER BY CASE WHEN EndDate < GETDATE() THEN 2 WHEN StartDate > GETDATE() THEN 0 ELSE 1 END, StartDate ASC" : "SELECT EventId,TicketPrice,RegistrationType, EventTitle, Description, StartDate, EndDate, EventPoster FROM Events WHERE EventTitle LIKE @SearchQuery ORDER BY CASE WHEN EndDate < GETDATE() THEN 2 WHEN StartDate > GETDATE() THEN 0 ELSE 1 END, StartDate ASC";
+            string query = string.IsNullOrEmpty(searchQuery) ? "SELECT EventId, TicketPrice, RegistrationType, EventTitle, Description, StartDate, EndDate, EventPoster FROM Events " +
+                "ORDER BY (CASE WHEN GETDATE() BETWEEN StartDate AND EndDate THEN 0 WHEN StartDate > GETDATE() THEN 1 ELSE 2 END), " +
+                "(CASE WHEN GETDATE() BETWEEN StartDate AND EndDate THEN StartDate WHEN StartDate > GETDATE() THEN StartDate ELSE EndDate END) DESC" : 
+                "SELECT EventId, TicketPrice, RegistrationType, EventTitle, Description, StartDate, EndDate, EventPoster FROM Events WHERE EventTitle LIKE @SearchQuery ORDER BY " +
+                "(CASE WHEN GETDATE() BETWEEN StartDate AND EndDate THEN 0 WHEN StartDate > GETDATE() THEN 1 ELSE 2 END), " +
+                "(CASE WHEN GETDATE() BETWEEN StartDate AND EndDate THEN StartDate WHEN StartDate > GETDATE() THEN StartDate ELSE EndDate END) DESC";
 
             using (SqlConnection connection = DB.Connect())
             {

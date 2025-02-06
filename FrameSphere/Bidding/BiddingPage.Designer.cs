@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chat = new System.Windows.Forms.Button();
@@ -61,6 +62,7 @@
             this.bidBtn = new System.Windows.Forms.Button();
             this.currentbidamount = new System.Windows.Forms.TextBox();
             this.bidtable = new System.Windows.Forms.TableLayoutPanel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
@@ -191,7 +193,7 @@
             this.endtimer.AutoSize = true;
             this.endtimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endtimer.ForeColor = System.Drawing.Color.Red;
-            this.endtimer.Location = new System.Drawing.Point(532, 101);
+            this.endtimer.Location = new System.Drawing.Point(749, 101);
             this.endtimer.Name = "endtimer";
             this.endtimer.Size = new System.Drawing.Size(103, 20);
             this.endtimer.TabIndex = 15;
@@ -201,7 +203,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(456, 101);
+            this.label10.Location = new System.Drawing.Point(673, 101);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(70, 20);
             this.label10.TabIndex = 14;
@@ -348,6 +350,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Return to Art";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel3
             // 
@@ -462,6 +465,11 @@
             this.bidtable.Size = new System.Drawing.Size(744, 356);
             this.bidtable.TabIndex = 2;
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // BiddingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -523,5 +531,6 @@
         private System.Windows.Forms.Button bidBtn;
         private System.Windows.Forms.TextBox currentbidamount;
         private System.Windows.Forms.TableLayoutPanel bidtable;
+        private System.Windows.Forms.Timer timer1;
     }
 }
