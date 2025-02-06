@@ -32,12 +32,9 @@ namespace FrameSphere.FormsEvents
         {
             allorganizers.Controls.Clear();
 
-            string query = @"SELECT UserName FROM AllUser 
-                           WHERE UserName NOT IN (
-                               SELECT UserName FROM Organizers 
-                               WHERE EventId = @EventID
-                           ) 
-                           AND UserName LIKE @Search";
+            string query = string.IsNullOrWhiteSpace(search)
+                ? "SELECT UserName FROM AllUser"
+                : $"SELECT UserName FROM AllUser WHERE UserName LIKE '%{search}%'"; // Fixed concatenation
 
             using (SqlConnection conn = DB.Connect())
             {
@@ -45,7 +42,7 @@ namespace FrameSphere.FormsEvents
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@EventID", currentEvent.EventID);
-                    cmd.Parameters.AddWithValue("@Search", $"%{search}%");
+                    cmd.Parameters.AddWithValue("@Search", $"%{search}%"); // Wildcards added here
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -141,7 +138,7 @@ namespace FrameSphere.FormsEvents
             {
                 currentEvent.AddOrganizer(organizer);
                 LoadAddedOrganizers();
-                LoadPotentialOrganizers(SearchArtist_Field.Text);
+                LoadPotentialOrganizers(SearchOrganizer_Field.Text);
             }
             catch (Exception ex)
             {
@@ -156,7 +153,7 @@ namespace FrameSphere.FormsEvents
             {
                 currentEvent.RemoveOrganizer(organizer);
                 LoadAddedOrganizers();
-                LoadPotentialOrganizers(SearchArtist_Field.Text);
+                LoadPotentialOrganizers(SearchOrganizer_Field.Text);
             }
             catch (Exception ex)
             {
@@ -165,16 +162,18 @@ namespace FrameSphere.FormsEvents
             }
         }
 
-        private void SearchArtist_Field_TextChanged(object sender, EventArgs e)
-        {
-            LoadPotentialOrganizers(SearchArtist_Field.Text);
-        }
+        
 
         private void goBack_button_Click(object sender, EventArgs e)
         {
             this.Close();
             ManageEvents e1 = new ManageEvents(currentEvent.EventID);
             e1.Show();
+        }
+
+        private void SearchOrganizer_Field_TextChanged(object sender, EventArgs e)
+        {
+            LoadPotentialOrganizers(SearchOrganizer_Field.Text);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace FrameSphere.FormsEvents
             this.currentOrganizers_panel = new System.Windows.Forms.FlowLayoutPanel();
             this.noOrganizers = new System.Windows.Forms.Label();
             this.CurrentArtists_Label = new System.Windows.Forms.Label();
-            this.SearchArtist_Field = new System.Windows.Forms.TextBox();
+            this.SearchOrganizer_Field = new System.Windows.Forms.TextBox();
             this.FindArtist_Label = new System.Windows.Forms.Label();
             this.mParticipant_tableLayout.SuspendLayout();
             this.MP_Header.SuspendLayout();
@@ -120,7 +120,7 @@ namespace FrameSphere.FormsEvents
             this.MP_Body.Controls.Add(this.allorganizers);
             this.MP_Body.Controls.Add(this.currentOrganizers_panel);
             this.MP_Body.Controls.Add(this.CurrentArtists_Label);
-            this.MP_Body.Controls.Add(this.SearchArtist_Field);
+            this.MP_Body.Controls.Add(this.SearchOrganizer_Field);
             this.MP_Body.Controls.Add(this.FindArtist_Label);
             this.MP_Body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MP_Body.Location = new System.Drawing.Point(2, 93);
@@ -131,6 +131,7 @@ namespace FrameSphere.FormsEvents
             // 
             // allorganizers
             // 
+            this.allorganizers.AutoScroll = true;
             this.allorganizers.Location = new System.Drawing.Point(23, 80);
             this.allorganizers.Margin = new System.Windows.Forms.Padding(2);
             this.allorganizers.Name = "allorganizers";
@@ -167,13 +168,14 @@ namespace FrameSphere.FormsEvents
             this.CurrentArtists_Label.TabIndex = 4;
             this.CurrentArtists_Label.Text = "Currently Organizing";
             // 
-            // SearchArtist_Field
+            // SearchOrganizer_Field
             // 
-            this.SearchArtist_Field.Location = new System.Drawing.Point(86, 49);
-            this.SearchArtist_Field.Margin = new System.Windows.Forms.Padding(2);
-            this.SearchArtist_Field.Name = "SearchArtist_Field";
-            this.SearchArtist_Field.Size = new System.Drawing.Size(351, 20);
-            this.SearchArtist_Field.TabIndex = 2;
+            this.SearchOrganizer_Field.Location = new System.Drawing.Point(86, 49);
+            this.SearchOrganizer_Field.Margin = new System.Windows.Forms.Padding(2);
+            this.SearchOrganizer_Field.Name = "SearchOrganizer_Field";
+            this.SearchOrganizer_Field.Size = new System.Drawing.Size(351, 20);
+            this.SearchOrganizer_Field.TabIndex = 2;
+            this.SearchOrganizer_Field.TextChanged += new System.EventHandler(this.SearchOrganizer_Field_TextChanged);
             // 
             // FindArtist_Label
             // 
@@ -217,7 +219,7 @@ namespace FrameSphere.FormsEvents
         private System.Windows.Forms.FlowLayoutPanel currentOrganizers_panel;
         private System.Windows.Forms.Label noOrganizers;
         private System.Windows.Forms.Label CurrentArtists_Label;
-        private System.Windows.Forms.TextBox SearchArtist_Field;
+        private System.Windows.Forms.TextBox SearchOrganizer_Field;
         private System.Windows.Forms.Label FindArtist_Label;
     }
 }
