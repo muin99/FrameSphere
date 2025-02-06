@@ -8,6 +8,7 @@ namespace FrameSphere.EntityClasses
 {
     public class Organizer : User
     {
+        public Organizer(string UserName) : base(UserName){ }
         public int NumberOfManagedEvents { get; set; }
 
         public Event[] ManagedEvents = new Event[1000];

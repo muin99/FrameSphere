@@ -33,7 +33,7 @@ namespace FrameSphere
         public void LoadImagePaths()
         {
             int i = 0;
-            foreach (Art a in FSystem.loggedInUser.myArts)//for each artid of logged user
+            foreach (Art a in FSystem.loggedInUser.Artist.myArts)//for each artid of logged user
             {
                 ImagePaths[i] = a.artPhotos[0];//store the path for the first image per artid
             }

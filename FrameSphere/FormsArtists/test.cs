@@ -17,7 +17,7 @@ namespace FrameSphere.FormsArtists
         public test()
         {
             InitializeComponent();
-            Art a = FSystem.loggedInUser.myArts[0];
+            Art a = FSystem.loggedInUser.Artist.myArts[0];
             a.ArtTitle = "cat";
             label1.Text = a.ArtTitle;
             label2.Text = a.ArtDescription;

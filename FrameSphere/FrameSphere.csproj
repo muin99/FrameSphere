@@ -72,6 +72,7 @@
     <Compile Include="D3Program\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="EntityClasses\Person.cs" />
     <Compile Include="FormsAdmin\Admin_dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
