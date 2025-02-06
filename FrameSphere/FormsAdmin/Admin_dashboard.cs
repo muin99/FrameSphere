@@ -12,8 +12,9 @@ namespace FrameSphere
         {
             InitializeComponent();
             Loaduserboxes();
+            
         }
-
+        
         private void Loaduserboxes(string searchQuery = "")
         {
             userpanel.Controls.Clear();
@@ -47,24 +48,35 @@ namespace FrameSphere
                 }
             }
 
-            string aquery = "SELECT COUNT(*) FROM PendingAdminRequests";
+            string pendingRequestQuery = "SELECT COUNT(*) FROM PendingAdminRequests";
 
             using (SqlConnection connection = DB.Connect())
             {
                 connection.Open();
-                using (SqlCommand command = new SqlCommand(aquery, connection))
+
+                using (SqlCommand pendingCommand = new SqlCommand(pendingRequestQuery, connection))
                 {
-                    int count = (int)command.ExecuteScalar();
-                    if (count > 0)
-                    {
-                        adminRequest.Visible = true;
-                    }
-                    else
+                    int pendingRequests = (int)pendingCommand.ExecuteScalar();
+
+                    if (pendingRequests == 0)
                     {
                         adminRequest.Visible = false;
+                        return; // No pending requests, so exit
                     }
                 }
+
+                string adminCheckQuery = "SELECT COUNT(*) FROM AdminApprovals WHERE AdminName = @AdminName";
+
+                using (SqlCommand adminCommand = new SqlCommand(adminCheckQuery, connection))
+                {
+                    adminCommand.Parameters.AddWithValue("@AdminName", FSystem.loggedInUser.UserName);
+                    int adminExists = (int)adminCommand.ExecuteScalar();
+
+                    adminRequest.Visible = adminExists == 0; // Hide if admin exists, show otherwise
+                }
             }
+
+
 
         }
 

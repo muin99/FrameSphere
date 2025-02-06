@@ -198,7 +198,7 @@ namespace FrameSphere
                         {
                             int approvals = Convert.ToInt32(reader["Approvals"]);
                             int totalAdminsRequired = Convert.ToInt32(reader["TotalAdmins"]);
-                            reader.Close(); // Close reader before executing another command
+                            reader.Close();
 
                             // Update approval count
                             string updateApprovalQuery = "UPDATE PendingAdminRequests SET Approvals = Approvals + 1 WHERE UserName = @UserName";
@@ -247,10 +247,27 @@ namespace FrameSphere
                     insertCommand.ExecuteNonQuery();
                 }
 
+                // Get the RequestID of the newly created request
+                string getRequestIDQuery = "SELECT RequestID FROM PendingAdminRequests WHERE UserName = @UserName";
+                int requestID = 0;
+                using (SqlCommand getRequestIDCommand = new SqlCommand(getRequestIDQuery, connection))
+                {
+                    getRequestIDCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                    requestID = (int)getRequestIDCommand.ExecuteScalar();
+                }
+
+                // Insert into AdminApprovals table with the correct RequestID
+                string insertApprovalLogQuery = "INSERT INTO AdminApprovals (RequestID, AdminName) VALUES (@RequestID, @AdminName)";
+                using (SqlCommand approvalLogCommand = new SqlCommand(insertApprovalLogQuery, connection))
+                {
+                    approvalLogCommand.Parameters.AddWithValue("@RequestID", requestID);
+                    approvalLogCommand.Parameters.AddWithValue("@AdminName", currentAdmin);
+                    approvalLogCommand.ExecuteNonQuery();
+                }
+
                 MessageBox.Show("Admin promotion request submitted. Waiting for other admins to approve.", "Request Sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
 
 
 
