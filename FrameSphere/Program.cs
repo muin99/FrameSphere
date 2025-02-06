@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
@@ -22,7 +23,8 @@ namespace FrameSphere
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
-            //Application.Run(new Form1());
+
+            //Application.Run(new test());
             //Application.Run(new ArtReviewPage(7));
         }
     }

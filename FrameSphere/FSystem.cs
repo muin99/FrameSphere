@@ -9,6 +9,7 @@ using FrameSphere.EntityClasses;
 using System.Drawing;
 using Newtonsoft.Json;
 using FrameSphere.D3Program;
+using System.Runtime.CompilerServices;
 
 namespace FrameSphere
 {
@@ -24,6 +25,8 @@ namespace FrameSphere
         public static List<User> Admins = new List<User>();
         public static List<Event> AllEvents = new List<Event>();
         public static User loggedInUser;
+
+
 
         public static Image GetImageFromPath(string relativePath)
         {
@@ -72,7 +75,7 @@ namespace FrameSphere
 
         public static void reloadLoggedInUser()
         {
-            loggedInUser = new User();
+            loggedInUser = new User(FSystem.loggedInUser.UserName);
         }
         public static bool Login(string userId, string password)
         {

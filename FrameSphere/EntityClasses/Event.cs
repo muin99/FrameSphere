@@ -9,7 +9,7 @@ namespace FrameSphere.EntityClasses
     {
         // Private fields
         private int _eventID;
-        private string _eventTitle;
+        private string _eventTitle;   
         private string _eventDescription;
         private string _organization;
         private double _ticketPrice;
