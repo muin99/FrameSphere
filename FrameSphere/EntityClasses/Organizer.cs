@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace FrameSphere.EntityClasses
 {
     public class Organizer : User
     {
+        public int EventID { get; set; }
         public Organizer(string UserName) : base(UserName){ }
         public int NumberOfManagedEvents { get; set; }
 
@@ -23,6 +23,48 @@ namespace FrameSphere.EntityClasses
             else
             {
                 Console.WriteLine("Cannot add more events. Maximum capacity reached.");
+            }
+        }
+
+        public void RemoveOrganizer(User organizer)
+        {
+            string query = $"DELETE FROM Organizers WHERE UserName = @UserName AND EventID = @EventID";
+
+            using (SqlConnection conn = DB.Connect())
+            {
+                try
+                {
+                    conn.Open();
+
+                    // Check if the artist exists in the event.
+                    string checkQuery = $"SELECT COUNT(*) FROM Organizers WHERE UserName = @UserName AND EventID = @EventID";
+                    SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
+                    checkCmd.Parameters.AddWithValue("@UserName", organizer.UserName);
+                    checkCmd.Parameters.AddWithValue("@EventID", this.EventID);
+
+                    int count = (int)checkCmd.ExecuteScalar();
+
+                    if (count == 0)
+                    {
+                        MessageBox.Show("This organizer is not part of the event.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Remove the artist from the database.
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@UserName", organizer.UserName);
+                    cmd.Parameters.AddWithValue("@EventID", this.EventID);
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Organizer successfully removed from the event.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred while removing the Organizer: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

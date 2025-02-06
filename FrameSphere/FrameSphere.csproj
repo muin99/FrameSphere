@@ -158,6 +158,12 @@
     <Compile Include="FormsEvents\ManageArtCollection.Designer.cs">
       <DependentUpon>ManageArtCollection.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsEvents\ManageOrganizer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsEvents\ManageOrganizer.Designer.cs">
+      <DependentUpon>ManageOrganizer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsEvents\ManageParticipants.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsEvents\ManageArtCollection.resx">
       <DependentUpon>ManageArtCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsEvents\ManageOrganizer.resx">
+      <DependentUpon>ManageOrganizer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsEvents\ManageParticipants.resx">
       <DependentUpon>ManageParticipants.cs</DependentUpon>

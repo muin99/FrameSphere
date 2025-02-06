@@ -9,7 +9,7 @@ namespace FrameSphere
     public partial class Edit_Profile : Form
     {
         public MakeAdmin m1;
-        
+
         private string imagePath = null; // Path to the selected image
         private string profilePicRelativePath = null; // Relative path for storing in the database
         private string managedUserName;
@@ -26,7 +26,7 @@ namespace FrameSphere
                 // Show the Approve and Reject buttons.
                 approve.Visible = true;
                 reject.Visible = true;
-                
+
                 // Change label11 to "Manage Profile".
                 label11.Text = "Manage Profile";
 
@@ -494,6 +494,7 @@ namespace FrameSphere
             adminDashboard.Show();
         }
 
-        
+
     }
 }
+

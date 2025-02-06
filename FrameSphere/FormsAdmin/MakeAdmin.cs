@@ -59,7 +59,7 @@ namespace FrameSphere
                     }
                 }
             }
-            
+
 
         }
 
@@ -155,8 +155,8 @@ namespace FrameSphere
                             this.Close(); // Close the form after approval
                             Admin_dashboard a1 = new Admin_dashboard();
                             a1.Show();
-                            a1.adminRequest.Visible = false;
-                            return;
+                            //a1.adminRequest.Visible = false;
+                            //return;
                         }
                     }
                 }

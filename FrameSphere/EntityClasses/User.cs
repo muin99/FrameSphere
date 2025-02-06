@@ -198,5 +198,14 @@ namespace FrameSphere.EntityClasses
         {
             Console.WriteLine($"Name: {FirstName} {LastName}, Email: {Email}, Username: {UserName}, Total Events Attended: {TotalVisitedEvents}");
         }
+
+        public override void Logout(Form a)
+        {
+            FSystem.loggedInUser = null;
+            a.Hide();
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
+        }
+
     }
 }

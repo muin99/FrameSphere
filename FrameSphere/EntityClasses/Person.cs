@@ -351,13 +351,7 @@ namespace FrameSphere.EntityClasses
                 }
             }
         }
-        public void Logout(Form a)
-        {
-            FSystem.loggedInUser = null;
-            a.Hide();
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
-        }
+        public abstract void Logout(Form a);
         public Person(string username) {
             this.UserName = username;
         }

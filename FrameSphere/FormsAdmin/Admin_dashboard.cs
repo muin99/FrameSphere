@@ -5,16 +5,46 @@ using System.Windows.Forms;
 
 namespace FrameSphere
 {
-    
+
     public partial class Admin_dashboard : Form
     {
         public Admin_dashboard()
         {
             InitializeComponent();
             Loaduserboxes();
-            
+            adminrequest();
         }
-        
+
+        public void adminrequest()
+        {
+            string pendingRequestQuery = "SELECT COUNT(*) FROM PendingAdminRequests";
+
+            using (SqlConnection connection = DB.Connect())
+            {
+                connection.Open();
+
+                using (SqlCommand pendingCommand = new SqlCommand(pendingRequestQuery, connection))
+                {
+                    int pendingRequests = (int)pendingCommand.ExecuteScalar();
+
+                    if (pendingRequests == 0)
+                    {
+                        adminRequest.Visible = false;
+                        return; // No pending requests, so exit
+                    }
+                }
+
+                string adminCheckQuery = "SELECT COUNT(*) FROM AdminApprovals WHERE AdminName = @AdminName";
+
+                using (SqlCommand adminCommand = new SqlCommand(adminCheckQuery, connection))
+                {
+                    adminCommand.Parameters.AddWithValue("@AdminName", FSystem.loggedInUser.UserName);
+                    int adminExists = (int)adminCommand.ExecuteScalar();
+
+                    adminRequest.Visible = adminExists == 0; // Hide if admin exists, show otherwise
+                }
+            }
+        }
         private void Loaduserboxes(string searchQuery = "")
         {
             userpanel.Controls.Clear();
@@ -48,33 +78,7 @@ namespace FrameSphere
                 }
             }
 
-            string pendingRequestQuery = "SELECT COUNT(*) FROM PendingAdminRequests";
-
-            using (SqlConnection connection = DB.Connect())
-            {
-                connection.Open();
-
-                using (SqlCommand pendingCommand = new SqlCommand(pendingRequestQuery, connection))
-                {
-                    int pendingRequests = (int)pendingCommand.ExecuteScalar();
-
-                    if (pendingRequests == 0)
-                    {
-                        adminRequest.Visible = false;
-                        return; // No pending requests, so exit
-                    }
-                }
-
-                string adminCheckQuery = "SELECT COUNT(*) FROM AdminApprovals WHERE AdminName = @AdminName";
-
-                using (SqlCommand adminCommand = new SqlCommand(adminCheckQuery, connection))
-                {
-                    adminCommand.Parameters.AddWithValue("@AdminName", FSystem.loggedInUser.UserName);
-                    int adminExists = (int)adminCommand.ExecuteScalar();
-
-                    adminRequest.Visible = adminExists == 0; // Hide if admin exists, show otherwise
-                }
-            }
+            
 
 
 
@@ -89,7 +93,7 @@ namespace FrameSphere
                 Size = new Size(panelWidth, panelHeight),
                 BackColor = Color.WhiteSmoke,
                 BorderStyle = BorderStyle.FixedSingle,
-                Margin = new Padding(0,0,0,5)
+                Margin = new Padding(0, 0, 0, 5)
             };
 
             Label nameLabel = new Label {
@@ -144,7 +148,7 @@ namespace FrameSphere
         }
         private void managelabel_Click(object sender, EventArgs e)
         {
-            
+
         }
         private void button3_Click(object sender, EventArgs e)
         {
@@ -154,10 +158,10 @@ namespace FrameSphere
 
         private void label1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
-       
+
         private void dashBoardButton_Click(object sender, EventArgs e)//return button
         {
             this.Hide();
@@ -222,7 +226,8 @@ namespace FrameSphere
 
         private void adminRequest_Click(object sender, EventArgs e)
         {
-                new MakeAdmin().ShowDialog();
+            this.Hide();
+            new MakeAdmin().Show();
         }
     }
 }
