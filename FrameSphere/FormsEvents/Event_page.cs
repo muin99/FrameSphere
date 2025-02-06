@@ -158,7 +158,7 @@ namespace FrameSphere
 
         private void Panel_Click(object sender, EventArgs e, int artid)
         {
-            ArtDisplayForm a = new ArtDisplayForm(artid);
+            ArtDisplayForm a = new ArtDisplayForm(artid, currentEvent);
             a.Show();
         }
 

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrameSphere.Bidding;
 using FrameSphere.EntityClasses;
 using FrameSphere.FormsUser;
 
@@ -18,12 +19,14 @@ namespace FrameSphere
     {
         public Art art;
         public User user;
+        public Event ev;
         public string[] photos;  // Array for storing photos
         int ct = 0;
         int t = 0;
         int Artid;
-        public ArtDisplayForm(int artid)
+        public ArtDisplayForm(int artid, Event ev)
         {
+            this.ev = ev;   
             art = new Art(artid);
             Artid = artid;
             string username;
@@ -231,6 +234,13 @@ namespace FrameSphere
         {
             ManageArt m1 = new ManageArt(Artid);
             m1.Show();
+        }
+
+        private void bid_btn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            BiddingPage bd = new BiddingPage(art, ev);
+            bd.Show();
         }
     }
 }
