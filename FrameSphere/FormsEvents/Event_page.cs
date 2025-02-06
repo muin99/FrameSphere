@@ -2,10 +2,8 @@
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
-using FrameSphere.D3Program;
 using FrameSphere.EntityClasses;
 using FrameSphere.FormsEvents;
 using static System.Net.Mime.MediaTypeNames;
@@ -59,20 +57,7 @@ namespace FrameSphere
             }
         }
 
-        private bool validVisitor()
-        {
-            using (SqlConnection con = DB.Connect())
-            {
-                con.Open();
-                string query = "SELECT COUNT(*) FROM userevent WHERE username = @username AND eventid = @eventid";
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
-                cmd.Parameters.AddWithValue("@eventid", currentEvent.EventID);
-
-                int res = Convert.ToInt32(cmd.ExecuteScalar());
-                return res > 0;
-            }
-        }
+       
 
         private bool checkEntrance()
         {
@@ -92,10 +77,10 @@ namespace FrameSphere
 
             if (currentEvent.RegistrationType == "Free")
             {
-                //return true;
+                return true;
             }
 
-            if (currentEvent.RegistrationType == "Paid" && !validVisitor())
+            if (currentEvent.RegistrationType == "Paid" && !currentEvent.validVisitor())
             {
                 this.Hide();
                 BuyTicket buyTicketPage = new BuyTicket(currentEvent);
@@ -127,8 +112,6 @@ namespace FrameSphere
                 cmd.Parameters.AddWithValue("@eventid", eventid);
 
                 SqlDataReader reader = cmd.ExecuteReader();
-                string filePath = "..\\..\\D3Program\\artsCollections.json"; // JSON file path
-                File.WriteAllText(filePath, "[]");
                 while (reader.Read())
                 {
                     int artID = reader.GetInt32(0); // ArtID
@@ -136,8 +119,6 @@ namespace FrameSphere
                     string photoPath = reader.IsDBNull(2) ? "default.jpg" : reader.GetString(2); // Photo
 
                     AddDynamicPanel(artID, title, photoPath);
-                    DataClass data = new DataClass(artID);
-                    FSystem.insert3DData(data);
                 }
             }
         }
@@ -195,11 +176,6 @@ namespace FrameSphere
             ManageEvents mn = new ManageEvents(currentEvent.EventID);
             //Application.Run(new ManageEvents("28"));
             mn.Show();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
