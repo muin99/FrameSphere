@@ -64,7 +64,7 @@ namespace FrameSphere
             using (SqlConnection con = DB.Connect())
             {
                 con.Open();
-                string query = "SELECT COUNT(*) FROM TicketPurchases WHERE username = @username AND eventid = @eventid";
+                string query = "SELECT COUNT(*) FROM userevent WHERE username = @username AND eventid = @eventid";
                 SqlCommand cmd = new SqlCommand(query, con);
                 cmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
                 cmd.Parameters.AddWithValue("@eventid", currentEvent.EventID);
