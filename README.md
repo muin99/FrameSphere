@@ -67,6 +67,7 @@ FrameSPhere
 
 # Run the application (ensure dependencies are installed)
 run
+```
 ---
 
 ## 📜 **Future Roadmap**
