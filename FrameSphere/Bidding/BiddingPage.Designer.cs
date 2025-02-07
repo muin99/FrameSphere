@@ -63,6 +63,7 @@
             this.currentbidamount = new System.Windows.Forms.TextBox();
             this.bidtable = new System.Windows.Forms.TableLayoutPanel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
@@ -72,6 +73,7 @@
             this.panel3.SuspendLayout();
             this.bidding.SuspendLayout();
             this.midpanel.SuspendLayout();
+            this.bidtable.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -457,6 +459,7 @@
             this.midpanel.SetColumnSpan(this.bidtable, 2);
             this.bidtable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.bidtable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.bidtable.Controls.Add(this.flowLayoutPanel1, 0, 0);
             this.bidtable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bidtable.Location = new System.Drawing.Point(3, 3);
             this.bidtable.Name = "bidtable";
@@ -470,6 +473,18 @@
             // 
             this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.bidtable.SetColumnSpan(this.flowLayoutPanel1, 2);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(200, 0, 200, 0);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(738, 350);
+            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel1.WrapContents = false;
             // 
             // BiddingPage
             // 
@@ -494,6 +509,7 @@
             this.bidding.ResumeLayout(false);
             this.midpanel.ResumeLayout(false);
             this.midpanel.PerformLayout();
+            this.bidtable.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -534,5 +550,6 @@
         private System.Windows.Forms.TextBox currentbidamount;
         private System.Windows.Forms.TableLayoutPanel bidtable;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
