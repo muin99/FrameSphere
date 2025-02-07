@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -127,15 +130,23 @@ namespace FrameSphere
 
         }
 
-        private void Email_TextChanged(object sender, EventArgs e)
+        private bool validEmail(string text)
         {
-            if (Email.Text.Length == 0 || !Email.Text.Contains('@')) {
-                CheckMail.Visible = true;
-            }
-            else
-            {
-                CheckMail.Visible = false;
-            }
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(text, pattern);
+            //@ to not use double slashes since regex uses it often
+            //^ Start of string
+            //[a - zA - Z0 - 9._ % +-]+ Local part(username)
+            //@  compulsory @ symbol
+            //[a - zA - Z0 - 9.-]+  Domain name
+            //\. Dot before top level domain (TLD)
+            //[a - zA - Z]{ 2,}	TLD, {atleast 2 chars, no upper limits}
+            //$	End of string
+        }
+        private void Email_TextChanged(object sender, EventArgs e)//THIS ONE
+        {
+            if (!validEmail(Email.Text)) {CheckMail.Visible = true;}
+            else{CheckMail.Visible = false;}
         }
 
         private void label4_Click(object sender, EventArgs e)
