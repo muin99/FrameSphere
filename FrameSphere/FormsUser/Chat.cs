@@ -12,10 +12,30 @@ namespace FrameSphere.FormsUser
         public User you;
         public User me = FSystem.loggedInUser;
 
-        public Chat(User you)
+        public Chat(User you = null)
         {
-            this.you = you;
+            if (you == null)
+            {
+                using (SqlConnection conn = DB.Connect())
+                {
+                    conn.Open();
+                    string query = "SELECT receiver_id FROM Messages " +
+                                   "WHERE sender_id = @me " +
+                                   "ORDER BY sent_at desc";
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@me", me.UserName);
+                        string userName = cmd.ExecuteScalar()?.ToString();  // Safe null-check
+
+                        // If the userName is null, assign logged-in user, else assign fetched user
+                        this.you = string.IsNullOrEmpty(userName) ? FSystem.loggedInUser : new User(userName);
+
+                    }
+                }
+            }
+            else this.you = you;
             InitializeComponent();
+            cuname.Text = this.you.FullName();
             LoadRecentUsers();
             LoadMessages();
         }
@@ -119,7 +139,7 @@ namespace FrameSphere.FormsUser
         private void AddUserToRecentPanel(string userName, string timeAgo)
         {
             Button userButton = new Button {
-                Text = $"{userName} ({timeAgo})",
+                Text = $"{userName} \t\t ({timeAgo})",
                 Dock = DockStyle.Top,
                 Height = 40,
                 BackColor = Color.LightGray,
@@ -136,7 +156,7 @@ namespace FrameSphere.FormsUser
         {
             // Time label setup
             Label timeLabel = new Label {
-                Text = sentAt.ToString("hh:mm tt"),
+                Text = sentAt.ToString("MM-dd-yyyy hh:mm tt"),
                 AutoSize = true,
                 ForeColor = Color.Gray,
                 Font = new Font("Arial", 8, FontStyle.Italic),

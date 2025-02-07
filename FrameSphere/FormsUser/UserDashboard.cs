@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrameSphere.EntityClasses;
+using FrameSphere.FormsUser;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace FrameSphere
@@ -474,6 +475,12 @@ namespace FrameSphere
                 upcomingbtn.ForeColor = Color.White;
             }
             LoadEventBoxes();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Chat chat = new Chat();
+            chat.Show();
         }
     }
 }

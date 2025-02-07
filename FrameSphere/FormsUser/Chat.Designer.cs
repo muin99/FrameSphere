@@ -27,14 +27,15 @@
             this.sendbutton = new System.Windows.Forms.Button();
             this.message = new System.Windows.Forms.RichTextBox();
             this.recentUsersPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.maintitle = new System.Windows.Forms.Label();
+            this.cuname = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.ForestGreen;
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.maintitle);
             this.panel2.Controls.Add(this.nameuser);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -57,10 +58,10 @@
             this.msgpanel.AutoScroll = true;
             this.msgpanel.BackColor = System.Drawing.Color.LightGreen;
             this.msgpanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.msgpanel.Location = new System.Drawing.Point(200, 50);
+            this.msgpanel.Location = new System.Drawing.Point(200, 79);
             this.msgpanel.Name = "msgpanel";
             this.msgpanel.Padding = new System.Windows.Forms.Padding(50, 50, 50, 60);
-            this.msgpanel.Size = new System.Drawing.Size(600, 514);
+            this.msgpanel.Size = new System.Drawing.Size(600, 485);
             this.msgpanel.TabIndex = 2;
             this.msgpanel.WrapContents = false;
             // 
@@ -96,32 +97,46 @@
             this.recentUsersPanel.Size = new System.Drawing.Size(200, 550);
             this.recentUsersPanel.TabIndex = 3;
             // 
-            // label1
+            // maintitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(365, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Chat Box";
+            this.maintitle.AutoSize = true;
+            this.maintitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maintitle.Location = new System.Drawing.Point(365, 13);
+            this.maintitle.Name = "maintitle";
+            this.maintitle.Size = new System.Drawing.Size(82, 20);
+            this.maintitle.TabIndex = 1;
+            this.maintitle.Text = "Chat Box";
+            // 
+            // cuname
+            // 
+            this.cuname.AutoSize = true;
+            this.cuname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuname.Location = new System.Drawing.Point(482, 56);
+            this.cuname.Name = "cuname";
+            this.cuname.Size = new System.Drawing.Size(57, 20);
+            this.cuname.TabIndex = 5;
+            this.cuname.Text = "label1";
             // 
             // Chat
             // 
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.cuname);
             this.Controls.Add(this.sendbutton);
             this.Controls.Add(this.message);
             this.Controls.Add(this.msgpanel);
             this.Controls.Add(this.recentUsersPanel);
             this.Controls.Add(this.panel2);
             this.Name = "Chat";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Chat";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label maintitle;
+        private System.Windows.Forms.Label cuname;
     }
 }
