@@ -121,6 +121,7 @@
             this.chat.TabIndex = 23;
             this.chat.Text = "Chat with artist";
             this.chat.UseVisualStyleBackColor = false;
+            this.chat.Click += new System.EventHandler(this.chat_Click);
             // 
             // label1
             // 

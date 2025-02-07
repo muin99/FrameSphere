@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using FrameSphere.EntityClasses;
 using System.Runtime.InteropServices.ComTypes;
+using FrameSphere.FormsUser;
 
 namespace FrameSphere.Bidding
 {
@@ -37,7 +38,7 @@ namespace FrameSphere.Bidding
             highestbid.Text = bid.GetMinimumBid().ToString();
             higestbidder.Text = bid.GetCurrentMaxBidder();
 
-            User user = FSystem.loggedInUser;
+            User user = new User(art.Creator);
             name.Text = user.FullName();
             userName.Text = user.UserName;
             profilepic.Image = FSystem.GetImageFromPath(user.ProfilePic);
@@ -146,6 +147,13 @@ namespace FrameSphere.Bidding
                 endtimer.Text = "Event Finished!";
                 timer1.Stop();
             }
+        }
+
+        private void chat_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Chat ch = new Chat(new User(art.Creator));
+            ch.Show();
         }
     }
 }
