@@ -281,6 +281,9 @@
     <EmbeddedResource Include="FormsArts\ArtReview.resx">
       <DependentUpon>ArtReview.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormsArts\BuyArt.resx">
+      <DependentUpon>BuyArt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormsArts\CreateArts.resx">
       <DependentUpon>CreateArts.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,6 +298,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsArts\ManageArt.resx">
       <DependentUpon>ManageArt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsArts\SoldForm.resx">
+      <DependentUpon>SoldForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsArts\test.resx">
       <DependentUpon>test.cs</DependentUpon>
