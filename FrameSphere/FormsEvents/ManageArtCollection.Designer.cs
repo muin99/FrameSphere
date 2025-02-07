@@ -54,12 +54,12 @@
             this.tableLayoutPanel1.Controls.Add(this.MP_Header, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.79049F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.20951F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(946, 547);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1264, 681);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // MP_Body
@@ -71,27 +71,29 @@
             this.MP_Body.Controls.Add(this.SearchArt_Field);
             this.MP_Body.Controls.Add(this.FindArtist_Label);
             this.MP_Body.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MP_Body.Location = new System.Drawing.Point(2, 93);
-            this.MP_Body.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MP_Body.Location = new System.Drawing.Point(2, 116);
+            this.MP_Body.Margin = new System.Windows.Forms.Padding(2);
             this.MP_Body.Name = "MP_Body";
-            this.MP_Body.Size = new System.Drawing.Size(942, 452);
+            this.MP_Body.Size = new System.Drawing.Size(1260, 563);
             this.MP_Body.TabIndex = 2;
             // 
             // allArts_panel
             // 
+            this.allArts_panel.AutoScroll = true;
             this.allArts_panel.Location = new System.Drawing.Point(23, 80);
-            this.allArts_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.allArts_panel.Margin = new System.Windows.Forms.Padding(2);
             this.allArts_panel.Name = "allArts_panel";
-            this.allArts_panel.Size = new System.Drawing.Size(504, 479);
+            this.allArts_panel.Size = new System.Drawing.Size(591, 479);
             this.allArts_panel.TabIndex = 6;
             // 
             // submittedArts_panel
             // 
+            this.submittedArts_panel.AutoScroll = true;
             this.submittedArts_panel.Controls.Add(this.noArts);
-            this.submittedArts_panel.Location = new System.Drawing.Point(542, 80);
-            this.submittedArts_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.submittedArts_panel.Location = new System.Drawing.Point(649, 80);
+            this.submittedArts_panel.Margin = new System.Windows.Forms.Padding(2);
             this.submittedArts_panel.Name = "submittedArts_panel";
-            this.submittedArts_panel.Size = new System.Drawing.Size(560, 479);
+            this.submittedArts_panel.Size = new System.Drawing.Size(602, 479);
             this.submittedArts_panel.TabIndex = 5;
             // 
             // noArts
@@ -108,7 +110,7 @@
             // 
             this.CurrentArts_Label.AutoSize = true;
             this.CurrentArts_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentArts_Label.Location = new System.Drawing.Point(539, 49);
+            this.CurrentArts_Label.Location = new System.Drawing.Point(656, 52);
             this.CurrentArts_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CurrentArts_Label.Name = "CurrentArts_Label";
             this.CurrentArts_Label.Size = new System.Drawing.Size(177, 17);
@@ -118,7 +120,7 @@
             // SearchArt_Field
             // 
             this.SearchArt_Field.Location = new System.Drawing.Point(86, 49);
-            this.SearchArt_Field.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SearchArt_Field.Margin = new System.Windows.Forms.Padding(2);
             this.SearchArt_Field.Name = "SearchArt_Field";
             this.SearchArt_Field.Size = new System.Drawing.Size(351, 20);
             this.SearchArt_Field.TabIndex = 2;
@@ -142,9 +144,9 @@
             this.MP_Header.Controls.Add(this.Logout);
             this.MP_Header.Controls.Add(this.ManageArtCollection_Title);
             this.MP_Header.Location = new System.Drawing.Point(2, 2);
-            this.MP_Header.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MP_Header.Margin = new System.Windows.Forms.Padding(2);
             this.MP_Header.Name = "MP_Header";
-            this.MP_Header.Size = new System.Drawing.Size(942, 87);
+            this.MP_Header.Size = new System.Drawing.Size(1260, 110);
             this.MP_Header.TabIndex = 1;
             // 
             // goBack_button
@@ -155,7 +157,7 @@
             this.goBack_button.Font = new System.Drawing.Font("Lucida Console", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.goBack_button.ForeColor = System.Drawing.Color.White;
             this.goBack_button.Location = new System.Drawing.Point(23, 25);
-            this.goBack_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.goBack_button.Margin = new System.Windows.Forms.Padding(2);
             this.goBack_button.Name = "goBack_button";
             this.goBack_button.Size = new System.Drawing.Size(105, 33);
             this.goBack_button.TabIndex = 25;
@@ -180,7 +182,7 @@
             // 
             this.ManageArtCollection_Title.AutoSize = true;
             this.ManageArtCollection_Title.Font = new System.Drawing.Font("Microsoft New Tai Lue", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ManageArtCollection_Title.Location = new System.Drawing.Point(536, 25);
+            this.ManageArtCollection_Title.Location = new System.Drawing.Point(475, 36);
             this.ManageArtCollection_Title.Name = "ManageArtCollection_Title";
             this.ManageArtCollection_Title.Size = new System.Drawing.Size(316, 35);
             this.ManageArtCollection_Title.TabIndex = 22;
@@ -190,12 +192,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 547);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ManageArtCollection";
             this.Text = "Manage Art Collection";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.MP_Body.ResumeLayout(false);
             this.MP_Body.PerformLayout();
