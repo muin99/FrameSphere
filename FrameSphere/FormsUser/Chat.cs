@@ -211,6 +211,7 @@ namespace FrameSphere.FormsUser
             // Add the container to the message panel
             msgpanel.Controls.Add(container);
             msgpanel.ScrollControlIntoView(container);
+            LoadRecentUsers();
         }
 
 
@@ -233,6 +234,12 @@ namespace FrameSphere.FormsUser
             this.Hide();
             Chat newChat = new Chat(new User(userName)); // Assuming `User` class has a UserName property
             newChat.Show();
+        }
+
+        private void reload_Click(object sender, EventArgs e)
+        {
+            LoadMessages();
+            LoadRecentUsers();
         }
     }
 }

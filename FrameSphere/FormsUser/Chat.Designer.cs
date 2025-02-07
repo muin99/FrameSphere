@@ -29,6 +29,7 @@
             this.recentUsersPanel = new System.Windows.Forms.Panel();
             this.maintitle = new System.Windows.Forms.Label();
             this.cuname = new System.Windows.Forms.Label();
+            this.reload = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,9 +118,21 @@
             this.cuname.TabIndex = 5;
             this.cuname.Text = "label1";
             // 
+            // reload
+            // 
+            this.reload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.reload.Location = new System.Drawing.Point(720, 53);
+            this.reload.Name = "reload";
+            this.reload.Size = new System.Drawing.Size(75, 23);
+            this.reload.TabIndex = 6;
+            this.reload.Text = "Reload";
+            this.reload.UseVisualStyleBackColor = false;
+            this.reload.Click += new System.EventHandler(this.reload_Click);
+            // 
             // Chat
             // 
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.reload);
             this.Controls.Add(this.cuname);
             this.Controls.Add(this.sendbutton);
             this.Controls.Add(this.message);
@@ -138,5 +151,6 @@
 
         private System.Windows.Forms.Label maintitle;
         private System.Windows.Forms.Label cuname;
+        private System.Windows.Forms.Button reload;
     }
 }
