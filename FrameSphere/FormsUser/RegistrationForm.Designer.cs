@@ -41,6 +41,8 @@
             this.ClearButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.checklname = new System.Windows.Forms.Label();
+            this.checkfname = new System.Windows.Forms.Label();
             this.lblPassStrength = new System.Windows.Forms.Label();
             this.charWarning = new System.Windows.Forms.Label();
             this.usernameWarning = new System.Windows.Forms.Label();
@@ -51,8 +53,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.LastName = new System.Windows.Forms.TextBox();
-            this.checkfname = new System.Windows.Forms.Label();
-            this.checklname = new System.Windows.Forms.Label();
+            this.lengthWarning = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -105,7 +106,7 @@
             // UserName
             // 
             this.UserName.Location = new System.Drawing.Point(313, 210);
-            this.UserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.UserName.Margin = new System.Windows.Forms.Padding(4);
             this.UserName.Name = "UserName";
             this.UserName.Size = new System.Drawing.Size(927, 22);
             this.UserName.TabIndex = 6;
@@ -114,7 +115,7 @@
             // Password
             // 
             this.Password.Location = new System.Drawing.Point(313, 271);
-            this.Password.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Password.Margin = new System.Windows.Forms.Padding(4);
             this.Password.Name = "Password";
             this.Password.PasswordChar = '*';
             this.Password.Size = new System.Drawing.Size(315, 22);
@@ -124,7 +125,7 @@
             // Email
             // 
             this.Email.Location = new System.Drawing.Point(313, 154);
-            this.Email.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Email.Margin = new System.Windows.Forms.Padding(4);
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(927, 22);
             this.Email.TabIndex = 8;
@@ -133,7 +134,7 @@
             // FirstName
             // 
             this.FirstName.Location = new System.Drawing.Point(313, 101);
-            this.FirstName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FirstName.Margin = new System.Windows.Forms.Padding(4);
             this.FirstName.Name = "FirstName";
             this.FirstName.Size = new System.Drawing.Size(367, 22);
             this.FirstName.TabIndex = 9;
@@ -143,7 +144,7 @@
             // 
             this.SubmitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitButton.Location = new System.Drawing.Point(1117, 337);
-            this.SubmitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SubmitButton.Margin = new System.Windows.Forms.Padding(4);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(124, 34);
             this.SubmitButton.TabIndex = 10;
@@ -170,7 +171,7 @@
             // 
             this.ClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClearButton.Location = new System.Drawing.Point(873, 470);
-            this.ClearButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ClearButton.Margin = new System.Windows.Forms.Padding(4);
             this.ClearButton.Name = "ClearButton";
             this.ClearButton.Size = new System.Drawing.Size(124, 34);
             this.ClearButton.TabIndex = 12;
@@ -183,7 +184,7 @@
             this.panel1.BackColor = System.Drawing.Color.LightGreen;
             this.panel1.Controls.Add(this.RegisterLabel);
             this.panel1.Location = new System.Drawing.Point(-1, -1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1688, 106);
             this.panel1.TabIndex = 13;
@@ -192,6 +193,7 @@
             // 
             this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.LightGreen;
+            this.panel2.Controls.Add(this.lengthWarning);
             this.panel2.Controls.Add(this.checklname);
             this.panel2.Controls.Add(this.checkfname);
             this.panel2.Controls.Add(this.lblPassStrength);
@@ -215,11 +217,35 @@
             this.panel2.Controls.Add(this.Password);
             this.panel2.Controls.Add(this.FirstNameLabel);
             this.panel2.Location = new System.Drawing.Point(100, 162);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1483, 617);
             this.panel2.TabIndex = 14;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // checklname
+            // 
+            this.checklname.AutoSize = true;
+            this.checklname.ForeColor = System.Drawing.Color.Red;
+            this.checklname.Location = new System.Drawing.Point(871, 127);
+            this.checklname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.checklname.Name = "checklname";
+            this.checklname.Size = new System.Drawing.Size(126, 16);
+            this.checklname.TabIndex = 24;
+            this.checklname.Text = "No spaces allowed.";
+            this.checklname.Visible = false;
+            // 
+            // checkfname
+            // 
+            this.checkfname.AutoSize = true;
+            this.checkfname.ForeColor = System.Drawing.Color.Red;
+            this.checkfname.Location = new System.Drawing.Point(310, 127);
+            this.checkfname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.checkfname.Name = "checkfname";
+            this.checkfname.Size = new System.Drawing.Size(126, 16);
+            this.checkfname.TabIndex = 23;
+            this.checkfname.Text = "No spaces allowed.";
+            this.checkfname.Visible = false;
             // 
             // lblPassStrength
             // 
@@ -299,7 +325,7 @@
             // ConfirmPass
             // 
             this.ConfirmPass.Location = new System.Drawing.Point(943, 273);
-            this.ConfirmPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ConfirmPass.Margin = new System.Windows.Forms.Padding(4);
             this.ConfirmPass.Name = "ConfirmPass";
             this.ConfirmPass.PasswordChar = '*';
             this.ConfirmPass.Size = new System.Drawing.Size(297, 22);
@@ -332,35 +358,23 @@
             // LastName
             // 
             this.LastName.Location = new System.Drawing.Point(873, 101);
-            this.LastName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LastName.Margin = new System.Windows.Forms.Padding(4);
             this.LastName.Name = "LastName";
             this.LastName.Size = new System.Drawing.Size(367, 22);
             this.LastName.TabIndex = 13;
             this.LastName.TextChanged += new System.EventHandler(this.LastName_TextChanged);
             // 
-            // checkfname
+            // lengthWarning
             // 
-            this.checkfname.AutoSize = true;
-            this.checkfname.ForeColor = System.Drawing.Color.Red;
-            this.checkfname.Location = new System.Drawing.Point(310, 127);
-            this.checkfname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.checkfname.Name = "checkfname";
-            this.checkfname.Size = new System.Drawing.Size(126, 16);
-            this.checkfname.TabIndex = 23;
-            this.checkfname.Text = "No spaces allowed.";
-            this.checkfname.Visible = false;
-            // 
-            // checklname
-            // 
-            this.checklname.AutoSize = true;
-            this.checklname.ForeColor = System.Drawing.Color.Red;
-            this.checklname.Location = new System.Drawing.Point(871, 127);
-            this.checklname.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.checklname.Name = "checklname";
-            this.checklname.Size = new System.Drawing.Size(126, 16);
-            this.checklname.TabIndex = 24;
-            this.checklname.Text = "No spaces allowed.";
-            this.checklname.Visible = false;
+            this.lengthWarning.AutoSize = true;
+            this.lengthWarning.ForeColor = System.Drawing.Color.Red;
+            this.lengthWarning.Location = new System.Drawing.Point(310, 239);
+            this.lengthWarning.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lengthWarning.Name = "lengthWarning";
+            this.lengthWarning.Size = new System.Drawing.Size(274, 16);
+            this.lengthWarning.TabIndex = 25;
+            this.lengthWarning.Text = "Username must be at least 5 characters long.";
+            this.lengthWarning.Visible = false;
             // 
             // RegistrationForm
             // 
@@ -369,7 +383,7 @@
             this.ClientSize = new System.Drawing.Size(1685, 838);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RegistrationForm";
             this.Text = "RegistrationForm";
             this.Load += new System.EventHandler(this.RegistrationForm_Load);
@@ -408,5 +422,6 @@
         private System.Windows.Forms.Label lblPassStrength;
         private System.Windows.Forms.Label checklname;
         private System.Windows.Forms.Label checkfname;
+        private System.Windows.Forms.Label lengthWarning;
     }
 }

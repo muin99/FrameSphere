@@ -77,24 +77,49 @@ namespace FrameSphere
             else { return false; }
             
         }
+
+        private bool isEmpty()
+        {
+            if (string.IsNullOrEmpty(FirstName.Text) || string.IsNullOrEmpty(LastName.Text) || string.IsNullOrEmpty(Email.Text) || string.IsNullOrEmpty(UserName.Text) || string.IsNullOrEmpty(Password.Text) || string.IsNullOrEmpty(ConfirmPass.Text))
+            {
+                return true;
+            }
+            else { return false; }
+        }
         private void SubmitButton_Click(object sender, EventArgs e)
         {
+            //validation
             try
             {
-                if (checkValidations())
+                if (!isEmpty())
                 {
-                    string fname = capitalizeFirst(FirstName.Text);
-                    string lname = capitalizeFirst(LastName.Text);
+                    if (checkValidations())//if both ok, update DB
+                    {
+                        allowRegister = true;
+                        string fname = capitalizeFirst(FirstName.Text);
+                        string lname = capitalizeFirst(LastName.Text);
 
-                    Register(fname, lname, UserName.Text.ToString(), Email.Text.ToString(), Password.Text.ToString());
-                    MessageBox.Show("Registration successful! Please wait for account approval before login.", "Registration Done", MessageBoxButtons.OK);
-                    allowRegister = true;
-                    
+                        Register(fname, lname, UserName.Text.ToString(), Email.Text.ToString(), Password.Text.ToString());
+                        MessageBox.Show("Registration successful! Please wait for account approval before login.", "Registration Done", MessageBoxButtons.OK);
+                        allowRegister = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ensure valid data entries!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                 }
-            }catch (Exception ex)
+                else
+                {
+                    MessageBox.Show("Please fill all fields!", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Ensure valid data entries!","Validation Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("ERROR: "+ex.Message);
+                MessageBox.Show("Something went wrong!", " Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("ERROR: " + ex.Message);
+                return;
             }
             if (allowRegister)
             {
@@ -192,6 +217,13 @@ namespace FrameSphere
         }
         private void validUsername(string username)
         {
+            //proper length?
+            if (username.Length < 5)
+            {
+                lengthWarning.Visible = true;
+            }
+            else { lengthWarning.Visible = false; }
+            //proper characters?
             for (int i = 0; i < username.Length; i++)
             {
                 if (
@@ -235,7 +267,7 @@ namespace FrameSphere
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Something went wrong! Try again later.", "DB ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Something went wrong!", "DB ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine("ERROR: " + ex.Message);
             }
             //check if username is appropriate
