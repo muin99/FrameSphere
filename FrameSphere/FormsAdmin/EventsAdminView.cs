@@ -52,13 +52,15 @@ namespace FrameSphere
                             return;
                         }
                         else { noevent.Visible = false; }
+                        int x = 0;
                         while (reader.Read())
                         {
+
                             string title = reader["EventTitle"].ToString();
                             int eventid = Convert.ToInt32(reader["EventID"]);
                             string status = reader["Status"].ToString();
-                            CreateEventsBox(title, status, eventid);
-
+                            CreateEventsBox(++x,title, status, eventid);
+                            
 
                         }
                     }
@@ -67,7 +69,7 @@ namespace FrameSphere
         }
 
 
-        private void CreateEventsBox(string title, string status, int eventid)
+        private void CreateEventsBox(int x,string title, string status, int eventid)
         {
             int panelWidth = eventpanel.Width - 21;
             int panelHeight = 23;
@@ -99,10 +101,19 @@ namespace FrameSphere
 
             };
 
+            Label numberlabel = new Label {
+                Text = x.ToString()+". ",
+                Font = new Font("Arial", 8, FontStyle.Bold),
+                Location = new Point(3, 5),
+                AutoSize = false,
+                Size = new Size(25, 14),
+                ForeColor = Color.Black
+            };
+
             Label titleLabel = new Label {
                 Text = title,
                 Font = new Font("Arial", 8, FontStyle.Bold),
-                Location = new Point(3, 5),
+                Location = new Point(40, 5),
                 AutoSize = false,
                 Size = new Size(400, 14),
                 ForeColor = Color.Black
@@ -121,7 +132,7 @@ namespace FrameSphere
             everyevent.Controls.Add(manageLabel);
             everyevent.Controls.Add(titleLabel);
             everyevent.Controls.Add(statusLabel);
-
+            everyevent.Controls.Add(numberlabel);
 
 
 

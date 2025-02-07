@@ -66,7 +66,13 @@ namespace FrameSphere
 
 
             }
-            ArtImage.Image = FSystem.GetImageFromPath(photos[t]);
+            try{
+                ArtImage.Image = FSystem.GetImageFromPath(photos[t]);
+            }
+            catch
+            {
+                ArtImage.Image = FSystem.GetImageFromPath("default.jpg");
+            }
             
         }
 
@@ -166,7 +172,6 @@ namespace FrameSphere
 
         private void website_link_Click(object sender, EventArgs e)
         {
-
             try
             {
                 string web_URL = FSystem.loggedInUser.Website;

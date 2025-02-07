@@ -72,7 +72,7 @@ namespace FrameSphere
                 connection.Open();
 
                 // Check if the request exists
-                string checkRequestQuery = "SELECT Approvals, TotalAdmins FROM PendingAdminRequests WHERE UserName = @UserName";
+                string checkRequestQuery = "SELECT RequestID, Approvals, TotalAdmins FROM PendingAdminRequests WHERE UserName = @UserName";
                 using (SqlCommand checkCommand = new SqlCommand(checkRequestQuery, connection))
                 {
                     checkCommand.Parameters.AddWithValue("@UserName", UserName.Text);
@@ -80,6 +80,7 @@ namespace FrameSphere
                     {
                         if (reader.Read())
                         {
+                            int requestID = Convert.ToInt32(reader["RequestID"]); // Get RequestID
                             int approvals = Convert.ToInt32(reader["Approvals"]);
                             int totalAdmins = Convert.ToInt32(reader["TotalAdmins"]);
                             reader.Close(); // Close before executing another query
@@ -92,6 +93,31 @@ namespace FrameSphere
                                 updateCommand.ExecuteNonQuery();
                             }
 
+                            // Check if the admin already approved this request
+                            string checkApprovalQuery = "SELECT COUNT(*) FROM AdminApprovals WHERE RequestID = @RequestID AND AdminName = @AdminName";
+                            using (SqlCommand checkApprovalCommand = new SqlCommand(checkApprovalQuery, connection))
+                            {
+                                checkApprovalCommand.Parameters.AddWithValue("@RequestID", requestID);
+                                checkApprovalCommand.Parameters.AddWithValue("@AdminName", currentAdmin);
+
+                                int approvalCount = (int)checkApprovalCommand.ExecuteScalar();
+                                if (approvalCount > 0)
+                                {
+                                    MessageBox.Show("You have already approved this request.", "Duplicate Approval", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return;
+                                }
+                            }
+
+                            // Log admin approval in AdminApprovals table
+                            string insertApprovalLogQuery = "INSERT INTO AdminApprovals (RequestID, AdminName) VALUES (@RequestID, @AdminName)";
+                            using (SqlCommand logCommand = new SqlCommand(insertApprovalLogQuery, connection))
+                            {
+                                logCommand.Parameters.AddWithValue("@RequestID", requestID);
+                                logCommand.Parameters.AddWithValue("@AdminName", currentAdmin);
+                                logCommand.ExecuteNonQuery();
+                            }
+
+
                             // Check if all admins approved
                             if (approvals + 1 >= totalAdmins)
                             {
@@ -103,11 +129,19 @@ namespace FrameSphere
                                     insertCommand.ExecuteNonQuery();
                                 }
 
-                                // Remove from PendingAdminRequests
-                                string deleteRequestQuery = "DELETE FROM PendingAdminRequests WHERE UserName = @UserName";
+                                // Delete related records from AdminApprovals first
+                                string deleteAdminApprovalsQuery = "DELETE FROM AdminApprovals WHERE RequestID = @RequestID";
+                                using (SqlCommand deleteAdminApprovalsCommand = new SqlCommand(deleteAdminApprovalsQuery, connection))
+                                {
+                                    deleteAdminApprovalsCommand.Parameters.AddWithValue("@RequestID", requestID);
+                                    deleteAdminApprovalsCommand.ExecuteNonQuery();
+                                }
+
+                                // Now delete from PendingAdminRequests
+                                string deleteRequestQuery = "DELETE FROM PendingAdminRequests WHERE RequestID = @RequestID";
                                 using (SqlCommand deleteCommand = new SqlCommand(deleteRequestQuery, connection))
                                 {
-                                    deleteCommand.Parameters.AddWithValue("@UserName", UserName.Text);
+                                    deleteCommand.Parameters.AddWithValue("@RequestID", requestID);
                                     deleteCommand.ExecuteNonQuery();
                                 }
 
@@ -121,13 +155,15 @@ namespace FrameSphere
                             this.Close(); // Close the form after approval
                             Admin_dashboard a1 = new Admin_dashboard();
                             a1.Show();
-                            a1.adminRequest.Visible = false;
-                            return;
+                            //a1.adminRequest.Visible = false;
+                            //return;
                         }
                     }
                 }
             }
         }
+
+
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {

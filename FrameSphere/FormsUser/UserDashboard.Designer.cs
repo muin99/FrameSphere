@@ -75,6 +75,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button6 = new System.Windows.Forms.Button();
             this.midpanel.SuspendLayout();
             this.eventspanel.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -138,6 +139,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.LightGreen;
+            this.panel4.Controls.Add(this.button6);
             this.panel4.Controls.Add(this.profilepanel);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(951, 106);
@@ -648,6 +650,16 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1264, 681);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(121, 437);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 1;
+            this.button6.Text = "ChatBox";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // UserDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -724,5 +736,6 @@
         private System.Windows.Forms.PictureBox instagram_link;
         private System.Windows.Forms.PictureBox facebook_pic;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button6;
     }
 }

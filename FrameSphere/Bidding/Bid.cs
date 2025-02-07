@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using FrameSphere.EntityClasses;
 
 namespace FrameSphere.Bidding
@@ -103,33 +104,51 @@ namespace FrameSphere.Bidding
 
             try
             {
+                // Ensure the connection is closed properly by using 'using' statement
                 using (SqlConnection con = DB.Connect())
                 {
                     con.Open();
+
+                    // Define the query with parameterized SQL to prevent SQL injection
                     string query = "SELECT username, biddingamount FROM bids WHERE artid = @artid AND eventid = @eventid";
+
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        cmd.Parameters.AddWithValue("@artid", Art.ArtID);
-                        cmd.Parameters.AddWithValue("@eventid", Event.EventID);
+                        // Add the parameters to the SQL command
+                        cmd.Parameters.AddWithValue("@artid", Art.ArtID); // Assuming Art.ArtID is set somewhere else
+                        cmd.Parameters.AddWithValue("@eventid", Event.EventID); // Assuming Event.EventID is set somewhere else
 
+                        // Execute the command and get the result via SqlDataReader
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
+                            // Read the data returned from the query
                             while (reader.Read())
                             {
-                                string username = reader.GetString(0);
-                                double amount = reader.GetDouble(1);
+                                // Get the username and bidding amount for each row
+                                string username = reader.GetString(0); // Column 0 is 'username'
+                                double amount = reader.GetDouble(1);   // Column 1 is 'biddingamount'
+
+                                // Add to the bids list
                                 bids.Add(new string[] { username, amount.ToString() });
                             }
                         }
                     }
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                // Log the error for SQL-related issues
+                Console.WriteLine("SQL Error fetching bids: " + sqlEx.Message);
+            }
             catch (Exception ex)
             {
+                // Log any other exceptions
                 Console.WriteLine("Error fetching bids: " + ex.Message);
             }
-
+            
+            // Return the list of bids
             return bids;
         }
+
     }
 }

@@ -196,6 +196,13 @@ namespace FrameSphere
             _status = "Approved";
             MessageBox.Show("Status set to Approved. Click Update to save changes.");
         }
+
+        private void manageOrganizer_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ManageOrganizer org = new ManageOrganizer(ev);
+            org.Show();
+        }
     }
 
     

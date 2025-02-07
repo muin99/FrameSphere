@@ -40,6 +40,7 @@ namespace FrameSphere
             // Load the event data AFTER entrance check
             title.Text = currentEvent.EventTitle;
             loadImages(currentEvent.EventID);
+            manage.Visible = isAdminOrOrganizer();
         }
 
         private bool artistOfTheEvent()
@@ -57,7 +58,32 @@ namespace FrameSphere
             }
         }
 
-       
+        private bool isAdminOrOrganizer()
+        {
+            using (SqlConnection con = DB.Connect())
+            {
+                con.Open();
+
+                // Check if the user is an admin
+                string adminQuery = "SELECT COUNT(*) FROM AdminList WHERE UserName = @username";
+                SqlCommand adminCmd = new SqlCommand(adminQuery, con);
+                adminCmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+
+                int isAdmin = Convert.ToInt32(adminCmd.ExecuteScalar());
+                if (isAdmin > 0)
+                    return true; // User is an admin
+
+                // Check if the user is an organizer for this event
+                string organizerQuery = "SELECT COUNT(*) FROM Organizers WHERE UserName = @username AND EventID = @eventid";
+                SqlCommand organizerCmd = new SqlCommand(organizerQuery, con);
+                organizerCmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+                organizerCmd.Parameters.AddWithValue("@eventid", currentEvent.EventID);
+
+                int isOrganizer = Convert.ToInt32(organizerCmd.ExecuteScalar());
+                return isOrganizer > 0;
+            }
+        }
+
 
         private bool checkEntrance()
         {

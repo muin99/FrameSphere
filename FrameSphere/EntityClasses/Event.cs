@@ -9,7 +9,7 @@ namespace FrameSphere.EntityClasses
     {
         // Private fields
         private int _eventID;
-        private string _eventTitle;
+        private string _eventTitle;   
         private string _eventDescription;
         private string _organization;
         private double _ticketPrice;
@@ -376,32 +376,76 @@ namespace FrameSphere.EntityClasses
         }
 
         public Event(string eventTitle, string eventDescription, string organization, double ticketPrice,
-            DateTime startsAt,
-                     DateTime endsAt, string registrationType, string posterImage)
+    DateTime startsAt, DateTime endsAt, string registrationType, string posterImage)
         {
-            string query = @"INSERT INTO Events (EventTitle, Description, OrganizerDetails, TicketPrice, StartDate, EndDate, 
-                            RegistrationType, EventPoster, Status, Creator, CreatedAt)
-                            VALUES (@EventTitle, @EventDescription, @Organization, @TicketPrice, @StartsAt, @EndsAt, 
-                            @RegistrationType, @PosterImage, @Status, @Creator, @CreatedAt)";
+            string query = @"INSERT INTO Events (
+                        EventTitle, 
+                        Description, 
+                        OrganizerDetails, 
+                        TicketPrice, 
+                        StartDate, 
+                        EndDate, 
+                        RegistrationType, 
+                        EventPoster, 
+                        Status, 
+                        Creator, 
+                        CreatedAt
+                    ) VALUES (
+                        @EventTitle, 
+                        @Description, 
+                        @OrganizerDetails, 
+                        @TicketPrice, 
+                        @StartDate, 
+                        @EndDate, 
+                        @RegistrationType, 
+                        @EventPoster, 
+                        @Status, 
+                        @Creator, 
+                        @CreatedAt
+                    );
+                    SELECT SCOPE_IDENTITY();";
 
-            using (SqlConnection connection = DB.Connect())
+            using (SqlConnection conn = DB.Connect())
             {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(query, connection))
+                try
                 {
-                    command.Parameters.AddWithValue("@EventTitle", eventTitle);
-                    command.Parameters.AddWithValue("@EventDescription", eventDescription);
-                    command.Parameters.AddWithValue("@Organization", organization);
-                    command.Parameters.AddWithValue("@TicketPrice", ticketPrice);
-                    command.Parameters.AddWithValue("@StartsAt", startsAt);
-                    command.Parameters.AddWithValue("@EndsAt", endsAt);
-                    command.Parameters.AddWithValue("@RegistrationType", registrationType);
-                    command.Parameters.AddWithValue("@PosterImage", posterImage);
-                    command.Parameters.AddWithValue("@Status", "Pending");
-                    command.Parameters.AddWithValue("@Creator", FSystem.loggedInUser.UserName);
-                    command.Parameters.AddWithValue("@CreatedAt", DateTime.Now);
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        // Add parameters with proper data types
+                        cmd.Parameters.AddWithValue("@EventTitle", eventTitle);
+                        cmd.Parameters.AddWithValue("@Description", eventDescription);
+                        cmd.Parameters.AddWithValue("@OrganizerDetails", organization);
+                        cmd.Parameters.AddWithValue("@TicketPrice", ticketPrice);
+                        cmd.Parameters.AddWithValue("@StartDate", startsAt);
+                        cmd.Parameters.AddWithValue("@EndDate", endsAt);
+                        cmd.Parameters.AddWithValue("@RegistrationType", registrationType);
+                        cmd.Parameters.AddWithValue("@EventPoster", posterImage ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Status", "Pending");
+                        cmd.Parameters.AddWithValue("@Creator", FSystem.loggedInUser.UserName);
+                        cmd.Parameters.AddWithValue("@CreatedAt", DateTime.Now);
 
-                    command.ExecuteNonQuery();
+                        // Execute and get new EventID
+                        this.EventID = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+
+                    // Add creator as organizer
+                    if (FSystem.loggedInUser != null)
+                    {
+                        this.AddOrganizer(FSystem.loggedInUser);
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show($"Database error: {ex.Message}", "Error",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error creating event: {ex.Message}", "Error",
+                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw;
                 }
             }
         }
@@ -592,11 +636,11 @@ namespace FrameSphere.EntityClasses
         }
 
 
-        public void AddOrganizer(User organizer)
-        {
-            if (organizer == null) throw new ArgumentNullException(nameof(organizer));
-            Organizers.Add(organizer);
-        }
+        //public void AddOrganizer(User organizer)
+        //{
+        //    if (organizer == null) throw new ArgumentNullException(nameof(organizer));
+        //    Organizers.Add(organizer);
+        //}
         public void Save()
         {
             using (connection = DB.Connect())
@@ -644,6 +688,89 @@ namespace FrameSphere.EntityClasses
                 return res > 0;
             }
         }
+
+        // In FrameSphere.EntityClasses.Event class
+
+        public void AddOrganizer(User organizer)
+        {
+            string query = "INSERT INTO Organizers (EventId, UserName) VALUES (@EventID, @UserName)";
+            using (SqlConnection conn = DB.Connect())
+            {
+                try
+                {
+                    conn.Open();
+                    // Check if already an organizer
+                    string checkQuery = "SELECT COUNT(*) FROM Organizers WHERE EventId = @EventID AND UserName = @UserName";
+                    SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
+                    checkCmd.Parameters.AddWithValue("@EventID", this.EventID);
+                    checkCmd.Parameters.AddWithValue("@UserName", organizer.UserName);
+                    int count = (int)checkCmd.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        MessageBox.Show("User is already an organizer of this event.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Add organizer
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@EventID", this.EventID);
+                    cmd.Parameters.AddWithValue("@UserName", organizer.UserName);
+                    cmd.ExecuteNonQuery();
+                    Organizers.Add(organizer);
+                    MessageBox.Show("Organizer added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error adding organizer: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public void RemoveOrganizer(User organizer)
+        {
+            string query = "DELETE FROM Organizers WHERE EventId = @EventID AND UserName = @UserName";
+            using (SqlConnection conn = DB.Connect())
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@EventID", this.EventID);
+                    cmd.Parameters.AddWithValue("@UserName", organizer.UserName);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        Organizers.Remove(organizer);
+                        MessageBox.Show("Organizer removed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Organizer not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error removing organizer: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public bool organizeroftheevent(User u)
+        {
+            using (SqlConnection con = DB.Connect())
+            {
+                con.Open();
+                string query = "SELECT COUNT(*) FROM Organizers WHERE username = @username AND eventid = @eventid";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@username", u.UserName);
+                cmd.Parameters.AddWithValue("@eventid", this.EventID);
+                int res = Convert.ToInt32(cmd.ExecuteScalar());
+                return res > 0;
+            }
+        }
+
+
     }
 
 
