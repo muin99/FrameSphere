@@ -6,6 +6,8 @@ using System.Drawing;
 using FrameSphere.EntityClasses;
 using System.Runtime.InteropServices.ComTypes;
 using FrameSphere.FormsUser;
+using System.Data.SqlClient;
+using FrameSphere.FormsArts;
 
 namespace FrameSphere.Bidding
 {
@@ -17,17 +19,38 @@ namespace FrameSphere.Bidding
 
         public BiddingPage(Art art, Event Event)
         {
-            InitializeComponent();
+            this.art = art;
+            this.Event = Event;
+            bid = new Bid(art, Event);
 
+            InitializeComponent();
+            loadui();
+            LoadPreviousBids();
+        }
+
+        public bool isSold()
+        {
+            string q = $"select count(*) from ArtSold " +
+                $"where " +
+                $"artid = '{art.ArtID}'";
+            SqlConnection con = DB.Connect();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(q, con);
+            if ((int)cmd.ExecuteScalar() > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        private void loadui()
+        {
             if (art.SellingOption == "Free")
             {
                 this.Hide();
                 NotForSale notForSale = new NotForSale(art, Event);
                 notForSale.Show();
+                return;
             }
-            this.art = art;
-            this.Event = Event;
-            bid = new Bid(art, Event);
 
             title.Text = art.ArtTitle;
             description.Text = art.ArtDescription;
@@ -43,7 +66,53 @@ namespace FrameSphere.Bidding
             userName.Text = user.UserName;
             profilepic.Image = FSystem.GetImageFromPath(user.ProfilePic);
 
-            LoadPreviousBids();
+            if (isSold())
+            {
+                this.Hide();
+                SoldForm soldForm = new SoldForm(art);
+                soldForm.Show();
+                return;
+            }
+
+            checkPurchaseRequest();
+        }
+        private void checkPurchaseRequest()
+        {
+            string query = "SELECT COUNT(*) FROM PurchaseRequests WHERE userid = @userid AND artid = @artid";
+            using (SqlConnection con = DB.Connect())
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@userid", FSystem.loggedInUser.UserName);
+                    cmd.Parameters.AddWithValue("@artid", art.ArtID);
+
+                    if ((int)cmd.ExecuteScalar() > 0)
+                    {
+                        purchaseRequest.Visible = true;
+                        amountfix();
+                    }
+                }
+            }
+        }
+        private void amountfix()
+        {
+            string query = "SELECT amount FROM PurchaseRequests WHERE userid = @userid AND artid = @artid";
+            using (SqlConnection con = DB.Connect())
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@userid", FSystem.loggedInUser.UserName);
+                    cmd.Parameters.AddWithValue("@artid", art.ArtID);
+
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        bidamount.Text = result.ToString();
+                    }
+                }
+            }
         }
 
         private void bidBtn_Click(object sender, EventArgs e)
@@ -153,7 +222,7 @@ namespace FrameSphere.Bidding
             sendPurchaseRequestButton.Click += (sender, e) =>
             {
                 // Implement send purchase request logic here
-                SendPurchaseRequest(username);
+                SendPurchaseRequest(username, newBidAmount);
             };
             bidPanel.Controls.Add(sendPurchaseRequestButton);
 
@@ -164,6 +233,7 @@ namespace FrameSphere.Bidding
 
             // Ensure FlowLayoutPanel automatically arranges items top-to-bottom
             flowLayoutPanel1.AutoScroll = true;
+            checkPurchaseRequest();
         }
 
         // Example stub methods for actions (replace with actual logic)
@@ -179,11 +249,38 @@ namespace FrameSphere.Bidding
             chat.Show();
         }
 
-        private void SendPurchaseRequest(string username)
+        private void SendPurchaseRequest(string username, double newBidAmount)
         {
-            // Implement send purchase request logic here
-            //MessageBox.Show($"Sending purchase request to {username}...");
+            try
+            {
+                using (SqlConnection con = DB.Connect())
+                {
+                    con.Open();
+
+                    string queryDelete = "DELETE FROM PurchaseRequests WHERE artid = @artid";
+                    using (SqlCommand cmdDelete = new SqlCommand(queryDelete, con))
+                    {
+                        cmdDelete.Parameters.AddWithValue("@artid", art.ArtID);
+                        cmdDelete.ExecuteNonQuery();
+                    }
+
+                    string queryInsert = "INSERT INTO PurchaseRequests (artid, userid, amount) VALUES (@artid, @userid, @amount)";
+                    using (SqlCommand cmdInsert = new SqlCommand(queryInsert, con))
+                    {
+                        cmdInsert.Parameters.AddWithValue("@artid", art.ArtID);
+                        cmdInsert.Parameters.AddWithValue("@userid", username);
+                        cmdInsert.Parameters.AddWithValue("@amount", newBidAmount);
+                        cmdInsert.ExecuteNonQuery();
+                    }
+                }
+                MessageBox.Show("Purchase request sent successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
+
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -219,6 +316,25 @@ namespace FrameSphere.Bidding
             this.Hide();
             Chat ch = new Chat(new User(art.Creator));
             ch.Show();
+        }
+
+        private void reload_Click(object sender, EventArgs e)
+        {
+            rreload();
+        }
+        public void rreload()
+        {
+
+            BiddingPage bb = new BiddingPage(art, Event);
+            this.Hide();
+            bb.Show();
+        }
+
+        private void buy_Click(object sender, EventArgs e)
+        {
+            BuyArt BuyArt = new BuyArt(art, Convert.ToDouble(bidamount.Text));
+            this.Hide();
+            BuyArt.Show();
         }
     }
 }

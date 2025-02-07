@@ -62,8 +62,14 @@
             this.bidBtn = new System.Windows.Forms.Button();
             this.currentbidamount = new System.Windows.Forms.TextBox();
             this.bidtable = new System.Windows.Forms.TableLayoutPanel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.purchaseRequest = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.bidamount = new System.Windows.Forms.Label();
+            this.buy = new System.Windows.Forms.Button();
+            this.reload = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
@@ -74,6 +80,7 @@
             this.bidding.SuspendLayout();
             this.midpanel.SuspendLayout();
             this.bidtable.SuspendLayout();
+            this.purchaseRequest.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -174,6 +181,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.tableLayoutPanel1.SetColumnSpan(this.panel4, 2);
+            this.panel4.Controls.Add(this.reload);
             this.panel4.Controls.Add(this.endtimer);
             this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.ends);
@@ -358,6 +366,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel3.Controls.Add(this.purchaseRequest);
             this.panel3.Controls.Add(this.higestbidder);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.highestbid);
@@ -469,11 +478,6 @@
             this.bidtable.Size = new System.Drawing.Size(744, 356);
             this.bidtable.TabIndex = 2;
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -485,6 +489,74 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(738, 350);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.WrapContents = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // purchaseRequest
+            // 
+            this.purchaseRequest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.purchaseRequest.Controls.Add(this.buy);
+            this.purchaseRequest.Controls.Add(this.bidamount);
+            this.purchaseRequest.Controls.Add(this.label7);
+            this.purchaseRequest.Controls.Add(this.label6);
+            this.purchaseRequest.Location = new System.Drawing.Point(4, 199);
+            this.purchaseRequest.Name = "purchaseRequest";
+            this.purchaseRequest.Size = new System.Drawing.Size(214, 135);
+            this.purchaseRequest.TabIndex = 4;
+            this.purchaseRequest.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(8, 5);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(195, 51);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "You have recieved\r\nA purchase request from the Artist";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 66);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 13);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "For bid amount:";
+            // 
+            // bidamount
+            // 
+            this.bidamount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bidamount.Location = new System.Drawing.Point(88, 61);
+            this.bidamount.Name = "bidamount";
+            this.bidamount.Size = new System.Drawing.Size(121, 23);
+            this.bidamount.TabIndex = 2;
+            this.bidamount.Text = "50$";
+            this.bidamount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // buy
+            // 
+            this.buy.Location = new System.Drawing.Point(67, 91);
+            this.buy.Name = "buy";
+            this.buy.Size = new System.Drawing.Size(75, 23);
+            this.buy.TabIndex = 3;
+            this.buy.Text = "Buy Now";
+            this.buy.UseVisualStyleBackColor = true;
+            this.buy.Click += new System.EventHandler(this.buy_Click);
+            // 
+            // reload
+            // 
+            this.reload.Location = new System.Drawing.Point(899, 10);
+            this.reload.Name = "reload";
+            this.reload.Size = new System.Drawing.Size(75, 23);
+            this.reload.TabIndex = 16;
+            this.reload.Text = "Reload";
+            this.reload.UseVisualStyleBackColor = true;
+            this.reload.Click += new System.EventHandler(this.reload_Click);
             // 
             // BiddingPage
             // 
@@ -510,6 +582,8 @@
             this.midpanel.ResumeLayout(false);
             this.midpanel.PerformLayout();
             this.bidtable.ResumeLayout(false);
+            this.purchaseRequest.ResumeLayout(false);
+            this.purchaseRequest.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -551,5 +625,11 @@
         private System.Windows.Forms.TableLayoutPanel bidtable;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Panel purchaseRequest;
+        private System.Windows.Forms.Label bidamount;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button buy;
+        private System.Windows.Forms.Button reload;
     }
 }

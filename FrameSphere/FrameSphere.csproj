@@ -121,6 +121,12 @@
     <Compile Include="FormsArts\ArtReview.Designer.cs">
       <DependentUpon>ArtReview.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsArts\BuyArt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsArts\BuyArt.Designer.cs">
+      <DependentUpon>BuyArt.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsArts\CreateArts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,12 @@
     </Compile>
     <Compile Include="FormsArts\ManageArt.Designer.cs">
       <DependentUpon>ManageArt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormsArts\SoldForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsArts\SoldForm.Designer.cs">
+      <DependentUpon>SoldForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormsArts\test.cs">
       <SubType>Form</SubType>

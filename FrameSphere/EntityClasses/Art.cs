@@ -319,6 +319,20 @@ namespace FrameSphere.EntityClasses
                 }
             }
         }
+        public bool isSold()
+        {
+            string q = $"select count(*) from ArtSold " +
+                $"where " +
+                $"artid = '{this.ArtID}'";
+            SqlConnection con = DB.Connect();
+            con.Open();
+            SqlCommand cmd = new SqlCommand(q, con);
+            if ((int)cmd.ExecuteScalar() > 0)
+            {
+                return true;
+            }
+            return false;
+        }
 
 
         /// <summary>
