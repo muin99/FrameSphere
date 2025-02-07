@@ -41,6 +41,7 @@
             this.ClearButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lengthWarning = new System.Windows.Forms.Label();
             this.checklname = new System.Windows.Forms.Label();
             this.checkfname = new System.Windows.Forms.Label();
             this.lblPassStrength = new System.Windows.Forms.Label();
@@ -53,7 +54,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.LastName = new System.Windows.Forms.TextBox();
-            this.lengthWarning = new System.Windows.Forms.Label();
+            this.noNumbers1 = new System.Windows.Forms.Label();
+            this.noNumbers2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -193,6 +195,8 @@
             // 
             this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.LightGreen;
+            this.panel2.Controls.Add(this.noNumbers2);
+            this.panel2.Controls.Add(this.noNumbers1);
             this.panel2.Controls.Add(this.lengthWarning);
             this.panel2.Controls.Add(this.checklname);
             this.panel2.Controls.Add(this.checkfname);
@@ -222,6 +226,18 @@
             this.panel2.Size = new System.Drawing.Size(1483, 617);
             this.panel2.TabIndex = 14;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // lengthWarning
+            // 
+            this.lengthWarning.AutoSize = true;
+            this.lengthWarning.ForeColor = System.Drawing.Color.Red;
+            this.lengthWarning.Location = new System.Drawing.Point(310, 239);
+            this.lengthWarning.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lengthWarning.Name = "lengthWarning";
+            this.lengthWarning.Size = new System.Drawing.Size(271, 16);
+            this.lengthWarning.TabIndex = 25;
+            this.lengthWarning.Text = "Username must be at least 5 characters long";
+            this.lengthWarning.Visible = false;
             // 
             // checklname
             // 
@@ -364,17 +380,29 @@
             this.LastName.TabIndex = 13;
             this.LastName.TextChanged += new System.EventHandler(this.LastName_TextChanged);
             // 
-            // lengthWarning
+            // noNumbers1
             // 
-            this.lengthWarning.AutoSize = true;
-            this.lengthWarning.ForeColor = System.Drawing.Color.Red;
-            this.lengthWarning.Location = new System.Drawing.Point(310, 239);
-            this.lengthWarning.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lengthWarning.Name = "lengthWarning";
-            this.lengthWarning.Size = new System.Drawing.Size(274, 16);
-            this.lengthWarning.TabIndex = 25;
-            this.lengthWarning.Text = "Username must be at least 5 characters long.";
-            this.lengthWarning.Visible = false;
+            this.noNumbers1.AutoSize = true;
+            this.noNumbers1.ForeColor = System.Drawing.Color.Red;
+            this.noNumbers1.Location = new System.Drawing.Point(310, 127);
+            this.noNumbers1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.noNumbers1.Name = "noNumbers1";
+            this.noNumbers1.Size = new System.Drawing.Size(133, 16);
+            this.noNumbers1.TabIndex = 26;
+            this.noNumbers1.Text = "No numbers allowed.";
+            this.noNumbers1.Visible = false;
+            // 
+            // noNumbers2
+            // 
+            this.noNumbers2.AutoSize = true;
+            this.noNumbers2.ForeColor = System.Drawing.Color.Red;
+            this.noNumbers2.Location = new System.Drawing.Point(871, 127);
+            this.noNumbers2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.noNumbers2.Name = "noNumbers2";
+            this.noNumbers2.Size = new System.Drawing.Size(133, 16);
+            this.noNumbers2.TabIndex = 27;
+            this.noNumbers2.Text = "No numbers allowed.";
+            this.noNumbers2.Visible = false;
             // 
             // RegistrationForm
             // 
@@ -423,5 +451,7 @@
         private System.Windows.Forms.Label checklname;
         private System.Windows.Forms.Label checkfname;
         private System.Windows.Forms.Label lengthWarning;
+        private System.Windows.Forms.Label noNumbers1;
+        private System.Windows.Forms.Label noNumbers2;
     }
 }

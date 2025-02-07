@@ -302,6 +302,11 @@ namespace FrameSphere
             if (text.StartsWith(" ") || text.EndsWith(" ")) { return false; }
             else { return true; }
         }
+        private bool noNumbers(string text)
+        {
+            if (text.Any(char.IsDigit)){ return false; }
+            else { return true; }
+        }
         private string capitalizeFirst(string text)
         {
             return char.ToUpper(text[0]) + text.Substring(1);
@@ -310,12 +315,19 @@ namespace FrameSphere
         {
             if (!noSpaces(FirstName.Text)) { checkfname.Visible = true; }
             else { checkfname.Visible = false; }
+
+            if (!noNumbers(FirstName.Text)) { noNumbers1.Visible = true; }
+            else { noNumbers1.Visible = false; }
+
         }
 
         private void LastName_TextChanged(object sender, EventArgs e)
         {
             if (!noSpaces(LastName.Text)) { checklname.Visible = true; }
             else { checklname.Visible = false; }
+
+            if (!noNumbers(LastName.Text)) { noNumbers2.Visible = true; }
+            else { noNumbers2.Visible = false; }
         }
     }
 }
