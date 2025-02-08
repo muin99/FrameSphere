@@ -416,6 +416,7 @@ namespace FrameSphere
 
                 // Display the selected image in the PictureBox
                 profilepic.Image = Image.FromFile(destinationPath);
+                poster.Text = profilePicRelativePath;
             }
         }
 
@@ -549,6 +550,19 @@ namespace FrameSphere
             ChangePass f1 = new ChangePass();
             this.Hide();
             f1.Show();
+        }
+
+        private void profilechange_Click(object sender, EventArgs e)
+        {
+            if (FSystem.loggedInUser.CheckPassword(CurrentPWField.Text) && 
+                FSystem.loggedInUser.ProfilePic != poster.Text)
+            {
+                FSystem.loggedInUser.ProfilePic = poster.Text;
+                MessageBox.Show("Profile Changed");
+            }
+            else {
+                MessageBox.Show("Not a valid password");
+            }
         }
     }
 }

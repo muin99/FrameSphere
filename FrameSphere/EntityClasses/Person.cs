@@ -34,7 +34,7 @@ namespace FrameSphere.EntityClasses
                     {
                         string query = "SELECT ProfilePic FROM UserContact WHERE UserName = @UserName";
                         SqlCommand command = new SqlCommand(query, connection);
-                        command.Parameters.AddWithValue("@UserName", _userName);
+                        command.Parameters.AddWithValue("@UserName", UserName);
                         connection.Open();
                         _profilePic = command.ExecuteScalar()?.ToString();
                     }
@@ -64,7 +64,7 @@ namespace FrameSphere.EntityClasses
                         string query = "UPDATE UserContact SET ProfilePic = @ProfilePic WHERE UserName = @UserName";
                         SqlCommand command = new SqlCommand(query, connection);
                         command.Parameters.AddWithValue("@ProfilePic", _profilePic);
-                        command.Parameters.AddWithValue("@UserName", _userName);
+                        command.Parameters.AddWithValue("@UserName", UserName);
                         connection.Open();
                         command.ExecuteNonQuery();
                     }
