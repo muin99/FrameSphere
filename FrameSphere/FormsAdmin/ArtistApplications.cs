@@ -200,5 +200,10 @@ namespace FrameSphere
             a1.Show();
             this.Hide();
         }
+
+        private void Logout_Click_1(object sender, EventArgs e)
+        {
+            FSystem.loggedInUser.Logout(this);
+        }
     }
 }

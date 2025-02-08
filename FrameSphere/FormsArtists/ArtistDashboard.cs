@@ -405,5 +405,10 @@ namespace FrameSphere
         {
 
         }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            FSystem.loggedInUser.Logout(this);
+        }
     }
 }

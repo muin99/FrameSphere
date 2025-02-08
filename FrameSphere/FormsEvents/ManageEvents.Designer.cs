@@ -38,6 +38,7 @@ namespace FrameSphere
             this.approve = new System.Windows.Forms.Button();
             this.reject = new System.Windows.Forms.Button();
             this.manageButtons_panel = new System.Windows.Forms.Panel();
+            this.manageOrganizer = new System.Windows.Forms.Button();
             this.visitors_button = new System.Windows.Forms.Button();
             this.artCollections_button = new System.Windows.Forms.Button();
             this.participants_button = new System.Windows.Forms.Button();
@@ -63,7 +64,6 @@ namespace FrameSphere
             this.OrgDetails_field = new System.Windows.Forms.TextBox();
             this.eventDesc_field = new System.Windows.Forms.TextBox();
             this.eventTitle_field = new System.Windows.Forms.TextBox();
-            this.manageOrganizer = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.header_panel.SuspendLayout();
             this.body_panel.SuspendLayout();
@@ -110,6 +110,7 @@ namespace FrameSphere
             this.Logout.TabIndex = 23;
             this.Logout.Text = "Log out";
             this.Logout.UseVisualStyleBackColor = false;
+            this.Logout.Click += new System.EventHandler(this.Logout_Click);
             // 
             // ManageEvent_Title
             // 
@@ -208,6 +209,20 @@ namespace FrameSphere
             this.manageButtons_panel.Name = "manageButtons_panel";
             this.manageButtons_panel.Size = new System.Drawing.Size(506, 248);
             this.manageButtons_panel.TabIndex = 27;
+            // 
+            // manageOrganizer
+            // 
+            this.manageOrganizer.BackColor = System.Drawing.Color.DarkGreen;
+            this.manageOrganizer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.manageOrganizer.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.manageOrganizer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.manageOrganizer.Location = new System.Drawing.Point(66, 187);
+            this.manageOrganizer.Name = "manageOrganizer";
+            this.manageOrganizer.Size = new System.Drawing.Size(373, 29);
+            this.manageOrganizer.TabIndex = 7;
+            this.manageOrganizer.Text = "Manage Organizers";
+            this.manageOrganizer.UseVisualStyleBackColor = false;
+            this.manageOrganizer.Click += new System.EventHandler(this.manageOrganizer_Click);
             // 
             // visitors_button
             // 
@@ -467,20 +482,6 @@ namespace FrameSphere
             this.eventTitle_field.Name = "eventTitle_field";
             this.eventTitle_field.Size = new System.Drawing.Size(477, 20);
             this.eventTitle_field.TabIndex = 1;
-            // 
-            // manageOrganizer
-            // 
-            this.manageOrganizer.BackColor = System.Drawing.Color.DarkGreen;
-            this.manageOrganizer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.manageOrganizer.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.manageOrganizer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.manageOrganizer.Location = new System.Drawing.Point(66, 187);
-            this.manageOrganizer.Name = "manageOrganizer";
-            this.manageOrganizer.Size = new System.Drawing.Size(373, 29);
-            this.manageOrganizer.TabIndex = 7;
-            this.manageOrganizer.Text = "Manage Organizers";
-            this.manageOrganizer.UseVisualStyleBackColor = false;
-            this.manageOrganizer.Click += new System.EventHandler(this.manageOrganizer_Click);
             // 
             // ManageEvents
             // 

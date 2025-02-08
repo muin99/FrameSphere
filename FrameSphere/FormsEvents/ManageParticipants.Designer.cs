@@ -54,7 +54,7 @@
             this.mParticipant_tableLayout.Controls.Add(this.MP_Body, 0, 1);
             this.mParticipant_tableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mParticipant_tableLayout.Location = new System.Drawing.Point(0, 0);
-            this.mParticipant_tableLayout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.mParticipant_tableLayout.Margin = new System.Windows.Forms.Padding(2);
             this.mParticipant_tableLayout.Name = "mParticipant_tableLayout";
             this.mParticipant_tableLayout.RowCount = 2;
             this.mParticipant_tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.48449F));
@@ -69,7 +69,7 @@
             this.MP_Header.Controls.Add(this.Logout);
             this.MP_Header.Controls.Add(this.ManageParticipants_Title);
             this.MP_Header.Location = new System.Drawing.Point(2, 2);
-            this.MP_Header.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MP_Header.Margin = new System.Windows.Forms.Padding(2);
             this.MP_Header.Name = "MP_Header";
             this.MP_Header.Size = new System.Drawing.Size(1258, 87);
             this.MP_Header.TabIndex = 0;
@@ -82,7 +82,7 @@
             this.goBack_button.Font = new System.Drawing.Font("Lucida Console", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.goBack_button.ForeColor = System.Drawing.Color.White;
             this.goBack_button.Location = new System.Drawing.Point(23, 25);
-            this.goBack_button.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.goBack_button.Margin = new System.Windows.Forms.Padding(2);
             this.goBack_button.Name = "goBack_button";
             this.goBack_button.Size = new System.Drawing.Size(105, 33);
             this.goBack_button.TabIndex = 25;
@@ -102,6 +102,7 @@
             this.Logout.TabIndex = 24;
             this.Logout.Text = "Log out";
             this.Logout.UseVisualStyleBackColor = false;
+            this.Logout.Click += new System.EventHandler(this.Logout_Click);
             // 
             // ManageParticipants_Title
             // 
@@ -123,7 +124,7 @@
             this.MP_Body.Controls.Add(this.FindArtist_Label);
             this.MP_Body.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MP_Body.Location = new System.Drawing.Point(2, 93);
-            this.MP_Body.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MP_Body.Margin = new System.Windows.Forms.Padding(2);
             this.MP_Body.Name = "MP_Body";
             this.MP_Body.Size = new System.Drawing.Size(1260, 586);
             this.MP_Body.TabIndex = 1;
@@ -132,7 +133,7 @@
             // 
             this.allartists.AutoScroll = true;
             this.allartists.Location = new System.Drawing.Point(23, 80);
-            this.allartists.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.allartists.Margin = new System.Windows.Forms.Padding(2);
             this.allartists.Name = "allartists";
             this.allartists.Size = new System.Drawing.Size(504, 479);
             this.allartists.TabIndex = 6;
@@ -141,7 +142,7 @@
             // 
             this.participants_panel.Controls.Add(this.noArtists);
             this.participants_panel.Location = new System.Drawing.Point(542, 80);
-            this.participants_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.participants_panel.Margin = new System.Windows.Forms.Padding(2);
             this.participants_panel.Name = "participants_panel";
             this.participants_panel.Size = new System.Drawing.Size(560, 479);
             this.participants_panel.TabIndex = 5;
@@ -170,7 +171,7 @@
             // SearchArtist_Field
             // 
             this.SearchArtist_Field.Location = new System.Drawing.Point(86, 49);
-            this.SearchArtist_Field.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SearchArtist_Field.Margin = new System.Windows.Forms.Padding(2);
             this.SearchArtist_Field.Name = "SearchArtist_Field";
             this.SearchArtist_Field.Size = new System.Drawing.Size(351, 20);
             this.SearchArtist_Field.TabIndex = 2;
@@ -193,7 +194,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.mParticipant_tableLayout);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ManageParticipants";
             this.Text = "ManageParticipants";
             this.mParticipant_tableLayout.ResumeLayout(false);

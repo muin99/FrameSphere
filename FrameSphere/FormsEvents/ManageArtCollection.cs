@@ -245,5 +245,10 @@ namespace FrameSphere.FormsEvents
             this.Hide();
             new ManageEvents(currentEvent.EventID).Show();
         }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            FSystem.loggedInUser.Logout(this);
+        }
     }
 }
