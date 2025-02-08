@@ -97,7 +97,7 @@
             this.Logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Logout.ForeColor = System.Drawing.Color.Red;
             this.Logout.Location = new System.Drawing.Point(1547, 44);
-            this.Logout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Logout.Margin = new System.Windows.Forms.Padding(4);
             this.Logout.Name = "Logout";
             this.Logout.Size = new System.Drawing.Size(100, 28);
             this.Logout.TabIndex = 24;
@@ -189,11 +189,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1685, 838);
             this.Controls.Add(this.mParticipant_tableLayout);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ManageParticipants";
-            this.Text = "ManageParticipants";
+            this.Text = "Manage Participants";
             this.mParticipant_tableLayout.ResumeLayout(false);
             this.MP_Header.ResumeLayout(false);
             this.MP_Header.PerformLayout();

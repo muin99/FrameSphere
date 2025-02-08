@@ -537,6 +537,7 @@ namespace FrameSphere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1707, 769);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
@@ -545,7 +546,7 @@ namespace FrameSphere
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Edit_Profile";
-            this.Text = "Form1";
+            this.Text = "Edit Profile";
             this.panel2.ResumeLayout(false);
             this.profilepanel.ResumeLayout(false);
             this.profilepanel.PerformLayout();

@@ -94,7 +94,7 @@ namespace FrameSphere
             this.header_panel.Controls.Add(this.ManageEvent_Title);
             this.header_panel.Controls.Add(this.button1);
             this.header_panel.Location = new System.Drawing.Point(4, 4);
-            this.header_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.header_panel.Margin = new System.Windows.Forms.Padding(4);
             this.header_panel.Name = "header_panel";
             this.header_panel.Size = new System.Drawing.Size(1677, 108);
             this.header_panel.TabIndex = 1;
@@ -106,7 +106,7 @@ namespace FrameSphere
             this.Logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Logout.ForeColor = System.Drawing.Color.Red;
             this.Logout.Location = new System.Drawing.Point(1531, 37);
-            this.Logout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Logout.Margin = new System.Windows.Forms.Padding(4);
             this.Logout.Name = "Logout";
             this.Logout.Size = new System.Drawing.Size(100, 28);
             this.Logout.TabIndex = 23;
@@ -131,7 +131,7 @@ namespace FrameSphere
             this.button1.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.button1.Location = new System.Drawing.Point(16, 37);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(260, 36);
             this.button1.TabIndex = 0;
@@ -168,7 +168,7 @@ namespace FrameSphere
             this.body_panel.Controls.Add(this.eventDesc_field);
             this.body_panel.Controls.Add(this.eventTitle_field);
             this.body_panel.Location = new System.Drawing.Point(4, 120);
-            this.body_panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.body_panel.Margin = new System.Windows.Forms.Padding(4);
             this.body_panel.Name = "body_panel";
             this.body_panel.Size = new System.Drawing.Size(1677, 706);
             this.body_panel.TabIndex = 2;
@@ -180,7 +180,7 @@ namespace FrameSphere
             this.approve.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.approve.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.approve.Location = new System.Drawing.Point(1355, 449);
-            this.approve.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.approve.Margin = new System.Windows.Forms.Padding(4);
             this.approve.Name = "approve";
             this.approve.Size = new System.Drawing.Size(224, 36);
             this.approve.TabIndex = 29;
@@ -195,7 +195,7 @@ namespace FrameSphere
             this.reject.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reject.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.reject.Location = new System.Drawing.Point(1064, 449);
-            this.reject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.reject.Margin = new System.Windows.Forms.Padding(4);
             this.reject.Name = "reject";
             this.reject.Size = new System.Drawing.Size(224, 36);
             this.reject.TabIndex = 28;
@@ -223,7 +223,7 @@ namespace FrameSphere
             this.manageOrganizer.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.manageOrganizer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.manageOrganizer.Location = new System.Drawing.Point(88, 230);
-            this.manageOrganizer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.manageOrganizer.Margin = new System.Windows.Forms.Padding(4);
             this.manageOrganizer.Name = "manageOrganizer";
             this.manageOrganizer.Size = new System.Drawing.Size(497, 36);
             this.manageOrganizer.TabIndex = 7;
@@ -238,7 +238,7 @@ namespace FrameSphere
             this.visitors_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.visitors_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.visitors_button.Location = new System.Drawing.Point(88, 159);
-            this.visitors_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.visitors_button.Margin = new System.Windows.Forms.Padding(4);
             this.visitors_button.Name = "visitors_button";
             this.visitors_button.Size = new System.Drawing.Size(497, 36);
             this.visitors_button.TabIndex = 6;
@@ -252,7 +252,7 @@ namespace FrameSphere
             this.artCollections_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.artCollections_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.artCollections_button.Location = new System.Drawing.Point(88, 92);
-            this.artCollections_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.artCollections_button.Margin = new System.Windows.Forms.Padding(4);
             this.artCollections_button.Name = "artCollections_button";
             this.artCollections_button.Size = new System.Drawing.Size(497, 36);
             this.artCollections_button.TabIndex = 5;
@@ -267,7 +267,7 @@ namespace FrameSphere
             this.participants_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.participants_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.participants_button.Location = new System.Drawing.Point(88, 18);
-            this.participants_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.participants_button.Margin = new System.Windows.Forms.Padding(4);
             this.participants_button.Name = "participants_button";
             this.participants_button.Size = new System.Drawing.Size(497, 36);
             this.participants_button.TabIndex = 4;
@@ -290,7 +290,7 @@ namespace FrameSphere
             // 
             this.CurrentPWField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CurrentPWField.Location = new System.Drawing.Point(1407, 567);
-            this.CurrentPWField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CurrentPWField.Margin = new System.Windows.Forms.Padding(4);
             this.CurrentPWField.Name = "CurrentPWField";
             this.CurrentPWField.Size = new System.Drawing.Size(223, 22);
             this.CurrentPWField.TabIndex = 25;
@@ -299,7 +299,7 @@ namespace FrameSphere
             // 
             this.posterImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.posterImage.Location = new System.Drawing.Point(673, 518);
-            this.posterImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.posterImage.Margin = new System.Windows.Forms.Padding(4);
             this.posterImage.Name = "posterImage";
             this.posterImage.Size = new System.Drawing.Size(147, 121);
             this.posterImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -402,7 +402,7 @@ namespace FrameSphere
             this.update_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.update_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.update_button.Location = new System.Drawing.Point(1407, 608);
-            this.update_button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.update_button.Margin = new System.Windows.Forms.Padding(4);
             this.update_button.Name = "update_button";
             this.update_button.Size = new System.Drawing.Size(224, 36);
             this.update_button.TabIndex = 1;
@@ -415,7 +415,7 @@ namespace FrameSphere
             this.paid.AutoSize = true;
             this.paid.BackColor = System.Drawing.Color.White;
             this.paid.Location = new System.Drawing.Point(545, 398);
-            this.paid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.paid.Margin = new System.Windows.Forms.Padding(4);
             this.paid.Name = "paid";
             this.paid.Size = new System.Drawing.Size(158, 20);
             this.paid.TabIndex = 12;
@@ -429,7 +429,7 @@ namespace FrameSphere
             this.free.AutoSize = true;
             this.free.BackColor = System.Drawing.Color.White;
             this.free.Location = new System.Drawing.Point(340, 396);
-            this.free.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.free.Margin = new System.Windows.Forms.Padding(4);
             this.free.Name = "free";
             this.free.Size = new System.Drawing.Size(158, 20);
             this.free.TabIndex = 11;
@@ -445,7 +445,7 @@ namespace FrameSphere
             this.posterbtn.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.posterbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.posterbtn.Location = new System.Drawing.Point(731, 485);
-            this.posterbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.posterbtn.Margin = new System.Windows.Forms.Padding(4);
             this.posterbtn.Name = "posterbtn";
             this.posterbtn.Size = new System.Drawing.Size(89, 25);
             this.posterbtn.TabIndex = 1;
@@ -457,7 +457,7 @@ namespace FrameSphere
             // 
             this.enddate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.enddate.Location = new System.Drawing.Point(340, 249);
-            this.enddate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.enddate.Margin = new System.Windows.Forms.Padding(4);
             this.enddate.Name = "enddate";
             this.enddate.Size = new System.Drawing.Size(481, 22);
             this.enddate.TabIndex = 9;
@@ -466,7 +466,7 @@ namespace FrameSphere
             // 
             this.startdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.startdate.Location = new System.Drawing.Point(339, 214);
-            this.startdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.startdate.Margin = new System.Windows.Forms.Padding(4);
             this.startdate.Name = "startdate";
             this.startdate.Size = new System.Drawing.Size(481, 22);
             this.startdate.TabIndex = 6;
@@ -474,7 +474,7 @@ namespace FrameSphere
             // poster_field
             // 
             this.poster_field.Location = new System.Drawing.Point(340, 485);
-            this.poster_field.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.poster_field.Margin = new System.Windows.Forms.Padding(4);
             this.poster_field.Name = "poster_field";
             this.poster_field.ReadOnly = true;
             this.poster_field.Size = new System.Drawing.Size(481, 22);
@@ -483,7 +483,7 @@ namespace FrameSphere
             // ticketprice_field
             // 
             this.ticketprice_field.Location = new System.Drawing.Point(340, 434);
-            this.ticketprice_field.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ticketprice_field.Margin = new System.Windows.Forms.Padding(4);
             this.ticketprice_field.Name = "ticketprice_field";
             this.ticketprice_field.Size = new System.Drawing.Size(481, 22);
             this.ticketprice_field.TabIndex = 4;
@@ -492,7 +492,7 @@ namespace FrameSphere
             // OrgDetails_field
             // 
             this.OrgDetails_field.Location = new System.Drawing.Point(340, 279);
-            this.OrgDetails_field.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OrgDetails_field.Margin = new System.Windows.Forms.Padding(4);
             this.OrgDetails_field.Multiline = true;
             this.OrgDetails_field.Name = "OrgDetails_field";
             this.OrgDetails_field.Size = new System.Drawing.Size(481, 94);
@@ -501,7 +501,7 @@ namespace FrameSphere
             // eventDesc_field
             // 
             this.eventDesc_field.Location = new System.Drawing.Point(252, 85);
-            this.eventDesc_field.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.eventDesc_field.Margin = new System.Windows.Forms.Padding(4);
             this.eventDesc_field.Multiline = true;
             this.eventDesc_field.Name = "eventDesc_field";
             this.eventDesc_field.Size = new System.Drawing.Size(568, 96);
@@ -510,7 +510,7 @@ namespace FrameSphere
             // eventTitle_field
             // 
             this.eventTitle_field.Location = new System.Drawing.Point(187, 41);
-            this.eventTitle_field.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.eventTitle_field.Margin = new System.Windows.Forms.Padding(4);
             this.eventTitle_field.Name = "eventTitle_field";
             this.eventTitle_field.Size = new System.Drawing.Size(635, 22);
             this.eventTitle_field.TabIndex = 1;
@@ -519,9 +519,10 @@ namespace FrameSphere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1685, 838);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ManageEvents";
             this.Text = "Manage Event";
             this.tableLayoutPanel1.ResumeLayout(false);
