@@ -28,30 +28,63 @@ namespace FrameSphere.EntityClasses
 
         public string ProfilePic {
             get {
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "SELECT ProfilePic FROM UserContact WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    _profilePic = command.ExecuteScalar()?.ToString();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "SELECT ProfilePic FROM UserContact WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        _profilePic = command.ExecuteScalar()?.ToString();
+                    }
+                    return _profilePic;
+
                 }
-                return _profilePic;
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN GETTING PROFILE IMAGE: " + e.Message);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN GETTING PROFILE IMAGE: " + e.Message);
+                    return null;
+                }
+                
             }
             set {
                 _profilePic = value;
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "UPDATE UserContact SET ProfilePic = @ProfilePic WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@ProfilePic", _profilePic);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "UPDATE UserContact SET ProfilePic = @ProfilePic WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@ProfilePic", _profilePic);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+
                 }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN SETTING PROFILE IMAGE: " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN SETTING PROFILE IMAGE: " + e.Message);
+                    return;
+                }
+                
             }
         }
-
         public string FullName()
         {
             return FirstName + " " + LastName;
@@ -59,106 +92,237 @@ namespace FrameSphere.EntityClasses
 
         public string FirstName {
             get {
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "SELECT FirstName FROM AllUser WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    _firstName = command.ExecuteScalar()?.ToString();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "SELECT FirstName FROM AllUser WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        _firstName = command.ExecuteScalar()?.ToString();
+                    }
+                    return _firstName;
+
                 }
-                return _firstName;
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN GETTING FIRSTNAME: " + e.Message);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN GETTING FIRSTNAME: " + e.Message);
+                    return null;
+                }
+                
             }
             set {
                 _firstName = value;
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "UPDATE AllUser SET FirstName = @FirstName WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@FirstName", _firstName);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "UPDATE AllUser SET FirstName = @FirstName WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@FirstName", _firstName);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+
                 }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN SETTING FIRSTNAME: " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN SETTING FIRSTNAME: " + e.Message);
+                    return;
+                }
+                
             }
         }
-
         public string LastName {
             get {
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "SELECT LastName FROM AllUser WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    _lastName = command.ExecuteScalar()?.ToString();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "SELECT LastName FROM AllUser WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        _lastName = command.ExecuteScalar()?.ToString();
+                    }
+                    return _lastName;
+
                 }
-                return _lastName;
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN GETTING LASTNAME: " + e.Message);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN GETTING LASTNAME: " + e.Message);
+                    return null;
+                }
+                
             }
             set {
                 _lastName = value;
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "UPDATE AllUser SET LastName = @LastName WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@LastName", _lastName);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "UPDATE AllUser SET LastName = @LastName WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@LastName", _lastName);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
                 }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN SETTING LASTNAME: " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN SETTING LASTNAME: " + e.Message);
+                    return;
+                }
+                
             }
         }
 
         public string Email {
             get {
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "SELECT Email FROM UserContact WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    _email = command.ExecuteScalar()?.ToString();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "SELECT Email FROM UserContact WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        _email = command.ExecuteScalar()?.ToString();
+                    }
+                    return _email;
                 }
-                return _email;
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN GETTING EMAIL: " + e.Message);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN GETTING EMAIL: " + e.Message);
+                    return null;
+                }
+                
             }
             set {
                 _email = value;
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "UPDATE UserContact SET Email = @Email WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Email", _email);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "UPDATE UserContact SET Email = @Email WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@Email", _email);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+
                 }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN SETTING EMAIL: " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN SETTING EMAIL: " + e.Message);
+                    return;
+                }
+                
             }
         }
-
-
         public string Password {
             get {
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "SELECT Password FROM AllUser WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    _password = command.ExecuteScalar()?.ToString();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "SELECT Password FROM AllUser WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        _password = command.ExecuteScalar()?.ToString();
+                    }
+                    return _password;
+
                 }
-                return _password;
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN GETTING PASSWORD: " + e.Message);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN GETTING PASSWORD: " + e.Message);
+                    return null;
+                }
+               
             }
             set {
                 _password = value;
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "UPDATE AllUser SET Password = @Password WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Password", _password);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "UPDATE AllUser SET Password = @Password WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@Password", _password);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+
                 }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN SETTING PASSWORD: " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN SETTING PASSWORD: " + e.Message);
+                    return;
+                }
+               
             }
         }
 
@@ -169,156 +333,356 @@ namespace FrameSphere.EntityClasses
 
         public string Address {
             get {
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "SELECT Address FROM UserContact WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    _address = command.ExecuteScalar()?.ToString();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "SELECT Address FROM UserContact WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        _address = command.ExecuteScalar()?.ToString();
+                    }
+                    return _address;
                 }
-                return _address;
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN GETTING ADDRESS: " + e.Message);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN GETTING ADDRESS: " + e.Message);
+                    return null;
+                }
+                
             }
             set {
                 _address = value;
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "UPDATE UserContact SET Address = @Address WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Address", _address);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "UPDATE UserContact SET Address = @Address WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@Address", _address);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+
                 }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN SETTING ADDRESS: " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN SETTING ADDRESS: " + e.Message);
+                    return;
+                }
+                
             }
         }
 
         public string Phone {
             get {
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "SELECT Phone FROM UserContact WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    _phone = command.ExecuteScalar()?.ToString();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "SELECT Phone FROM UserContact WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        _phone = command.ExecuteScalar()?.ToString();
+                    }
+                    return _phone;
+
                 }
-                return _phone;
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN GETTING PHONE: " + e.Message);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN GETTING PHONE: " + e.Message);
+                    return null;
+                }
             }
             set {
                 _phone = value;
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "UPDATE UserContact SET Phone = @Phone WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Phone", _phone);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "UPDATE UserContact SET Phone = @Phone WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@Phone", _phone);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+
                 }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN SETTING PHONE: " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN SETTING PHONE: " + e.Message);
+                    return;
+                }
+                
             }
         }
         public string Facebook {
             get {
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "SELECT Facebook FROM UserSocials WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    _facebook = command.ExecuteScalar()?.ToString();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "SELECT Facebook FROM UserSocials WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        _facebook = command.ExecuteScalar()?.ToString();
+                    }
+                    return _facebook;
+
                 }
-                return _facebook;
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN GETTING FACEBOOK: " + e.Message);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN GETTING FACEBOOK: " + e.Message);
+                    return null;
+                }
+               
             }
             set {
                 _facebook = value;
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "UPDATE UserSocials SET Facebook = @Facebook WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Facebook", _facebook);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "UPDATE UserSocials SET Facebook = @Facebook WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@Facebook", _facebook);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+
                 }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN SETTING FACEBOOK: " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN SETTING FACEBOOK: " + e.Message);
+                    return;
+                }
+                
             }
         }
 
         public string Instagram {
             get {
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "SELECT Instagram FROM UserSocials WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    _instagram = command.ExecuteScalar()?.ToString();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "SELECT Instagram FROM UserSocials WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        _instagram = command.ExecuteScalar()?.ToString();
+                    }
+                    return _instagram;
+
                 }
-                return _instagram;
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN GETTING INSTAGRAM: " + e.Message);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN GETTING INSTAGRAM: " + e.Message);
+                    return null;
+                }
+                
             }
             set {
                 _instagram = value;
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "UPDATE UserSocials SET Instagram = @Instagram WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Instagram", _instagram);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "UPDATE UserSocials SET Instagram = @Instagram WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@Instagram", _instagram);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+
                 }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN SETTING INSTAGRAM: " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN SETTING INSTAGRAM: " + e.Message);
+                    return;
+                }
+                
             }
         }
 
         public string Pinterest {
             get {
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "SELECT Pinterest FROM UserSocials WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    _pinterest = command.ExecuteScalar()?.ToString();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "SELECT Pinterest FROM UserSocials WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        _pinterest = command.ExecuteScalar()?.ToString();
+                    }
+                    return _pinterest;
                 }
-                return _pinterest;
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN GETTING PINTEREST: " + e.Message);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN GETTING PINTEREST: " + e.Message);
+                    return null;
+                }
+                
             }
             set {
                 _pinterest = value;
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "UPDATE UserSocials SET Pinterest = @Pinterest WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Pinterest", _pinterest);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "UPDATE UserSocials SET Pinterest = @Pinterest WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@Pinterest", _pinterest);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
                 }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN SETTING PINTEREST: " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN SETTING PINTEREST: " + e.Message);
+                    return;
+                }
+                
             }
         }
 
         public string Website {
             get {
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "SELECT Website FROM UserSocials WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    _website = command.ExecuteScalar()?.ToString();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "SELECT Website FROM UserSocials WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        _website = command.ExecuteScalar()?.ToString();
+                    }
+                    return _website;
+
                 }
-                return _website;
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN GETTING WEBSITE: " + e.Message);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN GETTING WEBSITE: " + e.Message);
+                    return null;
+                }
+                
             }
             set {
                 _website = value;
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "UPDATE UserSocials SET Website = @Website WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Website", _website);
-                    command.Parameters.AddWithValue("@UserName", _userName);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "UPDATE UserSocials SET Website = @Website WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@Website", _website);
+                        command.Parameters.AddWithValue("@UserName", _userName);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+
                 }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN SETTING WEBSITE: " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN SETTING WEBSITE: " + e.Message);
+                    return;
+                }
+                
             }
         }
         

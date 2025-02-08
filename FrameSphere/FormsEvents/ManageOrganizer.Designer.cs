@@ -55,12 +55,12 @@ namespace FrameSphere.FormsEvents
             this.mParticipant_tableLayout.Controls.Add(this.MP_Body, 0, 1);
             this.mParticipant_tableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mParticipant_tableLayout.Location = new System.Drawing.Point(0, 0);
-            this.mParticipant_tableLayout.Margin = new System.Windows.Forms.Padding(2);
+            this.mParticipant_tableLayout.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.mParticipant_tableLayout.Name = "mParticipant_tableLayout";
             this.mParticipant_tableLayout.RowCount = 2;
             this.mParticipant_tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 13.48449F));
             this.mParticipant_tableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 86.51551F));
-            this.mParticipant_tableLayout.Size = new System.Drawing.Size(1264, 681);
+            this.mParticipant_tableLayout.Size = new System.Drawing.Size(1685, 838);
             this.mParticipant_tableLayout.TabIndex = 1;
             // 
             // MP_Header
@@ -69,10 +69,10 @@ namespace FrameSphere.FormsEvents
             this.MP_Header.Controls.Add(this.goBack_button);
             this.MP_Header.Controls.Add(this.Logout);
             this.MP_Header.Controls.Add(this.ManageParticipants_Title);
-            this.MP_Header.Location = new System.Drawing.Point(2, 2);
-            this.MP_Header.Margin = new System.Windows.Forms.Padding(2);
+            this.MP_Header.Location = new System.Drawing.Point(3, 2);
+            this.MP_Header.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MP_Header.Name = "MP_Header";
-            this.MP_Header.Size = new System.Drawing.Size(1258, 86);
+            this.MP_Header.Size = new System.Drawing.Size(1677, 106);
             this.MP_Header.TabIndex = 0;
             // 
             // goBack_button
@@ -82,10 +82,10 @@ namespace FrameSphere.FormsEvents
             this.goBack_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.goBack_button.Font = new System.Drawing.Font("Lucida Console", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.goBack_button.ForeColor = System.Drawing.Color.White;
-            this.goBack_button.Location = new System.Drawing.Point(23, 25);
-            this.goBack_button.Margin = new System.Windows.Forms.Padding(2);
+            this.goBack_button.Location = new System.Drawing.Point(31, 31);
+            this.goBack_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.goBack_button.Name = "goBack_button";
-            this.goBack_button.Size = new System.Drawing.Size(105, 33);
+            this.goBack_button.Size = new System.Drawing.Size(140, 41);
             this.goBack_button.TabIndex = 25;
             this.goBack_button.Text = "Go Back";
             this.goBack_button.UseVisualStyleBackColor = false;
@@ -97,9 +97,10 @@ namespace FrameSphere.FormsEvents
             this.Logout.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.Logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.Logout.ForeColor = System.Drawing.Color.Red;
-            this.Logout.Location = new System.Drawing.Point(1160, 36);
+            this.Logout.Location = new System.Drawing.Point(1547, 44);
+            this.Logout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(75, 23);
+            this.Logout.Size = new System.Drawing.Size(100, 28);
             this.Logout.TabIndex = 24;
             this.Logout.Text = "Log out";
             this.Logout.UseVisualStyleBackColor = false;
@@ -108,9 +109,10 @@ namespace FrameSphere.FormsEvents
             // 
             this.ManageParticipants_Title.AutoSize = true;
             this.ManageParticipants_Title.Font = new System.Drawing.Font("Microsoft New Tai Lue", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ManageParticipants_Title.Location = new System.Drawing.Point(536, 25);
+            this.ManageParticipants_Title.Location = new System.Drawing.Point(715, 31);
+            this.ManageParticipants_Title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ManageParticipants_Title.Name = "ManageParticipants_Title";
-            this.ManageParticipants_Title.Size = new System.Drawing.Size(264, 35);
+            this.ManageParticipants_Title.Size = new System.Drawing.Size(331, 45);
             this.ManageParticipants_Title.TabIndex = 22;
             this.ManageParticipants_Title.Text = "Manage Organizers";
             // 
@@ -123,37 +125,36 @@ namespace FrameSphere.FormsEvents
             this.MP_Body.Controls.Add(this.SearchOrganizer_Field);
             this.MP_Body.Controls.Add(this.FindArtist_Label);
             this.MP_Body.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MP_Body.Location = new System.Drawing.Point(2, 93);
-            this.MP_Body.Margin = new System.Windows.Forms.Padding(2);
+            this.MP_Body.Location = new System.Drawing.Point(3, 115);
+            this.MP_Body.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MP_Body.Name = "MP_Body";
-            this.MP_Body.Size = new System.Drawing.Size(1260, 586);
+            this.MP_Body.Size = new System.Drawing.Size(1679, 721);
             this.MP_Body.TabIndex = 1;
             // 
             // allorganizers
             // 
             this.allorganizers.AutoScroll = true;
-            this.allorganizers.Location = new System.Drawing.Point(23, 80);
-            this.allorganizers.Margin = new System.Windows.Forms.Padding(2);
+            this.allorganizers.Location = new System.Drawing.Point(31, 98);
+            this.allorganizers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.allorganizers.Name = "allorganizers";
-            this.allorganizers.Size = new System.Drawing.Size(504, 479);
+            this.allorganizers.Size = new System.Drawing.Size(672, 590);
             this.allorganizers.TabIndex = 6;
             // 
             // currentOrganizers_panel
             // 
             this.currentOrganizers_panel.Controls.Add(this.noOrganizers);
-            this.currentOrganizers_panel.Location = new System.Drawing.Point(542, 80);
-            this.currentOrganizers_panel.Margin = new System.Windows.Forms.Padding(2);
+            this.currentOrganizers_panel.Location = new System.Drawing.Point(723, 98);
+            this.currentOrganizers_panel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.currentOrganizers_panel.Name = "currentOrganizers_panel";
-            this.currentOrganizers_panel.Size = new System.Drawing.Size(560, 479);
+            this.currentOrganizers_panel.Size = new System.Drawing.Size(747, 590);
             this.currentOrganizers_panel.TabIndex = 5;
             // 
             // noOrganizers
             // 
             this.noOrganizers.AutoSize = true;
-            this.noOrganizers.Location = new System.Drawing.Point(2, 0);
-            this.noOrganizers.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.noOrganizers.Location = new System.Drawing.Point(3, 0);
             this.noOrganizers.Name = "noOrganizers";
-            this.noOrganizers.Size = new System.Drawing.Size(33, 13);
+            this.noOrganizers.Size = new System.Drawing.Size(40, 16);
             this.noOrganizers.TabIndex = 0;
             this.noOrganizers.Text = "None";
             // 
@@ -161,19 +162,18 @@ namespace FrameSphere.FormsEvents
             // 
             this.CurrentArtists_Label.AutoSize = true;
             this.CurrentArtists_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentArtists_Label.Location = new System.Drawing.Point(539, 49);
-            this.CurrentArtists_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.CurrentArtists_Label.Location = new System.Drawing.Point(719, 60);
             this.CurrentArtists_Label.Name = "CurrentArtists_Label";
-            this.CurrentArtists_Label.Size = new System.Drawing.Size(158, 17);
+            this.CurrentArtists_Label.Size = new System.Drawing.Size(183, 20);
             this.CurrentArtists_Label.TabIndex = 4;
             this.CurrentArtists_Label.Text = "Currently Organizing";
             // 
             // SearchOrganizer_Field
             // 
-            this.SearchOrganizer_Field.Location = new System.Drawing.Point(86, 49);
-            this.SearchOrganizer_Field.Margin = new System.Windows.Forms.Padding(2);
+            this.SearchOrganizer_Field.Location = new System.Drawing.Point(115, 60);
+            this.SearchOrganizer_Field.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.SearchOrganizer_Field.Name = "SearchOrganizer_Field";
-            this.SearchOrganizer_Field.Size = new System.Drawing.Size(351, 20);
+            this.SearchOrganizer_Field.Size = new System.Drawing.Size(467, 22);
             this.SearchOrganizer_Field.TabIndex = 2;
             this.SearchOrganizer_Field.TextChanged += new System.EventHandler(this.SearchOrganizer_Field_TextChanged);
             // 
@@ -181,21 +181,22 @@ namespace FrameSphere.FormsEvents
             // 
             this.FindArtist_Label.AutoSize = true;
             this.FindArtist_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FindArtist_Label.Location = new System.Drawing.Point(20, 51);
-            this.FindArtist_Label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.FindArtist_Label.Location = new System.Drawing.Point(27, 63);
             this.FindArtist_Label.Name = "FindArtist_Label";
-            this.FindArtist_Label.Size = new System.Drawing.Size(69, 17);
+            this.FindArtist_Label.Size = new System.Drawing.Size(80, 20);
             this.FindArtist_Label.TabIndex = 1;
             this.FindArtist_Label.Text = "Search: ";
             // 
             // ManageOrganizer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1685, 838);
             this.Controls.Add(this.mParticipant_tableLayout);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ManageOrganizer";
-            this.Text = "ManageOrganizer";
+            this.Text = "Manage Organizers";
             this.mParticipant_tableLayout.ResumeLayout(false);
             this.MP_Header.ResumeLayout(false);
             this.MP_Header.PerformLayout();

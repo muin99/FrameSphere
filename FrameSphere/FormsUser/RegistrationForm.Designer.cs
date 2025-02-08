@@ -41,6 +41,8 @@
             this.ClearButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.noNumbers2 = new System.Windows.Forms.Label();
+            this.noNumbers1 = new System.Windows.Forms.Label();
             this.lengthWarning = new System.Windows.Forms.Label();
             this.checklname = new System.Windows.Forms.Label();
             this.checkfname = new System.Windows.Forms.Label();
@@ -54,8 +56,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.LastName = new System.Windows.Forms.TextBox();
-            this.noNumbers1 = new System.Windows.Forms.Label();
-            this.noNumbers2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -227,6 +227,30 @@
             this.panel2.TabIndex = 14;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // noNumbers2
+            // 
+            this.noNumbers2.AutoSize = true;
+            this.noNumbers2.ForeColor = System.Drawing.Color.Red;
+            this.noNumbers2.Location = new System.Drawing.Point(871, 127);
+            this.noNumbers2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.noNumbers2.Name = "noNumbers2";
+            this.noNumbers2.Size = new System.Drawing.Size(133, 16);
+            this.noNumbers2.TabIndex = 27;
+            this.noNumbers2.Text = "No numbers allowed.";
+            this.noNumbers2.Visible = false;
+            // 
+            // noNumbers1
+            // 
+            this.noNumbers1.AutoSize = true;
+            this.noNumbers1.ForeColor = System.Drawing.Color.Red;
+            this.noNumbers1.Location = new System.Drawing.Point(310, 127);
+            this.noNumbers1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.noNumbers1.Name = "noNumbers1";
+            this.noNumbers1.Size = new System.Drawing.Size(133, 16);
+            this.noNumbers1.TabIndex = 26;
+            this.noNumbers1.Text = "No numbers allowed.";
+            this.noNumbers1.Visible = false;
+            // 
             // lengthWarning
             // 
             this.lengthWarning.AutoSize = true;
@@ -380,40 +404,17 @@
             this.LastName.TabIndex = 13;
             this.LastName.TextChanged += new System.EventHandler(this.LastName_TextChanged);
             // 
-            // noNumbers1
-            // 
-            this.noNumbers1.AutoSize = true;
-            this.noNumbers1.ForeColor = System.Drawing.Color.Red;
-            this.noNumbers1.Location = new System.Drawing.Point(310, 127);
-            this.noNumbers1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.noNumbers1.Name = "noNumbers1";
-            this.noNumbers1.Size = new System.Drawing.Size(133, 16);
-            this.noNumbers1.TabIndex = 26;
-            this.noNumbers1.Text = "No numbers allowed.";
-            this.noNumbers1.Visible = false;
-            // 
-            // noNumbers2
-            // 
-            this.noNumbers2.AutoSize = true;
-            this.noNumbers2.ForeColor = System.Drawing.Color.Red;
-            this.noNumbers2.Location = new System.Drawing.Point(871, 127);
-            this.noNumbers2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.noNumbers2.Name = "noNumbers2";
-            this.noNumbers2.Size = new System.Drawing.Size(133, 16);
-            this.noNumbers2.TabIndex = 27;
-            this.noNumbers2.Text = "No numbers allowed.";
-            this.noNumbers2.Visible = false;
-            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1685, 838);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RegistrationForm";
-            this.Text = "RegistrationForm";
+            this.Text = "Registration Form";
             this.Load += new System.EventHandler(this.RegistrationForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

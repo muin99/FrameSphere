@@ -64,6 +64,7 @@ namespace FrameSphere.EntityClasses
                 catch (Exception ex)
                 {
                     MessageBox.Show($"An error occurred while removing the Organizer: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
         }

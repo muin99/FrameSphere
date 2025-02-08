@@ -33,11 +33,6 @@
             this.TicketPageHeader_label = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.TicketPageBody_panel = new System.Windows.Forms.Panel();
-            this.PaymentOption_panel = new System.Windows.Forms.Panel();
-            this.payment_label = new System.Windows.Forms.Label();
-            this.bKashOption_button = new System.Windows.Forms.RadioButton();
-            this.VisaOption_button = new System.Windows.Forms.RadioButton();
-            this.checkout_button = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.organizer = new System.Windows.Forms.TextBox();
             this.price = new System.Windows.Forms.Label();
@@ -50,14 +45,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.Label();
             this.cover = new System.Windows.Forms.PictureBox();
-            this.amountToBePaid_label = new System.Windows.Forms.Label();
+            this.checkout_button = new System.Windows.Forms.Button();
+            this.PaymentOption_panel = new System.Windows.Forms.Panel();
             this.amountToPay_field = new System.Windows.Forms.TextBox();
+            this.amountToBePaid_label = new System.Windows.Forms.Label();
+            this.VisaOption_button = new System.Windows.Forms.RadioButton();
+            this.bKashOption_button = new System.Windows.Forms.RadioButton();
+            this.payment_label = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.TicketPageBody_panel.SuspendLayout();
-            this.PaymentOption_panel.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cover)).BeginInit();
+            this.PaymentOption_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -124,67 +124,6 @@
             this.TicketPageBody_panel.Name = "TicketPageBody_panel";
             this.TicketPageBody_panel.Size = new System.Drawing.Size(1555, 683);
             this.TicketPageBody_panel.TabIndex = 2;
-            // 
-            // PaymentOption_panel
-            // 
-            this.PaymentOption_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.PaymentOption_panel.Controls.Add(this.amountToPay_field);
-            this.PaymentOption_panel.Controls.Add(this.amountToBePaid_label);
-            this.PaymentOption_panel.Controls.Add(this.VisaOption_button);
-            this.PaymentOption_panel.Controls.Add(this.bKashOption_button);
-            this.PaymentOption_panel.Controls.Add(this.payment_label);
-            this.PaymentOption_panel.Location = new System.Drawing.Point(10, 339);
-            this.PaymentOption_panel.Name = "PaymentOption_panel";
-            this.PaymentOption_panel.Size = new System.Drawing.Size(797, 201);
-            this.PaymentOption_panel.TabIndex = 20;
-            // 
-            // payment_label
-            // 
-            this.payment_label.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.payment_label.Location = new System.Drawing.Point(40, 13);
-            this.payment_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.payment_label.Name = "payment_label";
-            this.payment_label.Size = new System.Drawing.Size(227, 26);
-            this.payment_label.TabIndex = 19;
-            this.payment_label.Text = "Payment Option";
-            this.payment_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // bKashOption_button
-            // 
-            this.bKashOption_button.AutoSize = true;
-            this.bKashOption_button.Location = new System.Drawing.Point(84, 70);
-            this.bKashOption_button.Name = "bKashOption_button";
-            this.bKashOption_button.Size = new System.Drawing.Size(66, 20);
-            this.bKashOption_button.TabIndex = 20;
-            this.bKashOption_button.TabStop = true;
-            this.bKashOption_button.Text = "bKash";
-            this.bKashOption_button.UseVisualStyleBackColor = true;
-            // 
-            // VisaOption_button
-            // 
-            this.VisaOption_button.AutoSize = true;
-            this.VisaOption_button.Location = new System.Drawing.Point(84, 120);
-            this.VisaOption_button.Name = "VisaOption_button";
-            this.VisaOption_button.Size = new System.Drawing.Size(55, 20);
-            this.VisaOption_button.TabIndex = 21;
-            this.VisaOption_button.TabStop = true;
-            this.VisaOption_button.Text = "Visa";
-            this.VisaOption_button.UseVisualStyleBackColor = true;
-            // 
-            // checkout_button
-            // 
-            this.checkout_button.BackColor = System.Drawing.Color.DarkGreen;
-            this.checkout_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.checkout_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkout_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.checkout_button.Location = new System.Drawing.Point(63, 597);
-            this.checkout_button.Margin = new System.Windows.Forms.Padding(4);
-            this.checkout_button.Name = "checkout_button";
-            this.checkout_button.Size = new System.Drawing.Size(636, 36);
-            this.checkout_button.TabIndex = 21;
-            this.checkout_button.Text = "Proceed to Checkout";
-            this.checkout_button.UseVisualStyleBackColor = false;
-            this.checkout_button.Click += new System.EventHandler(this.checkout_button_Click);
             // 
             // panel4
             // 
@@ -333,6 +272,42 @@
             this.cover.TabIndex = 0;
             this.cover.TabStop = false;
             // 
+            // checkout_button
+            // 
+            this.checkout_button.BackColor = System.Drawing.Color.DarkGreen;
+            this.checkout_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.checkout_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkout_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.checkout_button.Location = new System.Drawing.Point(63, 597);
+            this.checkout_button.Margin = new System.Windows.Forms.Padding(4);
+            this.checkout_button.Name = "checkout_button";
+            this.checkout_button.Size = new System.Drawing.Size(636, 36);
+            this.checkout_button.TabIndex = 21;
+            this.checkout_button.Text = "Proceed to Checkout";
+            this.checkout_button.UseVisualStyleBackColor = false;
+            this.checkout_button.Click += new System.EventHandler(this.checkout_button_Click);
+            // 
+            // PaymentOption_panel
+            // 
+            this.PaymentOption_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.PaymentOption_panel.Controls.Add(this.amountToPay_field);
+            this.PaymentOption_panel.Controls.Add(this.amountToBePaid_label);
+            this.PaymentOption_panel.Controls.Add(this.VisaOption_button);
+            this.PaymentOption_panel.Controls.Add(this.bKashOption_button);
+            this.PaymentOption_panel.Controls.Add(this.payment_label);
+            this.PaymentOption_panel.Location = new System.Drawing.Point(10, 339);
+            this.PaymentOption_panel.Name = "PaymentOption_panel";
+            this.PaymentOption_panel.Size = new System.Drawing.Size(797, 201);
+            this.PaymentOption_panel.TabIndex = 20;
+            // 
+            // amountToPay_field
+            // 
+            this.amountToPay_field.Location = new System.Drawing.Point(467, 81);
+            this.amountToPay_field.Name = "amountToPay_field";
+            this.amountToPay_field.ReadOnly = true;
+            this.amountToPay_field.Size = new System.Drawing.Size(147, 22);
+            this.amountToPay_field.TabIndex = 23;
+            // 
             // amountToBePaid_label
             // 
             this.amountToBePaid_label.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -344,33 +319,59 @@
             this.amountToBePaid_label.Text = "Amount To Be Paid";
             this.amountToBePaid_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // amountToPay_field
+            // VisaOption_button
             // 
-            this.amountToPay_field.Location = new System.Drawing.Point(467, 81);
-            this.amountToPay_field.Name = "amountToPay_field";
-            this.amountToPay_field.ReadOnly = true;
-            this.amountToPay_field.Size = new System.Drawing.Size(147, 22);
-            this.amountToPay_field.TabIndex = 23;
+            this.VisaOption_button.AutoSize = true;
+            this.VisaOption_button.Location = new System.Drawing.Point(84, 120);
+            this.VisaOption_button.Name = "VisaOption_button";
+            this.VisaOption_button.Size = new System.Drawing.Size(55, 20);
+            this.VisaOption_button.TabIndex = 21;
+            this.VisaOption_button.TabStop = true;
+            this.VisaOption_button.Text = "Visa";
+            this.VisaOption_button.UseVisualStyleBackColor = true;
+            // 
+            // bKashOption_button
+            // 
+            this.bKashOption_button.AutoSize = true;
+            this.bKashOption_button.Location = new System.Drawing.Point(84, 70);
+            this.bKashOption_button.Name = "bKashOption_button";
+            this.bKashOption_button.Size = new System.Drawing.Size(66, 20);
+            this.bKashOption_button.TabIndex = 20;
+            this.bKashOption_button.TabStop = true;
+            this.bKashOption_button.Text = "bKash";
+            this.bKashOption_button.UseVisualStyleBackColor = true;
+            // 
+            // payment_label
+            // 
+            this.payment_label.Font = new System.Drawing.Font("Microsoft New Tai Lue", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.payment_label.Location = new System.Drawing.Point(40, 13);
+            this.payment_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.payment_label.Name = "payment_label";
+            this.payment_label.Size = new System.Drawing.Size(227, 26);
+            this.payment_label.TabIndex = 19;
+            this.payment_label.Text = "Payment Option";
+            this.payment_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BuyTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1561, 807);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BuyTicket";
-            this.Text = "  ";
+            this.Text = "Buy Ticket For Event";
             this.Load += new System.EventHandler(this.BuyTicket_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.TicketPageBody_panel.ResumeLayout(false);
-            this.PaymentOption_panel.ResumeLayout(false);
-            this.PaymentOption_panel.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cover)).EndInit();
+            this.PaymentOption_panel.ResumeLayout(false);
+            this.PaymentOption_panel.PerformLayout();
             this.ResumeLayout(false);
 
         }

@@ -13,31 +13,62 @@ namespace FrameSphere.EntityClasses
         public Artist Artist { get; set; }
         public string Status {
             get {
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "SELECT Status FROM AllUser WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserName", base.UserName);
-                    connection.Open();
-                    _status = command.ExecuteScalar()?.ToString();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "SELECT Status FROM AllUser WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@UserName", base.UserName);
+                        connection.Open();
+                        _status = command.ExecuteScalar()?.ToString();
+                    }
+                    return _status;
                 }
-                return _status;
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN GETTING STATUS: " + e.Message);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN GETTING STATUS: " + e.Message);
+                    return null;
+                }
+                
             }
             set {
                 _status = value;
-                using (connection = DB.Connect())
+                try
                 {
-                    string query = "UPDATE AllUser SET Status = @Status WHERE UserName = @UserName";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@Status", _status);
-                    command.Parameters.AddWithValue("@UserName", base.UserName);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (connection = DB.Connect())
+                    {
+                        string query = "UPDATE AllUser SET Status = @Status WHERE UserName = @UserName";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@Status", _status);
+                        command.Parameters.AddWithValue("@UserName", base.UserName);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
                 }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN SETTING STATUS: " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN SETTING STATUS: " + e.Message);
+                    return;
+                }
+                
             }
         }
 
-       
         public int TotalVisitedEvents { get; private set; } = 0;
         public List<Event> VisitingEvents = new List<Event>();
 

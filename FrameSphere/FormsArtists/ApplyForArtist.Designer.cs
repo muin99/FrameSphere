@@ -38,9 +38,10 @@
             // Apply
             // 
             this.Apply.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Apply.Location = new System.Drawing.Point(516, 375);
+            this.Apply.Location = new System.Drawing.Point(688, 462);
+            this.Apply.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Apply.Name = "Apply";
-            this.Apply.Size = new System.Drawing.Size(202, 39);
+            this.Apply.Size = new System.Drawing.Size(269, 48);
             this.Apply.TabIndex = 1;
             this.Apply.Text = "Apply";
             this.Apply.UseVisualStyleBackColor = true;
@@ -50,9 +51,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(400, 221);
+            this.label1.Location = new System.Drawing.Point(533, 272);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(403, 78);
+            this.label1.Size = new System.Drawing.Size(508, 104);
             this.label1.TabIndex = 0;
             this.label1.Text = "You are not ARTIST\r\nApply for Becoming one?\r\n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -63,16 +65,18 @@
             this.panel1.Controls.Add(this.Apply);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(-1, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1212, 687);
+            this.panel1.Size = new System.Drawing.Size(1616, 846);
             this.panel1.TabIndex = 1;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(895, 577);
+            this.button1.Location = new System.Drawing.Point(1193, 710);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(202, 39);
+            this.button1.Size = new System.Drawing.Size(269, 48);
             this.button1.TabIndex = 2;
             this.button1.Text = "Return to Dashboard";
             this.button1.UseVisualStyleBackColor = true;
@@ -80,12 +84,14 @@
             // 
             // ApplyForArtist
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1212, 689);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1616, 848);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ApplyForArtist";
-            this.Text = "ApplyForArtist";
+            this.Text = "Apply For Artist";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
