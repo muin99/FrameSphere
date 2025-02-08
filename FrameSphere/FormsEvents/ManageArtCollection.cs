@@ -65,7 +65,18 @@ namespace FrameSphere.FormsEvents
                     }
                 }
             }
-            catch (Exception exx) { MessageBox.Show("An error occurred: " + exx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB ERROR: " + e.Message);
+                return;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("UNEXPECTED ERROR: " + e.Message);
+                return;
+            }
 
         }
         private void ArtPanel(int artID, string artTitle)
@@ -155,8 +166,20 @@ namespace FrameSphere.FormsEvents
                         AddedArtPanel(artID, artTitle);
                     }
                 }
-            }catch(Exception exxx) { MessageBox.Show("An error occurred: " + exxx.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-            
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB ERROR: " + e.Message);
+                return;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("UNEXPECTED ERROR: " + e.Message);
+                return;
+            }
+
         }
 
         private void AddedArtPanel(string artID, string artTitle)

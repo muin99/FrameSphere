@@ -45,17 +45,34 @@ namespace FrameSphere
 
         private bool artistOfTheEvent()
         {
-            using (SqlConnection con = DB.Connect())
+            try
             {
-                con.Open();
-                string query = "SELECT COUNT(*) FROM ArtistEvent WHERE username = @username AND eventid = @eventid";
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
-                cmd.Parameters.AddWithValue("@eventid", currentEvent.EventID);
+                using (SqlConnection con = DB.Connect())
+                {
+                    con.Open();
+                    string query = "SELECT COUNT(*) FROM ArtistEvent WHERE username = @username AND eventid = @eventid";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+                    cmd.Parameters.AddWithValue("@eventid", currentEvent.EventID);
 
-                int res = Convert.ToInt32(cmd.ExecuteScalar());
-                return res > 0;
+                    int res = Convert.ToInt32(cmd.ExecuteScalar());
+                    return res > 0;
+                }
+
             }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB ERROR: " + e.Message);
+                return false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("UNEXPECTED ERROR: " + e.Message);
+                return false;
+            }
+            
         }
 
         private bool isAdminOrOrganizer()
