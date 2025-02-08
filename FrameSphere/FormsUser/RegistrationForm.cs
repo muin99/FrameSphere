@@ -38,9 +38,11 @@ namespace FrameSphere
         {
             using (SqlConnection c = DB.Connect())
             {
-                c.Open();
+                try
+                {
+                    c.Open();
 
-                string q = $@"
+                    string q = $@"
                             BEGIN TRANSACTION;
                             INSERT INTO AllUser (FirstName, LastName, UserName, Email, Password, Status)
                             VALUES ('{firstName}', '{lastName}', '{userName}', '{email}', '{password}', 'pending');
@@ -53,18 +55,25 @@ namespace FrameSphere
 
                             COMMIT TRANSACTION;";
 
-                using (SqlCommand cmd = new SqlCommand(q, c))
-                {
-                    try
+                    using (SqlCommand cmd = new SqlCommand(q, c))
                     {
                         cmd.ExecuteNonQuery();
                         Console.WriteLine("Registration successful.");
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Error: {ex.Message}");
-                    }
                 }
+                catch (SqlException q)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("Register DB error: " + q.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("Register unexpected error: " + e.Message);
+                    return;
+                }
+
             }
         }
         
@@ -103,13 +112,13 @@ namespace FrameSphere
                         MessageBox.Show("Registration successful! Please wait for account approval before login.", "Registration Done", MessageBoxButtons.OK);
                         allowRegister = true;
                     }
-                    else
+                    else//input wrong
                     {
                         MessageBox.Show("Ensure valid data entries!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                 }
-                else
+                else//empty fields
                 {
                     MessageBox.Show("Please fill all fields!", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -159,12 +168,9 @@ namespace FrameSphere
                 path.CloseAllFigures();
 
 
-                panel.Region = new Region(path);
-
-                
+                panel.Region = new Region(path);      
             }
         }
-
         private void EmailLabel_Click(object sender, EventArgs e)
         {
 

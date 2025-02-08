@@ -72,10 +72,11 @@ namespace FrameSphere
                             status = result.ToString();
                         }
                     }
-                    catch (Exception ex)
+                    catch (SqlException q)
                     {
                         MessageBox.Show("Something went wrong!", " DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Console.WriteLine("DB ERROR: " + ex.Message);
+                        Console.WriteLine("GetUserStatus DB Error: " + q.Message);
+                        return null;
                     }
 
                 }
@@ -131,6 +132,7 @@ namespace FrameSphere
             {
                 MessageBox.Show("Something went wrong!", " DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine("DB ERROR: " + ex.Message);
+                return;
             }
             
         }
