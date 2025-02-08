@@ -35,25 +35,39 @@ namespace FrameSphere.FormsEvents
             string query = string.IsNullOrWhiteSpace(search)
                 ? "SELECT UserName FROM AllUser"
                 : $"SELECT UserName FROM AllUser WHERE UserName LIKE '%{search}%'"; // Fixed concatenation
-
-            using (SqlConnection conn = DB.Connect())
+            try
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = DB.Connect())
                 {
-                    cmd.Parameters.AddWithValue("@EventID", currentEvent.EventID);
-                    cmd.Parameters.AddWithValue("@Search", $"%{search}%"); // Wildcards added here
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        while (reader.Read())
+                        cmd.Parameters.AddWithValue("@EventID", currentEvent.EventID);
+                        cmd.Parameters.AddWithValue("@Search", $"%{search}%"); // Wildcards added here
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            string userName = reader["UserName"].ToString();
-                            CreateOrganizerPanel(userName, false);
+                            while (reader.Read())
+                            {
+                                string userName = reader["UserName"].ToString();
+                                CreateOrganizerPanel(userName, false);
+                            }
                         }
                     }
                 }
             }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB ERROR: " + e.Message);
+                return;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("UNEXPECTED ERROR: " + e.Message);
+                return;
+            }  
         }
 
         private void LoadAddedOrganizers()
@@ -62,30 +76,45 @@ namespace FrameSphere.FormsEvents
             noOrganizers.Visible = false;
 
             string query = "SELECT UserName FROM Organizers WHERE EventId = @EventID";
-
-            using (SqlConnection conn = DB.Connect())
+            try
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection conn = DB.Connect())
                 {
-                    cmd.Parameters.AddWithValue("@EventID", currentEvent.EventID);
-
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        if (!reader.HasRows)
-                        {
-                            noOrganizers.Visible = true;
-                            return;
-                        }
+                        cmd.Parameters.AddWithValue("@EventID", currentEvent.EventID);
 
-                        while (reader.Read())
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            string userName = reader["UserName"].ToString();
-                            CreateOrganizerPanel(userName, true);
+                            if (!reader.HasRows)
+                            {
+                                noOrganizers.Visible = true;
+                                return;
+                            }
+
+                            while (reader.Read())
+                            {
+                                string userName = reader["UserName"].ToString();
+                                CreateOrganizerPanel(userName, true);
+                            }
                         }
                     }
                 }
             }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB ERROR: " + e.Message);
+                return;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error loading organizer list: " + e.Message);
+                return;
+            }
+            
         }
 
         private void CreateOrganizerPanel(string userName, bool isCurrentOrganizer)
@@ -161,8 +190,6 @@ namespace FrameSphere.FormsEvents
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        
 
         private void goBack_button_Click(object sender, EventArgs e)
         {
