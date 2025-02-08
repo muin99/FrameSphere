@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace FrameSphere
@@ -418,7 +419,26 @@ namespace FrameSphere
                 profilepic.Image = Image.FromFile(destinationPath);
             }
         }
-
+        private bool checkLink(string url, string platform)
+        {
+            string facebook_pattern = @"^(https?:\/\/)?(www\.)?(facebook\.com)\/[a-zA-Z0-9.]+(\/)?$";
+            string instagram_pattern = @"^(https?:\/\/)?(www\.)?(instagram\.com)\/[a-zA-Z0-9._]+(\/)?$";
+            string pinterest_pattern = @"^(https?:\/\/)?(www\.)?(pinterest\.com)\/[a-zA-Z0-9._]+(\/)?$";
+            string website_pattern = @"^(https?:\/\/)?([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(\/\S*)?$";
+            switch (platform.ToLower())
+            {
+                case "facebook":
+                    return Regex.IsMatch(url, facebook_pattern);
+                case "instagram":
+                    return Regex.IsMatch(url, instagram_pattern);
+                case "pinterest":
+                    return Regex.IsMatch(url, pinterest_pattern);
+                case "website":
+                    return Regex.IsMatch(url, website_pattern);
+                default:
+                    return false;
+            }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             // Check if there are any fields to update
@@ -433,6 +453,28 @@ namespace FrameSphere
                 string.IsNullOrWhiteSpace(profilePicRelativePath))
             {
                 MessageBox.Show("There is nothing to update. Please enter new information where needed.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //Ensure social links are valid
+            if (!string.IsNullOrWhiteSpace(FaceBookField.Text) && !checkLink(FaceBookField.Text, "facebook"))
+            {
+                MessageBox.Show("Facebook link is invalid!", "Invalid Link", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!string.IsNullOrWhiteSpace(InstagramField.Text) && !checkLink(InstagramField.Text, "instagram"))
+            {
+                MessageBox.Show("Instagram link is invalid!", "Invalid Link", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!string.IsNullOrWhiteSpace(PinterestField.Text) && !checkLink(PinterestField.Text, "pinterest"))
+            {
+                MessageBox.Show("Pinterest link is invalid!", "Invalid Link", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!string.IsNullOrWhiteSpace(WebsiteField.Text) && !checkLink(WebsiteField.Text, "facebook"))
+            {
+                MessageBox.Show("Website link is invalid!", "Invalid Link", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
