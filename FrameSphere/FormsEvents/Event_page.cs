@@ -251,5 +251,12 @@ namespace FrameSphere
             //Application.Run(new ManageEvents("28"));
             mn.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ManageArtCollection ma = new ManageArtCollection(currentEvent);
+            this.Hide();
+            ma.Show();
+        }
     }
 }
