@@ -472,7 +472,7 @@ namespace FrameSphere
                 MessageBox.Show("Pinterest link is invalid!", "Invalid Link", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!string.IsNullOrWhiteSpace(WebsiteField.Text) && !checkLink(WebsiteField.Text, "facebook"))
+            if (!string.IsNullOrWhiteSpace(WebsiteField.Text) && !checkLink(WebsiteField.Text, "website"))
             {
                 MessageBox.Show("Website link is invalid!", "Invalid Link", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
