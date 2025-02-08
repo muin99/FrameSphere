@@ -25,6 +25,14 @@ namespace FrameSphere
         public ArtistDashboard()
         {
             InitializeComponent();
+            name.Text = FSystem.loggedInUser.FullName();
+            userName.Text = "@"+FSystem.loggedInUser.UserName;
+
+            phone.Text = FSystem.loggedInUser.Phone;
+            email.Text = FSystem.loggedInUser.Email;
+            address.Text = FSystem.loggedInUser.Address;
+            profilepic.Image = FSystem.GetImageFromPath(FSystem.loggedInUser.ProfilePic);
+            
             profilepic.Image = FSystem.GetImageFromPath(FSystem.loggedInUser.ProfilePic);
             LoadArtistEvents(FSystem.loggedInUser.UserName);
             LoadStatistics();
