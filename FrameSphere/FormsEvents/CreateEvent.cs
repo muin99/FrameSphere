@@ -76,7 +76,9 @@ namespace FrameSphere
                                 free.Checked ? "Free" : "Paid",                      // Registration Type
                                 eventPosterRelativePath            // Poster Image Path
                                 );
-            MessageBox.Show("Event created successfully");
+            MessageBox.Show("Event created successfully. Please Wait for Admin Approval.");
+            this.Hide();
+            new UserDashBoard().Show();
         }
 
         private void paid_CheckedChanged(object sender, EventArgs e)
