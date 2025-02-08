@@ -67,6 +67,7 @@ namespace FrameSphere
             this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.profilepanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
@@ -134,12 +135,13 @@ namespace FrameSphere
             this.profilechange.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.profilechange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profilechange.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.profilechange.Location = new System.Drawing.Point(58, 12);
+            this.profilechange.Location = new System.Drawing.Point(63, 365);
             this.profilechange.Name = "profilechange";
             this.profilechange.Size = new System.Drawing.Size(183, 31);
             this.profilechange.TabIndex = 2;
             this.profilechange.Text = "Change Profile Picture";
             this.profilechange.UseVisualStyleBackColor = false;
+            this.profilechange.Click += new System.EventHandler(this.profilechange_Click);
             // 
             // label7
             // 
@@ -201,9 +203,9 @@ namespace FrameSphere
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(44, 113);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 19);
+            this.label4.Size = new System.Drawing.Size(50, 19);
             this.label4.TabIndex = 18;
-            this.label4.Text = "User Name :";
+            this.label4.Text = "Phone:";
             // 
             // FaceBookField
             // 
@@ -237,7 +239,7 @@ namespace FrameSphere
             this.label11.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(553, 16);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(157, 32);
+            this.label11.Size = new System.Drawing.Size(156, 32);
             this.label11.TabIndex = 0;
             this.label11.Text = "Edit Profile";
             // 
@@ -255,12 +257,13 @@ namespace FrameSphere
             this.profilepanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.profilepanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.profilepanel.Controls.Add(this.label12);
             this.profilepanel.Controls.Add(this.posterbtn);
             this.profilepanel.Controls.Add(this.poster);
             this.profilepanel.Controls.Add(this.profilepic);
             this.profilepanel.Controls.Add(this.profilechange);
             this.profilepanel.Location = new System.Drawing.Point(37, 48);
-            this.profilepanel.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.profilepanel.Margin = new System.Windows.Forms.Padding(10);
             this.profilepanel.Name = "profilepanel";
             this.profilepanel.Size = new System.Drawing.Size(290, 413);
             this.profilepanel.TabIndex = 27;
@@ -292,7 +295,7 @@ namespace FrameSphere
             this.profilepic.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.profilepic.Image = global::FrameSphere.Properties.Resources.SmallerNetworkConnectionBackgroundtest_ezgif_com_video_to_gif_converter;
             this.profilepic.Location = new System.Drawing.Point(20, 50);
-            this.profilepic.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.profilepic.Margin = new System.Windows.Forms.Padding(20);
             this.profilepic.Name = "profilepic";
             this.profilepic.Size = new System.Drawing.Size(250, 247);
             this.profilepic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -498,6 +501,16 @@ namespace FrameSphere
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(99, 13);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(89, 20);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "Profile Pic";
+            // 
             // Edit_Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -563,5 +576,6 @@ namespace FrameSphere
         private System.Windows.Forms.Button reject;
         private System.Windows.Forms.Button approve;
         private System.Windows.Forms.Button makeAdmin;
+        private System.Windows.Forms.Label label12;
     }
 }

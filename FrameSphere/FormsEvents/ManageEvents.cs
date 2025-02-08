@@ -104,7 +104,8 @@ namespace FrameSphere
                 }
 
                 // Handle image upload
-                if (!string.IsNullOrEmpty(poster_field.Text))
+                // Handle image upload only if changed
+                if (!string.IsNullOrEmpty(poster_field.Text) && poster_field.Text != ev.PosterImage)
                 {
                     string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
                     string eventPostersFolder = Path.Combine(baseDirectory, "EventPosters");
@@ -115,8 +116,11 @@ namespace FrameSphere
 
                     try
                     {
-                        File.Copy(poster_field.Text, destinationPath, true);
-                        ev.PosterImage = Path.Combine("EventPosters", fileName);
+                        if (!File.Exists(destinationPath) || poster_field.Text != destinationPath)
+                        {
+                            File.Copy(poster_field.Text, destinationPath, true);
+                            ev.PosterImage = Path.Combine("EventPosters", fileName);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -124,6 +128,7 @@ namespace FrameSphere
                         return;
                     }
                 }
+
 
                 // Save to database
                 try
