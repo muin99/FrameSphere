@@ -544,7 +544,12 @@ namespace FrameSphere
             adminDashboard.Show();
         }
 
-
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ChangePass f1 = new ChangePass();
+            this.Hide();
+            f1.Show();
+        }
     }
 }
 

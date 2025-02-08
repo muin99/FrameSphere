@@ -194,6 +194,12 @@
     <Compile Include="FormsEvents\WaitingPage.Designer.cs">
       <DependentUpon>WaitingPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsUser\ChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsUser\ChangePass.Designer.cs">
+      <DependentUpon>ChangePass.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsUser\Chat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -331,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsEvents\WaitingPage.resx">
       <DependentUpon>WaitingPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsUser\ChangePass.resx">
+      <DependentUpon>ChangePass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsUser\Chat.resx">
       <DependentUpon>Chat.cs</DependentUpon>
