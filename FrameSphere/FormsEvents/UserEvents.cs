@@ -148,5 +148,12 @@ namespace FrameSphere
         {
             LoadEventBoxes(textBox1.Text);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UserDashBoard a = new UserDashBoard();
+            a.Show();
+            this.Hide();
+        }
     }
 }
