@@ -154,7 +154,7 @@ namespace FrameSphere
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Admin_dashboard ad = new Admin_dashboard();
+            UserDashBoard ad = new UserDashBoard();
             ad.Show();
         }
 

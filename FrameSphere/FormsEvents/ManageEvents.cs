@@ -151,9 +151,9 @@ namespace FrameSphere
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//Go Back
         {
-            Admin_dashboard a = new Admin_dashboard();
+            Event_page a = new Event_page(ev.EventID);
             a.Show();
             this.Hide();
         }

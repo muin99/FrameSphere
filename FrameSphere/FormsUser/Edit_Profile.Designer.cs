@@ -52,9 +52,6 @@ namespace FrameSphere
             this.poster = new System.Windows.Forms.TextBox();
             this.profilepic = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.makeAdmin = new System.Windows.Forms.Button();
-            this.reject = new System.Windows.Forms.Button();
-            this.approve = new System.Windows.Forms.Button();
             this.PWVerifyLabel = new System.Windows.Forms.Label();
             this.WrongPWLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -63,6 +60,9 @@ namespace FrameSphere
             this.PinterestField = new System.Windows.Forms.TextBox();
             this.WebsiteField = new System.Windows.Forms.TextBox();
             this.CurrentPWField = new System.Windows.Forms.TextBox();
+            this.makeAdmin = new System.Windows.Forms.Button();
+            this.reject = new System.Windows.Forms.Button();
+            this.approve = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -91,7 +91,7 @@ namespace FrameSphere
             this.LastNameField.BackColor = System.Drawing.Color.White;
             this.LastNameField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LastNameField.Location = new System.Drawing.Point(736, 28);
-            this.LastNameField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LastNameField.Margin = new System.Windows.Forms.Padding(4);
             this.LastNameField.Name = "LastNameField";
             this.LastNameField.Size = new System.Drawing.Size(125, 22);
             this.LastNameField.TabIndex = 4;
@@ -114,7 +114,7 @@ namespace FrameSphere
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.Location = new System.Drawing.Point(623, 538);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(239, 38);
             this.button2.TabIndex = 1;
@@ -140,7 +140,7 @@ namespace FrameSphere
             this.profilechange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profilechange.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.profilechange.Location = new System.Drawing.Point(77, 15);
-            this.profilechange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.profilechange.Margin = new System.Windows.Forms.Padding(4);
             this.profilechange.Name = "profilechange";
             this.profilechange.Size = new System.Drawing.Size(244, 38);
             this.profilechange.TabIndex = 2;
@@ -162,7 +162,7 @@ namespace FrameSphere
             // 
             this.EmailField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.EmailField.Location = new System.Drawing.Point(187, 75);
-            this.EmailField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EmailField.Margin = new System.Windows.Forms.Padding(4);
             this.EmailField.Name = "EmailField";
             this.EmailField.Size = new System.Drawing.Size(674, 22);
             this.EmailField.TabIndex = 6;
@@ -182,7 +182,7 @@ namespace FrameSphere
             // 
             this.PhoneField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PhoneField.Location = new System.Drawing.Point(188, 140);
-            this.PhoneField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PhoneField.Margin = new System.Windows.Forms.Padding(4);
             this.PhoneField.Name = "PhoneField";
             this.PhoneField.Size = new System.Drawing.Size(673, 22);
             this.PhoneField.TabIndex = 5;
@@ -202,7 +202,7 @@ namespace FrameSphere
             // 
             this.AddressField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AddressField.Location = new System.Drawing.Point(188, 201);
-            this.AddressField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddressField.Margin = new System.Windows.Forms.Padding(4);
             this.AddressField.Name = "AddressField";
             this.AddressField.Size = new System.Drawing.Size(673, 22);
             this.AddressField.TabIndex = 7;
@@ -222,7 +222,7 @@ namespace FrameSphere
             // 
             this.FaceBookField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FaceBookField.Location = new System.Drawing.Point(188, 261);
-            this.FaceBookField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FaceBookField.Margin = new System.Windows.Forms.Padding(4);
             this.FaceBookField.Name = "FaceBookField";
             this.FaceBookField.Size = new System.Drawing.Size(673, 22);
             this.FaceBookField.TabIndex = 8;
@@ -242,7 +242,7 @@ namespace FrameSphere
             // 
             this.InstagramField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.InstagramField.Location = new System.Drawing.Point(188, 326);
-            this.InstagramField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.InstagramField.Margin = new System.Windows.Forms.Padding(4);
             this.InstagramField.Name = "InstagramField";
             this.InstagramField.Size = new System.Drawing.Size(673, 22);
             this.InstagramField.TabIndex = 9;
@@ -263,7 +263,7 @@ namespace FrameSphere
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.panel2.Controls.Add(this.profilepanel);
             this.panel2.Location = new System.Drawing.Point(1221, 94);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(485, 663);
             this.panel2.TabIndex = 28;
@@ -290,7 +290,7 @@ namespace FrameSphere
             this.posterbtn.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.posterbtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.posterbtn.Location = new System.Drawing.Point(259, 394);
-            this.posterbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.posterbtn.Margin = new System.Windows.Forms.Padding(4);
             this.posterbtn.Name = "posterbtn";
             this.posterbtn.Size = new System.Drawing.Size(101, 25);
             this.posterbtn.TabIndex = 6;
@@ -301,7 +301,7 @@ namespace FrameSphere
             // poster
             // 
             this.poster.Location = new System.Drawing.Point(27, 394);
-            this.poster.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.poster.Margin = new System.Windows.Forms.Padding(4);
             this.poster.Name = "poster";
             this.poster.ReadOnly = true;
             this.poster.Size = new System.Drawing.Size(223, 22);
@@ -346,55 +346,10 @@ namespace FrameSphere
             this.panel1.Controls.Add(this.WebsiteField);
             this.panel1.Controls.Add(this.CurrentPWField);
             this.panel1.Location = new System.Drawing.Point(269, 94);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(937, 663);
             this.panel1.TabIndex = 26;
-            // 
-            // makeAdmin
-            // 
-            this.makeAdmin.BackColor = System.Drawing.Color.Navy;
-            this.makeAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.makeAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.makeAdmin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.makeAdmin.Location = new System.Drawing.Point(4, 290);
-            this.makeAdmin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.makeAdmin.Name = "makeAdmin";
-            this.makeAdmin.Size = new System.Drawing.Size(239, 38);
-            this.makeAdmin.TabIndex = 29;
-            this.makeAdmin.Text = "Make an Admin";
-            this.makeAdmin.UseVisualStyleBackColor = false;
-            this.makeAdmin.Click += new System.EventHandler(this.makeAdmin_Click);
-            // 
-            // reject
-            // 
-            this.reject.BackColor = System.Drawing.Color.Crimson;
-            this.reject.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.reject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reject.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.reject.Location = new System.Drawing.Point(4, 229);
-            this.reject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.reject.Name = "reject";
-            this.reject.Size = new System.Drawing.Size(239, 38);
-            this.reject.TabIndex = 28;
-            this.reject.Text = "REJECT";
-            this.reject.UseVisualStyleBackColor = false;
-            this.reject.Click += new System.EventHandler(this.reject_Click);
-            // 
-            // approve
-            // 
-            this.approve.BackColor = System.Drawing.Color.DarkGreen;
-            this.approve.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.approve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.approve.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.approve.Location = new System.Drawing.Point(4, 183);
-            this.approve.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.approve.Name = "approve";
-            this.approve.Size = new System.Drawing.Size(239, 38);
-            this.approve.TabIndex = 27;
-            this.approve.Text = "APPROVE";
-            this.approve.UseVisualStyleBackColor = false;
-            this.approve.Click += new System.EventHandler(this.approve_Click);
             // 
             // PWVerifyLabel
             // 
@@ -448,7 +403,7 @@ namespace FrameSphere
             this.FirstNameField.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.FirstNameField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FirstNameField.Location = new System.Drawing.Point(187, 27);
-            this.FirstNameField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FirstNameField.Margin = new System.Windows.Forms.Padding(4);
             this.FirstNameField.Name = "FirstNameField";
             this.FirstNameField.Size = new System.Drawing.Size(402, 22);
             this.FirstNameField.TabIndex = 3;
@@ -457,7 +412,7 @@ namespace FrameSphere
             // 
             this.PinterestField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PinterestField.Location = new System.Drawing.Point(188, 400);
-            this.PinterestField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PinterestField.Margin = new System.Windows.Forms.Padding(4);
             this.PinterestField.Name = "PinterestField";
             this.PinterestField.Size = new System.Drawing.Size(673, 22);
             this.PinterestField.TabIndex = 11;
@@ -466,7 +421,7 @@ namespace FrameSphere
             // 
             this.WebsiteField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.WebsiteField.Location = new System.Drawing.Point(187, 465);
-            this.WebsiteField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.WebsiteField.Margin = new System.Windows.Forms.Padding(4);
             this.WebsiteField.Name = "WebsiteField";
             this.WebsiteField.Size = new System.Drawing.Size(674, 22);
             this.WebsiteField.TabIndex = 12;
@@ -475,10 +430,55 @@ namespace FrameSphere
             // 
             this.CurrentPWField.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CurrentPWField.Location = new System.Drawing.Point(235, 538);
-            this.CurrentPWField.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CurrentPWField.Margin = new System.Windows.Forms.Padding(4);
             this.CurrentPWField.Name = "CurrentPWField";
             this.CurrentPWField.Size = new System.Drawing.Size(354, 22);
             this.CurrentPWField.TabIndex = 14;
+            // 
+            // makeAdmin
+            // 
+            this.makeAdmin.BackColor = System.Drawing.Color.Navy;
+            this.makeAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.makeAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.makeAdmin.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.makeAdmin.Location = new System.Drawing.Point(4, 290);
+            this.makeAdmin.Margin = new System.Windows.Forms.Padding(4);
+            this.makeAdmin.Name = "makeAdmin";
+            this.makeAdmin.Size = new System.Drawing.Size(239, 38);
+            this.makeAdmin.TabIndex = 29;
+            this.makeAdmin.Text = "Make an Admin";
+            this.makeAdmin.UseVisualStyleBackColor = false;
+            this.makeAdmin.Click += new System.EventHandler(this.makeAdmin_Click);
+            // 
+            // reject
+            // 
+            this.reject.BackColor = System.Drawing.Color.Crimson;
+            this.reject.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.reject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reject.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.reject.Location = new System.Drawing.Point(4, 229);
+            this.reject.Margin = new System.Windows.Forms.Padding(4);
+            this.reject.Name = "reject";
+            this.reject.Size = new System.Drawing.Size(239, 38);
+            this.reject.TabIndex = 28;
+            this.reject.Text = "REJECT";
+            this.reject.UseVisualStyleBackColor = false;
+            this.reject.Click += new System.EventHandler(this.reject_Click);
+            // 
+            // approve
+            // 
+            this.approve.BackColor = System.Drawing.Color.DarkGreen;
+            this.approve.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.approve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.approve.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.approve.Location = new System.Drawing.Point(4, 183);
+            this.approve.Margin = new System.Windows.Forms.Padding(4);
+            this.approve.Name = "approve";
+            this.approve.Size = new System.Drawing.Size(239, 38);
+            this.approve.TabIndex = 27;
+            this.approve.Text = "APPROVE";
+            this.approve.UseVisualStyleBackColor = false;
+            this.approve.Click += new System.EventHandler(this.approve_Click);
             // 
             // panel3
             // 
@@ -486,7 +486,7 @@ namespace FrameSphere
             this.panel3.Controls.Add(this.label11);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Location = new System.Drawing.Point(0, -2);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1709, 82);
             this.panel3.TabIndex = 27;
@@ -498,13 +498,13 @@ namespace FrameSphere
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button1.Location = new System.Drawing.Point(11, 30);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(211, 31);
             this.button1.TabIndex = 0;
             this.button1.Text = "Return to Dashboard";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel4
             // 
@@ -514,7 +514,7 @@ namespace FrameSphere
             this.panel4.Controls.Add(this.reject);
             this.panel4.Controls.Add(this.approve);
             this.panel4.Location = new System.Drawing.Point(11, 94);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(251, 663);
             this.panel4.TabIndex = 29;
@@ -526,7 +526,7 @@ namespace FrameSphere
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button4.Location = new System.Drawing.Point(4, 592);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(239, 38);
             this.button4.TabIndex = 3;
@@ -543,7 +543,7 @@ namespace FrameSphere
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Edit_Profile";
             this.Text = "Form1";
             this.panel2.ResumeLayout(false);
