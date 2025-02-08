@@ -60,28 +60,44 @@ namespace FrameSphere
 
         private bool isAdminOrOrganizer()
         {
-            using (SqlConnection con = DB.Connect())
+            try
             {
-                con.Open();
+                using (SqlConnection con = DB.Connect())
+                {
+                    con.Open();
 
-                // Check if the user is an admin
-                string adminQuery = "SELECT COUNT(*) FROM AdminList WHERE UserName = @username";
-                SqlCommand adminCmd = new SqlCommand(adminQuery, con);
-                adminCmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+                    // Check if the user is an admin
+                    string adminQuery = "SELECT COUNT(*) FROM AdminList WHERE UserName = @username";
+                    SqlCommand adminCmd = new SqlCommand(adminQuery, con);
+                    adminCmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
 
-                int isAdmin = Convert.ToInt32(adminCmd.ExecuteScalar());
-                if (isAdmin > 0)
-                    return true; // User is an admin
+                    int isAdmin = Convert.ToInt32(adminCmd.ExecuteScalar());
+                    if (isAdmin > 0)
+                        return true; // User is an admin
 
-                // Check if the user is an organizer for this event
-                string organizerQuery = "SELECT COUNT(*) FROM Organizers WHERE UserName = @username AND EventID = @eventid";
-                SqlCommand organizerCmd = new SqlCommand(organizerQuery, con);
-                organizerCmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
-                organizerCmd.Parameters.AddWithValue("@eventid", currentEvent.EventID);
+                    // Check if the user is an organizer for this event
+                    string organizerQuery = "SELECT COUNT(*) FROM Organizers WHERE UserName = @username AND EventID = @eventid";
+                    SqlCommand organizerCmd = new SqlCommand(organizerQuery, con);
+                    organizerCmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+                    organizerCmd.Parameters.AddWithValue("@eventid", currentEvent.EventID);
 
-                int isOrganizer = Convert.ToInt32(organizerCmd.ExecuteScalar());
-                return isOrganizer > 0;
+                    int isOrganizer = Convert.ToInt32(organizerCmd.ExecuteScalar());
+                    return isOrganizer > 0;
+                }
             }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB ERROR: " + e.Message);
+                return false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("UNEXPECTED ERROR: " + e.Message);
+                return false;
+            }
+            
         }
 
 
@@ -110,7 +126,7 @@ namespace FrameSphere
             {
                 this.Hide();
                 BuyTicket buyTicketPage = new BuyTicket(currentEvent);
- // Show Event Page after Buy Ticket Page is closed
+                // Show Event Page after Buy Ticket Page is closed
                 buyTicketPage.Show();
                 return false;
             }
@@ -123,30 +139,45 @@ namespace FrameSphere
 
         public void loadImages(int eventid)
         {
-            using (SqlConnection conn = DB.Connect())
+            try
             {
-                conn.Open();
-
-                string query = @"
-            SELECT A.ArtID, A.ArtTitle, AP.Photo 
-            FROM ArtEvent AE
-            JOIN Art A ON AE.ArtID = A.ArtID
-            LEFT JOIN ArtPhotos AP ON A.ArtID = AP.ArtID
-            WHERE AE.EventID = @eventid";
-
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@eventid", eventid);
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                using (SqlConnection conn = DB.Connect())
                 {
-                    int artID = reader.GetInt32(0); // ArtID
-                    string title = reader.IsDBNull(1) ? "Untitled" : reader.GetString(1); // ArtTitle
-                    string photoPath = reader.IsDBNull(2) ? "default.jpg" : reader.GetString(2); // Photo
+                    conn.Open();
 
-                    AddDynamicPanel(artID, title, photoPath);
+                    string query = @"
+                                SELECT A.ArtID, A.ArtTitle, AP.Photo 
+                                FROM ArtEvent AE
+                                JOIN Art A ON AE.ArtID = A.ArtID
+                                LEFT JOIN ArtPhotos AP ON A.ArtID = AP.ArtID
+                                WHERE AE.EventID = @eventid";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@eventid", eventid);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int artID = reader.GetInt32(0); // ArtID
+                        string title = reader.IsDBNull(1) ? "Untitled" : reader.GetString(1); // ArtTitle
+                        string photoPath = reader.IsDBNull(2) ? "default.jpg" : reader.GetString(2); // Photo
+
+                        AddDynamicPanel(artID, title, photoPath);
+                    }
                 }
             }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB ERROR: " + e.Message);
+                return;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("UNEXPECTED ERROR: " + e.Message);
+                return;
+            }    
         }
 
         public void AddDynamicPanel(int artid, string title, string path)
