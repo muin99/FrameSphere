@@ -67,6 +67,7 @@ namespace FrameSphere
             this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.profilepanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.profilepic)).BeginInit();
@@ -134,7 +135,7 @@ namespace FrameSphere
             this.profilechange.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.profilechange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profilechange.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.profilechange.Location = new System.Drawing.Point(58, 12);
+            this.profilechange.Location = new System.Drawing.Point(63, 365);
             this.profilechange.Name = "profilechange";
             this.profilechange.Size = new System.Drawing.Size(183, 31);
             this.profilechange.TabIndex = 2;
@@ -256,6 +257,7 @@ namespace FrameSphere
             this.profilepanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.profilepanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.profilepanel.Controls.Add(this.label12);
             this.profilepanel.Controls.Add(this.posterbtn);
             this.profilepanel.Controls.Add(this.poster);
             this.profilepanel.Controls.Add(this.profilepic);
@@ -499,6 +501,16 @@ namespace FrameSphere
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(99, 13);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(89, 20);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "Profile Pic";
+            // 
             // Edit_Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,5 +576,6 @@ namespace FrameSphere
         private System.Windows.Forms.Button reject;
         private System.Windows.Forms.Button approve;
         private System.Windows.Forms.Button makeAdmin;
+        private System.Windows.Forms.Label label12;
     }
 }
