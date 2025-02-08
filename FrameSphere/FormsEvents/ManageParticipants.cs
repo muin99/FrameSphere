@@ -190,5 +190,10 @@ namespace FrameSphere.FormsEvents
             ManageEvents mn = new ManageEvents(ep.EventID);
             mn.Show();
         }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            FSystem.loggedInUser.Logout(this);
+        }
     }
 }

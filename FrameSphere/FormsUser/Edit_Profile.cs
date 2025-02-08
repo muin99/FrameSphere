@@ -3,7 +3,6 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Security.Cryptography;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace FrameSphere
@@ -146,197 +145,184 @@ namespace FrameSphere
             string selectedUser = managedUserName; // The user to be made admin
             string currentAdmin = FSystem.loggedInUser.UserName; // Current logged-in admin
             string firstName = "", lastName = "", email = "";
-            try
+
+            using (SqlConnection connection = DB.Connect())
             {
-                using (SqlConnection connection = DB.Connect())
+                connection.Open();
+
+                // Check if the user is already an admin
+                string checkAdminQuery = "SELECT UserName FROM AdminList WHERE UserName = @UserName";
+                try
                 {
-                    connection.Open();
-
-                    // Check if the user is already an admin
-                    string checkAdminQuery = "SELECT UserName FROM AdminList WHERE UserName = @UserName";
-                    try
+                    using (SqlCommand checkAdminCommand = new SqlCommand(checkAdminQuery, connection))
                     {
-                        using (SqlCommand checkAdminCommand = new SqlCommand(checkAdminQuery, connection))
+                        checkAdminCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                        using (SqlDataReader reader = checkAdminCommand.ExecuteReader())
                         {
-                            checkAdminCommand.Parameters.AddWithValue("@UserName", selectedUser);
-                            using (SqlDataReader reader = checkAdminCommand.ExecuteReader())
+                            if (reader.HasRows)
                             {
-                                if (reader.HasRows)
-                                {
-                                    MessageBox.Show("This user is already an admin.", "Already Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    return;
-                                }
-                            }
-                        }
-                    }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Console.WriteLine("CheckAdminQuery DB error: " + ex.Message);
-                        return;
-                    }
-                    catch (Exception q)
-                    {
-                        MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Console.WriteLine("CheckAdminQuery unexpected error: " + q.Message);
-                        return;
-                    }
-
-                    // Fetch user details from AllUser table
-                    string getUserDetailsQuery = "SELECT FirstName, LastName, Email FROM AllUser WHERE UserName = @UserName";
-                    try
-                    {
-                        using (SqlCommand userDetailsCommand = new SqlCommand(getUserDetailsQuery, connection))
-                        {
-                            userDetailsCommand.Parameters.AddWithValue("@UserName", selectedUser);
-                            using (SqlDataReader reader = userDetailsCommand.ExecuteReader())
-                            {
-                                if (reader.Read())
-                                {
-                                    firstName = reader["FirstName"].ToString();
-                                    lastName = reader["LastName"].ToString();
-                                    email = reader["Email"].ToString();
-                                }
-                            }
-                        }
-                    }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Console.WriteLine("getUserDetailsQuery DB error: " + ex.Message);
-                        return;
-                    }
-                    catch (Exception q)
-                    {
-                        MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Console.WriteLine("getUserDetailsQuery unexpected error: " + q.Message);
-                        return;
-                    }
-
-                    // Get the total number of admins 
-                    string totalAdminsQuery = "SELECT COUNT(*) FROM AdminList";
-                    int totalAdmins;
-                    using (SqlCommand totalAdminsCommand = new SqlCommand(totalAdminsQuery, connection))
-                    {
-                        totalAdmins = (int)totalAdminsCommand.ExecuteScalar();
-                    }
-                    // If there's only one admin, promote the user immediately
-                    if (totalAdmins == 1)
-                    {
-                        string insertAdminQuery = "INSERT INTO AdminList (UserName) VALUES (@UserName)";
-                        using (SqlCommand insertCommand = new SqlCommand(insertAdminQuery, connection))
-                        {
-                            insertCommand.Parameters.AddWithValue("@UserName", selectedUser);
-                            insertCommand.ExecuteNonQuery();
-                        }
-
-                        // Remove any pending request (optional safeguard)
-                        string deleteRequestQuery = "DELETE FROM PendingAdminRequests WHERE UserName = @UserName";
-                        using (SqlCommand deleteCommand = new SqlCommand(deleteRequestQuery, connection))
-                        {
-                            deleteCommand.Parameters.AddWithValue("@UserName", selectedUser);
-                            deleteCommand.ExecuteNonQuery();
-                        }
-
-                        MessageBox.Show("User has been successfully promoted to Admin!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
-                    }
-
-                    // Check if the user is already in the PendingAdminRequests table
-                    string checkRequestQuery = "SELECT Approvals, TotalAdmins FROM PendingAdminRequests WHERE UserName = @UserName";
-                    using (SqlCommand checkCommand = new SqlCommand(checkRequestQuery, connection))
-                    {
-                        checkCommand.Parameters.AddWithValue("@UserName", selectedUser);
-                        using (SqlDataReader reader = checkCommand.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                int approvals = Convert.ToInt32(reader["Approvals"]);
-                                int totalAdminsRequired = Convert.ToInt32(reader["TotalAdmins"]);
-                                reader.Close();
-
-                                // Update approval count
-                                string updateApprovalQuery = "UPDATE PendingAdminRequests SET Approvals = Approvals + 1 WHERE UserName = @UserName";
-                                using (SqlCommand updateCommand = new SqlCommand(updateApprovalQuery, connection))
-                                {
-                                    updateCommand.Parameters.AddWithValue("@UserName", selectedUser);
-                                    updateCommand.ExecuteNonQuery();
-                                }
-
-                                // If approvals meet or exceed total admins, promote the user
-                                if (approvals + 1 >= totalAdminsRequired)
-                                {
-                                    string insertAdminQuery = "INSERT INTO AdminList (UserName) VALUES (@UserName)";
-                                    using (SqlCommand insertCommand = new SqlCommand(insertAdminQuery, connection))
-                                    {
-                                        insertCommand.Parameters.AddWithValue("@UserName", selectedUser);
-                                        insertCommand.ExecuteNonQuery();
-                                    }
-
-                                    // Remove from PendingAdminRequests
-                                    string deleteRequestQuery = "DELETE FROM PendingAdminRequests WHERE UserName = @UserName";
-                                    using (SqlCommand deleteCommand = new SqlCommand(deleteRequestQuery, connection))
-                                    {
-                                        deleteCommand.Parameters.AddWithValue("@UserName", selectedUser);
-                                        deleteCommand.ExecuteNonQuery();
-                                    }
-
-                                    MessageBox.Show("User has been successfully promoted to Admin!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Approval recorded. Waiting for all admins to approve.", "Pending", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
+                                MessageBox.Show("This user is already an admin.", "Already Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 return;
                             }
                         }
                     }
+                }
+                catch(SqlException ex)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("CheckAdminQuery DB error: " + ex.Message);
+                    return;
+                }
+                catch (Exception q)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("CheckAdminQuery unexpected error: " + q.Message);
+                    return;
+                }
 
-                    // If no request exists, create a new one
-                    string insertRequestQuery = "INSERT INTO PendingAdminRequests (UserName, RequestedBy, Approvals, TotalAdmins, Status) VALUES (@UserName, @RequestedBy, 1, @TotalAdmins, 'Pending')";
-                    using (SqlCommand insertCommand = new SqlCommand(insertRequestQuery, connection))
+                // Fetch user details from AllUser table
+                string getUserDetailsQuery = "SELECT FirstName, LastName, Email FROM AllUser WHERE UserName = @UserName";
+                try
+                {
+                    using (SqlCommand userDetailsCommand = new SqlCommand(getUserDetailsQuery, connection))
+                    {
+                        userDetailsCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                        using (SqlDataReader reader = userDetailsCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                firstName = reader["FirstName"].ToString();
+                                lastName = reader["LastName"].ToString();
+                                email = reader["Email"].ToString();
+                            }
+                        }
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("getUserDetailsQuery DB error: " + ex.Message);
+                    return;
+                }
+                catch (Exception q)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("getUserDetailsQuery unexpected error: " + q.Message);
+                    return;
+                }
+
+                // Get the total number of admins //--------------------------------------EXCEPTION HANDLING PENDING FROM HERE DOWN-------------------------
+                string totalAdminsQuery = "SELECT COUNT(*) FROM AdminList";
+                int totalAdmins;
+                using (SqlCommand totalAdminsCommand = new SqlCommand(totalAdminsQuery, connection))
+                {
+                    totalAdmins = (int)totalAdminsCommand.ExecuteScalar();
+                }
+                // If there's only one admin, promote the user immediately
+                if (totalAdmins == 1)
+                {
+                    string insertAdminQuery = "INSERT INTO AdminList (UserName) VALUES (@UserName)";
+                    using (SqlCommand insertCommand = new SqlCommand(insertAdminQuery, connection))
                     {
                         insertCommand.Parameters.AddWithValue("@UserName", selectedUser);
-                        insertCommand.Parameters.AddWithValue("@RequestedBy", currentAdmin);
-                        insertCommand.Parameters.AddWithValue("@TotalAdmins", totalAdmins);
                         insertCommand.ExecuteNonQuery();
                     }
 
-                    // Get the RequestID of the newly created request
-                    string getRequestIDQuery = "SELECT RequestID FROM PendingAdminRequests WHERE UserName = @UserName";
-                    int requestID = 0;
-                    using (SqlCommand getRequestIDCommand = new SqlCommand(getRequestIDQuery, connection))
+                    // Remove any pending request (optional safeguard)
+                    string deleteRequestQuery = "DELETE FROM PendingAdminRequests WHERE UserName = @UserName";
+                    using (SqlCommand deleteCommand = new SqlCommand(deleteRequestQuery, connection))
                     {
-                        getRequestIDCommand.Parameters.AddWithValue("@UserName", selectedUser);
-                        requestID = (int)getRequestIDCommand.ExecuteScalar();
+                        deleteCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                        deleteCommand.ExecuteNonQuery();
                     }
 
-                    // Insert into AdminApprovals table with the correct RequestID
-                    string insertApprovalLogQuery = "INSERT INTO AdminApprovals (RequestID, AdminName) VALUES (@RequestID, @AdminName)";
-                    using (SqlCommand approvalLogCommand = new SqlCommand(insertApprovalLogQuery, connection))
-                    {
-                        approvalLogCommand.Parameters.AddWithValue("@RequestID", requestID);
-                        approvalLogCommand.Parameters.AddWithValue("@AdminName", currentAdmin);
-                        approvalLogCommand.ExecuteNonQuery();
-                    }
-
-                    MessageBox.Show("Admin promotion request submitted. Waiting for other admins to approve.", "Request Sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("User has been successfully promoted to Admin!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine(" Make Admin DB error: " + ex.Message);
-                return;
-            }
-            catch (Exception q)
-            {
-                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("Make Admin unexpected error: " + q.Message);
-                return;
-            }
 
+                // Check if the user is already in the PendingAdminRequests table
+                string checkRequestQuery = "SELECT Approvals, TotalAdmins FROM PendingAdminRequests WHERE UserName = @UserName";
+                using (SqlCommand checkCommand = new SqlCommand(checkRequestQuery, connection))
+                {
+                    checkCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                    using (SqlDataReader reader = checkCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            int approvals = Convert.ToInt32(reader["Approvals"]);
+                            int totalAdminsRequired = Convert.ToInt32(reader["TotalAdmins"]);
+                            reader.Close();
+
+                            // Update approval count
+                            string updateApprovalQuery = "UPDATE PendingAdminRequests SET Approvals = Approvals + 1 WHERE UserName = @UserName";
+                            using (SqlCommand updateCommand = new SqlCommand(updateApprovalQuery, connection))
+                            {
+                                updateCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                                updateCommand.ExecuteNonQuery();
+                            }
+
+                            // If approvals meet or exceed total admins, promote the user
+                            if (approvals + 1 >= totalAdminsRequired)
+                            {
+                                string insertAdminQuery = "INSERT INTO AdminList (UserName) VALUES (@UserName)";
+                                using (SqlCommand insertCommand = new SqlCommand(insertAdminQuery, connection))
+                                {
+                                    insertCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                                    insertCommand.ExecuteNonQuery();
+                                }
+
+                                // Remove from PendingAdminRequests
+                                string deleteRequestQuery = "DELETE FROM PendingAdminRequests WHERE UserName = @UserName";
+                                using (SqlCommand deleteCommand = new SqlCommand(deleteRequestQuery, connection))
+                                {
+                                    deleteCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                                    deleteCommand.ExecuteNonQuery();
+                                }
+
+                                MessageBox.Show("User has been successfully promoted to Admin!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Approval recorded. Waiting for all admins to approve.", "Pending", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            return;
+                        }
+                    }
+                }
+
+                // If no request exists, create a new one
+                string insertRequestQuery = "INSERT INTO PendingAdminRequests (UserName, RequestedBy, Approvals, TotalAdmins, Status) VALUES (@UserName, @RequestedBy, 1, @TotalAdmins, 'Pending')";
+                using (SqlCommand insertCommand = new SqlCommand(insertRequestQuery, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                    insertCommand.Parameters.AddWithValue("@RequestedBy", currentAdmin);
+                    insertCommand.Parameters.AddWithValue("@TotalAdmins", totalAdmins);
+                    insertCommand.ExecuteNonQuery();
+                }
+
+                // Get the RequestID of the newly created request
+                string getRequestIDQuery = "SELECT RequestID FROM PendingAdminRequests WHERE UserName = @UserName";
+                int requestID = 0;
+                using (SqlCommand getRequestIDCommand = new SqlCommand(getRequestIDQuery, connection))
+                {
+                    getRequestIDCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                    requestID = (int)getRequestIDCommand.ExecuteScalar();
+                }
+
+                // Insert into AdminApprovals table with the correct RequestID
+                string insertApprovalLogQuery = "INSERT INTO AdminApprovals (RequestID, AdminName) VALUES (@RequestID, @AdminName)";
+                using (SqlCommand approvalLogCommand = new SqlCommand(insertApprovalLogQuery, connection))
+                {
+                    approvalLogCommand.Parameters.AddWithValue("@RequestID", requestID);
+                    approvalLogCommand.Parameters.AddWithValue("@AdminName", currentAdmin);
+                    approvalLogCommand.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Admin promotion request submitted. Waiting for other admins to approve.", "Request Sent", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
+
 
         private void approve_Click(object sender, EventArgs e)
         {
@@ -346,40 +332,27 @@ namespace FrameSphere
                 MessageBox.Show("You cannot approve your own profile.", "Operation Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            try
+
+            using (SqlConnection conn = DB.Connect())
             {
-                using (SqlConnection conn = DB.Connect())
+                string query = "UPDATE AllUser SET Status = 'Approved' WHERE UserName = @username";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    string query = "UPDATE AllUser SET Status = 'Approved' WHERE UserName = @username";
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    cmd.Parameters.AddWithValue("@username", managedUserName);
+                    conn.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
                     {
-                        cmd.Parameters.AddWithValue("@username", managedUserName);
-                        conn.Open();
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("User status updated to Approved.", "Status Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to update status.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("User status updated to Approved.", "Status Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to update status.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("Approve Function DB error: " + ex.Message);
-                return;
-            }
-            catch (Exception q)
-            {
-                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("Approve Function unexpected error: " + q.Message);
-                return;
-            }
         }
+
         private void reject_Click(object sender, EventArgs e)
         {
             // Only allow status update in Manage mode.
@@ -388,40 +361,25 @@ namespace FrameSphere
                 MessageBox.Show("You cannot reject your own profile.", "Operation Not Allowed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            try
+
+            using (SqlConnection conn = DB.Connect())
             {
-                using (SqlConnection conn = DB.Connect())
+                string query = "UPDATE AllUser SET Status = 'Rejected' WHERE UserName = @username";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    string query = "UPDATE AllUser SET Status = 'Rejected' WHERE UserName = @username";
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    cmd.Parameters.AddWithValue("@username", managedUserName);
+                    conn.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
                     {
-                        cmd.Parameters.AddWithValue("@username", managedUserName);
-                        conn.Open();
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("User status updated to Rejected.", "Status Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to update status.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("User status updated to Rejected.", "Status Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to update status.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("Reject Function DB error: " + ex.Message);
-                return;
-            }
-            catch (Exception q)
-            {
-                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("Reject Function unexpected error: " + q.Message);
-                return;
-            }
-           
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -441,54 +399,26 @@ namespace FrameSphere
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                try
-                {
-                    imagePath = openFileDialog.FileName;
+                imagePath = openFileDialog.FileName;
 
-                    // Define the target directory for profile pictures
-                    string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                    string profileDir = Path.Combine(baseDirectory, "ProfileImages");
-                    Directory.CreateDirectory(profileDir); // Ensure the directory exists
+                // Define the target directory for profile pictures
+                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string profileDir = Path.Combine(baseDirectory, "ProfileImages");
+                Directory.CreateDirectory(profileDir); // Ensure the directory exists
 
-                    // Save the image in the profile directory
-                    string fileName = Path.GetFileName(imagePath);
-                    string destinationPath = Path.Combine(profileDir, fileName);
-                    File.Copy(imagePath, destinationPath, true); // Copy the image
+                // Save the image in the profile directory
+                string fileName = Path.GetFileName(imagePath);
+                string destinationPath = Path.Combine(profileDir, fileName);
+                File.Copy(imagePath, destinationPath, true); // Copy the image
 
-                    // Store the relative path to save in the database
-                    profilePicRelativePath = Path.Combine("ProfileImages", fileName);
+                // Store the relative path to save in the database
+                profilePicRelativePath = Path.Combine("ProfileImages", fileName);
 
-                    // Display the selected image in the PictureBox
-                    profilepic.Image = Image.FromFile(destinationPath);
-                }
-                catch (Exception m)
-                {
-                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Console.WriteLine("Potential image loading error: " + m.Message);
-                    return;
-                }
+                // Display the selected image in the PictureBox
+                profilepic.Image = Image.FromFile(destinationPath);
             }
         }
-        private bool checkLink(string url, string platform)
-        {
-            string facebook_pattern = @"^(https?:\/\/)?(www\.|web\.)?(facebook\.com)\/[a-zA-Z0-9.]+(\/)?$";
-            string instagram_pattern = @"^(https?:\/\/)?(www\.)?(instagram\.com)\/[a-zA-Z0-9._]+(\/)?$";
-            string pinterest_pattern = @"^(https?:\/\/)?(www\.)?(pinterest\.com)\/[a-zA-Z0-9._]+(\/)?$";
-            string website_pattern = @"^(https?:\/\/)?([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(\/\S*)?$";
-            switch (platform.ToLower())
-            {
-                case "facebook":
-                    return Regex.IsMatch(url, facebook_pattern);
-                case "instagram":
-                    return Regex.IsMatch(url, instagram_pattern);
-                case "pinterest":
-                    return Regex.IsMatch(url, pinterest_pattern);
-                case "website":
-                    return Regex.IsMatch(url, website_pattern);
-                default:
-                    return false;
-            }
-        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             // Check if there are any fields to update
@@ -503,28 +433,6 @@ namespace FrameSphere
                 string.IsNullOrWhiteSpace(profilePicRelativePath))
             {
                 MessageBox.Show("There is nothing to update. Please enter new information where needed.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            //Ensure social links are valid
-            if (!string.IsNullOrWhiteSpace(FaceBookField.Text) && !checkLink(FaceBookField.Text, "facebook"))
-            {
-                MessageBox.Show("Facebook link is invalid!", "Invalid Link", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (!string.IsNullOrWhiteSpace(InstagramField.Text) && !checkLink(InstagramField.Text, "instagram"))
-            {
-                MessageBox.Show("Instagram link is invalid!", "Invalid Link", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (!string.IsNullOrWhiteSpace(PinterestField.Text) && !checkLink(PinterestField.Text, "pinterest"))
-            {
-                MessageBox.Show("Pinterest link is invalid!", "Invalid Link", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (!string.IsNullOrWhiteSpace(WebsiteField.Text) && !checkLink(WebsiteField.Text, "website"))
-            {
-                MessageBox.Show("Website link is invalid!", "Invalid Link", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -544,104 +452,90 @@ namespace FrameSphere
                 CurrentPWField.Focus();
                 return;
             }
+
             // Update user information in the database
-            try
-            { 
-                using (SqlConnection conn = DB.Connect())
-                {
-                    conn.Open();
+            using (SqlConnection conn = DB.Connect())
+            {
+                conn.Open();
 
-                    string updateQuery = @"
-                                            UPDATE AllUser
-                                            SET 
+                string updateQuery = @"
+                UPDATE AllUser
+                SET 
                    
-                                                LastName = @LastName,
-                                                Email = @Email
-                                            WHERE UserName = @UserName AND Password = @CurrentPW;
+                    LastName = @LastName,
+                    Email = @Email
+                WHERE UserName = @UserName AND Password = @CurrentPW;
 
-                                            UPDATE UserContact
-                                            SET 
-                                                Email = @Email,
-                                                Address = @Address,
-                                                Phone = @Phone,
-                                                ProfilePic = @ProfilePic
-                                            WHERE UserName = @UserName;
+                UPDATE UserContact
+                SET 
+                    Email = @Email,
+                    Address = @Address,
+                    Phone = @Phone,
+                    ProfilePic = @ProfilePic
+                WHERE UserName = @UserName;
 
-                                            UPDATE UserSocials
-                                            SET 
-                                                Facebook = @Facebook,
-                                                Instagram = @Instagram,
-                                                Pinterest = @Pinterest,
-                                                Website = @Website
-                                            WHERE UserName = @UserName;
-                                            ";
+                UPDATE UserSocials
+                SET 
+                    Facebook = @Facebook,
+                    Instagram = @Instagram,
+                    Pinterest = @Pinterest,
+                    Website = @Website
+                WHERE UserName = @UserName;
+                ";
 
-                    using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
+                using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
+                {
+                    // Add parameters to prevent SQL injection
+                    //cmd.Parameters.AddWithValue("@FirstName", FirstNameField.Text);
+                    cmd.Parameters.AddWithValue("@LastName", LastNameField.Text);
+                    cmd.Parameters.AddWithValue("@Email", EmailField.Text);
+                    cmd.Parameters.AddWithValue("@UserName", FSystem.loggedInUser.UserName); // Logged-in user's username
+                    cmd.Parameters.AddWithValue("@CurrentPW", CurrentPWField.Text);
+
+                    cmd.Parameters.AddWithValue("@Address", AddressField.Text);
+                    cmd.Parameters.AddWithValue("@Phone", PhoneField.Text);
+
+                    cmd.Parameters.AddWithValue("@Facebook", FaceBookField.Text);
+                    cmd.Parameters.AddWithValue("@Instagram", InstagramField.Text);
+                    cmd.Parameters.AddWithValue("@Pinterest", PinterestField.Text);
+                    cmd.Parameters.AddWithValue("@Website", WebsiteField.Text);
+
+                    // Add profile picture relative path or set it to NULL
+                    if (!string.IsNullOrWhiteSpace(profilePicRelativePath))
                     {
-                        // Add parameters to prevent SQL injection
-                        //cmd.Parameters.AddWithValue("@FirstName", FirstNameField.Text);
-                        cmd.Parameters.AddWithValue("@LastName", LastNameField.Text);
-                        cmd.Parameters.AddWithValue("@Email", EmailField.Text);
-                        cmd.Parameters.AddWithValue("@UserName", FSystem.loggedInUser.UserName); // Logged-in user's username
-                        cmd.Parameters.AddWithValue("@CurrentPW", CurrentPWField.Text);
+                        cmd.Parameters.AddWithValue("@ProfilePic", profilePicRelativePath);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@ProfilePic", DBNull.Value);
+                    }
 
-                        cmd.Parameters.AddWithValue("@Address", AddressField.Text);
-                        cmd.Parameters.AddWithValue("@Phone", PhoneField.Text);
-
-                        cmd.Parameters.AddWithValue("@Facebook", FaceBookField.Text);
-                        cmd.Parameters.AddWithValue("@Instagram", InstagramField.Text);
-                        cmd.Parameters.AddWithValue("@Pinterest", PinterestField.Text);
-                        cmd.Parameters.AddWithValue("@Website", WebsiteField.Text);
-
-                        // Add profile picture relative path or set it to NULL
-                        if (!string.IsNullOrWhiteSpace(profilePicRelativePath))
+                    try
+                    {
+                        // Execute the query
+                        int rowsChanged = cmd.ExecuteNonQuery();
+                        if (rowsChanged > 0)
                         {
-                            cmd.Parameters.AddWithValue("@ProfilePic", profilePicRelativePath);
+                            MessageBox.Show("Information updated successfully.");
                         }
                         else
                         {
-                            cmd.Parameters.AddWithValue("@ProfilePic", DBNull.Value);
-                        }
-
-                        try
-                        {
-                            // Execute the query
-                            int rowsChanged = cmd.ExecuteNonQuery();
-                            if (rowsChanged > 0)
-                            {
-                                MessageBox.Show("Information updated successfully.");
-                            }
-                            else
-                            {
-                                MessageBox.Show("Password may be incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine($"Error: {ex.Message}");
-                            MessageBox.Show("An error occurred while updating the information.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Password may be incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error: {ex.Message}");
+                        MessageBox.Show("An error occurred while updating the information.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-
             }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("Update Info DB error: " + ex.Message);
-                return;
-            }
-            catch (Exception q)
-            {
-                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("Update Info unexpected error: " + q.Message);
-                return;
-            }    
             FSystem.loggedInUser.FirstName = FirstNameField.Text;
 
             // Reload the logged-in user's information
             //FSystem.loggedInUser.loadUser();
         }
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             // Navigate to the Admin Dashboard
@@ -652,7 +546,9 @@ namespace FrameSphere
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            ChangePass f1 = new ChangePass();
+            this.Hide();
+            f1.Show();
         }
     }
 }

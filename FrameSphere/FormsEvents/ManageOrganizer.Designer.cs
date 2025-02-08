@@ -104,6 +104,7 @@ namespace FrameSphere.FormsEvents
             this.Logout.TabIndex = 24;
             this.Logout.Text = "Log out";
             this.Logout.UseVisualStyleBackColor = false;
+            this.Logout.Click += new System.EventHandler(this.Logout_Click);
             // 
             // ManageParticipants_Title
             // 
