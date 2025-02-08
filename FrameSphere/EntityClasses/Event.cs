@@ -718,7 +718,7 @@ namespace FrameSphere.EntityClasses
                     cmd.Parameters.AddWithValue("@UserName", organizer.UserName);
                     cmd.ExecuteNonQuery();
                     Organizers.Add(organizer);
-                    MessageBox.Show("Organizer added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //MessageBox.Show("You are a organizer of this event.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
