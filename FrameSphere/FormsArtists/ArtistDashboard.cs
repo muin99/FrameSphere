@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Windows.Forms.VisualStyles;
 using FrameSphere.EntityClasses;
+using FrameSphere.FormsArtists;
 
 namespace FrameSphere
 {
@@ -465,6 +466,13 @@ namespace FrameSphere
         private void Logout_Click(object sender, EventArgs e)
         {
             FSystem.loggedInUser.Logout(this);
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            MyArts myArts = new MyArts();
+            this.Hide();
+            myArts.Show();
         }
     }
 }
