@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -35,9 +38,11 @@ namespace FrameSphere
         {
             using (SqlConnection c = DB.Connect())
             {
-                c.Open();
+                try
+                {
+                    c.Open();
 
-                string q = $@"
+                    string q = $@"
                             BEGIN TRANSACTION;
                             INSERT INTO AllUser (FirstName, LastName, UserName, Email, Password, Status)
                             VALUES ('{firstName}', '{lastName}', '{userName}', '{email}', '{password}', 'pending');
@@ -50,32 +55,89 @@ namespace FrameSphere
 
                             COMMIT TRANSACTION;";
 
-                using (SqlCommand cmd = new SqlCommand(q, c))
-                {
-                    try
+                    using (SqlCommand cmd = new SqlCommand(q, c))
                     {
                         cmd.ExecuteNonQuery();
                         Console.WriteLine("Registration successful.");
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Error: {ex.Message}");
-                    }
                 }
+                catch (SqlException q)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("Register DB error: " + q.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("Register unexpected error: " + e.Message);
+                    return;
+                }
+
             }
         }
+        
 
+        private bool checkValidations()
+        {  if (!CheckMail.Visible && !usernameWarning.Visible && !confirmLabel.Visible && !charWarning.Visible && !checkfname.Visible && !checklname.Visible && UserName.Text != "" && Password.Text != "")
+            {
+                return true;
+            }
+            else { return false; }
+            
+        }
+
+        private bool isEmpty()
+        {
+            if (string.IsNullOrEmpty(FirstName.Text) || string.IsNullOrEmpty(LastName.Text) || string.IsNullOrEmpty(Email.Text) || string.IsNullOrEmpty(UserName.Text) || string.IsNullOrEmpty(Password.Text) || string.IsNullOrEmpty(ConfirmPass.Text))
+            {
+                return true;
+            }
+            else { return false; }
+        }
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            if (!CheckMail.Visible && !usernameWarning.Visible && !confirmLabel.Visible && !charWarning.Visible && UserName.Text != "" && Password.Text !="")
+            //validation
+            try
             {
-                Register(FirstName.Text.ToString(), LastName.Text.ToString(), UserName.Text.ToString(), Email.Text.ToString(), Password.Text.ToString());
-                this.Hide();
+                if (!isEmpty())
+                {
+                    if (checkValidations())//if both ok, update DB
+                    {
+                        allowRegister = true;
+                        string fname = capitalizeFirst(FirstName.Text);
+                        string lname = capitalizeFirst(LastName.Text);
 
+                        Register(fname, lname, UserName.Text.ToString(), Email.Text.ToString(), Password.Text.ToString());
+                        MessageBox.Show("Registration successful! Please wait for account approval before login.", "Registration Done", MessageBoxButtons.OK);
+                        allowRegister = true;
+                    }
+                    else//input wrong
+                    {
+                        MessageBox.Show("Ensure valid data entries!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                else//empty fields
+                {
+                    MessageBox.Show("Please fill all fields!", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong!", " Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("ERROR: " + ex.Message);
+                return;
+            }
+            if (allowRegister)
+            {
+                this.Hide();
                 LoginForm loginForm = new LoginForm();
                 loginForm.StartPosition = FormStartPosition.CenterParent;
                 loginForm.ShowDialog();
             }
+            else {MessageBox.Show("Something went wrong!", "Registration Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
         }
 
         private void ClearButton_Click(object sender, EventArgs e)
@@ -87,7 +149,7 @@ namespace FrameSphere
             loginForm.ShowDialog();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void panel2_Paint(object sender, PaintEventArgs e) //rounded corners for data entry panel
         {
             Panel panel = (Panel)sender; 
             int borderRadius = 25;
@@ -106,12 +168,9 @@ namespace FrameSphere
                 path.CloseAllFigures();
 
 
-                panel.Region = new Region(path);
-
-                
+                panel.Region = new Region(path);      
             }
         }
-
         private void EmailLabel_Click(object sender, EventArgs e)
         {
 
@@ -127,16 +186,25 @@ namespace FrameSphere
 
         }
 
+        private bool validEmail(string text)
+        {
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(text, pattern);
+            //@ to not use double slashes since regex uses it often
+            //^ Start of string
+            //[a - zA - Z0 - 9._ % +-]+ Local part(username)
+            //@  compulsory @ symbol
+            //[a - zA - Z0 - 9.-]+  Domain name
+            //\. Dot before top level domain (TLD)
+            //[a - zA - Z]{ 2,}	TLD, {atleast 2 chars, no upper limits}
+            //$	End of string
+        }
         private void Email_TextChanged(object sender, EventArgs e)
         {
-            if (Email.Text.Length == 0 || !Email.Text.Contains('@')) {
-                CheckMail.Visible = true;
-            }
-            else
-            {
-                CheckMail.Visible = false;
-            }
+            if (!validEmail(Email.Text)) {CheckMail.Visible = true;}
+            else{CheckMail.Visible = false;}
         }
+
 
         private void label4_Click(object sender, EventArgs e)
         {
@@ -153,33 +221,19 @@ namespace FrameSphere
                 confirmLabel.Visible = false;
             }
         }
-
-        private void UserName_TextChanged(object sender, EventArgs e)
+        private void validUsername(string username)
         {
-
-            if (DB.Connection.State!= System.Data.ConnectionState.Open)
+            //proper length?
+            if (username.Length < 5)
             {
-                DB.Connection.Open();
+                lengthWarning.Visible = true;
             }
-
-            string q = $"select count(*) from AllUser where username = '{UserName.Text.ToString()}'";
-                using (SqlCommand cmd = new SqlCommand(q, DB.Connection))
-                {
-                    int n = (int) cmd.ExecuteScalar();
-                    if (n > 0)
-                    {
-                        usernameWarning.Visible = true;
-                    }
-                    else { 
-                        usernameWarning.Visible=false;
-                    }
-                }
-                DB.Connection.Close();
-
-            string username = UserName.Text;
-            for (int i = 0; i < username.Length; i++) { 
-                if(
-                    !((username[i] >= 'A' && username[i] <= 'Z') || 
+            else { lengthWarning.Visible = false; }
+            //proper characters?
+            for (int i = 0; i < username.Length; i++)
+            {
+                if (
+                    !((username[i] >= 'A' && username[i] <= 'Z') ||
                     (username[i] >= 'a' && username[i] <= 'z') ||
                     (username[i] >= '0' && username[i] <= '9') ||
                     (username[i] == '_')
@@ -188,10 +242,42 @@ namespace FrameSphere
                     charWarning.Visible = true;
                     return;
                 }
-                
+
             }
             charWarning.Visible = false;
+        }
+        private void UserName_TextChanged(object sender, EventArgs e)
+        {
+            //check if username already is in use
+            try
+            {
+                if (DB.Connection.State != System.Data.ConnectionState.Open)
+                {
+                    DB.Connection.Open();
+                }
 
+                string q = $"select count(*) from AllUser where username = '{UserName.Text.ToString()}'";
+                using (SqlCommand cmd = new SqlCommand(q, DB.Connection))
+                {
+                    int n = (int)cmd.ExecuteScalar();
+                    if (n > 0)
+                    {
+                        usernameWarning.Visible = true;
+                    }
+                    else
+                    {
+                        usernameWarning.Visible = false;
+                    }
+                }
+                DB.Connection.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Something went wrong!", "DB ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("ERROR: " + ex.Message);
+            }
+            //check if username is appropriate
+            validUsername(UserName.Text); 
         }
 
         private void Password_TextChanged(object sender, EventArgs e)
@@ -216,6 +302,38 @@ namespace FrameSphere
 
             lblPassStrength.Visible = password.Length > 0;
 
+        }
+        private bool noSpaces(string text)
+        {
+            if (text.StartsWith(" ") || text.EndsWith(" ")) { return false; }
+            else { return true; }
+        }
+        private bool noNumbers(string text)
+        {
+            if (text.Any(char.IsDigit)){ return false; }
+            else { return true; }
+        }
+        private string capitalizeFirst(string text)
+        {
+            return char.ToUpper(text[0]) + text.Substring(1);
+        }
+        private void FirstName_TextChanged(object sender, EventArgs e)
+        {
+            if (!noSpaces(FirstName.Text)) { checkfname.Visible = true; }
+            else { checkfname.Visible = false; }
+
+            if (!noNumbers(FirstName.Text)) { noNumbers1.Visible = true; }
+            else { noNumbers1.Visible = false; }
+
+        }
+
+        private void LastName_TextChanged(object sender, EventArgs e)
+        {
+            if (!noSpaces(LastName.Text)) { checklname.Visible = true; }
+            else { checklname.Visible = false; }
+
+            if (!noNumbers(LastName.Text)) { noNumbers2.Visible = true; }
+            else { noNumbers2.Visible = false; }
         }
     }
 }

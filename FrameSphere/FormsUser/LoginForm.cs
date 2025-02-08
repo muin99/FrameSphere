@@ -54,6 +54,7 @@ namespace FrameSphere
 
         private string GetUserStatus(string userName)
         {
+  
             string status = "";
             string query = "SELECT Status FROM AllUser WHERE UserName = @userName";
 
@@ -62,12 +63,22 @@ namespace FrameSphere
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@userName", userName);
-                    object result = command.ExecuteScalar();
-                    if (result != null)
+                    try
                     {
-                        status = result.ToString();
+                        command.Parameters.AddWithValue("@userName", userName);
+                        object result = command.ExecuteScalar();
+                        if (result != null)
+                        {
+                            status = result.ToString();
+                        }
                     }
+                    catch (SqlException q)
+                    {
+                        MessageBox.Show("Something went wrong!", " DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine("GetUserStatus DB Error: " + q.Message);
+                        return null;
+                    }
+
                 }
             }
             return status;
@@ -78,44 +89,52 @@ namespace FrameSphere
             // Clear previous warnings
             useridwar.Visible = false;
             passwordWarning.Visible = false;
-
-            if (UserId.Text == "")
+            try
             {
-                useridwar.Visible = true;
-            }
-            if (Password.Text == "")
-            {
-                passwordWarning.Visible = true;
-            }
-
-            if (string.IsNullOrEmpty(UserId.Text) || string.IsNullOrEmpty(Password.Text))
-                return;
-
-            if (FSystem.Login(UserId.Text, Password.Text))
-            {
-                string status = GetUserStatus(UserId.Text);
-
-                switch (status.ToLower()) // Case-insensitive comparison
+                if (UserId.Text == "")
                 {
-                    case "approved":
-                        this.Hide();
-                        new UserDashBoard().Show();
-                        break;
-                    case "rejected":
-                        MessageBox.Show("Admin rejected your account.");
-                        break;
-                    case "pending":
-                        MessageBox.Show("You can't Login right now. Please wait for admin approval.");
-                        break;
-                    default:
-                        MessageBox.Show("Unknown account status.");
-                        break;
+                    useridwar.Visible = true;
+                }
+                if (Password.Text == "")
+                {
+                    passwordWarning.Visible = true;
+                }
+
+                if (string.IsNullOrEmpty(UserId.Text) || string.IsNullOrEmpty(Password.Text)) { return; }
+
+                if (FSystem.Login(UserId.Text, Password.Text))
+                {
+                    string status = GetUserStatus(UserId.Text);
+
+                    switch (status.ToLower()) // Case-insensitive comparison
+                    {
+                        case "approved":
+                            this.Hide();
+                            new UserDashBoard().Show();
+                            break;
+                        case "rejected":
+                            MessageBox.Show("Your account creation has been rejected by Admin");
+                            break;
+                        case "pending":
+                            MessageBox.Show("You may not login right now. Please wait for Admin approval.");
+                            break;
+                        default:
+                            MessageBox.Show("Unknown account status.");
+                            break;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid credentials.");
                 }
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("Invalid credentials.");
+                MessageBox.Show("Something went wrong!", " DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB ERROR: " + ex.Message);
+                return;
             }
+            
         }
 
 

@@ -95,7 +95,7 @@ namespace FrameSphere
                     }
                     catch (SqlException e)
                     {
-                        Console.WriteLine(e.Message);
+                        Console.WriteLine("DB ERROR: "+e.Message);
                     }
 
                 }
@@ -107,8 +107,8 @@ namespace FrameSphere
         {
             AllUsers.Add(user);
             TotalUsers++;
-            if (user.isAdmin) TotalAdmins++;
-            if (user.isArtist) TotalArtists++;
+            if (user.isAdmin) { TotalAdmins++; }
+            if (user.isArtist) { TotalArtists++; }
         }
 
         public static void AddEvent(Event eventItem)

@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 namespace FrameSphere
@@ -35,47 +36,61 @@ namespace FrameSphere
                 {
                     // Query only the available columns.
                     string query = "SELECT FirstName, LastName, Email, Status FROM AllUser WHERE UserName = @username";
-                    using (SqlCommand command = new SqlCommand(query, connection))
+                    try
                     {
-                        command.Parameters.AddWithValue("@username", username);
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        using (SqlCommand command = new SqlCommand(query, connection))
                         {
-                            if (reader.Read())
+                            command.Parameters.AddWithValue("@username", username);
+                            connection.Open();
+                            using (SqlDataReader reader = command.ExecuteReader())
                             {
-                                FirstNameField.Text = reader["FirstName"].ToString();
-                                LastNameField.Text = reader["LastName"].ToString();
-                                EmailField.Text = reader["Email"].ToString();
-
-                                string status = reader["Status"].ToString();
-                                if (status.ToLower() == "approved")
+                                if (reader.Read())
                                 {
-                                    makeAdmin.Visible = true;
+                                    FirstNameField.Text = reader["FirstName"].ToString();
+                                    LastNameField.Text = reader["LastName"].ToString();
+                                    EmailField.Text = reader["Email"].ToString();
+
+                                    string status = reader["Status"].ToString();
+                                    if (status.ToLower() == "approved")
+                                    {
+                                        makeAdmin.Visible = true;
+                                    }
+                                    else
+                                    {
+                                        makeAdmin.Visible = false;
+                                    }
+
+
+                                    // For fields not available in the table, set them to empty or a default value.
+                                    PhoneField.Text = "";
+                                    AddressField.Text = "";
+                                    FaceBookField.Text = "";
+                                    InstagramField.Text = "";
+                                    PinterestField.Text = "";
+                                    WebsiteField.Text = "";
+
+                                    // If you store a profile picture path elsewhere, update accordingly.
+                                    // For now, we'll clear it.
+                                    poster.Text = "";
                                 }
                                 else
                                 {
-                                    makeAdmin.Visible = false;
+                                    MessageBox.Show("User not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
-
-
-                                // For fields not available in the table, set them to empty or a default value.
-                                PhoneField.Text = "";
-                                AddressField.Text = "";
-                                FaceBookField.Text = "";
-                                InstagramField.Text = "";
-                                PinterestField.Text = "";
-                                WebsiteField.Text = "";
-
-                                // If you store a profile picture path elsewhere, update accordingly.
-                                // For now, we'll clear it.
-                                poster.Text = "";
-                            }
-                            else
-                            {
-                                MessageBox.Show("User not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
+                    catch(SqlException e)
+                    {
+                        MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine("DB ERROR: "+e.Message);
+                    }
+                    catch(Exception e)
+                    {
+                        MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine("UNEXPECTED ERROR: " + e.Message);
+                    }
+                    
                 }
             }
             else
@@ -103,15 +118,24 @@ namespace FrameSphere
 
             // Common code to load the profile picture from file (if a profile picture path exists).
             string profilePicPath = poster.Text;
-            if (!string.IsNullOrWhiteSpace(profilePicPath))
+            try
             {
-                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string fullPath = Path.Combine(baseDirectory, profilePicPath);
-                if (File.Exists(fullPath))
+                if (!string.IsNullOrWhiteSpace(profilePicPath))
                 {
-                    profilepic.Image = Image.FromFile(fullPath);
+                    string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                    string fullPath = Path.Combine(baseDirectory, profilePicPath);
+                    if (File.Exists(fullPath))
+                    {
+                        profilepic.Image = Image.FromFile(fullPath);
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Something went wrong!", "Image Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("IMAGE LOADING ERROR: " + ex.Message);
+            }
+           
 
 
         }
@@ -128,43 +152,72 @@ namespace FrameSphere
 
                 // Check if the user is already an admin
                 string checkAdminQuery = "SELECT UserName FROM AdminList WHERE UserName = @UserName";
-                using (SqlCommand checkAdminCommand = new SqlCommand(checkAdminQuery, connection))
+                try
                 {
-                    checkAdminCommand.Parameters.AddWithValue("@UserName", selectedUser);
-                    using (SqlDataReader reader = checkAdminCommand.ExecuteReader())
+                    using (SqlCommand checkAdminCommand = new SqlCommand(checkAdminQuery, connection))
                     {
-                        if (reader.HasRows)
+                        checkAdminCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                        using (SqlDataReader reader = checkAdminCommand.ExecuteReader())
                         {
-                            MessageBox.Show("This user is already an admin.", "Already Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return;
+                            if (reader.HasRows)
+                            {
+                                MessageBox.Show("This user is already an admin.", "Already Admin", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return;
+                            }
                         }
                     }
+                }
+                catch(SqlException ex)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("CheckAdminQuery DB error: " + ex.Message);
+                    return;
+                }
+                catch (Exception q)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("CheckAdminQuery unexpected error: " + q.Message);
+                    return;
                 }
 
                 // Fetch user details from AllUser table
                 string getUserDetailsQuery = "SELECT FirstName, LastName, Email FROM AllUser WHERE UserName = @UserName";
-                using (SqlCommand userDetailsCommand = new SqlCommand(getUserDetailsQuery, connection))
+                try
                 {
-                    userDetailsCommand.Parameters.AddWithValue("@UserName", selectedUser);
-                    using (SqlDataReader reader = userDetailsCommand.ExecuteReader())
+                    using (SqlCommand userDetailsCommand = new SqlCommand(getUserDetailsQuery, connection))
                     {
-                        if (reader.Read())
+                        userDetailsCommand.Parameters.AddWithValue("@UserName", selectedUser);
+                        using (SqlDataReader reader = userDetailsCommand.ExecuteReader())
                         {
-                            firstName = reader["FirstName"].ToString();
-                            lastName = reader["LastName"].ToString();
-                            email = reader["Email"].ToString();
+                            if (reader.Read())
+                            {
+                                firstName = reader["FirstName"].ToString();
+                                lastName = reader["LastName"].ToString();
+                                email = reader["Email"].ToString();
+                            }
                         }
                     }
                 }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("getUserDetailsQuery DB error: " + ex.Message);
+                    return;
+                }
+                catch (Exception q)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("getUserDetailsQuery unexpected error: " + q.Message);
+                    return;
+                }
 
-                // Get the total number of admins
+                // Get the total number of admins //--------------------------------------EXCEPTION HANDLING PENDING FROM HERE DOWN-------------------------
                 string totalAdminsQuery = "SELECT COUNT(*) FROM AdminList";
                 int totalAdmins;
                 using (SqlCommand totalAdminsCommand = new SqlCommand(totalAdminsQuery, connection))
                 {
                     totalAdmins = (int)totalAdminsCommand.ExecuteScalar();
                 }
-
                 // If there's only one admin, promote the user immediately
                 if (totalAdmins == 1)
                 {
@@ -328,9 +381,6 @@ namespace FrameSphere
                 }
             }
         }
-
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             // Navigate back to the User Dashboard

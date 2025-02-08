@@ -130,10 +130,13 @@
     <value>Microsoft Sans Serif, 18pt, style=Bold</value>
   </data>
   <data name="WelcomeLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>319, 52</value>
+    <value>425, 64</value>
+  </data>
+  <data name="WelcomeLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="WelcomeLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>328, 29</value>
+    <value>390, 36</value>
   </data>
   <data name="WelcomeLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -163,10 +166,13 @@
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="UserIdLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 156</value>
+    <value>231, 192</value>
+  </data>
+  <data name="UserIdLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="UserIdLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 20</value>
+    <value>228, 25</value>
   </data>
   <data name="UserIdLabel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -187,10 +193,13 @@
     <value>9</value>
   </data>
   <data name="UserId.Location" type="System.Drawing.Point, System.Drawing">
-    <value>357, 158</value>
+    <value>476, 194</value>
+  </data>
+  <data name="UserId.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="UserId.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 20</value>
+    <value>369, 22</value>
   </data>
   <data name="UserId.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -214,10 +223,13 @@
     <value>Microsoft Sans Serif, 12pt, style=Bold</value>
   </data>
   <data name="PasswordLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>250, 211</value>
+    <value>333, 260</value>
+  </data>
+  <data name="PasswordLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="PasswordLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 20</value>
+    <value>125, 25</value>
   </data>
   <data name="PasswordLabel.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -238,13 +250,16 @@
     <value>7</value>
   </data>
   <data name="Password.Location" type="System.Drawing.Point, System.Drawing">
-    <value>357, 211</value>
+    <value>476, 260</value>
+  </data>
+  <data name="Password.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="Password.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
     <value>*</value>
   </data>
   <data name="Password.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 20</value>
+    <value>369, 22</value>
   </data>
   <data name="Password.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -265,10 +280,13 @@
     <value>Microsoft Sans Serif, 9pt, style=Bold</value>
   </data>
   <data name="LoginButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>549, 258</value>
+    <value>732, 318</value>
+  </data>
+  <data name="LoginButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="LoginButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 28</value>
+    <value>115, 34</value>
   </data>
   <data name="LoginButton.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -289,10 +307,13 @@
     <value>5</value>
   </data>
   <data name="RegisterButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>477, 373</value>
+    <value>636, 459</value>
+  </data>
+  <data name="RegisterButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="RegisterButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 23</value>
+    <value>153, 28</value>
   </data>
   <data name="RegisterButton.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -319,10 +340,13 @@
     <value>Microsoft Sans Serif, 9.75pt</value>
   </data>
   <data name="AccountLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>321, 376</value>
+    <value>428, 463</value>
+  </data>
+  <data name="AccountLabel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="AccountLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 16</value>
+    <value>189, 20</value>
   </data>
   <data name="AccountLabel.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -346,10 +370,13 @@
     <value>True</value>
   </data>
   <data name="useridwar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 181</value>
+    <value>472, 223</value>
+  </data>
+  <data name="useridwar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="useridwar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 13</value>
+    <value>208, 16</value>
   </data>
   <data name="useridwar.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -376,10 +403,13 @@
     <value>True</value>
   </data>
   <data name="passwordWarning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 232</value>
+    <value>472, 286</value>
+  </data>
+  <data name="passwordWarning.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="passwordWarning.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 13</value>
+    <value>156, 16</value>
   </data>
   <data name="passwordWarning.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -415,10 +445,13 @@
     <value>NoControl</value>
   </data>
   <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>396, 313</value>
+    <value>528, 385</value>
+  </data>
+  <data name="linkLabel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
   </data>
   <data name="linkLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 15</value>
+    <value>170, 18</value>
   </data>
   <data name="linkLabel1.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -445,16 +478,16 @@
     <value>25</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+    <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>959, 492</value>
+    <value>1279, 606</value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 4, 4, 4</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Form1</value>
+    <value>LoginForm</value>
   </data>
   <data name="&gt;&gt;bindingSource1.Name" xml:space="preserve">
     <value>bindingSource1</value>
