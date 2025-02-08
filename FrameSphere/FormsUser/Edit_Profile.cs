@@ -421,7 +421,7 @@ namespace FrameSphere
         }
         private bool checkLink(string url, string platform)
         {
-            string facebook_pattern = @"^(https?:\/\/)?(www\.)?(facebook\.com)\/[a-zA-Z0-9.]+(\/)?$";
+            string facebook_pattern = @"^(https?:\/\/)?(www\.|web\.)?(facebook\.com)\/[a-zA-Z0-9.]+(\/)?$";
             string instagram_pattern = @"^(https?:\/\/)?(www\.)?(instagram\.com)\/[a-zA-Z0-9._]+(\/)?$";
             string pinterest_pattern = @"^(https?:\/\/)?(www\.)?(pinterest\.com)\/[a-zA-Z0-9._]+(\/)?$";
             string website_pattern = @"^(https?:\/\/)?([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(\/\S*)?$";
