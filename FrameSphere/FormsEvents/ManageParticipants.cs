@@ -30,18 +30,33 @@ namespace FrameSphere.FormsEvents
             string q = string.IsNullOrWhiteSpace(search)
                 ? "SELECT UserName FROM Artists"
                 : $"SELECT UserName FROM Artists WHERE UserName LIKE '%{search}%'";
-
-            using (SqlConnection conn = DB.Connect())
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(q, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                using (SqlConnection conn = DB.Connect())
                 {
-                    string id = reader["UserName"].ToString();
-                    artistPanel(id); // Create a panel for each artist.
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(q, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        string id = reader["UserName"].ToString();
+                        artistPanel(id); // Create a panel for each artist.
+                    }
                 }
             }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB Error loading all aritists list: " + e.Message);
+                return;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error loading all aritists list: " + e.Message);
+                return;
+            }
+            
         }
 
         private void artistPanel(string id)
@@ -94,25 +109,37 @@ namespace FrameSphere.FormsEvents
         {
             noArtists.Visible = false; // Hide "None" initially
             string q = $"Select username from ArtistEvent where eventId = {ep.EventID}";
-
-            using (SqlConnection conn = DB.Connect())
+            try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(q, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (!reader.HasRows)
+                using (SqlConnection conn = DB.Connect())
                 {
-                    noArtists.Visible = true; // Show "None" label if event has no participating artists yet
-                    return;
-                }
-                while (reader.Read())
-                {
-                    string i = reader["UserName"].ToString();
-                    AddedArtistPanel(i);
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(q, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (!reader.HasRows)
+                    {
+                        noArtists.Visible = true; // Show "None" label if event has no participating artists yet
+                        return;
+                    }
+                    while (reader.Read())
+                    {
+                        string i = reader["UserName"].ToString();
+                        AddedArtistPanel(i);
+                    }
                 }
             }
-
-            
+            catch (SqlException e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB Error loading added artists list: " + e.Message);
+                return;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error loading added artists list: " + e.Message);
+                return;
+            }        
         }
 
         private void AddedArtistPanel(string id)
