@@ -31,34 +31,41 @@ namespace FrameSphere
             userDashBoard.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)//browse
         {
             // Open file dialog to select the event poster
             OpenFileDialog openFileDialog = new OpenFileDialog {
                 Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp",
                 Title = "Select Event Poster"
             };
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                imagePath = openFileDialog.FileName;
-                poster.Text = imagePath;
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    imagePath = openFileDialog.FileName;
+                    poster.Text = imagePath;
 
-                // Save the image to the "EventPosters" folder
-                string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string eventPostersFolder = Path.Combine(baseDirectory, "EventPosters");
-                Directory.CreateDirectory(eventPostersFolder); // Ensure the folder exists
+                    // Save the image to the "EventPosters" folder
+                    string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                    string eventPostersFolder = Path.Combine(baseDirectory, "EventPosters");
+                    Directory.CreateDirectory(eventPostersFolder); // Ensure the folder exists
 
-                // Copy the selected image to the EventPosters folder
-                string fileName = Path.GetFileName(imagePath);
-                string destinationPath = Path.Combine(eventPostersFolder, fileName);
-                File.Copy(imagePath, destinationPath, true);
+                    // Copy the selected image to the EventPosters folder
+                    string fileName = Path.GetFileName(imagePath);
+                    string destinationPath = Path.Combine(eventPostersFolder, fileName);
+                    File.Copy(imagePath, destinationPath, true);
 
-                // Store the relative path for the database
-                eventPosterRelativePath = Path.Combine("EventPosters", fileName);
+                    // Store the relative path for the database
+                    eventPosterRelativePath = Path.Combine("EventPosters", fileName);
 
-                // Display the image in the PictureBox using FSystem.GetImageFromPath
-                pictureBox.Image = FSystem.GetImageFromPath(eventPosterRelativePath);
+                    // Display the image in the PictureBox using FSystem.GetImageFromPath
+                    pictureBox.Image = FSystem.GetImageFromPath(eventPosterRelativePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Image Loading Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Potential Image Loading error: " + ex.Message);
             }
         }
 
