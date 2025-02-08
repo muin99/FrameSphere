@@ -268,9 +268,9 @@ namespace FrameSphere
 
         private void button11_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            //ManageEvents me = new ManageEvents();
-            //me.Show();
+            UserEvents u1 = new UserEvents();
+            this.Hide();
+            u1.Show();
         }
 
         private void button14_Click_1(object sender, EventArgs e)

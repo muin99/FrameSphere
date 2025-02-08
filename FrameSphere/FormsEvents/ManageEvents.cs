@@ -24,6 +24,12 @@ namespace FrameSphere
         {
             InitializeComponent();
 
+            if (!FSystem.loggedInUser.isAdmin)
+            {
+                reject.Visible = false;
+                approve.Visible = false;
+            }
+
             // DateTime picker formatting
             startdate.CustomFormat = "MM/dd/yyyy hh:mm tt";
             enddate.CustomFormat = "MM/dd/yyyy hh:mm tt";
@@ -153,9 +159,18 @@ namespace FrameSphere
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Admin_dashboard a = new Admin_dashboard();
-            a.Show();
-            this.Hide();
+            if (FSystem.loggedInUser.isAdmin)
+            {
+                Admin_dashboard a = new Admin_dashboard();
+                a.Show();
+                this.Hide();
+            }
+            else
+            {
+                UserEvents u1 = new UserEvents();
+                this.Hide();
+                u1.Show();
+            }
         }
 
         private void participants_button_Click(object sender, EventArgs e)
