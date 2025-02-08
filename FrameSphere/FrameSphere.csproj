@@ -344,6 +344,9 @@
     <EmbeddedResource Include="FormsEvents\Event_page.resx">
       <DependentUpon>Event_page.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormsUser\ForgetPass.resx">
+      <DependentUpon>ForgetPass.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormsUser\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

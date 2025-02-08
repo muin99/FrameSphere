@@ -22,12 +22,12 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.maintitle = new System.Windows.Forms.Label();
             this.nameuser = new System.Windows.Forms.Label();
             this.msgpanel = new System.Windows.Forms.FlowLayoutPanel();
             this.sendbutton = new System.Windows.Forms.Button();
             this.message = new System.Windows.Forms.RichTextBox();
             this.recentUsersPanel = new System.Windows.Forms.Panel();
-            this.maintitle = new System.Windows.Forms.Label();
             this.cuname = new System.Windows.Forms.Label();
             this.reload = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
@@ -44,13 +44,23 @@
             this.panel2.Size = new System.Drawing.Size(800, 50);
             this.panel2.TabIndex = 4;
             // 
+            // maintitle
+            // 
+            this.maintitle.AutoSize = true;
+            this.maintitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maintitle.Location = new System.Drawing.Point(365, 13);
+            this.maintitle.Name = "maintitle";
+            this.maintitle.Size = new System.Drawing.Size(101, 25);
+            this.maintitle.TabIndex = 1;
+            this.maintitle.Text = "Chat Box";
+            // 
             // nameuser
             // 
             this.nameuser.AutoSize = true;
             this.nameuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold);
             this.nameuser.Location = new System.Drawing.Point(350, 13);
             this.nameuser.Name = "nameuser";
-            this.nameuser.Size = new System.Drawing.Size(0, 24);
+            this.nameuser.Size = new System.Drawing.Size(0, 29);
             this.nameuser.TabIndex = 0;
             // 
             // msgpanel
@@ -98,23 +108,13 @@
             this.recentUsersPanel.Size = new System.Drawing.Size(200, 550);
             this.recentUsersPanel.TabIndex = 3;
             // 
-            // maintitle
-            // 
-            this.maintitle.AutoSize = true;
-            this.maintitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maintitle.Location = new System.Drawing.Point(365, 13);
-            this.maintitle.Name = "maintitle";
-            this.maintitle.Size = new System.Drawing.Size(82, 20);
-            this.maintitle.TabIndex = 1;
-            this.maintitle.Text = "Chat Box";
-            // 
             // cuname
             // 
             this.cuname.AutoSize = true;
             this.cuname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cuname.Location = new System.Drawing.Point(482, 56);
             this.cuname.Name = "cuname";
-            this.cuname.Size = new System.Drawing.Size(57, 20);
+            this.cuname.Size = new System.Drawing.Size(70, 25);
             this.cuname.TabIndex = 5;
             this.cuname.Text = "label1";
             // 
@@ -131,6 +131,7 @@
             // 
             // Chat
             // 
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.reload);
             this.Controls.Add(this.cuname);

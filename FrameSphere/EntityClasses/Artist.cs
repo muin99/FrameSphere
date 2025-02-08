@@ -20,18 +20,34 @@ namespace FrameSphere.EntityClasses
             if (isArtist)
             {
                 string query = $"select artId from ArtArtist where username = '{this.UserName}'";
-                using (SqlConnection connection = DB.Connect())
+                try
                 {
-                    connection.Open();
-                    SqlCommand cmd = new SqlCommand(query, connection);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                    using (SqlConnection connection = DB.Connect())
                     {
-                        int aid = Int32.Parse(reader["ArtId"].ToString());
-                        Art a = new Art(aid);
-                        myArts.Add(a);
+                        connection.Open();
+                        SqlCommand cmd = new SqlCommand(query, connection);
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            int aid = Int32.Parse(reader["ArtId"].ToString());
+                            Art a = new Art(aid);
+                            myArts.Add(a);
+                        }
                     }
                 }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN LOADING ARTIST DATA: " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN LOADING ARTIST DATA: " + e.Message);
+                    return;
+                }
+                
             }
         }
 

@@ -18,31 +18,64 @@ namespace FrameSphere.EntityClasses
 
         public string Creator {
             get {
-                using (SqlConnection connection = DB.Connect())
+                try
                 {
-                    string query = "SELECT UserName FROM ArtArtist WHERE ArtId = @ArtID";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@ArtID", _ArtID);
-                    connection.Open();
-                    _creator = command.ExecuteScalar()?.ToString();
+                    using (SqlConnection connection = DB.Connect())
+                    {
+                        string query = "SELECT UserName FROM ArtArtist WHERE ArtId = @ArtID";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@ArtID", _ArtID);
+                        connection.Open();
+                        _creator = command.ExecuteScalar()?.ToString();
+                    }
+                    return _creator;
+
                 }
-                return _creator;
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN GETTING CREATOR OF ART: " + e.Message);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN GETTING CREATOR OF ART: " + e.Message);
+                    return null;
+                }
+               
             }
             set {
                 _creator = value;
-                using (SqlConnection connection = DB.Connect())
+                try
                 {
-                    string query = "UPDATE ArtArtist SET UserName = @UserName WHERE ArtId = @ArtID";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@UserName", _creator);
-                    command.Parameters.AddWithValue("@ArtID", _ArtID);
-                    connection.Open();
-                    command.ExecuteNonQuery();
+                    using (SqlConnection connection = DB.Connect())
+                    {
+                        string query = "UPDATE ArtArtist SET UserName = @UserName WHERE ArtId = @ArtID";
+                        SqlCommand command = new SqlCommand(query, connection);
+                        command.Parameters.AddWithValue("@UserName", _creator);
+                        command.Parameters.AddWithValue("@ArtID", _ArtID);
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+
+
                 }
+                catch (SqlException e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("DB ERROR IN SETTING CREATOR OF ART: " + e.Message);
+                    return;
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("UNEXPECTED ERROR IN SETTING CREATOR OF ART: " + e.Message);
+                    return;
+                }
+               
             }
         }
-
-
         // Constructor for loading existing Art by ArtID
         public Art() { }
         public List<string> artPhotos { get {

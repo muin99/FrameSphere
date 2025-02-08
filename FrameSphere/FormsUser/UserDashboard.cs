@@ -336,9 +336,18 @@ namespace FrameSphere
                 }
 
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show($"An error occurred:{ex.Message}");
+                DialogResult ans = MessageBox.Show("You have not provided your Facebook link yet. Would you like to add your social links? ","Not Provided",MessageBoxButtons.YesNoCancel);
+                
+                if (ans == DialogResult.Yes)
+                {
+                    this.Hide();
+                    Edit_Profile edit_Profile = new Edit_Profile(FSystem.loggedInUser.UserName);
+                    edit_Profile.Show();
+                }
+                else { return; }
+                
             }
         }
 
@@ -363,9 +372,18 @@ namespace FrameSphere
                 }
 
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show($"An error occurred:{ex.Message}");
+                DialogResult ans = MessageBox.Show("You have not provided your Instagram link yet. Would you like to add your social links? ", "Not Provided", MessageBoxButtons.YesNoCancel);
+
+                if (ans == DialogResult.Yes)
+                {
+                    this.Hide();
+                    Edit_Profile edit_Profile = new Edit_Profile(FSystem.loggedInUser.UserName);
+                    edit_Profile.Show();
+                }
+                else { return; }
+
             }
         }
 
@@ -391,9 +409,18 @@ namespace FrameSphere
                 }
 
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show($"An error occurred:{ex.Message}");
+                DialogResult ans = MessageBox.Show("You have not provided your Pinterest link yet. Would you like to add your social links? ", "Not Provided", MessageBoxButtons.YesNoCancel);
+
+                if (ans == DialogResult.Yes)
+                {
+                    this.Hide();
+                    Edit_Profile edit_Profile = new Edit_Profile(FSystem.loggedInUser.UserName);
+                    edit_Profile.Show();
+                }
+                else { return; }
+
             }
 
         }
@@ -420,9 +447,18 @@ namespace FrameSphere
                 }
 
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show($"An error occurred:{ex.Message}");
+                DialogResult ans = MessageBox.Show("You have not provided your Website link yet. Would you like to add your social links? ", "Not Provided", MessageBoxButtons.YesNoCancel);
+
+                if (ans == DialogResult.Yes)
+                {
+                    this.Hide();
+                    Edit_Profile edit_Profile = new Edit_Profile(FSystem.loggedInUser.UserName);
+                    edit_Profile.Show();
+                }
+                else { return; }
+
             }
         }
 

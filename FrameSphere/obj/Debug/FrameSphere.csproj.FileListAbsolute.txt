@@ -41,3 +41,4 @@ C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.csproj.Co
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSph.32EAACE9.Up2Date
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.exe
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.pdb
+C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.ForgetPass.resources
