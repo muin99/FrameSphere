@@ -66,13 +66,13 @@ namespace FrameSphere.Bidding
             userName.Text = user.UserName;
             profilepic.Image = FSystem.GetImageFromPath(user.ProfilePic);
 
-            if (isSold())
-            {
-                this.Hide();
-                SoldForm soldForm = new SoldForm(art);
-                soldForm.Show();
-                return;
-            }
+            //if (isSold())
+            //{
+            //    this.Hide();
+            //    SoldForm soldForm = new SoldForm(art);
+            //    soldForm.Show();
+            //    return;
+            //}
 
             checkPurchaseRequest();
         }
@@ -117,6 +117,12 @@ namespace FrameSphere.Bidding
 
         private void bidBtn_Click(object sender, EventArgs e)
         {
+            if (isSold())
+            {
+                SoldForm soldForm = new SoldForm(art);
+                soldForm.Show();
+                return;
+            }
             if (double.TryParse(currentbidamount.Text, out double newBidAmount))
             {
                 double minBidAmount = bid.GetMinimumBid();
@@ -251,6 +257,13 @@ namespace FrameSphere.Bidding
 
         private void SendPurchaseRequest(string username, double newBidAmount)
         {
+            if (isSold())
+            {
+                this.Hide();
+                SoldForm soldForm = new SoldForm(art);
+                soldForm.Show();
+                return;
+            }
             try
             {
                 using (SqlConnection con = DB.Connect())
@@ -335,6 +348,11 @@ namespace FrameSphere.Bidding
             BuyArt BuyArt = new BuyArt(art, Convert.ToDouble(bidamount.Text));
             this.Hide();
             BuyArt.Show();
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            FSystem.loggedInUser.Logout(this);
         }
     }
 }

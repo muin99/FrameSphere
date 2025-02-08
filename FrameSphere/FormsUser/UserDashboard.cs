@@ -49,19 +49,22 @@ namespace FrameSphere
 
 
         }
-        private void LoadEventBoxes(string searchQuery = "" )
+        private void LoadEventBoxes(string searchQuery = "")
         {
             eventspanel.Controls.Clear(); // Clear existing controls
             eventspanel.Controls.Add(noitem); // Add the "no items" label to the panel
             noitem.Visible = false; // Hide "no items" initially
 
             // Define the query, with or without a search filter
-            string query = string.IsNullOrEmpty(searchQuery) ? "SELECT EventId, TicketPrice, RegistrationType, EventTitle, Description, StartDate, EndDate, EventPoster FROM Events " +
-                "ORDER BY (CASE WHEN GETDATE() BETWEEN StartDate AND EndDate THEN 0 WHEN StartDate > GETDATE() THEN 1 ELSE 2 END), " +
-                "(CASE WHEN GETDATE() BETWEEN StartDate AND EndDate THEN StartDate WHEN StartDate > GETDATE() THEN StartDate ELSE EndDate END) DESC" : 
-                "SELECT EventId, TicketPrice, RegistrationType, EventTitle, Description, StartDate, EndDate, EventPoster FROM Events WHERE EventTitle LIKE @SearchQuery ORDER BY " +
-                "(CASE WHEN GETDATE() BETWEEN StartDate AND EndDate THEN 0 WHEN StartDate > GETDATE() THEN 1 ELSE 2 END), " +
-                "(CASE WHEN GETDATE() BETWEEN StartDate AND EndDate THEN StartDate WHEN StartDate > GETDATE() THEN StartDate ELSE EndDate END) DESC";
+            string query = string.IsNullOrEmpty(searchQuery)
+                ? "SELECT EventId, TicketPrice, RegistrationType, EventTitle, Description, StartDate, EndDate, EventPoster FROM Events " +
+                  "WHERE Status = 'Approved' " + // Only fetch approved events
+                  "ORDER BY (CASE WHEN GETDATE() BETWEEN StartDate AND EndDate THEN 0 WHEN StartDate > GETDATE() THEN 1 ELSE 2 END), " +
+                  "(CASE WHEN GETDATE() BETWEEN StartDate AND EndDate THEN StartDate WHEN StartDate > GETDATE() THEN StartDate ELSE EndDate END) DESC"
+                : "SELECT EventId, TicketPrice, RegistrationType, EventTitle, Description, StartDate, EndDate, EventPoster FROM Events " +
+                  "WHERE Status = 'Approved' AND EventTitle LIKE @SearchQuery " + // Only fetch approved events with search filter
+                  "ORDER BY (CASE WHEN GETDATE() BETWEEN StartDate AND EndDate THEN 0 WHEN StartDate > GETDATE() THEN 1 ELSE 2 END), " +
+                  "(CASE WHEN GETDATE() BETWEEN StartDate AND EndDate THEN StartDate WHEN StartDate > GETDATE() THEN StartDate ELSE EndDate END) DESC";
 
             using (SqlConnection connection = DB.Connect())
             {
@@ -87,39 +90,36 @@ namespace FrameSphere
                         {
                             // Extract event data with null-check handling
                             int eventId = Convert.ToInt32(reader["EventId"]);
-                            string ticketPrice =reader["TicketPrice"].ToString();
+                            string ticketPrice = reader["TicketPrice"].ToString();
                             string registrationType = reader["RegistrationType"].ToString();
                             string title = reader["EventTitle"].ToString();
                             string description = reader["Description"] != DBNull.Value ? reader["Description"].ToString() : "No description available";
-                            DateTime endDate = reader["EndDate"] != DBNull.Value ? (DateTime)reader["EndDate"]:DateTime.Now;
-                            DateTime StartDate = reader["StartDate"] != DBNull.Value ? (DateTime)reader["StartDate"]:DateTime.Now ;
+                            DateTime endDate = reader["EndDate"] != DBNull.Value ? (DateTime)reader["EndDate"] : DateTime.Now;
+                            DateTime startDate = reader["StartDate"] != DBNull.Value ? (DateTime)reader["StartDate"] : DateTime.Now;
                             string eventPosterPath = reader["EventPoster"] != DBNull.Value ? reader["EventPoster"].ToString() : null;
-
-                            // Format date or provide default message
-                            //string formattedEndDate = endDate.HasValue ? endDate.Value.ToString("dd-MM-yyyy HH:mm:ss") : "No end date provided";
 
                             // Load the event poster image
                             Image eventPosterImage = !string.IsNullOrEmpty(eventPosterPath)
                                 ? FSystem.GetImageFromPath(eventPosterPath) // Load the image from path
                                 : FrameSphere.Properties.Resources._10_3__thumb; // Default placeholder image
 
-                            if (previous && endDate < DateTime.Now) {
-                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId, ticketPrice , registrationType);
-                            }
-                            if (current && StartDate < DateTime.Now && endDate > DateTime.Now)
+                            // Check event status and display accordingly
+                            if (previous && endDate < DateTime.Now)
                             {
-                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId, ticketPrice, registrationType);
+                                CreateEventBox(title, description, endDate, startDate, eventPosterImage, eventId, ticketPrice, registrationType);
                             }
-                            if (upcoming &&  StartDate > DateTime.Now)
+                            if (current && startDate < DateTime.Now && endDate > DateTime.Now)
                             {
-                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId, ticketPrice, registrationType);
+                                CreateEventBox(title, description, endDate, startDate, eventPosterImage, eventId, ticketPrice, registrationType);
                             }
-                            if(!previous && !current && !upcoming)
+                            if (upcoming && startDate > DateTime.Now)
                             {
-                                CreateEventBox(title, description, endDate, StartDate, eventPosterImage, eventId, ticketPrice, registrationType);
+                                CreateEventBox(title, description, endDate, startDate, eventPosterImage, eventId, ticketPrice, registrationType);
                             }
-                            // Create an event box for the current event
-                            
+                            if (!previous && !current && !upcoming)
+                            {
+                                CreateEventBox(title, description, endDate, startDate, eventPosterImage, eventId, ticketPrice, registrationType);
+                            }
                         }
                     }
                 }
@@ -268,9 +268,9 @@ namespace FrameSphere
 
         private void button11_Click(object sender, EventArgs e)
         {
-            //this.Hide();
-            //ManageEvents me = new ManageEvents();
-            //me.Show();
+            UserEvents u1 = new UserEvents();
+            this.Hide();
+            u1.Show();
         }
 
         private void button14_Click_1(object sender, EventArgs e)
