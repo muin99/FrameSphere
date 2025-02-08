@@ -459,9 +459,17 @@ namespace FrameSphere
                     MessageBox.Show("Art successfully added!");
                 }
             }
-            catch (Exception ex)
+            catch (SqlException a)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB ERROR iN SUBMITTING: " + a.Message);
+                return;
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("UNEXPECTED ERROR IN SUBMITTING: " + a.Message);
+                return;
             }
         }
         //private void Submit_Click_1(object sender, EventArgs e)

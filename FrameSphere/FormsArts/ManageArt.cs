@@ -40,54 +40,100 @@ namespace FrameSphere
 
         private void LoadArtData()
         {
-            using (SqlConnection connection = DB.Connect())
+            try
             {
-                connection.Open();
+                using (SqlConnection connection = DB.Connect())
+                {
+                    connection.Open();
 
-                // Load Art details
-                string artQuery = @"SELECT ArtTitle, ArtDescription, SellingOption, Price 
+                    // Load Art details
+                    string artQuery = @"SELECT ArtTitle, ArtDescription, SellingOption, Price 
                                   FROM Art WHERE ArtID = @ArtID";
-                SqlCommand artCmd = new SqlCommand(artQuery, connection);
-                artCmd.Parameters.AddWithValue("@ArtID", artID);
-
-                using (SqlDataReader reader = artCmd.ExecuteReader())
-                {
-                    if (reader.Read())
+                    SqlCommand artCmd = new SqlCommand(artQuery, connection);
+                    artCmd.Parameters.AddWithValue("@ArtID", artID);
+                    try
                     {
-                        arttitle.Text = reader["ArtTitle"].ToString();
-                        Description.Text = reader["ArtDescription"].ToString();
-                        string sellingOption = reader["SellingOption"].ToString();
+                        using (SqlDataReader reader = artCmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                arttitle.Text = reader["ArtTitle"].ToString();
+                                Description.Text = reader["ArtDescription"].ToString();
+                                string sellingOption = reader["SellingOption"].ToString();
 
-                        if (sellingOption == "Free")
-                        {
-                            free.Checked = true;
-                            artPrice.Hide();
-                        }
-                        else
-                        {
-                            paid.Checked = true;
-                            artPrice.Text = reader["Price"].ToString();
-                            artPrice.Show();
+                                if (sellingOption == "Free")
+                                {
+                                    free.Checked = true;
+                                    artPrice.Hide();
+                                }
+                                else
+                                {
+                                    paid.Checked = true;
+                                    artPrice.Text = reader["Price"].ToString();
+                                    artPrice.Show();
+                                }
+                            }
                         }
                     }
-                }
-
-                // Load ArtPhotos
-                string photosQuery = "SELECT Photo FROM ArtPhotos WHERE ArtID = @ArtID";
-                SqlCommand photosCmd = new SqlCommand(photosQuery, connection);
-                photosCmd.Parameters.AddWithValue("@ArtID", artID);
-
-                using (SqlDataReader photosReader = photosCmd.ExecuteReader())
-                {
-                    while (photosReader.Read())
+                    catch (SqlException e)
                     {
-                        string relativePath = photosReader["Photo"].ToString();
-                        string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
-                        AddPhotoPanel(fullPath);
+                        MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine("DB ERROR IN READING ART DATA: " + e.Message);
+                        return;
                     }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine("UNEXPECTED ERROR IN READING ART DATA: " + e.Message);
+                        return;
+                    }
+                   
+                    // Load ArtPhotos
+                    string photosQuery = "SELECT Photo FROM ArtPhotos WHERE ArtID = @ArtID";
+                    SqlCommand photosCmd = new SqlCommand(photosQuery, connection);
+                    photosCmd.Parameters.AddWithValue("@ArtID", artID);
+                    try
+                    {
+                        using (SqlDataReader photosReader = photosCmd.ExecuteReader())
+                        {
+                            while (photosReader.Read())
+                            {
+                                string relativePath = photosReader["Photo"].ToString();
+                                string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
+                                AddPhotoPanel(fullPath);
+                            }
+                        }
+
+                    }
+                    catch (SqlException e)
+                    {
+                        MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine("DB ERROR IN LOADING IMAGES: " + e.Message);
+                        return;
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine("UNEXPECTED ERROR IN LOADING IMAGES: " + e.Message);
+                        return;
+                    }
+                    RepositionAddButton();
                 }
-                RepositionAddButton();
+
             }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB ERROR IN LOADING ART DATA: " + e.Message);
+                return;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("UNEXPECTED ERROR IN LOADING ART DATA: " + e.Message);
+                return;
+            }
+            
         }
 
         private void AddPhotoPanel(string imagePath)
@@ -166,7 +212,23 @@ namespace FrameSphere
         {
             // Delete existing photos
             string deletePhotosQuery = "DELETE FROM ArtPhotos WHERE ArtID = @ArtID";
-            new SqlCommand(deletePhotosQuery, connection) { Parameters = { new SqlParameter("@ArtID", artID) } }.ExecuteNonQuery();
+            try
+            {
+                new SqlCommand(deletePhotosQuery, connection) { Parameters = { new SqlParameter("@ArtID", artID) } }.ExecuteNonQuery();
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB ERROR IN DELETING ART DATA: " + e.Message);
+                return;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("UNEXPECTED ERROR IN DELETING ART DATA: " + e.Message);
+                return;
+            }
+            
 
             // Insert new photos
             foreach (Control control in artContainer.Controls)
@@ -174,28 +236,44 @@ namespace FrameSphere
                 if (control is Panel panel)
                 {
                     TextBox photoPathBox = panel.Controls.OfType<TextBox>().FirstOrDefault();
-                    if (photoPathBox != null && !string.IsNullOrWhiteSpace(photoPathBox.Text))
+                    try
                     {
-                        string filePath = photoPathBox.Text;
-                        string fileName = Path.GetFileName(filePath);
-                        string storagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ArtImages");
-                        Directory.CreateDirectory(storagePath);
+                        if (photoPathBox != null && !string.IsNullOrWhiteSpace(photoPathBox.Text))
+                        {
+                            string filePath = photoPathBox.Text;
+                            string fileName = Path.GetFileName(filePath);
+                            string storagePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ArtImages");
+                            Directory.CreateDirectory(storagePath);
 
-                        string uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(fileName)}";
-                        string destinationPath = Path.Combine(storagePath, uniqueFileName);
+                            string uniqueFileName = $"{Guid.NewGuid()}{Path.GetExtension(fileName)}";
+                            string destinationPath = Path.Combine(storagePath, uniqueFileName);
 
-                        if (!File.Exists(destinationPath))
-                            File.Copy(filePath, destinationPath);
+                            if (!File.Exists(destinationPath))
+                                File.Copy(filePath, destinationPath);
 
-                        string relativePath = "ArtImages/" + uniqueFileName;
+                            string relativePath = "ArtImages/" + uniqueFileName;
 
-                        string insertPhotoQuery = "INSERT INTO ArtPhotos (ArtID, Photo) VALUES (@ArtID, @Photo)";
-                        new SqlCommand(insertPhotoQuery, connection) {
-                            Parameters = {
+                            string insertPhotoQuery = "INSERT INTO ArtPhotos (ArtID, Photo) VALUES (@ArtID, @Photo)";
+                            new SqlCommand(insertPhotoQuery, connection) {
+                                Parameters = {
                                 new SqlParameter("@ArtID", artID),
                                 new SqlParameter("@Photo", relativePath)
                             }
-                        }.ExecuteNonQuery();
+                            }.ExecuteNonQuery();
+                        }
+
+                    }
+                    catch (SqlException e)
+                    {
+                        MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine("DB ERROR IN INSERTING ART PHOTOS: " + e.Message);
+                        return;
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine("UNEXPECTED ERROR IN INSERTING ART PHOTOS: " + e.Message);
+                        return;
                     }
                 }
             }
