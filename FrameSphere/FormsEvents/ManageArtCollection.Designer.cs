@@ -196,7 +196,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ManageArtCollection";
             this.Text = "Manage Art Collection";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.MP_Body.ResumeLayout(false);
             this.MP_Body.PerformLayout();
