@@ -518,5 +518,10 @@ namespace FrameSphere
             Chat chat = new Chat();
             chat.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

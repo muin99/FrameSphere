@@ -41,6 +41,25 @@ namespace FrameSphere
             title.Text = currentEvent.EventTitle;
             loadImages(currentEvent.EventID);
             manage.Visible = isAdminOrOrganizer();
+            using (SqlConnection con = DB.Connect())
+            {
+                con.Open();
+                string query = "SELECT COUNT(*) FROM artistevent WHERE username = @username AND eventid = @eventid";
+
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+                    cmd.Parameters.AddWithValue("@eventid", eventId);
+
+                    int artist = (int)cmd.ExecuteScalar();
+
+                    if (artist > 0 ||  isAdminOrOrganizer())
+                    {
+                        addart.Visible = true;
+                    }
+                }
+            }
+
         }
 
         private bool artistOfTheEvent()

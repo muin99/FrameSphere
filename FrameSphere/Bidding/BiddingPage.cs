@@ -26,6 +26,7 @@ namespace FrameSphere.Bidding
             InitializeComponent();
             loadui();
             LoadPreviousBids();
+            
         }
 
         public bool isSold()
@@ -66,13 +67,12 @@ namespace FrameSphere.Bidding
             userName.Text = user.UserName;
             profilepic.Image = FSystem.GetImageFromPath(user.ProfilePic);
 
-            //if (isSold())
-            //{
-            //    this.Hide();
-            //    SoldForm soldForm = new SoldForm(art);
-            //    soldForm.Show();
-            //    return;
-            //}
+            if (isSold())
+            {
+                SoldForm soldForm = new SoldForm(art, Event);
+                soldForm.Show();
+                return;
+            }
 
             checkPurchaseRequest();
         }
@@ -119,7 +119,7 @@ namespace FrameSphere.Bidding
         {
             if (isSold())
             {
-                SoldForm soldForm = new SoldForm(art);
+                SoldForm soldForm = new SoldForm(art, Event);
                 soldForm.Show();
                 return;
             }
@@ -260,7 +260,7 @@ namespace FrameSphere.Bidding
             if (isSold())
             {
                 this.Hide();
-                SoldForm soldForm = new SoldForm(art);
+                SoldForm soldForm = new SoldForm(art,Event);
                 soldForm.Show();
                 return;
             }

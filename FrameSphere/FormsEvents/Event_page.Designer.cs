@@ -48,7 +48,7 @@ namespace FrameSphere
             this.title = new System.Windows.Forms.Label();
             this.cover = new System.Windows.Forms.PictureBox();
             this.imagescontainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.addart = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -102,7 +102,7 @@ namespace FrameSphere
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.LightGreen;
-            this.panel4.Controls.Add(this.button3);
+            this.panel4.Controls.Add(this.addart);
             this.panel4.Controls.Add(this.manage);
             this.panel4.Controls.Add(this.button2);
             this.panel4.Controls.Add(this.organizer);
@@ -270,18 +270,19 @@ namespace FrameSphere
             this.imagescontainer.Size = new System.Drawing.Size(1268, 426);
             this.imagescontainer.TabIndex = 26;
             // 
-            // button3
+            // addart
             // 
-            this.button3.BackColor = System.Drawing.Color.Red;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Location = new System.Drawing.Point(732, 101);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(148, 29);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "Add Art";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.addart.BackColor = System.Drawing.Color.Red;
+            this.addart.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addart.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.addart.Location = new System.Drawing.Point(732, 101);
+            this.addart.Name = "addart";
+            this.addart.Size = new System.Drawing.Size(148, 29);
+            this.addart.TabIndex = 24;
+            this.addart.Text = "Add Art";
+            this.addart.UseVisualStyleBackColor = false;
+            this.addart.Visible = false;
+            this.addart.Click += new System.EventHandler(this.button3_Click);
             // 
             // Event_page
             // 
@@ -324,6 +325,6 @@ namespace FrameSphere
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.PictureBox cover;
         private System.Windows.Forms.FlowLayoutPanel imagescontainer;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button addart;
     }
 }
