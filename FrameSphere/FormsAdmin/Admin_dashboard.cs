@@ -13,6 +13,12 @@ namespace FrameSphere
             InitializeComponent();
             Loaduserboxes();
             adminrequest();
+            if (!FSystem.loggedInUser.isAdmin)
+            {
+                this.Hide();
+                UserDashBoard u = new UserDashBoard();
+                u.Show();
+            }
         }
 
         public void adminrequest()

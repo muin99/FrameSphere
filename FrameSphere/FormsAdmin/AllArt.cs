@@ -11,6 +11,12 @@ namespace FrameSphere
         {
             InitializeComponent();
             LoadArtPanels();
+            if (!FSystem.loggedInUser.isAdmin)
+            {
+                this.Hide();
+                UserDashBoard u = new UserDashBoard();
+                u.Show();
+            }
         }
 
         private void LoadArtPanels(string searchQuery = "")

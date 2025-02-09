@@ -12,6 +12,12 @@ namespace FrameSphere
         public MakeAdmin()
         {
             InitializeComponent();
+            if (!FSystem.loggedInUser.isAdmin)
+            {
+                this.Hide();
+                UserDashBoard u = new UserDashBoard();
+                u.Show();
+            }
             //Instance = this;
 
             string aquery = "SELECT TOP 1 RequestID, UserName, RequestedBy, Approvals, TotalAdmins, Status FROM PendingAdminRequests ORDER BY RequestID DESC";

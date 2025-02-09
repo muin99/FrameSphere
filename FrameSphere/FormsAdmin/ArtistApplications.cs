@@ -17,6 +17,12 @@ namespace FrameSphere
         {
             InitializeComponent();
             LoadArtists();
+            if (!FSystem.loggedInUser.isAdmin)
+            {
+                this.Hide();
+                UserDashBoard u = new UserDashBoard();
+                u.Show();
+            }
         }
 
         private void LoadArtists(string searchQuery = "")
