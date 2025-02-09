@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using FrameSphere.FormsArts;
 
 namespace FrameSphere
 {
@@ -263,5 +264,11 @@ namespace FrameSphere
             selectedRating = 5;
         }
 
+        private void seeall_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            allReviews a = new allReviews(artId);
+            a.Show();
+        }
     }
 }

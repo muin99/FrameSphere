@@ -121,6 +121,12 @@
     <Compile Include="FormsAdmin\AllArt.Designer.cs">
       <DependentUpon>AllArt.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormsArts\allReviews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormsArts\allReviews.Designer.cs">
+      <DependentUpon>allReviews.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormsArts\ArtReview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormsAdmin\AllArt.resx">
       <DependentUpon>AllArt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormsArts\allReviews.resx">
+      <DependentUpon>allReviews.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormsArts\ArtReview.resx">
       <DependentUpon>ArtReview.cs</DependentUpon>

@@ -59,21 +59,21 @@ namespace FrameSphere
                 ImagePaths[i] = a.artPhotos[0];//store the path for the first image per artid
             }
         }
-        public void AddImageBoxes()
-        {
-            int currentPos = 0;
-            foreach(string path in  ImagePaths)
-            {
-                PictureBox artPic = new PictureBox() {
-                    Size = new Size(ImageWidth, ImageHeight),
-                    Location = new Point(currentPos, 46),
-                    SizeMode = PictureBoxSizeMode.Zoom,
-                    Image = Image.FromFile(path)
-                };
-                featuredArt_panel.Controls.Add(artPic);
-                currentPos += ImageShift;
-            }
-        }
+        //public void AddImageBoxes()
+        //{
+        //    int currentPos = 0;
+        //    foreach(string path in  ImagePaths)
+        //    {
+        //        PictureBox artPic = new PictureBox() {
+        //            Size = new Size(ImageWidth, ImageHeight),
+        //            Location = new Point(currentPos, 46),
+        //            SizeMode = PictureBoxSizeMode.Zoom,
+        //            Image = Image.FromFile(path)
+        //        };
+        //        featuredArt_panel.Controls.Add(artPic);
+        //        currentPos += ImageShift;
+        //    }
+        //}
         //public void LoadFeaturedPanel()
         //{
         //    LoadImagePaths();
