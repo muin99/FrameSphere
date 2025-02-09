@@ -245,7 +245,10 @@ namespace FrameSphere
         {
             this.Hide();
             BiddingPage bd = new BiddingPage(art, ev);
-            bd.Show();
+            if (!bd.isSold())
+            {
+                bd.Show();
+            }
         }
     }
 }
