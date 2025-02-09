@@ -614,7 +614,7 @@ namespace FrameSphere
             this.delete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.delete.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.delete.Location = new System.Drawing.Point(3, 372);
+            this.delete.Location = new System.Drawing.Point(5, 372);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(179, 31);
             this.delete.TabIndex = 30;
