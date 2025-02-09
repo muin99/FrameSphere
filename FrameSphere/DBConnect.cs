@@ -19,7 +19,6 @@ namespace FrameSphere
         
         
         
-        
         public static SqlConnection Connection = new SqlConnection(ConnectionString);
 
         static DB()
