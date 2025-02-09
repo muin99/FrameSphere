@@ -62,7 +62,7 @@ namespace FrameSphere
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel3.BackColor = System.Drawing.Color.PaleGreen;
             this.panel3.Controls.Add(this.rating5);
             this.panel3.Controls.Add(this.rating4);
             this.panel3.Controls.Add(this.rating3);
@@ -73,20 +73,18 @@ namespace FrameSphere
             this.panel3.Controls.Add(this.reviewTextBox);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.label7);
-            this.panel3.Location = new System.Drawing.Point(-7, 219);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(-5, 178);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1072, 335);
+            this.panel3.Size = new System.Drawing.Size(804, 272);
             this.panel3.TabIndex = 22;
             // 
             // rating5
             // 
             this.rating5.Image = global::FrameSphere.Properties.Resources.rating_hollow;
             this.rating5.InitialImage = global::FrameSphere.Properties.Resources.cart;
-            this.rating5.Location = new System.Drawing.Point(720, 54);
-            this.rating5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rating5.Location = new System.Drawing.Point(540, 44);
             this.rating5.Name = "rating5";
-            this.rating5.Size = new System.Drawing.Size(64, 59);
+            this.rating5.Size = new System.Drawing.Size(48, 48);
             this.rating5.TabIndex = 39;
             this.rating5.TabStop = false;
             this.rating5.Click += new System.EventHandler(this.rating5_Click);
@@ -95,10 +93,9 @@ namespace FrameSphere
             // 
             this.rating4.Image = global::FrameSphere.Properties.Resources.rating_hollow;
             this.rating4.InitialImage = global::FrameSphere.Properties.Resources.cart;
-            this.rating4.Location = new System.Drawing.Point(648, 54);
-            this.rating4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rating4.Location = new System.Drawing.Point(486, 44);
             this.rating4.Name = "rating4";
-            this.rating4.Size = new System.Drawing.Size(64, 59);
+            this.rating4.Size = new System.Drawing.Size(48, 48);
             this.rating4.TabIndex = 38;
             this.rating4.TabStop = false;
             this.rating4.Click += new System.EventHandler(this.rating4_Click);
@@ -107,10 +104,9 @@ namespace FrameSphere
             // 
             this.rating3.Image = global::FrameSphere.Properties.Resources.rating_hollow;
             this.rating3.InitialImage = global::FrameSphere.Properties.Resources.cart;
-            this.rating3.Location = new System.Drawing.Point(576, 54);
-            this.rating3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rating3.Location = new System.Drawing.Point(432, 44);
             this.rating3.Name = "rating3";
-            this.rating3.Size = new System.Drawing.Size(64, 59);
+            this.rating3.Size = new System.Drawing.Size(48, 48);
             this.rating3.TabIndex = 37;
             this.rating3.TabStop = false;
             this.rating3.Click += new System.EventHandler(this.rating3_Click);
@@ -119,10 +115,9 @@ namespace FrameSphere
             // 
             this.rating2.Image = global::FrameSphere.Properties.Resources.rating_hollow;
             this.rating2.InitialImage = global::FrameSphere.Properties.Resources.cart;
-            this.rating2.Location = new System.Drawing.Point(504, 54);
-            this.rating2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rating2.Location = new System.Drawing.Point(378, 44);
             this.rating2.Name = "rating2";
-            this.rating2.Size = new System.Drawing.Size(64, 59);
+            this.rating2.Size = new System.Drawing.Size(48, 48);
             this.rating2.TabIndex = 36;
             this.rating2.TabStop = false;
             this.rating2.Click += new System.EventHandler(this.rating2_Click);
@@ -131,10 +126,9 @@ namespace FrameSphere
             // 
             this.rating1.Image = global::FrameSphere.Properties.Resources.rating_hollow;
             this.rating1.InitialImage = global::FrameSphere.Properties.Resources.cart;
-            this.rating1.Location = new System.Drawing.Point(432, 54);
-            this.rating1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rating1.Location = new System.Drawing.Point(324, 44);
             this.rating1.Name = "rating1";
-            this.rating1.Size = new System.Drawing.Size(64, 59);
+            this.rating1.Size = new System.Drawing.Size(48, 48);
             this.rating1.TabIndex = 31;
             this.rating1.TabStop = false;
             this.rating1.Click += new System.EventHandler(this.rating1_Click);
@@ -142,25 +136,23 @@ namespace FrameSphere
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.label8.BackColor = System.Drawing.Color.PaleGreen;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(195, 68);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(146, 55);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(199, 31);
+            this.label8.Size = new System.Drawing.Size(150, 24);
             this.label8.TabIndex = 30;
             this.label8.Text = "Rate This Note:";
             // 
             // submitbtn
             // 
-            this.submitbtn.BackColor = System.Drawing.SystemColors.Highlight;
+            this.submitbtn.BackColor = System.Drawing.Color.DarkGreen;
             this.submitbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submitbtn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submitbtn.ForeColor = System.Drawing.Color.Transparent;
-            this.submitbtn.Location = new System.Drawing.Point(460, 258);
-            this.submitbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.submitbtn.Location = new System.Drawing.Point(345, 210);
             this.submitbtn.Name = "submitbtn";
-            this.submitbtn.Size = new System.Drawing.Size(91, 39);
+            this.submitbtn.Size = new System.Drawing.Size(68, 32);
             this.submitbtn.TabIndex = 29;
             this.submitbtn.Text = "Submit";
             this.submitbtn.UseVisualStyleBackColor = false;
@@ -168,11 +160,10 @@ namespace FrameSphere
             // 
             // reviewTextBox
             // 
-            this.reviewTextBox.Location = new System.Drawing.Point(189, 170);
-            this.reviewTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.reviewTextBox.Location = new System.Drawing.Point(142, 138);
             this.reviewTextBox.Multiline = true;
             this.reviewTextBox.Name = "reviewTextBox";
-            this.reviewTextBox.Size = new System.Drawing.Size(693, 80);
+            this.reviewTextBox.Size = new System.Drawing.Size(521, 66);
             this.reviewTextBox.TabIndex = 18;
             // 
             // button1
@@ -181,10 +172,9 @@ namespace FrameSphere
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(1396, 47);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(1047, 38);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(209, 39);
+            this.button1.Size = new System.Drawing.Size(157, 32);
             this.button1.TabIndex = 17;
             this.button1.Text = "Log Out";
             this.button1.UseVisualStyleBackColor = false;
@@ -192,35 +182,32 @@ namespace FrameSphere
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.label7.BackColor = System.Drawing.Color.PaleGreen;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(195, 134);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(146, 109);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(198, 31);
+            this.label7.Size = new System.Drawing.Size(153, 24);
             this.label7.TabIndex = 2;
             this.label7.Text = "Feedback Form";
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.SkyBlue;
+            this.panel2.BackColor = System.Drawing.Color.PaleGreen;
             this.panel2.Controls.Add(this.artphoto);
             this.panel2.Controls.Add(this.artdes);
             this.panel2.Controls.Add(this.artTitle);
-            this.panel2.Location = new System.Drawing.Point(-7, 80);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(-5, 65);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1072, 144);
+            this.panel2.Size = new System.Drawing.Size(804, 117);
             this.panel2.TabIndex = 23;
             // 
             // artphoto
             // 
-            this.artphoto.BackColor = System.Drawing.Color.SteelBlue;
+            this.artphoto.BackColor = System.Drawing.Color.AliceBlue;
             this.artphoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.artphoto.Location = new System.Drawing.Point(32, 12);
-            this.artphoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.artphoto.Location = new System.Drawing.Point(24, 10);
             this.artphoto.Name = "artphoto";
-            this.artphoto.Size = new System.Drawing.Size(129, 113);
+            this.artphoto.Size = new System.Drawing.Size(97, 92);
             this.artphoto.TabIndex = 7;
             this.artphoto.TabStop = false;
             // 
@@ -228,42 +215,38 @@ namespace FrameSphere
             // 
             this.artdes.AutoSize = true;
             this.artdes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.artdes.Location = new System.Drawing.Point(185, 63);
-            this.artdes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.artdes.Location = new System.Drawing.Point(139, 51);
             this.artdes.Name = "artdes";
-            this.artdes.Size = new System.Drawing.Size(239, 25);
+            this.artdes.Size = new System.Drawing.Size(134, 20);
             this.artdes.TabIndex = 2;
-            this.artdes.Text = "Introduction to Programing";
+            this.artdes.Text = "gfghryhrgrgterGH";
             // 
             // artTitle
             // 
             this.artTitle.AutoSize = true;
             this.artTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.artTitle.Location = new System.Drawing.Point(181, 12);
-            this.artTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.artTitle.Location = new System.Drawing.Point(136, 10);
             this.artTitle.Name = "artTitle";
-            this.artTitle.Size = new System.Drawing.Size(359, 31);
+            this.artTitle.Size = new System.Drawing.Size(126, 25);
             this.artTitle.TabIndex = 1;
-            this.artTitle.Text = "Introduction to Programing";
+            this.artTitle.Text = "fgrgefgefef";
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel1.BackColor = System.Drawing.Color.PaleGreen;
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.logout_btn);
             this.panel1.Controls.Add(this.userdashboard_label);
-            this.panel1.Location = new System.Drawing.Point(-7, 1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(-5, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1072, 164);
+            this.panel1.Size = new System.Drawing.Size(804, 133);
             this.panel1.TabIndex = 21;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(991, 12);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Location = new System.Drawing.Point(743, 10);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(67, 59);
+            this.pictureBox3.Size = new System.Drawing.Size(50, 48);
             this.pictureBox3.TabIndex = 31;
             this.pictureBox3.TabStop = false;
             // 
@@ -273,10 +256,9 @@ namespace FrameSphere
             this.logout_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logout_btn.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logout_btn.ForeColor = System.Drawing.Color.Transparent;
-            this.logout_btn.Location = new System.Drawing.Point(1396, 47);
-            this.logout_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.logout_btn.Location = new System.Drawing.Point(1047, 38);
             this.logout_btn.Name = "logout_btn";
-            this.logout_btn.Size = new System.Drawing.Size(209, 39);
+            this.logout_btn.Size = new System.Drawing.Size(157, 32);
             this.logout_btn.TabIndex = 17;
             this.logout_btn.Text = "Log Out";
             this.logout_btn.UseVisualStyleBackColor = false;
@@ -284,25 +266,23 @@ namespace FrameSphere
             // userdashboard_label
             // 
             this.userdashboard_label.AutoSize = true;
-            this.userdashboard_label.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.userdashboard_label.BackColor = System.Drawing.Color.PaleGreen;
             this.userdashboard_label.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userdashboard_label.Location = new System.Drawing.Point(276, 27);
-            this.userdashboard_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.userdashboard_label.Location = new System.Drawing.Point(327, 23);
             this.userdashboard_label.Name = "userdashboard_label";
-            this.userdashboard_label.Size = new System.Drawing.Size(198, 31);
+            this.userdashboard_label.Size = new System.Drawing.Size(125, 24);
             this.userdashboard_label.TabIndex = 2;
-            this.userdashboard_label.Text = "Feedback Form";
+            this.userdashboard_label.Text = "Rating Form";
             // 
             // ArtReviewPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ArtReviewPage";
             this.Text = "Art Review";
             this.panel3.ResumeLayout(false);

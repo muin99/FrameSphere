@@ -34,8 +34,8 @@ namespace FrameSphere
             this.label9 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.addart = new System.Windows.Forms.Button();
             this.manage = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.organizer = new System.Windows.Forms.TextBox();
             this.price = new System.Windows.Forms.Label();
             this.ends = new System.Windows.Forms.Label();
@@ -48,7 +48,6 @@ namespace FrameSphere
             this.title = new System.Windows.Forms.Label();
             this.cover = new System.Windows.Forms.PictureBox();
             this.imagescontainer = new System.Windows.Forms.FlowLayoutPanel();
-            this.addart = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -60,7 +59,7 @@ namespace FrameSphere
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Location = new System.Drawing.Point(8, 8);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1264, 681);
             this.panel1.TabIndex = 1;
@@ -104,7 +103,6 @@ namespace FrameSphere
             this.panel4.BackColor = System.Drawing.Color.LightGreen;
             this.panel4.Controls.Add(this.addart);
             this.panel4.Controls.Add(this.manage);
-            this.panel4.Controls.Add(this.button2);
             this.panel4.Controls.Add(this.organizer);
             this.panel4.Controls.Add(this.price);
             this.panel4.Controls.Add(this.ends);
@@ -121,6 +119,20 @@ namespace FrameSphere
             this.panel4.Size = new System.Drawing.Size(1266, 153);
             this.panel4.TabIndex = 25;
             // 
+            // addart
+            // 
+            this.addart.BackColor = System.Drawing.Color.DarkGreen;
+            this.addart.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addart.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.addart.Location = new System.Drawing.Point(1072, 101);
+            this.addart.Name = "addart";
+            this.addart.Size = new System.Drawing.Size(148, 29);
+            this.addart.TabIndex = 24;
+            this.addart.Text = "Add Art";
+            this.addart.UseVisualStyleBackColor = false;
+            this.addart.Visible = false;
+            this.addart.Click += new System.EventHandler(this.button3_Click);
+            // 
             // manage
             // 
             this.manage.BackColor = System.Drawing.Color.Red;
@@ -133,18 +145,6 @@ namespace FrameSphere
             this.manage.Text = "Manage ";
             this.manage.UseVisualStyleBackColor = false;
             this.manage.Click += new System.EventHandler(this.manage_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.DarkGreen;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(1072, 101);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(148, 29);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "Enter 3D Hall";
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // organizer
             // 
@@ -270,20 +270,6 @@ namespace FrameSphere
             this.imagescontainer.Size = new System.Drawing.Size(1268, 426);
             this.imagescontainer.TabIndex = 26;
             // 
-            // addart
-            // 
-            this.addart.BackColor = System.Drawing.Color.Red;
-            this.addart.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addart.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.addart.Location = new System.Drawing.Point(732, 101);
-            this.addart.Name = "addart";
-            this.addart.Size = new System.Drawing.Size(148, 29);
-            this.addart.TabIndex = 24;
-            this.addart.Text = "Add Art";
-            this.addart.UseVisualStyleBackColor = false;
-            this.addart.Visible = false;
-            this.addart.Click += new System.EventHandler(this.button3_Click);
-            // 
             // Event_page
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,7 +298,6 @@ namespace FrameSphere
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button manage;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox organizer;
         private System.Windows.Forms.Label price;
         private System.Windows.Forms.Label ends;

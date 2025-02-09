@@ -53,13 +53,13 @@
             this.mange = new System.Windows.Forms.Button();
             this.review = new System.Windows.Forms.Button();
             this.chat = new System.Windows.Forms.Button();
-            this.buy = new System.Windows.Forms.Button();
             this.Description = new System.Windows.Forms.Label();
             this.title = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.ArtImage = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.buy = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.profilepanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.website_link)).BeginInit();
@@ -80,20 +80,18 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(31, 498);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(23, 405);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 17);
+            this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 16;
             this.label4.Text = "Socials:";
             // 
             // address
             // 
             this.address.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address.Location = new System.Drawing.Point(29, 383);
-            this.address.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.address.Location = new System.Drawing.Point(22, 311);
             this.address.Name = "address";
-            this.address.Size = new System.Drawing.Size(159, 59);
+            this.address.Size = new System.Drawing.Size(119, 48);
             this.address.TabIndex = 9;
             this.address.Text = "Bashundhara RA\r\nPO-1209, Dhaka\r\n";
             // 
@@ -102,10 +100,9 @@
             this.panel4.BackColor = System.Drawing.Color.LightGreen;
             this.panel4.Controls.Add(this.profilepanel);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(714, 4);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Location = new System.Drawing.Point(535, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(466, 649);
+            this.panel4.Size = new System.Drawing.Size(350, 528);
             this.panel4.TabIndex = 4;
             // 
             // profilepanel
@@ -129,18 +126,18 @@
             this.profilepanel.Controls.Add(this.profilepic);
             this.profilepanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.profilepanel.Location = new System.Drawing.Point(0, 0);
-            this.profilepanel.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.profilepanel.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
             this.profilepanel.Name = "profilepanel";
-            this.profilepanel.Size = new System.Drawing.Size(466, 649);
+            this.profilepanel.Size = new System.Drawing.Size(350, 528);
             this.profilepanel.TabIndex = 0;
             // 
             // website_link
             // 
             this.website_link.Image = ((System.Drawing.Image)(resources.GetObject("website_link.Image")));
-            this.website_link.Location = new System.Drawing.Point(273, 487);
-            this.website_link.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.website_link.Location = new System.Drawing.Point(205, 396);
+            this.website_link.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.website_link.Name = "website_link";
-            this.website_link.Size = new System.Drawing.Size(40, 37);
+            this.website_link.Size = new System.Drawing.Size(30, 30);
             this.website_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.website_link.TabIndex = 20;
             this.website_link.TabStop = false;
@@ -148,10 +145,10 @@
             // pinterest_link
             // 
             this.pinterest_link.Image = ((System.Drawing.Image)(resources.GetObject("pinterest_link.Image")));
-            this.pinterest_link.Location = new System.Drawing.Point(215, 487);
-            this.pinterest_link.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pinterest_link.Location = new System.Drawing.Point(161, 396);
+            this.pinterest_link.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pinterest_link.Name = "pinterest_link";
-            this.pinterest_link.Size = new System.Drawing.Size(40, 37);
+            this.pinterest_link.Size = new System.Drawing.Size(30, 30);
             this.pinterest_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pinterest_link.TabIndex = 19;
             this.pinterest_link.TabStop = false;
@@ -159,10 +156,10 @@
             // instagram_link
             // 
             this.instagram_link.Image = ((System.Drawing.Image)(resources.GetObject("instagram_link.Image")));
-            this.instagram_link.Location = new System.Drawing.Point(160, 487);
-            this.instagram_link.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.instagram_link.Location = new System.Drawing.Point(120, 396);
+            this.instagram_link.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.instagram_link.Name = "instagram_link";
-            this.instagram_link.Size = new System.Drawing.Size(40, 37);
+            this.instagram_link.Size = new System.Drawing.Size(30, 30);
             this.instagram_link.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.instagram_link.TabIndex = 18;
             this.instagram_link.TabStop = false;
@@ -170,10 +167,10 @@
             // facebook_pic
             // 
             this.facebook_pic.Image = ((System.Drawing.Image)(resources.GetObject("facebook_pic.Image")));
-            this.facebook_pic.Location = new System.Drawing.Point(101, 487);
-            this.facebook_pic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.facebook_pic.Location = new System.Drawing.Point(76, 396);
+            this.facebook_pic.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.facebook_pic.Name = "facebook_pic";
-            this.facebook_pic.Size = new System.Drawing.Size(40, 37);
+            this.facebook_pic.Size = new System.Drawing.Size(30, 30);
             this.facebook_pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.facebook_pic.TabIndex = 17;
             this.facebook_pic.TabStop = false;
@@ -181,10 +178,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FrameSphere.Properties.Resources.cross;
-            this.pictureBox1.Location = new System.Drawing.Point(403, 7);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(302, 6);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(36, 37);
+            this.pictureBox1.Size = new System.Drawing.Size(27, 30);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 12;
             this.pictureBox1.TabStop = false;
@@ -194,10 +191,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(19, 362);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(14, 294);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 17);
+            this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 8;
             this.label8.Text = "Contact:";
             // 
@@ -205,10 +201,9 @@
             // 
             this.email.AutoSize = true;
             this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.email.Location = new System.Drawing.Point(77, 330);
-            this.email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.email.Location = new System.Drawing.Point(58, 268);
             this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(131, 17);
+            this.email.Size = new System.Drawing.Size(99, 13);
             this.email.TabIndex = 7;
             this.email.Text = "56muin@gmail.com";
             // 
@@ -216,10 +211,9 @@
             // 
             this.phone.AutoSize = true;
             this.phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.phone.Location = new System.Drawing.Point(88, 309);
-            this.phone.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.phone.Location = new System.Drawing.Point(66, 251);
             this.phone.Name = "phone";
-            this.phone.Size = new System.Drawing.Size(120, 17);
+            this.phone.Size = new System.Drawing.Size(91, 13);
             this.phone.TabIndex = 6;
             this.phone.Text = "+8801400059919";
             // 
@@ -227,10 +221,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(29, 330);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(22, 268);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 17);
+            this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 5;
             this.label3.Text = "Email:";
             // 
@@ -238,10 +231,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(29, 309);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(22, 251);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 17);
+            this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Phone:";
             // 
@@ -249,20 +241,18 @@
             // 
             this.contact.AutoSize = true;
             this.contact.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contact.Location = new System.Drawing.Point(19, 288);
-            this.contact.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.contact.Location = new System.Drawing.Point(14, 234);
             this.contact.Name = "contact";
-            this.contact.Size = new System.Drawing.Size(68, 17);
+            this.contact.Size = new System.Drawing.Size(55, 13);
             this.contact.TabIndex = 3;
             this.contact.Text = "Contact:";
             // 
             // userName
             // 
             this.userName.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.userName.Location = new System.Drawing.Point(163, 245);
-            this.userName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.userName.Location = new System.Drawing.Point(122, 199);
             this.userName.Name = "userName";
-            this.userName.Size = new System.Drawing.Size(133, 16);
+            this.userName.Size = new System.Drawing.Size(100, 13);
             this.userName.TabIndex = 2;
             this.userName.Text = "@onukrom";
             this.userName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -271,10 +261,9 @@
             // 
             this.name.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.name.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.name.Location = new System.Drawing.Point(119, 226);
-            this.name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.name.Location = new System.Drawing.Point(89, 184);
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(221, 18);
+            this.name.Size = new System.Drawing.Size(166, 15);
             this.name.TabIndex = 1;
             this.name.Text = "Md. Muinul Islam";
             this.name.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -283,10 +272,10 @@
             // 
             this.profilepic.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.profilepic.Image = global::FrameSphere.Properties.Resources.SmallerNetworkConnectionBackgroundtest_ezgif_com_video_to_gif_converter;
-            this.profilepic.Location = new System.Drawing.Point(163, 92);
-            this.profilepic.Margin = new System.Windows.Forms.Padding(27, 25, 27, 25);
+            this.profilepic.Location = new System.Drawing.Point(122, 75);
+            this.profilepic.Margin = new System.Windows.Forms.Padding(20, 20, 20, 20);
             this.profilepic.Name = "profilepic";
-            this.profilepic.Size = new System.Drawing.Size(133, 128);
+            this.profilepic.Size = new System.Drawing.Size(100, 104);
             this.profilepic.TabIndex = 0;
             this.profilepic.TabStop = false;
             // 
@@ -300,13 +289,13 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1184, 822);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(888, 668);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -320,20 +309,18 @@
             this.panel1.Controls.Add(this.Description);
             this.panel1.Controls.Add(this.title);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(4, 661);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(3, 537);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1176, 157);
+            this.panel1.Size = new System.Drawing.Size(882, 128);
             this.panel1.TabIndex = 5;
             // 
             // bid_btn
             // 
             this.bid_btn.BackColor = System.Drawing.Color.LightGreen;
             this.bid_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bid_btn.Location = new System.Drawing.Point(609, 37);
-            this.bid_btn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bid_btn.Location = new System.Drawing.Point(457, 30);
             this.bid_btn.Name = "bid_btn";
-            this.bid_btn.Size = new System.Drawing.Size(255, 36);
+            this.bid_btn.Size = new System.Drawing.Size(191, 29);
             this.bid_btn.TabIndex = 25;
             this.bid_btn.Text = "Bid for this Art";
             this.bid_btn.UseVisualStyleBackColor = false;
@@ -343,10 +330,9 @@
             // 
             this.mange.BackColor = System.Drawing.Color.LightGreen;
             this.mange.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mange.Location = new System.Drawing.Point(893, 37);
-            this.mange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mange.Location = new System.Drawing.Point(670, 30);
             this.mange.Name = "mange";
-            this.mange.Size = new System.Drawing.Size(255, 36);
+            this.mange.Size = new System.Drawing.Size(191, 29);
             this.mange.TabIndex = 24;
             this.mange.Text = "Manage Art";
             this.mange.UseVisualStyleBackColor = false;
@@ -356,10 +342,9 @@
             // 
             this.review.BackColor = System.Drawing.Color.LightGreen;
             this.review.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.review.Location = new System.Drawing.Point(609, 111);
-            this.review.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.review.Location = new System.Drawing.Point(457, 90);
             this.review.Name = "review";
-            this.review.Size = new System.Drawing.Size(255, 36);
+            this.review.Size = new System.Drawing.Size(191, 29);
             this.review.TabIndex = 23;
             this.review.Text = "Review Art";
             this.review.UseVisualStyleBackColor = false;
@@ -369,35 +354,20 @@
             // 
             this.chat.BackColor = System.Drawing.Color.LightGreen;
             this.chat.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chat.Location = new System.Drawing.Point(16, 111);
-            this.chat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chat.Location = new System.Drawing.Point(12, 90);
             this.chat.Name = "chat";
-            this.chat.Size = new System.Drawing.Size(255, 36);
+            this.chat.Size = new System.Drawing.Size(191, 29);
             this.chat.TabIndex = 22;
             this.chat.Text = "Chat with artist";
             this.chat.UseVisualStyleBackColor = false;
             this.chat.Click += new System.EventHandler(this.chat_Click_1);
             // 
-            // buy
-            // 
-            this.buy.BackColor = System.Drawing.Color.LightGreen;
-            this.buy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buy.Location = new System.Drawing.Point(893, 111);
-            this.buy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.buy.Name = "buy";
-            this.buy.Size = new System.Drawing.Size(255, 36);
-            this.buy.TabIndex = 2;
-            this.buy.Text = "Buy";
-            this.buy.UseVisualStyleBackColor = false;
-            this.buy.Click += new System.EventHandler(this.buy_Click);
-            // 
             // Description
             // 
             this.Description.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Description.Location = new System.Drawing.Point(12, 37);
-            this.Description.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Description.Location = new System.Drawing.Point(9, 30);
             this.Description.Name = "Description";
-            this.Description.Size = new System.Drawing.Size(661, 89);
+            this.Description.Size = new System.Drawing.Size(496, 72);
             this.Description.TabIndex = 21;
             this.Description.Text = "Bashundhara RA\r\nPO-1209, Dhaka\r\n";
             // 
@@ -405,10 +375,9 @@
             // 
             this.title.AutoSize = true;
             this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.title.Location = new System.Drawing.Point(12, 11);
-            this.title.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.title.Location = new System.Drawing.Point(9, 9);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(66, 29);
+            this.title.Size = new System.Drawing.Size(50, 24);
             this.title.TabIndex = 0;
             this.title.Text = "Title";
             // 
@@ -421,13 +390,12 @@
             this.tableLayoutPanel2.Controls.Add(this.pictureBox2, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.pictureBox3, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.44444F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.555555F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(702, 649);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(526, 528);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // ArtImage
@@ -435,10 +403,10 @@
             this.tableLayoutPanel2.SetColumnSpan(this.ArtImage, 2);
             this.ArtImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ArtImage.Image = global::FrameSphere.Properties.Resources.SmallerNetworkConnectionBackgroundtest_ezgif_com_video_to_gif_converter;
-            this.ArtImage.Location = new System.Drawing.Point(3, 2);
-            this.ArtImage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ArtImage.Location = new System.Drawing.Point(2, 2);
+            this.ArtImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ArtImage.Name = "ArtImage";
-            this.ArtImage.Size = new System.Drawing.Size(696, 595);
+            this.ArtImage.Size = new System.Drawing.Size(522, 484);
             this.ArtImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ArtImage.TabIndex = 1;
             this.ArtImage.TabStop = false;
@@ -448,10 +416,9 @@
             this.pictureBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.InitialImage")));
-            this.pictureBox2.Location = new System.Drawing.Point(214, 603);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(160, 491);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(133, 42);
+            this.pictureBox2.Size = new System.Drawing.Size(100, 34);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
@@ -461,24 +428,35 @@
             // 
             this.pictureBox3.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(355, 603);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox3.Location = new System.Drawing.Point(266, 491);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(133, 42);
+            this.pictureBox3.Size = new System.Drawing.Size(100, 34);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
+            // buy
+            // 
+            this.buy.BackColor = System.Drawing.Color.LightGreen;
+            this.buy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buy.Location = new System.Drawing.Point(670, 90);
+            this.buy.Name = "buy";
+            this.buy.Size = new System.Drawing.Size(191, 29);
+            this.buy.TabIndex = 2;
+            this.buy.Text = "Buy";
+            this.buy.UseVisualStyleBackColor = false;
+            this.buy.Click += new System.EventHandler(this.buy_Click);
+            // 
             // ArtDisplayForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1184, 822);
+            this.ClientSize = new System.Drawing.Size(888, 668);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ArtDisplayForm";
             this.Text = "Art Display";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -530,9 +508,9 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button chat;
-        private System.Windows.Forms.Button buy;
         private System.Windows.Forms.Button review;
         private System.Windows.Forms.Button mange;
         private System.Windows.Forms.Button bid_btn;
+        private System.Windows.Forms.Button buy;
     }
 }
