@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FrameSphere.EntityClasses;
 
 namespace FrameSphere.FormsArts
 {
@@ -20,6 +21,7 @@ namespace FrameSphere.FormsArts
                 InitializeComponent();
                 InitializeFlowPanel();
                 LoadReviews();
+                label1.Text = new Art(artid).ArtTitle;
             }
 
             private void InitializeFlowPanel()
@@ -109,5 +111,10 @@ namespace FrameSphere.FormsArts
 
                 evs.Controls.Add(reviewPanel);
             }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
+    }
     }
