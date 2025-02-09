@@ -58,10 +58,10 @@ namespace FrameSphere
             this.buttons_panel.Controls.Add(this.UserBoard);
             this.buttons_panel.Controls.Add(this.eventsboard);
             this.buttons_panel.Controls.Add(this.button2);
-            this.buttons_panel.Location = new System.Drawing.Point(-17, 126);
-            this.buttons_panel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttons_panel.Location = new System.Drawing.Point(-13, 102);
+            this.buttons_panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttons_panel.Name = "buttons_panel";
-            this.buttons_panel.Size = new System.Drawing.Size(404, 703);
+            this.buttons_panel.Size = new System.Drawing.Size(303, 571);
             this.buttons_panel.TabIndex = 22;
             // 
             // artlist
@@ -70,10 +70,9 @@ namespace FrameSphere
             this.artlist.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.artlist.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.artlist.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.artlist.Location = new System.Drawing.Point(71, 262);
-            this.artlist.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.artlist.Location = new System.Drawing.Point(53, 213);
             this.artlist.Name = "artlist";
-            this.artlist.Size = new System.Drawing.Size(260, 36);
+            this.artlist.Size = new System.Drawing.Size(195, 29);
             this.artlist.TabIndex = 20;
             this.artlist.Text = "List of Arts";
             this.artlist.UseVisualStyleBackColor = false;
@@ -86,10 +85,10 @@ namespace FrameSphere
             this.UserBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.UserBoard.Font = new System.Drawing.Font("Lucida Console", 11.25F);
             this.UserBoard.ForeColor = System.Drawing.Color.White;
-            this.UserBoard.Location = new System.Drawing.Point(71, 198);
-            this.UserBoard.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.UserBoard.Location = new System.Drawing.Point(53, 161);
+            this.UserBoard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UserBoard.Name = "UserBoard";
-            this.UserBoard.Size = new System.Drawing.Size(260, 36);
+            this.UserBoard.Size = new System.Drawing.Size(195, 29);
             this.UserBoard.TabIndex = 15;
             this.UserBoard.Text = "List of Users";
             this.UserBoard.UseVisualStyleBackColor = false;
@@ -101,10 +100,9 @@ namespace FrameSphere
             this.eventsboard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.eventsboard.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.eventsboard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.eventsboard.Location = new System.Drawing.Point(71, 65);
-            this.eventsboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.eventsboard.Location = new System.Drawing.Point(53, 53);
             this.eventsboard.Name = "eventsboard";
-            this.eventsboard.Size = new System.Drawing.Size(260, 36);
+            this.eventsboard.Size = new System.Drawing.Size(195, 29);
             this.eventsboard.TabIndex = 13;
             this.eventsboard.Text = "List of Events";
             this.eventsboard.UseVisualStyleBackColor = false;
@@ -116,10 +114,9 @@ namespace FrameSphere
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Location = new System.Drawing.Point(71, 130);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(53, 106);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(260, 36);
+            this.button2.Size = new System.Drawing.Size(195, 29);
             this.button2.TabIndex = 14;
             this.button2.Text = "Artist Applications";
             this.button2.UseVisualStyleBackColor = false;
@@ -133,10 +130,9 @@ namespace FrameSphere
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.RegisterLabel);
             this.panel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.panel1.Location = new System.Drawing.Point(-17, 9);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(-13, 7);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1721, 106);
+            this.panel1.Size = new System.Drawing.Size(1291, 86);
             this.panel1.TabIndex = 20;
             // 
             // Logout
@@ -147,10 +143,9 @@ namespace FrameSphere
             this.Logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Logout.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.Logout.ForeColor = System.Drawing.Color.White;
-            this.Logout.Location = new System.Drawing.Point(1561, 37);
-            this.Logout.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Logout.Location = new System.Drawing.Point(1171, 30);
             this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(112, 31);
+            this.Logout.Size = new System.Drawing.Size(84, 25);
             this.Logout.TabIndex = 19;
             this.Logout.Text = "Log out";
             this.Logout.UseVisualStyleBackColor = false;
@@ -162,10 +157,9 @@ namespace FrameSphere
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(40, 31);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Location = new System.Drawing.Point(30, 25);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(211, 31);
+            this.button1.Size = new System.Drawing.Size(158, 25);
             this.button1.TabIndex = 12;
             this.button1.Text = "Return to Dashboard";
             this.button1.UseVisualStyleBackColor = false;
@@ -178,10 +172,9 @@ namespace FrameSphere
             this.RegisterLabel.BackColor = System.Drawing.Color.Transparent;
             this.RegisterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegisterLabel.ForeColor = System.Drawing.Color.DarkBlue;
-            this.RegisterLabel.Location = new System.Drawing.Point(703, 37);
-            this.RegisterLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.RegisterLabel.Location = new System.Drawing.Point(527, 30);
             this.RegisterLabel.Name = "RegisterLabel";
-            this.RegisterLabel.Size = new System.Drawing.Size(269, 36);
+            this.RegisterLabel.Size = new System.Drawing.Size(220, 29);
             this.RegisterLabel.TabIndex = 11;
             this.RegisterLabel.Text = "Admin Dashboard";
             this.RegisterLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -194,10 +187,9 @@ namespace FrameSphere
             this.panel2.Controls.Add(this.artsPanel);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.searchTextBox);
-            this.panel2.Location = new System.Drawing.Point(393, 126);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(295, 102);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1311, 703);
+            this.panel2.Size = new System.Drawing.Size(983, 571);
             this.panel2.TabIndex = 21;
             // 
             // EventsList_label
@@ -205,9 +197,10 @@ namespace FrameSphere
             this.EventsList_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.EventsList_label.Font = new System.Drawing.Font("Lucida Console", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EventsList_label.ForeColor = System.Drawing.Color.Black;
-            this.EventsList_label.Location = new System.Drawing.Point(160, 18);
+            this.EventsList_label.Location = new System.Drawing.Point(120, 15);
+            this.EventsList_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.EventsList_label.Name = "EventsList_label";
-            this.EventsList_label.Size = new System.Drawing.Size(1101, 27);
+            this.EventsList_label.Size = new System.Drawing.Size(826, 22);
             this.EventsList_label.TabIndex = 29;
             this.EventsList_label.Text = "List of Arts";
             this.EventsList_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -215,9 +208,10 @@ namespace FrameSphere
             // search_label
             // 
             this.search_label.Font = new System.Drawing.Font("Lucida Console", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search_label.Location = new System.Drawing.Point(55, 73);
+            this.search_label.Location = new System.Drawing.Point(41, 59);
+            this.search_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.search_label.Name = "search_label";
-            this.search_label.Size = new System.Drawing.Size(104, 27);
+            this.search_label.Size = new System.Drawing.Size(78, 22);
             this.search_label.TabIndex = 28;
             this.search_label.Text = "Search: ";
             this.search_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -227,20 +221,18 @@ namespace FrameSphere
             this.artsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.artsPanel.AutoScroll = true;
             this.artsPanel.Controls.Add(this.noArtLabel);
-            this.artsPanel.Location = new System.Drawing.Point(59, 116);
-            this.artsPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.artsPanel.Location = new System.Drawing.Point(44, 94);
             this.artsPanel.Name = "artsPanel";
-            this.artsPanel.Size = new System.Drawing.Size(1225, 559);
+            this.artsPanel.Size = new System.Drawing.Size(919, 454);
             this.artsPanel.TabIndex = 27;
             // 
             // noArtLabel
             // 
             this.noArtLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.noArtLabel.AutoSize = true;
-            this.noArtLabel.Location = new System.Drawing.Point(4, 0);
-            this.noArtLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.noArtLabel.Location = new System.Drawing.Point(3, 0);
             this.noArtLabel.Name = "noArtLabel";
-            this.noArtLabel.Size = new System.Drawing.Size(97, 16);
+            this.noArtLabel.Size = new System.Drawing.Size(80, 13);
             this.noArtLabel.TabIndex = 28;
             this.noArtLabel.Text = "NO Event Here";
             // 
@@ -251,34 +243,31 @@ namespace FrameSphere
             this.label2.BackColor = System.Drawing.Color.LightGreen;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(688, 96);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(516, 78);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 17);
+            this.label2.Size = new System.Drawing.Size(86, 13);
             this.label2.TabIndex = 20;
-            this.label2.Text = "Status";
+            this.label2.Text = "Selling Option";
             // 
             // searchTextBox
             // 
             this.searchTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchTextBox.Location = new System.Drawing.Point(165, 66);
-            this.searchTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchTextBox.Location = new System.Drawing.Point(124, 54);
             this.searchTextBox.Multiline = true;
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(1081, 29);
+            this.searchTextBox.Size = new System.Drawing.Size(812, 24);
             this.searchTextBox.TabIndex = 17;
             this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged_1);
             // 
             // AllArt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1707, 838);
+            this.ClientSize = new System.Drawing.Size(1280, 681);
             this.Controls.Add(this.buttons_panel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "AllArt";
             this.Text = "All Art";
             this.buttons_panel.ResumeLayout(false);
