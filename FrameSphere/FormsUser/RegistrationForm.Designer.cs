@@ -231,7 +231,7 @@
             // 
             this.noNumbers2.AutoSize = true;
             this.noNumbers2.ForeColor = System.Drawing.Color.Red;
-            this.noNumbers2.Location = new System.Drawing.Point(871, 127);
+            this.noNumbers2.Location = new System.Drawing.Point(870, 127);
             this.noNumbers2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.noNumbers2.Name = "noNumbers2";
             this.noNumbers2.Size = new System.Drawing.Size(133, 16);

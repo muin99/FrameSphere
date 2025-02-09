@@ -186,22 +186,10 @@ namespace FrameSphere
 
         }
 
-        private bool validEmail(string text)
-        {
-            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
-            return Regex.IsMatch(text, pattern);
-            //@ to not use double slashes since regex uses it often
-            //^ Start of string
-            //[a - zA - Z0 - 9._ % +-]+ Local part(username)
-            //@  compulsory @ symbol
-            //[a - zA - Z0 - 9.-]+  Domain name
-            //\. Dot before top level domain (TLD)
-            //[a - zA - Z]{ 2,}	TLD, {atleast 2 chars, no upper limits}
-            //$	End of string
-        }
+        
         private void Email_TextChanged(object sender, EventArgs e)
         {
-            if (!validEmail(Email.Text)) {CheckMail.Visible = true;}
+            if (FSystem.validEmail(Email.Text)) {CheckMail.Visible = true;}
             else{CheckMail.Visible = false;}
         }
 

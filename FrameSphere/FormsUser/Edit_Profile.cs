@@ -2,8 +2,12 @@
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace FrameSphere
 {
@@ -419,7 +423,35 @@ namespace FrameSphere
                 poster.Text = profilePicRelativePath;
             }
         }
+        private bool checkLink(string url, string platform)
+        {
+            string facebook_pattern = @"^(https?:\/\/)?(www\.|web\.)?(facebook\.com)\/[a-zA-Z0-9.]+(\/)?$";
+            string instagram_pattern = @"^(https?:\/\/)?(www\.)?(instagram\.com)\/[a-zA-Z0-9._]+(\/)?$";
+            string pinterest_pattern = @"^(https?:\/\/)?(www\.)?(pinterest\.com)\/[a-zA-Z0-9._]+(\/)?$";
+            string website_pattern = @"^(https?:\/\/)?([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(\/\S*)?$";
+            switch (platform.ToLower())
+            {
+                case "facebook":
+                    return Regex.IsMatch(url, facebook_pattern);
+                case "instagram":
+                    return Regex.IsMatch(url, instagram_pattern);
+                case "pinterest":
+                    return Regex.IsMatch(url, pinterest_pattern);
+                case "website":
+                    return Regex.IsMatch(url, website_pattern);
+                default:
+                    return false;
+            }
+        }
+        private bool checkValidations()
+        {
+            if (!CheckMail_e.Visible && !checkfname1.Visible && !checklname2.Visible && !checkPhone.Visible && !invalidPhone.Visible && CurrentPWField.Text != "")
+            {
+                return true;
+            }
+            else { return false; }
 
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             // Check if there are any fields to update
@@ -436,7 +468,32 @@ namespace FrameSphere
                 MessageBox.Show("There is nothing to update. Please enter new information where needed.", "Empty Fields", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
+            //Ensure social links are valid in button2_Click
+            if (!string.IsNullOrWhiteSpace(FaceBookField.Text) && !checkLink(FaceBookField.Text, "facebook"))
+            {
+                MessageBox.Show("Facebook link is invalid!", "Invalid Link", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!string.IsNullOrWhiteSpace(InstagramField.Text) && !checkLink(InstagramField.Text, "instagram"))
+            {
+                MessageBox.Show("Instagram link is invalid!", "Invalid Link", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!string.IsNullOrWhiteSpace(PinterestField.Text) && !checkLink(PinterestField.Text, "pinterest"))
+            {
+                MessageBox.Show("Pinterest link is invalid!", "Invalid Link", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (!string.IsNullOrWhiteSpace(WebsiteField.Text) && !checkLink(WebsiteField.Text, "website"))
+            {
+                MessageBox.Show("Website link is invalid!", "Invalid Link", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Ensure all are validated
+            if (!checkValidations())
+            {
+                return;
+            }
             // Ensure the current password is entered
             if (string.IsNullOrWhiteSpace(CurrentPWField.Text))
             {
@@ -563,6 +620,59 @@ namespace FrameSphere
             else {
                 MessageBox.Show("Not a valid password");
             }
+        }
+
+        private void EmailField_TextChanged(object sender, EventArgs e)
+        {
+            if (FSystem.validEmail(EmailField.Text)) { CheckMail_e.Visible = true; }
+            else { CheckMail_e.Visible = false; }
+        }
+
+        private bool noSpaces(string text)
+        {
+            if (text.StartsWith(" ") || text.EndsWith(" ")) { return false; }
+            else { return true; }
+        }
+        private bool noNumbers(string text)
+        {
+            if (text.Any(char.IsDigit)) { return false; }
+            else { return true; }
+        }
+        private bool noLetters(string text)
+        {
+            if (!text.Any(char.IsDigit)) { return false; }
+            else { return true; }
+        }
+        private string capitalizeFirst(string text)
+        {
+            return char.ToUpper(text[0]) + text.Substring(1);
+        }
+
+        private void FirstNameField_TextChanged(object sender, EventArgs e)
+        {
+            if (!noSpaces(FirstNameField.Text)) { checkfname1.Visible = true; }
+            else { checkfname1.Visible = false; }
+
+            if (!noNumbers(FirstNameField.Text)) { noNumbers11.Visible = true; }
+            else { noNumbers11.Visible = false; }
+        }
+
+        private void LastNameField_TextChanged(object sender, EventArgs e)
+        {
+            if (!noSpaces(LastNameField.Text)) { checklname2.Visible = true; }
+            else { checklname2.Visible = false; }
+
+            if (!noNumbers(LastNameField.Text)) { noNumbers22.Visible = true; }
+            else { noNumbers22.Visible = false; }
+        }
+
+        private void PhoneField_TextChanged(object sender, EventArgs e)
+        {
+            if (!noSpaces(PhoneField.Text)) { checkPhone.Visible = true; }
+            else { checkPhone.Visible = false; }
+            if (!noLetters(PhoneField.Text)) { invalidPhone.Visible = true; }
+            else { invalidPhone.Visible = false; }
+
         }
     }
 }
