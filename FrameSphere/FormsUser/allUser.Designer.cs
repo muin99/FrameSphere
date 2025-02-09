@@ -124,9 +124,9 @@
             // 
             // userspanel
             // 
-            this.userspanel.Location = new System.Drawing.Point(38, 105);
+            this.userspanel.Location = new System.Drawing.Point(38, 54);
             this.userspanel.Name = "userspanel";
-            this.userspanel.Size = new System.Drawing.Size(1203, 439);
+            this.userspanel.Size = new System.Drawing.Size(1203, 490);
             this.userspanel.TabIndex = 0;
             // 
             // allUser
