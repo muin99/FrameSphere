@@ -35,11 +35,11 @@ namespace FrameSphere
             this.ManageEvent_Title = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.body_panel = new System.Windows.Forms.Panel();
+            this.delete = new System.Windows.Forms.Button();
             this.approve = new System.Windows.Forms.Button();
             this.reject = new System.Windows.Forms.Button();
             this.manageButtons_panel = new System.Windows.Forms.Panel();
             this.manageOrganizer = new System.Windows.Forms.Button();
-            this.visitors_button = new System.Windows.Forms.Button();
             this.artCollections_button = new System.Windows.Forms.Button();
             this.participants_button = new System.Windows.Forms.Button();
             this.currentPW_label = new System.Windows.Forms.Label();
@@ -64,7 +64,6 @@ namespace FrameSphere
             this.OrgDetails_field = new System.Windows.Forms.TextBox();
             this.eventDesc_field = new System.Windows.Forms.TextBox();
             this.eventTitle_field = new System.Windows.Forms.TextBox();
-            this.delete = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.header_panel.SuspendLayout();
             this.body_panel.SuspendLayout();
@@ -171,6 +170,20 @@ namespace FrameSphere
             this.body_panel.Size = new System.Drawing.Size(1258, 574);
             this.body_panel.TabIndex = 2;
             // 
+            // delete
+            // 
+            this.delete.BackColor = System.Drawing.Color.Red;
+            this.delete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.delete.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.delete.Location = new System.Drawing.Point(847, 412);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(168, 29);
+            this.delete.TabIndex = 30;
+            this.delete.Text = "Delete";
+            this.delete.UseVisualStyleBackColor = false;
+            this.delete.Click += new System.EventHandler(this.delete_Click);
+            // 
             // approve
             // 
             this.approve.BackColor = System.Drawing.Color.DarkGreen;
@@ -203,7 +216,6 @@ namespace FrameSphere
             // 
             this.manageButtons_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.manageButtons_panel.Controls.Add(this.manageOrganizer);
-            this.manageButtons_panel.Controls.Add(this.visitors_button);
             this.manageButtons_panel.Controls.Add(this.artCollections_button);
             this.manageButtons_panel.Controls.Add(this.participants_button);
             this.manageButtons_panel.Location = new System.Drawing.Point(700, 40);
@@ -218,7 +230,7 @@ namespace FrameSphere
             this.manageOrganizer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.manageOrganizer.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.manageOrganizer.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.manageOrganizer.Location = new System.Drawing.Point(66, 187);
+            this.manageOrganizer.Location = new System.Drawing.Point(66, 182);
             this.manageOrganizer.Name = "manageOrganizer";
             this.manageOrganizer.Size = new System.Drawing.Size(373, 29);
             this.manageOrganizer.TabIndex = 7;
@@ -226,26 +238,13 @@ namespace FrameSphere
             this.manageOrganizer.UseVisualStyleBackColor = false;
             this.manageOrganizer.Click += new System.EventHandler(this.manageOrganizer_Click);
             // 
-            // visitors_button
-            // 
-            this.visitors_button.BackColor = System.Drawing.Color.DarkGreen;
-            this.visitors_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.visitors_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.visitors_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.visitors_button.Location = new System.Drawing.Point(66, 129);
-            this.visitors_button.Name = "visitors_button";
-            this.visitors_button.Size = new System.Drawing.Size(373, 29);
-            this.visitors_button.TabIndex = 6;
-            this.visitors_button.Text = "Manage Visitors";
-            this.visitors_button.UseVisualStyleBackColor = false;
-            // 
             // artCollections_button
             // 
             this.artCollections_button.BackColor = System.Drawing.Color.DarkGreen;
             this.artCollections_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.artCollections_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.artCollections_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.artCollections_button.Location = new System.Drawing.Point(66, 75);
+            this.artCollections_button.Location = new System.Drawing.Point(66, 114);
             this.artCollections_button.Name = "artCollections_button";
             this.artCollections_button.Size = new System.Drawing.Size(373, 29);
             this.artCollections_button.TabIndex = 5;
@@ -259,7 +258,7 @@ namespace FrameSphere
             this.participants_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.participants_button.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.participants_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.participants_button.Location = new System.Drawing.Point(66, 15);
+            this.participants_button.Location = new System.Drawing.Point(66, 40);
             this.participants_button.Name = "participants_button";
             this.participants_button.Size = new System.Drawing.Size(373, 29);
             this.participants_button.TabIndex = 4;
@@ -485,20 +484,6 @@ namespace FrameSphere
             this.eventTitle_field.Size = new System.Drawing.Size(477, 20);
             this.eventTitle_field.TabIndex = 1;
             // 
-            // delete
-            // 
-            this.delete.BackColor = System.Drawing.Color.Red;
-            this.delete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.delete.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.delete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.delete.Location = new System.Drawing.Point(847, 412);
-            this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(168, 29);
-            this.delete.TabIndex = 30;
-            this.delete.Text = "Delete";
-            this.delete.UseVisualStyleBackColor = false;
-            this.delete.Click += new System.EventHandler(this.delete_Click);
-            // 
             // ManageEvents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -549,7 +534,6 @@ namespace FrameSphere
         private System.Windows.Forms.Label currentPW_label;
         private System.Windows.Forms.TextBox CurrentPWField;
         private System.Windows.Forms.Panel manageButtons_panel;
-        private System.Windows.Forms.Button visitors_button;
         private System.Windows.Forms.Button artCollections_button;
         private System.Windows.Forms.Button participants_button;
         private System.Windows.Forms.Button approve;

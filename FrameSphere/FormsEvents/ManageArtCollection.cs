@@ -1,6 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using FrameSphere.EntityClasses;
 
@@ -8,13 +14,19 @@ namespace FrameSphere.FormsEvents
 {
     public partial class ManageArtCollection : Form
     {
-        private Event ex; // Current event for the user
+        private Event ex;
         public ManageArtCollection(Event a)
         {
             InitializeComponent();
             this.ex = a;
-            LoadArt(); // Load all available arts
-            LoadAddedArt(); // Load arts added for the current user and event
+            LoadArt();
+            //ArtPanel("1", "cat");
+            LoadAddedArt();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void goBack_button_Click(object sender, EventArgs e)
@@ -24,46 +36,32 @@ namespace FrameSphere.FormsEvents
             mn.Show();
         }
 
-        // Load all arts (left panel) based on search term
         private void LoadArt(string search = "")
         {
-            allArts_panel.Controls.Clear(); // Clear previous items to avoid duplicates
+            allArts_panel.Controls.Clear(); // Clear previous items to avoid duplicates.
             try
             {
-                string query;
-                // Parameterized query for security
+                // Query to fetch art. Add filtering if a search string is provided.
+                string q = string.IsNullOrWhiteSpace(search)
+                    ? $"select a.artid, a.arttitle, aa.username from art a, artartist aa where a.artid = aa.artid and aa.username = '{FSystem.loggedInUser.UserName}'"
+                    : $"select a.artid, a.arttitle, aa.username from art a, artartist aa where a.artid = aa.artid and aa.username = '{FSystem.loggedInUser.UserName}' and a.artTitle LIKE '%{search}%'";
                 if (FSystem.loggedInUser.isAdmin)
                 {
-                    query = string.IsNullOrWhiteSpace(search)
-                        ? "SELECT a.artid, a.arttitle FROM art a"
-                        : "SELECT a.artid, a.arttitle FROM art a WHERE a.artTitle LIKE @search";
+                     q = string.IsNullOrWhiteSpace(search)
+                    ? $"select a.artid, a.arttitle from art a"
+                    : $"select a.artid, a.arttitle from art a where a.artTitle LIKE '%{search}%'";
                 }
-                else
-                {
-                    query = string.IsNullOrWhiteSpace(search)
-                        ? "SELECT a.artid, a.arttitle, aa.username FROM art a, artartist aa WHERE a.artid = aa.artid AND aa.username = @username"
-                        : "SELECT a.artid, a.arttitle, aa.username FROM art a, artartist aa WHERE a.artid = aa.artid AND aa.username = @username AND a.artTitle LIKE @search";
-                }
-
                 using (SqlConnection conn = DB.Connect())
                 {
                     conn.Open();
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    SqlCommand cmd = new SqlCommand(q, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
                     {
-                        // Add parameters for security
-                        cmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
-                        if (!string.IsNullOrWhiteSpace(search))
-                        {
-                            cmd.Parameters.AddWithValue("@search", "%" + search + "%");
-                        }
+                        int artID = Int32.Parse(reader["ArtId"].ToString());
+                        string artTitle = reader["ArtTitle"].ToString();
 
-                        SqlDataReader reader = cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            int artID = Convert.ToInt32(reader["ArtId"]);
-                            string artTitle = reader["ArtTitle"].ToString();
-                            ArtPanel(artID, artTitle); // Create a panel for each art in allArts_panel
-                        }
+                        ArtPanel(artID, artTitle); // Create a panel for each art for allArts_panel.
                     }
                 }
             }
@@ -71,26 +69,27 @@ namespace FrameSphere.FormsEvents
             {
                 MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine("DB ERROR: " + e.Message);
+                return;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine("UNEXPECTED ERROR: " + e.Message);
+                return;
             }
-        }
 
-        // Display art on the left panel
+        }
         private void ArtPanel(int artID, string artTitle)
         {
             Panel art = new Panel {
-                Size = new Size(allArts_panel.Width - 10, 40),
+                Size = new Size(allArts_panel.Width - 30, 40),
                 BackColor = Color.LightGray,
                 Padding = new Padding(5),
                 Margin = new Padding(3)
             };
 
             Label artLabel = new Label {
-                Text = $"{artID} {artTitle}",
+                Text = artID + " " + artTitle,
                 AutoSize = true,
                 Font = new Font("Arial", 10, FontStyle.Bold),
                 Location = new Point(5, 10)
@@ -99,64 +98,67 @@ namespace FrameSphere.FormsEvents
             Button addButton = new Button {
                 Text = "Add",
                 Size = new Size(75, 25),
-                Location = new Point(art.Width - 85, 5),
+                Location = new Point(allArts_panel.Width - 130, 5),
                 BackColor = Color.Green,
                 ForeColor = Color.White,
-                Tag = artID // Store artId in Tag
+                Tag = artID // Store artist name in Tag
             };
-            addButton.Click += (s, e) => AddArt(artID);
+            addButton.Click += (s, e) => AddArt((Button)s, artID);
 
             art.Controls.Add(artLabel);
             art.Controls.Add(addButton);
             allArts_panel.Controls.Add(art);
         }
 
-        private void AddArt(int artId)
+        private void AddArt(Button btn, int artId)
         {
-            ex.AddArt(artId);
+            ex.AddArt(artId); // Add to the event in DB
+            LoadAddedArt(); // Refresh the added art list in UI
         }
 
-        // Load added arts for the current user and event (right panel)
         private void LoadAddedArt()
         {
+            submittedArts_panel.Controls.Clear(); 
             noArts.Visible = false; // Hide "None" initially
             try
             {
-                string query = @"
-                    SELECT artId, artTitle 
-                    FROM art 
-                    WHERE artId IN (
-                        SELECT artId FROM artArtist 
-                        WHERE username IN (
-                            SELECT username FROM artistEvent WHERE eventId = @eventId
-                        )
-                    )
-                    AND artId IN (
-                        SELECT artId FROM artEvent WHERE eventId = @eventId
-                    );";
-
+                string query = $@"
+                                select artId, artTitle 
+                                from art 
+                                where artId in (
+                                    -- art of artist in given event
+                                    select artId from artArtist 
+                                    where username in (
+                                        --artist in given event
+                                        select username from artistEvent where eventId = {ex.EventID}
+                                    )
+                                )
+                                and artId in(
+                                    -- art in given event
+                                    select artId from artEvent where eventId = {ex.EventID}
+                                );
+                             ";
+                if (FSystem.loggedInUser.isAdmin)
+                {
+                    query = $@"select artId, artTitle from art where artId in (select artId from artEvent where eventId = {ex.EventID})";
+                }
                 using (SqlConnection conn = DB.Connect())
                 {
                     conn.Open();
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (!reader.HasRows)
                     {
-                        // Add parameters for eventId to avoid SQL injection
-                        cmd.Parameters.AddWithValue("@eventId", ex.EventID);
+                        noArts.Visible = true; // Show "None" label if event has no art collections 
+                        return;
+                    }
 
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        if (!reader.HasRows)
-                        {
-                            noArts.Visible = true; // Show "None" label if event has no art collections 
-                            return;
-                        }
-
-                        while (reader.Read())
-                        {
-                            string artID = reader["ArtId"].ToString();
-                            string artTitle = reader["ArtTitle"].ToString();
-                            AddedArtPanel(artID, artTitle); // Display the art in the right panel
-                        }
+                    while (reader.Read())
+                    {
+                        string artID = reader["ArtId"].ToString();
+                        string artTitle = reader["ArtTitle"].ToString();
+                        AddedArtPanel(artID, artTitle);
                     }
                 }
             }
@@ -164,26 +166,28 @@ namespace FrameSphere.FormsEvents
             {
                 MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine("DB ERROR: " + e.Message);
+                return;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine("UNEXPECTED ERROR: " + e.Message);
+                return;
             }
+
         }
 
-        // Display added art on the right panel (submittedArts_panel)
         private void AddedArtPanel(string artID, string artTitle)
         {
             Panel art = new Panel {
-                Size = new Size(submittedArts_panel.Width - 10, 40),
+                Size = new Size(allArts_panel.Width - 25, 40),
                 BackColor = Color.LightGray,
                 Padding = new Padding(5),
                 Margin = new Padding(3)
             };
 
             Label artLabel = new Label {
-                Text = $"{artID} {artTitle}",
+                Text = artID + " " + artTitle,
                 AutoSize = true,
                 Font = new Font("Arial", 10, FontStyle.Bold),
                 Location = new Point(5, 10)
@@ -192,34 +196,23 @@ namespace FrameSphere.FormsEvents
             Button remove_button = new Button {
                 Text = "Remove",
                 Size = new Size(75, 25),
-                Location = new Point(art.Width - 85, 5),
+                Location = new Point(submittedArts_panel.Width - 150, 5),
                 BackColor = Color.Red,
                 ForeColor = Color.White,
-                Tag = artID // Store artId in Tag
+                Tag = artID // Store artid in Tag
             };
-            remove_button.Click += (s, e) => RemoveArt(artID);
+            remove_button.Click += (s, e) => RemoveArt((Button)s, Int32.Parse(artID));
 
             art.Controls.Add(artLabel);
             art.Controls.Add(remove_button);
             submittedArts_panel.Controls.Add(art);
         }
-
-        // Remove art from the right panel
-        private void RemoveArt(string artID)
+        private void RemoveArt(Button btn, int art)
         {
-            int artId = Int32.Parse(artID);
-            ex.RemoveArt(artId); // Remove from DB
-            foreach (Control control in submittedArts_panel.Controls)
-            {
-                if (control is Panel && ((Panel)control).Controls.ContainsKey(artID))
-                {
-                    submittedArts_panel.Controls.Remove(control); // Remove from UI
-                    break;
-                }
-            }
+            ex.RemoveArt(art);//remove from db
+            submittedArts_panel.Controls.Remove(btn.Parent); // remove from ui
         }
-
-        // Search arts when the text changes in the search field
+         
         private void SearchArt_Field_TextChanged(object sender, EventArgs e)
         {
             LoadArt(SearchArt_Field.Text);
