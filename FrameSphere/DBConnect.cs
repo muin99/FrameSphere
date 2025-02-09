@@ -13,7 +13,7 @@ namespace FrameSphere
         private static readonly string r = @"DESKTOP-5903S8A";
         private static readonly string n = @"MAZHARUL75\SQLEXPRESS";
 
-        private static readonly string ServerName = m;
+        private static readonly string ServerName = r;
         private static readonly string ConnectionString = $@"Data Source={ServerName}; Initial Catalog = FrameSphere; Integrated Security = true";
         
         
