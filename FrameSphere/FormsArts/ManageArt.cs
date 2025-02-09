@@ -415,5 +415,64 @@ namespace FrameSphere
             this.Hide();
             a.Show();
         }
+
+        private void deleteArt_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to delete this art piece? All related data will be permanently removed.",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                using (SqlConnection connection = DB.Connect())
+                {
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
+
+                    try
+                    {
+                        MessageBox.Show($"Deleting Art ID: {artID}");
+
+                        string[] tables = { "ArtArtist", "ArtPhotos", "Art", "PurchaseRequests", "ArtEvent", "ArtSold", "Bids" };
+
+                        foreach (string table in tables)
+                        {
+                            string query = $@"
+                        IF EXISTS (SELECT 1 FROM {table} WHERE ArtID = @ArtId)
+                        BEGIN
+                            DELETE FROM {table} WHERE ArtID = @ArtId
+                        END";
+
+                            using (SqlCommand cmd = new SqlCommand(query, connection, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@ArtId", artID);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        transaction.Commit();
+                        MessageBox.Show("Art deleted successfully.");
+
+                        Form dashboard = FSystem.loggedInUser.isAdmin ? new Admin_dashboard() : new AllArt();
+                        dashboard.Show();
+                        this.Close();
+                    }
+                    catch (SqlException sqlEx)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show($"SQL Error: {sqlEx.Message}\nError Code: {sqlEx.Number}", "Database Error");
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show($"Error: {ex.Message}", "Deletion Failed");
+                    }
+                }
+            }
+        }
+
     }
 }

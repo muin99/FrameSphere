@@ -23,11 +23,16 @@ namespace FrameSphere
         public ManageEvents(int eventId)
         {
             InitializeComponent();
-
+            this.ev = new Event(eventId);
             if (!FSystem.loggedInUser.isAdmin)
             {
                 reject.Visible = false;
                 approve.Visible = false;
+            }
+            if (!isAdminOrOrganizer())
+            {
+                
+                delete.Visible = false;
             }
 
             // DateTime picker formatting
@@ -61,6 +66,47 @@ namespace FrameSphere
             // Poster image setup
             poster_field.Text = ev.PosterImage;
             posterImage.Image = FSystem.GetImageFromPath(ev.PosterImage);
+        }
+        private bool isAdminOrOrganizer()
+        {
+            try
+            {
+                using (SqlConnection con = DB.Connect())
+                {
+                    con.Open();
+
+                    // Check if the user is an admin
+                    string adminQuery = "SELECT COUNT(*) FROM AdminList WHERE UserName = @username";
+                    SqlCommand adminCmd = new SqlCommand(adminQuery, con);
+                    adminCmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+
+                    int isAdmin = Convert.ToInt32(adminCmd.ExecuteScalar());
+                    if (isAdmin > 0)
+                        return true; // User is an admin
+
+                    // Check if the user is an organizer for this event
+                    string organizerQuery = "SELECT COUNT(*) FROM Organizers WHERE UserName = @username AND EventID = @eventid";
+                    SqlCommand organizerCmd = new SqlCommand(organizerQuery, con);
+                    organizerCmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+                    organizerCmd.Parameters.AddWithValue("@eventid", ev.EventID);
+
+                    int isOrganizer = Convert.ToInt32(organizerCmd.ExecuteScalar());
+                    return isOrganizer > 0;
+                }
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB ERROR: " + e.Message);
+                return false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("UNEXPECTED ERROR: " + e.Message);
+                return false;
+            }
+
         }
 
         #region Button Click Handlers
@@ -228,7 +274,86 @@ namespace FrameSphere
         {
             FSystem.loggedInUser.Logout(this);
         }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to delete this event? All related data will be permanently removed.",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (result == DialogResult.Yes)
+            {
+                using (SqlConnection connection = DB.Connect())
+                {
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
+
+                    try
+                    {
+                        MessageBox.Show($"Deleting Event ID: {ev.EventID}");
+
+                        string[] tables = { "Organizers", "ArtistEvent", "ArtEvent", "UserEvent", "Events" };
+
+                        foreach (string table in tables)
+                        {
+                            string query = $@"
+                                IF EXISTS (SELECT 1 FROM {table} WHERE EventID = @EventId)
+                                BEGIN
+                                    DELETE FROM {table} WHERE EventID = @EventId
+                                END";
+
+                            using (SqlCommand cmd = new SqlCommand(query, connection, transaction))
+                            {
+                                cmd.Parameters.AddWithValue("@EventId", ev.EventID);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        //if (!string.IsNullOrEmpty(ev.PosterImage))
+                        //{
+                        //    string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                        //    string eventPostersFolder = Path.Combine(baseDirectory, "EventPosters");
+                        //    string fileName = Path.GetFileName(ev.PosterImage);
+                        //    string fullPath = Path.Combine(eventPostersFolder, fileName);
+
+                        //    if (File.Exists(fullPath))
+                        //    {
+                        //        try
+                        //        {
+                        //            File.Delete(fullPath);
+                        //        }
+                        //        catch (IOException ioEx)
+                        //        {
+                        //            MessageBox.Show($"Warning: Could not delete image. {ioEx.Message}");
+                        //        }
+                        //    }
+                        //}
+
+                        transaction.Commit();
+                        MessageBox.Show("Event deleted successfully.");
+
+                        Form dashboard = FSystem.loggedInUser.isAdmin ? new Admin_dashboard() : new UserEvents();
+                        dashboard.Show();
+                        this.Close();
+                    }
+                    catch (SqlException sqlEx)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show($"SQL Error: {sqlEx.Message}\nError Code: {sqlEx.Number}", "Database Error");
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show($"Error: {ex.Message}", "Deletion Failed");
+                    }
+                }
+            }
+        }
+
     }
 
-    
+
 }
