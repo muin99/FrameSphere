@@ -64,6 +64,7 @@ namespace FrameSphere
             this.OrgDetails_field = new System.Windows.Forms.TextBox();
             this.eventDesc_field = new System.Windows.Forms.TextBox();
             this.eventTitle_field = new System.Windows.Forms.TextBox();
+            this.delete = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.header_panel.SuspendLayout();
             this.body_panel.SuspendLayout();
@@ -139,6 +140,7 @@ namespace FrameSphere
             // body_panel
             // 
             this.body_panel.BackColor = System.Drawing.Color.LightGreen;
+            this.body_panel.Controls.Add(this.delete);
             this.body_panel.Controls.Add(this.approve);
             this.body_panel.Controls.Add(this.reject);
             this.body_panel.Controls.Add(this.manageButtons_panel);
@@ -175,7 +177,7 @@ namespace FrameSphere
             this.approve.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.approve.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.approve.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.approve.Location = new System.Drawing.Point(1016, 365);
+            this.approve.Location = new System.Drawing.Point(1038, 365);
             this.approve.Name = "approve";
             this.approve.Size = new System.Drawing.Size(168, 29);
             this.approve.TabIndex = 29;
@@ -189,7 +191,7 @@ namespace FrameSphere
             this.reject.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.reject.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reject.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.reject.Location = new System.Drawing.Point(798, 365);
+            this.reject.Location = new System.Drawing.Point(847, 365);
             this.reject.Name = "reject";
             this.reject.Size = new System.Drawing.Size(168, 29);
             this.reject.TabIndex = 28;
@@ -483,6 +485,20 @@ namespace FrameSphere
             this.eventTitle_field.Size = new System.Drawing.Size(477, 20);
             this.eventTitle_field.TabIndex = 1;
             // 
+            // delete
+            // 
+            this.delete.BackColor = System.Drawing.Color.Red;
+            this.delete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.delete.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.delete.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.delete.Location = new System.Drawing.Point(847, 412);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(168, 29);
+            this.delete.TabIndex = 30;
+            this.delete.Text = "Delete";
+            this.delete.UseVisualStyleBackColor = false;
+            this.delete.Click += new System.EventHandler(this.delete_Click);
+            // 
             // ManageEvents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -539,5 +555,6 @@ namespace FrameSphere
         private System.Windows.Forms.Button approve;
         private System.Windows.Forms.Button reject;
         private System.Windows.Forms.Button manageOrganizer;
+        private System.Windows.Forms.Button delete;
     }
 }
