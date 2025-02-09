@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using FrameSphere.D3Program;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace FrameSphere
 {
@@ -155,6 +156,47 @@ namespace FrameSphere
             //\. Dot before top level domain (TLD)
             //[a - zA - Z]{ 2,}	TLD, {atleast 2 chars, no upper limits}
             //$	End of string
+        }
+        public static bool isAdminOrOrganizer(Event currentEvent)
+        {
+            try
+            {
+                using (SqlConnection con = DB.Connect())
+                {
+                    con.Open();
+
+                    // Check if the user is an admin
+                    string adminQuery = "SELECT COUNT(*) FROM AdminList WHERE UserName = @username";
+                    SqlCommand adminCmd = new SqlCommand(adminQuery, con);
+                    adminCmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+
+                    int isAdmin = Convert.ToInt32(adminCmd.ExecuteScalar());
+                    if (isAdmin > 0)
+                        return true; // User is an admin
+
+                    // Check if the user is an organizer for this event
+                    string organizerQuery = "SELECT COUNT(*) FROM Organizers WHERE UserName = @username AND EventID = @eventid";
+                    SqlCommand organizerCmd = new SqlCommand(organizerQuery, con);
+                    organizerCmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
+                    organizerCmd.Parameters.AddWithValue("@eventid", currentEvent.EventID);
+
+                    int isOrganizer = Convert.ToInt32(organizerCmd.ExecuteScalar());
+                    return isOrganizer > 0;
+                }
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "DB Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("DB ERROR: " + e.Message);
+                return false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong! Try again later.", "Unexpected Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("UNEXPECTED ERROR: " + e.Message);
+                return false;
+            }
+
         }
     }
 }

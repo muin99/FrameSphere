@@ -13,7 +13,7 @@ namespace FrameSphere
     public partial class Event_page : Form
     {
         public Event currentEvent;
-
+        int artist;
         public Event_page(int eventId)
         {
             currentEvent = new Event(eventId);
@@ -51,7 +51,7 @@ namespace FrameSphere
                     cmd.Parameters.AddWithValue("@username", FSystem.loggedInUser.UserName);
                     cmd.Parameters.AddWithValue("@eventid", eventId);
 
-                    int artist = (int)cmd.ExecuteScalar();
+                    artist = (int)cmd.ExecuteScalar();
 
                     if (artist > 0 ||  isAdminOrOrganizer())
                     {
@@ -273,9 +273,17 @@ namespace FrameSphere
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ManageArtCollection ma = new ManageArtCollection(currentEvent);
-            this.Hide();
-            ma.Show();
+            if (FSystem.isAdminOrOrganizer(currentEvent) || artist>0)
+            {
+                ManageArtCollection ma = new ManageArtCollection(currentEvent);
+                this.Hide();
+                ma.Show();
+            }
+            else
+            {
+
+            }
+
         }
     }
 }
