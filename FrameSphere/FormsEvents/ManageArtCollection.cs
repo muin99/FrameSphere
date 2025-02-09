@@ -82,7 +82,7 @@ namespace FrameSphere.FormsEvents
         private void ArtPanel(int artID, string artTitle)
         {
             Panel art = new Panel {
-                Size = new Size(allArts_panel.Width - 10, 40),
+                Size = new Size(allArts_panel.Width - 30, 40),
                 BackColor = Color.LightGray,
                 Padding = new Padding(5),
                 Margin = new Padding(3)
@@ -98,7 +98,7 @@ namespace FrameSphere.FormsEvents
             Button addButton = new Button {
                 Text = "Add",
                 Size = new Size(75, 25),
-                Location = new Point(allArts_panel.Width - 85, 5),
+                Location = new Point(allArts_panel.Width - 130, 5),
                 BackColor = Color.Green,
                 ForeColor = Color.White,
                 Tag = artID // Store artist name in Tag
@@ -112,10 +112,13 @@ namespace FrameSphere.FormsEvents
 
         private void AddArt(Button btn, int artId)
         {
-            ex.AddArt(artId);
+            ex.AddArt(artId); // Add to the event in DB
+            LoadAddedArt(); // Refresh the added art list in UI
         }
+
         private void LoadAddedArt()
         {
+            submittedArts_panel.Controls.Clear(); 
             noArts.Visible = false; // Hide "None" initially
             try
             {
@@ -137,15 +140,7 @@ namespace FrameSphere.FormsEvents
                              ";
                 if (FSystem.loggedInUser.isAdmin)
                 {
-                    query = $@"
-                            select artId, artTitle 
-                            from art 
-                            where artId in (
-                                -- art of artist in given event
-                                select artId from artEvent where eventId = 28
-                            )
-                            ;
-                            ";
+                    query = $@"select artId, artTitle from art where artId in (select artId from artEvent where eventId = {ex.EventID})";
                 }
                 using (SqlConnection conn = DB.Connect())
                 {
@@ -185,7 +180,7 @@ namespace FrameSphere.FormsEvents
         private void AddedArtPanel(string artID, string artTitle)
         {
             Panel art = new Panel {
-                Size = new Size(allArts_panel.Width - 10, 40),
+                Size = new Size(allArts_panel.Width - 25, 40),
                 BackColor = Color.LightGray,
                 Padding = new Padding(5),
                 Margin = new Padding(3)
@@ -201,7 +196,7 @@ namespace FrameSphere.FormsEvents
             Button remove_button = new Button {
                 Text = "Remove",
                 Size = new Size(75, 25),
-                Location = new Point(submittedArts_panel.Width - 85, 5),
+                Location = new Point(submittedArts_panel.Width - 150, 5),
                 BackColor = Color.Red,
                 ForeColor = Color.White,
                 Tag = artID // Store artid in Tag

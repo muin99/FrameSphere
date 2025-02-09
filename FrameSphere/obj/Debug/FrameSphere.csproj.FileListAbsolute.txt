@@ -89,3 +89,4 @@ C:\Users\user\Documents\FrameSphere\FrameSphere\obj\Debug\FrameSphere.exe
 C:\Users\user\Documents\FrameSphere\FrameSphere\obj\Debug\FrameSphere.pdb
 C:\Users\user\Documents\FrameSphere\FrameSphere\obj\Debug\FrameSphere.csproj.AssemblyReference.cache
 C:\Users\56mui\Downloads\FrameSphere\FrameSphere\obj\Debug\FrameSphere.FormsUser.allUser.resources
+C:\Users\user\Documents\FrameSphere\FrameSphere\obj\Debug\FrameSphere.FormsUser.allUser.resources
