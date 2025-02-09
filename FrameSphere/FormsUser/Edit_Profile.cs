@@ -21,6 +21,11 @@ namespace FrameSphere
         public Edit_Profile(string username)
         {
             InitializeComponent();
+
+            if (FSystem.loggedInUser.isAdmin)
+            {
+                delete.Visible = true;
+            }
             managedUserName = username;
             // Determine if the profile is being managed by an admin or edited by the logged-in user.
             bool isManageMode = !username.Equals(FSystem.loggedInUser.UserName, StringComparison.OrdinalIgnoreCase);
@@ -674,6 +679,60 @@ namespace FrameSphere
             else { invalidPhone.Visible = false; }
 
         }
+
+        private void delete_Click(object sender, EventArgs e)
+        {
+            string userNameToDelete = FSystem.loggedInUser.UserName; // Or get the user to delete dynamically
+
+            using (SqlConnection con = DB.Connect())
+            {
+                try
+                {
+                    con.Open();
+
+                    // Step 1: Delete related data from Artists table (if user is an artist)
+                    string deleteArtistQuery = "DELETE FROM Artists WHERE UserName = @UserName";
+                    using (SqlCommand cmd = new SqlCommand(deleteArtistQuery, con))
+                    {
+                        cmd.Parameters.AddWithValue("@UserName", userNameToDelete);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Step 2: Delete user from UserContact table (if user has contact details)
+                    string deleteUserContactQuery = "DELETE FROM UserContact WHERE UserName = @UserName";
+                    using (SqlCommand cmd = new SqlCommand(deleteUserContactQuery, con))
+                    {
+                        cmd.Parameters.AddWithValue("@UserName", userNameToDelete);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Step 3: Delete user from UserSocials table (if user has social media details)
+                    string deleteUserSocialsQuery = "DELETE FROM UserSocials WHERE UserName = @UserName";
+                    using (SqlCommand cmd = new SqlCommand(deleteUserSocialsQuery, con))
+                    {
+                        cmd.Parameters.AddWithValue("@UserName", userNameToDelete);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Step 4: Finally, delete user from AllUser table
+                    string deleteUserQuery = "DELETE FROM AllUser WHERE UserName = @UserName";
+                    using (SqlCommand cmd = new SqlCommand(deleteUserQuery, con))
+                    {
+                        cmd.Parameters.AddWithValue("@UserName", userNameToDelete);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Optionally, show a success message
+                    MessageBox.Show("User deleted successfully.");
+                }
+                catch (Exception ex)
+                {
+                    // Handle any errors (e.g., constraint violations, etc.)
+                    MessageBox.Show($"Error: {ex.Message}");
+                }
+            }
+        }
+
     }
 }
 
