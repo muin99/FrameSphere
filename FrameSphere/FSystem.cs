@@ -10,6 +10,7 @@ using System.Drawing;
 using Newtonsoft.Json;
 using FrameSphere.D3Program;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace FrameSphere
 {
@@ -140,6 +141,20 @@ namespace FrameSphere
             File.WriteAllText(filePath, updatedJson);
 
             Console.WriteLine("New art added successfully!");
+        }
+
+        public static bool validEmail(string text)
+        {
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(text, pattern);
+            //@ to not use double slashes since regex uses it often
+            //^ Start of string
+            //[a - zA - Z0 - 9._ % +-]+ Local part(username)
+            //@  compulsory @ symbol
+            //[a - zA - Z0 - 9.-]+  Domain name
+            //\. Dot before top level domain (TLD)
+            //[a - zA - Z]{ 2,}	TLD, {atleast 2 chars, no upper limits}
+            //$	End of string
         }
     }
 }
