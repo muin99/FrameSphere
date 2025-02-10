@@ -1,6 +1,8 @@
 # 🎨 FrameSphere - A Platform for Virtual Events 🌍✨
 
-FrameSphere is a **desktop application** that revolutionizes the way users engage with **virtual events**, particularly **art exhibitions**. Our platform enables users to **explore**, **host**, and **participate** in immersive **3D exhibitions**, allowing artists to showcase their creative work to a **global audience**. 🖼️🚀
+**FrameSphere** is a **desktop application** that revolutionizes the way users engage with **virtual events**, particularly **art exhibitions**. Our platform enables users to **explore**, **host**, and **participate** in immersive **3D exhibitions**, allowing artists to showcase their creative work to a **global audience**. 🖼️🚀  
+
+This project is part of our **Object-Oriented Programming 2** course, based on **C#**, and is supervised by [Zahiduddin Rifat](https://www.aiub.edu/faculty-list/faculty-profile#zahid@aiub.edu).  
 
 ---
 
@@ -32,7 +34,7 @@ FrameSphere is a **desktop application** that revolutionizes the way users engag
 
 ## 🏗️ **Tech Stack**
 - 🚀 **Frontend**: C# (.NET WPF)  
-- 🛢 **Database**: Microsoft Sql Server  
+- 🛢 **Database**: Microsoft SQL Server  
 - 📁 **Data Handling**: JSON for storing dynamic content  
 - 🎮 **3D Rendering**: Unity (for immersive experiences)
 
@@ -46,9 +48,9 @@ FrameSphere is a **desktop application** that revolutionizes the way users engag
 - **User Interactions**: Tracks purchases, messages, and event participation
 
 🔹 **Class Diagrams**
-- 🎨 `Art`: Attributes like `title`, `description`, `images`
-- 🎟️ `Event`: Attributes like `title`, `organization`, `ticket price`
-- 👤 `User`: Manages profile & authentication
+- 🎨 Art: Attributes like title, description, images
+- 🎟️ Event: Attributes like title, organization, ticket price
+- 👤 User: Manages profile & authentication
 
 ---
 
@@ -62,12 +64,20 @@ git clone https://github.com/muin99/FrameSphere.git
 # Navigate to the project directory
 cd FrameSphere
 
-# Import the Data Tier application inside database folder
-FrameSPhere
+# Import the Data Tier application from Database folder into your Microsoft SQL Server
+FrameSphere
+
+# From DBConnect.cs class, change the server name according to your server
+private static readonly string ServerName = "your-server-name"
 
 # Run the application (ensure dependencies are installed)
 run
+
+# Admin account for this system is 
+    username: admin
+    password: admin
 ```
+
 ---
 
 ## 📜 **Future Roadmap**
@@ -75,6 +85,26 @@ run
 ✅ **Phase 2**: Implementing Bidding System  
 🔜 **Phase 3**: 3D Exhibition Environment in Unity  
 🔜 **Phase 4**: Advanced AI-based Art Recommendations  
+
+---
+
+## 🌟 **Project Contributions**
+
+### 👑 **Project Head: Mohammad Muin (Onukrom)**
+Hey everyone, I’m **Muin(aka Onukrom)**, the **Project Leader** of FrameSphere. I led the entire project, handling **most of the development and architectural decisions**. This journey was a challenging yet rewarding experience, and I’m proud of what we’ve built! 🚀✨
+
+🔗 **GitHub**: [github.com/muin99](https://github.com/muin99)  
+🌐 **Website**: [onukrom.xyz](https://onukrom.xyz)  
+
+---
+
+### 💡 **Contributors**
+
+🔹 **Raisa & Nabil** – Your support and dedication to this project were invaluable! Without you, this project would not have been possible to complete. You both were amazing to work with. Keep up the great work! 🎨🔥
+
+🔗 **Nabil’s GitHub**: [github.com/Mazharul75](https://github.com/Mazharul75)  
+🔗 **Raisa’s GitHub**: [github.com/raisa385](https://github.com/raisa385)  
+
 
 ---
 
@@ -90,12 +120,12 @@ We welcome contributions! Follow these steps to contribute:
 ---
 
 ## 🛡️ **License**
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+This project is Open to all. No copyright!
 
 ---
 
 ## 📬 **Contact Us**
-📧 Email: `56muin@example.com`  
+📧 Email: 56muin@example.com  
 📌 GitHub Issues: [Report Issues Here](https://github.com/muin99/FrameSphere/issues)  
 
 Let's **redefine the future of virtual events** together! 🚀🎨✨
