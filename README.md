@@ -6,6 +6,25 @@ This project is part of our **Object-Oriented Programming 2** course, based on *
 
 ---
 
+## 🌟 **Project Contributions**
+
+### 👑 **Project Head: Mohammad Muin (Onukrom)**
+Hey everyone, I’m **Muin(aka Onukrom)**, the **Project Leader** of FrameSphere. I led the entire project, handling **most of the development and architectural decisions**. This journey was a challenging yet rewarding experience, and I’m proud of what we’ve built! 🚀✨
+
+🔗 **GitHub**: [github.com/muin99](https://github.com/muin99)  
+🌐 **Website**: [onukrom.xyz](https://onukrom.xyz)  
+
+---
+
+### 💡 **Contributors**
+
+🔹 **Raisa & Nabil** – Your support and dedication to this project were invaluable! Without you, this project would not have been possible to complete. You both were amazing to work with. Keep up the great work! 🎨🔥
+
+🔗 **Nabil’s GitHub**: [github.com/Mazharul75](https://github.com/Mazharul75)  
+🔗 **Raisa’s GitHub**: [github.com/raisa385](https://github.com/raisa385)  
+
+---
+
 ## 📌 Features & User Roles
 
 ### 🏛️ **User**
@@ -85,26 +104,6 @@ run
 ✅ **Phase 2**: Implementing Bidding System  
 🔜 **Phase 3**: 3D Exhibition Environment in Unity  
 🔜 **Phase 4**: Advanced AI-based Art Recommendations  
-
----
-
-## 🌟 **Project Contributions**
-
-### 👑 **Project Head: Mohammad Muin (Onukrom)**
-Hey everyone, I’m **Muin(aka Onukrom)**, the **Project Leader** of FrameSphere. I led the entire project, handling **most of the development and architectural decisions**. This journey was a challenging yet rewarding experience, and I’m proud of what we’ve built! 🚀✨
-
-🔗 **GitHub**: [github.com/muin99](https://github.com/muin99)  
-🌐 **Website**: [onukrom.xyz](https://onukrom.xyz)  
-
----
-
-### 💡 **Contributors**
-
-🔹 **Raisa & Nabil** – Your support and dedication to this project were invaluable! Without you, this project would not have been possible to complete. You both were amazing to work with. Keep up the great work! 🎨🔥
-
-🔗 **Nabil’s GitHub**: [github.com/Mazharul75](https://github.com/Mazharul75)  
-🔗 **Raisa’s GitHub**: [github.com/raisa385](https://github.com/raisa385)  
-
 
 ---
 
