@@ -19,17 +19,10 @@ namespace FrameSphere.FormsArts
         {
                 this.artid = artid;
                 InitializeComponent();
-                InitializeFlowPanel();
                 LoadReviews();
                 label1.Text = new Art(artid).ArtTitle;
             }
 
-            private void InitializeFlowPanel()
-            {
-                evs.Dock = DockStyle.Fill;
-                evs.AutoScroll = true;
-                this.Controls.Add(evs);
-            }
 
             private void LoadReviews()
             {

@@ -38,7 +38,7 @@
             // 
             this.soldLabel.AutoSize = true;
             this.soldLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.soldLabel.Location = new System.Drawing.Point(100, 79);
+            this.soldLabel.Location = new System.Drawing.Point(191, 76);
             this.soldLabel.Name = "soldLabel";
             this.soldLabel.Size = new System.Drawing.Size(66, 24);
             this.soldLabel.TabIndex = 0;
@@ -58,7 +58,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(191, 154);
+            this.label2.Location = new System.Drawing.Point(191, 161);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 24);
             this.label2.TabIndex = 2;
