@@ -1,8 +1,0 @@
-CREATE TABLE All_Users (
-    FirstName NVARCHAR(50) NOT NULL,  -- First Name of the user
-    LastName NVARCHAR(50) NOT NULL,  -- Last Name of the user
-    Email NVARCHAR(100) UNIQUE NOT NULL,  -- Unique Email for each user
-    UserName NVARCHAR(50) UNIQUE NOT NULL,  -- Unique Username for each user
-    Password NVARCHAR(255) NOT NULL,  -- Password (hashed or plain text, ideally hashed)
-    Status NVARCHAR(20) DEFAULT 'pending' CHECK (Status IN ('approved', 'rejected', 'pending'))  -- User status (approved, rejected, pending), default is pending
-);
