@@ -14,8 +14,6 @@ Hey everyone, I’m **Muin(aka Onukrom)**, the **Project Leader** of FrameSphere
 🔗 **GitHub**: [github.com/muin99](https://github.com/muin99)  
 🌐 **Website**: [onukrom.xyz](https://onukrom.xyz)  
 
----
-
 ### 💡 **Contributors**
 
 🔹 **Raisa & Nabil** – Your support and dedication to this project were invaluable! Without you, this project would not have been possible to complete. You both were amazing to work with. Keep up the great work! 🎨🔥
