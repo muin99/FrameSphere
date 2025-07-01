@@ -2,7 +2,7 @@
 
 **FrameSphere** is a **desktop application** that revolutionizes the way users engage with **virtual events**, particularly **art exhibitions**. Our platform enables users to **explore**, **host**, and **participate** in immersive **3D exhibitions**, allowing artists to showcase their creative work to a **global audience**. 🖼️🚀  
 
-This project is part of our **Object-Oriented Programming 2** course, based on **C#**, and is supervised by [ZAHIDUDDIN AHMED](https://www.aiub.edu/faculty-list/faculty-profile#zahid@aiub.edu).  
+
 
 ---
 
